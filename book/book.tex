@@ -25,6 +25,13 @@
 {
     \includeonly{
         front-matter,
+        % Part 0
+        part-0/preamble.tex,
+        part-0/logic-1.tex,
+        part-0/sets.tex,
+        part-0/logic-2.tex,
+        part-0/relations-and-functions.tex,
+        part-0/zf-axioms.tex
     }
 }
 {
@@ -43,7 +50,12 @@
 \Ifstr{\isdraft}{true}{\draftstartmark}{}
 
 %=========================================
-% TODO: ADD
+\include{part-0/preamble}
+\include{part-0/logic-1}
+\include{part-0/sets}
+\include{part-0/logic-2}
+\include{part-0/relations-and-functions}
+\include{part-0/zf-axioms}
 
 %=========================================
 \appendix
