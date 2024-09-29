@@ -1,0 +1,54 @@
+\documentclass[
+    pagesize,
+    10pt,
+    bibtotoc,
+    normalheadings,
+    twoside,
+    openany,
+    chapterprefix,
+    DIV=9
+]{scrbook}
+
+%=========== Global Variables ============
+\newcommand{\editionnumber}{1\textsuperscript{st}}
+\newcommand{\buildnumber}{1}
+\newcommand{\postnumber}{}
+
+\newcommand{\isdraft}{true}
+\newcommand{\isebook}{true}
+
+%=============== Preamble ================
+\input{preamble-book.tex}
+
+%==== Include only relevant chapters =====
+\IfFileExists{\jobname.run.xml}
+{
+    \includeonly{
+        front-matter,
+    }
+}
+{
+    % Do a full document generation initially to generate all the aux files
+}
+
+%=========================================
+\begin{document}
+
+\frontmatter  % Use lowercase roman numerals for page numbers
+\include{front-matter}
+
+\setcounter{part}{-1}  % So that the first part starts with 0
+\mainmatter  % Now use arabic numerals for page numbers
+
+\Ifstr{\isdraft}{true}{\draftstartmark}{}
+
+%=========================================
+% TODO: ADD
+
+%=========================================
+\appendix
+% TODO: ADD
+
+\Ifstr{\isdraft}{true}{\draftendmark}{}
+
+\end{document}
