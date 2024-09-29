@@ -70,6 +70,9 @@
 \patchcmd{\set@@@@preamble}{#6}{\setlength{\parindent}{\normalparindent}#6}{}{}  % Make paragraph indent correctly for part preambles
 \makeatother
 
+% Chapter page configuration
+\newcommand*{\Chapter}[1]{\cleardoubleoddpage\chapter{#1}}
+
 % Symbols redefinitions
 \let\oldemptyset\emptyset
 \let\emptyset\varnothing
