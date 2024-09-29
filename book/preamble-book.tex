@@ -73,6 +73,36 @@
 % Chapter page configuration
 \newcommand*{\Chapter}[1]{\cleardoubleoddpage\chapter{#1}}
 
+% Lettrine configuration
+\makeatletter
+\define@key{lettrine-key}{lines}{\def\thislines{#1}}
+\define@key{lettrine-key}{depth}{\def\thisdepth{#1}}
+\define@key{lettrine-key}{findent}{\def\thisfindent{#1}}
+\define@key{lettrine-key}{nindent}{\def\thisnindent{#1}}
+\makeatother
+
+\newcommand*{\Lettrine}[2][]{%
+    % Set default key values
+    \def\thislines{2}%
+    \def\thisdepth{0}%
+    \def\thisfindent{0pt}%
+    \def\thisnindent{0.25em}%
+    % Set keys
+    \setkeys{lettrine-key}{#1}%
+    % Get appropriate strings
+    \StrRemoveBraces{#2}[\LettrineStr]%
+    \StrChar{\LettrineStr}{1}[\FirstChar]%
+    \StrMid{\LettrineStr}{2}{1000}[\RemainingChars]%
+    % Format lettrine
+    \lettrine[%
+        lines=\thislines,%
+        depth=\thisdepth,%
+        findent=\thisfindent,%
+        nindent=\thisnindent,%
+        realheight%
+    ]{\FirstChar}{}\RemainingChars
+}
+
 % Symbols redefinitions
 \let\oldemptyset\emptyset
 \let\emptyset\varnothing

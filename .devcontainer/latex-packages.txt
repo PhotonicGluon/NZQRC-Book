@@ -23,6 +23,7 @@ imakeidx
 koma-script
 latexmk
 lato
+lettrine
 mathpazo
 mathtools
 mdframed
@@ -37,4 +38,5 @@ wrapfig
 xcolor
 xkeyval
 xpatch
+xstring
 zref
