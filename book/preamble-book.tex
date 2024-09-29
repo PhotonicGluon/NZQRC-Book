@@ -250,39 +250,37 @@
     \markboth{\if@mainmatter\chapapp~\thechapter.\ \fi#1}{}
 }
 
+\newcommand{\chapterkernlen}{3pt}
 \renewcommand*{\chapterformat}{
-    \MakeUppercase{\chapapp\nobreakspace\thechapter}
+    \MakeUppercase{C{\kern\chapterkernlen}H{\kern\chapterkernlen}A{\kern\chapterkernlen}P{\kern\chapterkernlen}T{\kern\chapterkernlen}E{\kern\chapterkernlen}R~~~\thechapter}
 }
 
 \renewcommand*{\chapterlineswithprefixformat}[3]{
     \Ifstr{#1}{chapter}{
-        \vspace{-60px}
-        \Ifstr{#2}{\empty}{\vspace{40px}}{\raggedleft#2}
-        \vspace{-15px}
-        \rule{\linewidth}{1.25pt}\par\nobreak
-        \centering{#3}
-        \vspace{-10px}
-        \rule{\linewidth}{1.25pt}\par\nobreak
-        \vspace{-10px}
+        \vspace{-1.5cm}
+        \Ifstr{#2}{\empty}{\vspace{35px}}{\fontsize{12pt}{8pt}\selectfont#2}
+        \vspace{-0.25cm}
+        {\fontsize{24pt}{12pt}\selectfont#3}
     }{#2#3}
 }
 
 % Set part page format
+\newcommand{\partkernlen}{2pt}
 \renewcommand*{\partformat}{
-    {\fontsize{28pt}{0pt}\selectfont \MakeUppercase{\partname\nobreakspace\thepart}}
+    {\fontsize{28pt}{0pt}\selectfont \MakeUppercase{P{\kern\partkernlen}A{\kern\partkernlen}R{\kern\partkernlen}T~~~\thepart}}
 }
 
 \renewcommand*{\partlineswithprefixformat}[3]{
     \Ifstr{#1}{part}{
         \Ifstr{#2}{}{  % Doesn't have a part title
-            \begin{mdframed}[linewidth=2pt]
+            \begin{mdframed}[linewidth=2pt,roundcorner=20pt]
                 \centering#3
             \end{mdframed}
         }{
             \vspace{-250px}
-            \begin{mdframed}[linewidth=2pt]
+            \begin{mdframed}[linewidth=2pt,roundcorner=20pt]
                 \begin{center}
-                    \vspace{5px}
+                    \vspace{7.5px}
                     #2
                     \vspace{-25px}
                     #3
