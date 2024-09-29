@@ -12,6 +12,7 @@ enumitem
 eso-pic
 fancyhdr
 float
+fontaxes
 geometry
 glossaries
 glossaries-extra
@@ -21,6 +22,7 @@ idxlayout
 imakeidx
 koma-script
 latexmk
+lato
 mathpazo
 mathtools
 mdframed
