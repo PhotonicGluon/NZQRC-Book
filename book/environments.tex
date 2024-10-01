@@ -2,7 +2,7 @@
 \newcounter{result}[section]
 \renewcommand*{\theresult}{\arabic{chapter}.\arabic{section}.\arabic{result}}
 
-%======== 'Results' Declarations =========
+%======== 'Results' Environments =========
 % Arguments to this command are:
 % 1. Environment ID (e.g., theorem)
 % 2. Environment name (e.g., Theorem)
@@ -49,7 +49,51 @@
 \makenewresultstyle{definition}{Definition}{SlateGray3}{result}
 \makenewresultstyle{axiom}{Axiom}{Plum3}{result}
 
-%======= 'Questions' Declarations ========
+%======= 'Questions' Environments ========
+\newcommand{\makenewquestionstyle}[4]{
+    \newenvironment{#1}[1][]
+    {
+        \stepcounter{#4}
+        \ifstrempty{##1}
+        {
+            \mdfsetup{
+                frametitle={
+                    \hspace{-3mm}
+                    {
+                        \hfill
+                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                        \node[anchor=east,rectangle,fill=#3]{\strut #2~\csname the#4\endcsname};
+                        \hfill
+                    }
+                }
+            }
+        }
+        {
+            \mdfsetup{
+                frametitle={
+                    \hspace{-3mm}
+                    {
+                        \hfill
+                        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                        \node[anchor=east,rectangle,fill=#3]{\strut #2~\csname the#4\endcsname\textnormal{:~##1}};
+                        \hfill
+                    }
+                }
+            }
+        }
+        \mdfsetup{
+            innertopmargin=0pt,
+            linecolor=#3,
+            linewidth=2pt,
+            frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+        }
+        \begin{mdframed}[]\relax
+    }
+    {\end{mdframed}}
+}
+
+\makenewquestionstyle{exercise}{Exercise}{SkyBlue3}{result}
+
 % \declaretheoremstyle[
 %     headfont=\normalfont\bfseries,
 %     bodyfont=\normalfont,
@@ -79,7 +123,7 @@
 % \declaretheorem[name=Problem,style=problem-style,within=chapter]{problem}
 % \renewcommand*{\theproblem}{\arabic{chapter}.\arabic{problem}}
 
-%====== Miscellaneous Declarations =======
+%====== Miscellaneous Environments =======
 % Arguments to this command are:
 % 1. Counter ID, if provided (e.g., result)
 % 2. Environment ID (e.g., theorem)
