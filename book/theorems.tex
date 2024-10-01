@@ -3,19 +3,17 @@
 % 1. Environment ID (e.g., theorem)
 % 2. Environment name (e.g., Theorem)
 % 3. Colour
-% 4. Counter increment (e.g., chapter, section)
+% 4. Counter ID (e.g., result)
 \newcommand{\makenewresultstyle}[4]{
-    \newcounter{#1}[#4]
-    \newcommand{\internalcounter}{\csname the#1\endcsname}
     \newenvironment{#1}[1][]
     {
-        \stepcounter{#1}
+        \stepcounter{#4}
         \ifstrempty{##1}
         {
             \mdfsetup{
                 frametitle={
                     \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=#3]{\strut #2~\internalcounter};
+                    \node[anchor=east,rectangle,fill=#3]{\strut #2~\csname the#4\endcsname};
                 }
             }
         }
@@ -23,7 +21,7 @@
             \mdfsetup{
                 frametitle={
                     \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=#3]{\strut #2~\internalcounter:~##1};
+                    \node[anchor=east,rectangle,fill=#3]{\strut #2~\csname the#4\endcsname:~##1};
                 }
             }
     }
@@ -37,27 +35,8 @@
     {\end{mdframed}}
 }
 
-% \newcommand{\makenewresultstyle}[3]{
-%     \declaretheoremstyle[
-%         headfont=\normalfont\bfseries,
-%         bodyfont=\normalfont,
-%         notefont=\normalfont\bfseries\boldmath\itshape,
-%         spaceabove=0pt,  % Space between previous paragraph and current block
-%         spacebelow=0pt,  % Space between current block and next paragraph
-%         mdframed={
-%             linewidth=0.75pt,
-%             linecolor=#3,
-%             skipabove=2.8pt,  % Space between top of block and beginning of coloured frame
-%             skipbelow=2.8pt,  % Space between bottom of block and beginning of coloured frame
-%             backgroundcolor=#2,
-%             usetwoside=false,  % Needed for `leftmargin` and `rightmargin` to work
-%             leftmargin=-5pt,
-%             rightmargin=-5pt,
-%             innerleftmargin=5pt,
-%             innerrightmargin=5pt
-%         }
-%     ]{#1-style}
-% }
+\newcounter{result}[section]
+\renewcommand*{\theresult}{\arabic{chapter}.\arabic{section}.\arabic{result}}
 
 % \makenewresultstyle{theorem}{DarkSeaGreen2}{DarkSeaGreen4}
 % \declaretheorem[name=Theorem,style=theorem-style,within=section]{theorem}
@@ -65,6 +44,7 @@
 
 % \makenewresultstyle{lemma}{AntiqueWhite1}{Bisque4}
 % \declaretheorem[style=lemma-style,sibling=theorem]{lemma}
+\makenewresultstyle{definition}{Definition}{LightCyan1}{result}
 
 % \makenewresultstyle{proposition}{Honeydew1}{SpringGreen4}
 % \declaretheorem[style=proposition-style,sibling=theorem]{proposition}
@@ -77,42 +57,6 @@
 
 % \makenewresultstyle{axiom}{Thistle2}{Plum4}
 % \declaretheorem[style=axiom-style,sibling=theorem]{axiom}
-
-% \newcounter{definition}[section]
-
-\makenewresultstyle{definition}{Definition}{LightCyan1}{section}
-\renewcommand*{\thedefinition}{\arabic{chapter}.\arabic{section}.\arabic{definition}}
-
-% \newcounter{definition}[section]
-% \renewcommand*{\thedefinition}{\arabic{chapter}.\arabic{section}.\arabic{definition}}
-% \newenvironment{definition}[1][]
-% {
-%     \stepcounter{definition}
-%     \ifstrempty{#1}
-%     {
-%         \mdfsetup{
-%             frametitle={
-%                 \tikz[baseline=(current bounding box.east),outer sep=0pt]
-%                 \node[anchor=east,rectangle,fill=blue!20]{\strut Theorem~\thedefinition};
-%             }
-%         }
-%     }
-%     {
-%         \mdfsetup{
-%             frametitle={
-%                 \tikz[baseline=(current bounding box.east),outer sep=0pt]
-%                 \node[anchor=east,rectangle,fill=blue!20]{\strut Theorem~\thedefinition:~#1};
-%             }
-%         }
-%    }
-%    \mdfsetup{
-%         innertopmargin=10pt,linecolor=blue!20,
-%         linewidth=2pt,topline=true,
-%         frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-%     }
-%     \begin{mdframed}[]\relax
-% }
-% {\end{mdframed}}
 
 %======= 'Questions' Declarations ========
 % \declaretheoremstyle[
