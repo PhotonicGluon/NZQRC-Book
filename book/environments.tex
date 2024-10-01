@@ -9,9 +9,10 @@
 % 3. Colour
 % 4. Counter ID (e.g., result)
 \newcommand{\makenewresultstyle}[4]{
+    \newaliascnt{#1}{#4}
     \newenvironment{#1}[1][]
     {
-        \stepcounter{#4}
+        \refstepcounter{#1}
         \ifstrempty{##1}
         {
             \mdfsetup{
@@ -49,11 +50,19 @@
 \makenewresultstyle{definition}{Definition}{SlateGray3}{result}
 \makenewresultstyle{axiom}{Axiom}{Plum3}{result}
 
+\crefname{axiom}{Axiom}{Axioms}
+
 %======= 'Questions' Environments ========
+% Arguments to this command are:
+% 1. Environment ID (e.g., theorem)
+% 2. Environment name (e.g., Theorem)
+% 3. Colour
+% 4. Counter ID (e.g., result)
 \newcommand{\makenewquestionstyle}[4]{
+    \newaliascnt{#1}{#4}
     \newenvironment{#1}[1][]
     {
-        \stepcounter{#4}
+        \refstepcounter{#1}
         \ifstrempty{##1}
         {
             \mdfsetup{
@@ -94,6 +103,8 @@
 
 \makenewquestionstyle{exercise}{Exercise}{SkyBlue3}{result}
 
+\crefname{exercise}{Exercise}{Exercises}
+
 % \declaretheoremstyle[
 %     headfont=\normalfont\bfseries,
 %     bodyfont=\normalfont,
@@ -130,9 +141,10 @@
 % 3. Environment name (e.g., Theorem)
 % 4. Colour
 \newcommand{\makenewmiscstyle}[4][]{
+    \ifstrempty{#1}{}{\newaliascnt{#2}{#1}}
     \newenvironment{#2}[1][]
     {
-        \ifstrempty{#1}{}{\stepcounter{#1}}
+        \ifstrempty{#1}{}{\refstepcounter{#2}}
         \ifstrempty{##1}
         {
             \mdfsetup{
