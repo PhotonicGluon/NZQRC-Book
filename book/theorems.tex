@@ -1,4 +1,42 @@
 %======== 'Results' Declarations =========
+% Arguments to this command are:
+% 1. Environment ID (e.g., theorem)
+% 2. Environment name (e.g., Theorem)
+% 3. Colour
+% 4. Counter increment (e.g., chapter, section)
+\newcommand{\makenewresultstyle}[4]{
+    \newcounter{#1}[#4]
+    \newcommand{\internalcounter}{\csname the#1\endcsname}
+    \newenvironment{#1}[1][]
+    {
+        \stepcounter{#1}
+        \ifstrempty{##1}
+        {
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=#3]{\strut #2~\internalcounter};
+                }
+            }
+        }
+        {
+            \mdfsetup{
+                frametitle={
+                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                    \node[anchor=east,rectangle,fill=#3]{\strut #2~\internalcounter:~##1};
+                }
+            }
+    }
+    \mdfsetup{
+            innertopmargin=10pt,linecolor=#3,
+            linewidth=2pt,topline=true,
+            frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+        }
+        \begin{mdframed}[]\relax
+    }
+    {\end{mdframed}}
+}
+
 % \newcommand{\makenewresultstyle}[3]{
 %     \declaretheoremstyle[
 %         headfont=\normalfont\bfseries,
@@ -40,36 +78,41 @@
 % \makenewresultstyle{axiom}{Thistle2}{Plum4}
 % \declaretheorem[style=axiom-style,sibling=theorem]{axiom}
 
-\newcounter{definition}[section]
+% \newcounter{definition}[section]
+
+\makenewresultstyle{definition}{Definition}{LightCyan1}{section}
 \renewcommand*{\thedefinition}{\arabic{chapter}.\arabic{section}.\arabic{definition}}
-\newenvironment{definition}[1][]
-{
-    \stepcounter{definition}
-    \ifstrempty{#1}
-    {
-        \mdfsetup{
-            frametitle={
-                \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                \node[anchor=east,rectangle,fill=blue!20]{\strut Theorem~\thedefinition};
-            }
-        }
-    }
-    {
-        \mdfsetup{
-            frametitle={
-                \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                \node[anchor=east,rectangle,fill=blue!20]{\strut Theorem~\thedefinition:~#1};
-            }
-        }
-   }
-   \mdfsetup{
-        innertopmargin=10pt,linecolor=blue!20,
-        linewidth=2pt,topline=true,
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-    }
-    \begin{mdframed}[]\relax
-}
-{\end{mdframed}}
+
+% \newcounter{definition}[section]
+% \renewcommand*{\thedefinition}{\arabic{chapter}.\arabic{section}.\arabic{definition}}
+% \newenvironment{definition}[1][]
+% {
+%     \stepcounter{definition}
+%     \ifstrempty{#1}
+%     {
+%         \mdfsetup{
+%             frametitle={
+%                 \tikz[baseline=(current bounding box.east),outer sep=0pt]
+%                 \node[anchor=east,rectangle,fill=blue!20]{\strut Theorem~\thedefinition};
+%             }
+%         }
+%     }
+%     {
+%         \mdfsetup{
+%             frametitle={
+%                 \tikz[baseline=(current bounding box.east),outer sep=0pt]
+%                 \node[anchor=east,rectangle,fill=blue!20]{\strut Theorem~\thedefinition:~#1};
+%             }
+%         }
+%    }
+%    \mdfsetup{
+%         innertopmargin=10pt,linecolor=blue!20,
+%         linewidth=2pt,topline=true,
+%         frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+%     }
+%     \begin{mdframed}[]\relax
+% }
+% {\end{mdframed}}
 
 %======= 'Questions' Declarations ========
 % \declaretheoremstyle[
