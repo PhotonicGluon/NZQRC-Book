@@ -1,3 +1,7 @@
+%=============== Counters ================
+\newcounter{result}[section]
+\renewcommand*{\theresult}{\arabic{chapter}.\arabic{section}.\arabic{result}}
+
 %======== 'Results' Declarations =========
 % Arguments to this command are:
 % 1. Environment ID (e.g., theorem)
@@ -31,16 +35,12 @@
             innertopmargin=0pt,
             linecolor=#3,
             linewidth=2pt,
-            topline=true,
             frametitleaboveskip=\dimexpr-\ht\strutbox\relax
         }
         \begin{mdframed}[]\relax
     }
     {\end{mdframed}}
 }
-
-\newcounter{result}[section]
-\renewcommand*{\theresult}{\arabic{chapter}.\arabic{section}.\arabic{result}}
 
 \makenewresultstyle{theorem}{Theorem}{Aquamarine3}{result}
 \makenewresultstyle{lemma}{Lemma}{LightGoldenrod3}{result}
@@ -78,36 +78,6 @@
 % ]{problem-style}
 % \declaretheorem[name=Problem,style=problem-style,within=chapter]{problem}
 % \renewcommand*{\theproblem}{\arabic{chapter}.\arabic{problem}}
-
-\newcounter{theo}[section]
-\newenvironment{theo}[1][]
-{
-    \stepcounter{theo}
-    \ifstrempty{#1}
-    {
-        \mdfsetup{
-            frametitle={
-                \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                \node[anchor=east,rectangle,fill=blue!20]{\strut Theorem~\thetheo};
-            }
-        }
-    }
-    {
-        \mdfsetup{
-            frametitle={
-                \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                \node[anchor=east,rectangle,fill=blue!20]{\strut Theorem~\thetheo:~#1};
-            }
-        }
-   }
-   \mdfsetup{
-        innertopmargin=10pt,linecolor=blue!20,
-        linewidth=2pt,topline=true,
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax
-    }
-    \begin{mdframed}[]\relax
-}
-{\end{mdframed}}
 
 %====== Miscellaneous Declarations =======
 % \declaretheoremstyle[
