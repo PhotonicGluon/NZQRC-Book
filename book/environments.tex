@@ -117,6 +117,7 @@
     \ifstrempty{#1}{}{\newaliascnt{#2}{#1}}
     \newenvironment{#2}[1][]
     {
+        \setlength{\parindent}{0pt}
         \ifstrempty{#1}{}{\refstepcounter{#2}}
         \ifstrempty{##1}
         {
