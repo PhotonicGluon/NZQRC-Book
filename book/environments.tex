@@ -2,6 +2,9 @@
 \newcounter{result}[section]
 \renewcommand*{\theresult}{\arabic{chapter}.\arabic{section}.\arabic{result}}
 
+\newcounter{exercise}[chapter]
+\renewcommand*{\theexercise}{\arabic{chapter}.\arabic{exercise}}
+
 %======== 'Results' Environments =========
 % Arguments to this command are:
 % 1. Environment ID (e.g., theorem)
@@ -54,16 +57,29 @@
 \crefname{axiom}{Axiom}{Axioms}
 
 %======= 'Questions' Environments ========
+\newenvironment{questions}
+{\begin{enumerate}[label=\textbf{\arabic*.}]}
+{\end{enumerate}}
+
+\NewDocumentEnvironment{partquestions}{mO{1}}
+{
+    \ifstrequal{#2}{1}{}{\begin{multicols}{#2}}
+    \begin{enumerate}[label=\textbf{(#1)}]
+}
+{
+    \end{enumerate}
+    \ifstrequal{#2}{1}{}{\end{multicols}}
+}
+
 % Arguments to this command are:
 % 1. Environment ID (e.g., theorem)
 % 2. Environment name (e.g., Theorem)
 % 3. Colour
 % 4. Counter ID (e.g., result)
 \newcommand{\makenewquestionstyle}[4]{
-    \newaliascnt{#1}{#4}
     \newenvironment{#1}[1][]
     {
-        \refstepcounter{#1}
+        \refstepcounter{#4}
         \ifstrempty{##1}
         {
             \mdfsetup{
@@ -103,7 +119,7 @@
     {\end{mdframed}}
 }
 
-\makenewquestionstyle{exercise}{Exercise}{SkyBlue3}{result}
+\makenewquestionstyle{exercise}{Exercise}{SkyBlue3}{exercise}
 
 \crefname{exercise}{Exercise}{Exercises}
 
