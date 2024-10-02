@@ -176,7 +176,29 @@
 
 \newcommand{\chapterkernlen}{3pt}
 \renewcommand*{\chapterformat}{
-    \MakeUppercase{C{\kern\chapterkernlen}H{\kern\chapterkernlen}A{\kern\chapterkernlen}P{\kern\chapterkernlen}T{\kern\chapterkernlen}E{\kern\chapterkernlen}R~~~\thechapter}
+    \MakeUppercase{
+        \ifstrequal{\chapapp}{Chapter}
+        {
+            C{\kern\chapterkernlen}%
+            H{\kern\chapterkernlen}%
+            A{\kern\chapterkernlen}%
+            P{\kern\chapterkernlen}%
+            T{\kern\chapterkernlen}%
+            E{\kern\chapterkernlen}%
+            R%
+        }
+        {
+            A{\kern\chapterkernlen}%
+            P{\kern\chapterkernlen}%
+            P{\kern\chapterkernlen}%
+            E{\kern\chapterkernlen}%
+            N{\kern\chapterkernlen}%
+            D{\kern\chapterkernlen}%
+            I{\kern\chapterkernlen}%
+            X%
+        }
+        ~~~\thechapter
+    }
 }
 
 \renewcommand*{\chapterlineswithprefixformat}[3]{
