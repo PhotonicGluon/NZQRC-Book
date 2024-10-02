@@ -58,12 +58,15 @@
 
 %======= 'Questions' Environments ========
 \newenvironment{questions}
-{\begin{enumerate}[label=\textbf{\arabic*.}]}
+{\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1\parindent]}
 {\end{enumerate}}
 
 \NewDocumentEnvironment{partquestions}{mO{1}}
 {
-    \ifstrequal{#2}{1}{}{\begin{multicols}{#2}}
+    \ifstrequal{#2}{1}{}{
+        \vspace{-4mm}%
+        \begin{multicols}{#2}%
+    }
     \begin{enumerate}[label=\textbf{(#1)}]
 }
 {
