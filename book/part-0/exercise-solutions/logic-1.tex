@@ -10,4 +10,13 @@
         \item A statement; we can find such a number $n$, for instance $n = 3$, so we can confirm that this is true.
         \item Not a statement. This is tricky since, algebraically, it is true for all $x$. However, the fact remains that we can only evaluate the truth of this statement by substituting values of $x$ since $x$ is an unknown.
     \end{partquestions}
+
+    % Q2
+    \item We work from the inner-most bracket outwards. We note $p$ is true, $q$ is false, and $r$ is true.
+    \begin{itemize}
+        \item $p \lor q$ can be understood to be ``1 is a positive number \textbf{or} 1 is an even number''. This is true since 1 is indeed a positive number.
+        \item $(p \lor q) \land r$ is ``(1 is a positive number or 1 is an even number) \textbf{and} 1 is an odd number''. Since $p \lor q$ is true and 1 is, indeed, an odd number, thus this statement is true.
+        \item $\lnot((p \lor q) \land r)$ is false since $(p \lor q) \land r$ is true.
+    \end{itemize}
+    Hence, the overall statement ``$\lnot((p \lor q) \land r)$ is false'' is true.
 \end{questions}

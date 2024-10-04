@@ -91,7 +91,7 @@ Statements come in many different forms. We took a look at some examples and non
     \end{multicols}
 \end{example}
 
-To form new more complex (i.e., molecular) statements from simpler (i.e., atomic or molecular) statements, we can use logical connectives. These connectives, as implied by their name, connect statements together to form a more complex statement. To define these logical connectives, we elect to use truth tables.
+To form new more complex (i.e., molecular) statements from simpler (i.e., atomic or molecular) statements, we can use \term{logical connectives}\index{logical connective}. These connectives, as implied by their name, connect statements together to form a more complex statement. To define these logical connectives, we elect to use truth tables.
 
 \begin{definition}
     A \term{truth table}\index{truth table} is a table showing how the truth or falsity of a statement depends on the truth or falsity of the statements from which it is constructed from.
@@ -100,13 +100,112 @@ To form new more complex (i.e., molecular) statements from simpler (i.e., atomic
 This definition will seem a little out of place without examples, so let's define a few logical connectives.
 
 \subsection{Negation}
-TODO: Add
+Negation is probably the easiest logical connective to discuss. Negation simply turns any true statement into a false statement, and vice versa.
 
-\subsection{Disjunction}
-TODO: Add
+\begin{example}
+    The negation of ``5 is an odd number'', which is true, is ``5 is \textbf{not} an odd number'', i.e. ``5 is an even number'', which is false.
+\end{example}
+
+We can capture the idea of negation in the following definition.
+
+\begin{definition}[Negation]
+    Let $p$ be a statement. The \term{negation of $p$}\index{logical connective!negation}, denoted $\lnot p$ and read ``not $p$'', has the following truth table.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c||c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{\lnot p}$ \\ \hhline{|=#=|}
+            T & F \\ \hline
+            F & T \\ \hline
+        \end{tabular}
+    \end{table}
+\end{definition}
+
+We read the truth table as follows.
+\begin{itemize}
+    \item The leftmost column(s) show the `source' statements. In the above definition, we only have $p$ as the singular `source' statement.
+    \item The rightmost column show the `output' statement. In the above definition, we have $\lnot p$ as the `output' statement.
+    \item We denote the possibility that a statement is true by ``T'' and denote the possibility that a statement is false by ``F''.
+\end{itemize}
+
+Thus, the above table tells us that $\lnot p$ is false when $p$ is true and $\lnot p$ is true when $p$ is false.
+
+\begin{example}
+    Let $p$ be the statement ``5 is an odd number'', which is a true statement. Then $\lnot p$ is ``5 is \textbf{not} an odd number'' (i.e., ``5 is an even number''), which is a false statement.
+\end{example}
 
 \subsection{Conjunction}
-TODO: Add
+The conjunction connective is better remembered as ``AND''.
+
+\begin{definition}[Conjunction]
+    Let $p$ and $q$ be statements. The \term{conjunction of $p$ and $q$}\index{logical connective!conjunction}, denoted $p \land q$ and read ``$p$ and $q$'', has the following truth table.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c||c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \land q}$ \\ \hhline{|=|=#=|}
+            T & T & T \\ \hline
+            T & F & F \\ \hline
+            F & T & F \\ \hline
+            F & F & F \\ \hline
+        \end{tabular}
+    \end{table}
+\end{definition}
+
+In other words, the conjunction of two statements is true if and only if both the statements are true.
+
+\begin{example}
+    We look at a series of statements and their conjunction.
+    \begin{itemize}
+        \item If $p$ is the statement ``3 is odd'' (true) and $q$ is the statement ``4 is even'' (true), then $p \land q$ is the statement ``3 is odd \textbf{and} 4 is even'' (true).
+        \item If $p$ is the statement ``a square is a quadrilateral'' (true) and $q$ is the statement ``a triangle is a quadrilateral'' (false), then $p \land q$ is the statement ``a square is a quadrilateral \textbf{and} a triangle is a quadrilateral'' (false).
+        \begin{itemize}
+            \item Alternatively, $p \land q$ can be written as ``both squares and triangles are quadrilaterals'' which is still false.
+        \end{itemize}
+        \item If $p$ is the statement ``4 equals 5'' (false) and $q$ is the statement ``5 is odd'' (true), then $p \land q$ is the statement ``4 equals 5 \textbf{and} 5 is odd'' (false).
+        \item If $p$ is the statement ``9 is a prime'' (false) and $q$ is the statement ``$3 + 8 = 12$'' (false), then $p \land q$ is the statement ``9 is prime \textbf{and} $3 + 8 = 12$'' (false).
+    \end{itemize}
+\end{example}
+
+\subsection{Disjunction}
+Like with the conjunction connective, the word ``disjunction'' is not particularly enlightening. The disjunction connective is thus better understood to be akin to ``OR''.
+
+\begin{definition}[Disjunction]
+    Let $p$ and $q$ be statements. The \term{disjunction of $p$ and $q$}\index{logical connective!disjunction}, denoted $p \lor q$ and read ``$p$ or $q$'', has the following truth table.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c||c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \lor q}$ \\ \hhline{|=|=#=|}
+            T & T & T \\ \hline
+            T & F & T \\ \hline
+            F & T & T \\ \hline
+            F & F & F \\ \hline
+        \end{tabular}
+    \end{table}
+\end{definition}
+
+Thus, the disjunction of two statements is true if and only if at least one of the statements is true.
+
+\begin{example}
+    We look at a series of statements and their disjunction.
+    \begin{itemize}
+        \item If $p$ is the statement ``3 is odd'' (true) and $q$ is the statement ``4 is even'' (true), then $p \lor q$ is the statement ``3 is odd \textbf{or} 4 is even'' (true).
+        \item If $p$ is the statement ``a square is a quadrilateral'' (true) and $q$ is the statement ``a triangle is a quadrilateral'' (false), then $p \lor q$ is the statement ``a square is a quadrilateral \textbf{or} a triangle is a quadrilateral'' (true).
+        \item If $p$ is the statement ``4 equals 5'' (false) and $q$ is the statement ``5 is odd'' (true), then $p \lor q$ is the statement ``4 equals 5 \textbf{or} 5 is odd'' (true).
+        \item If $p$ is the statement ``9 is a prime'' (false) and $q$ is the statement ``$3 + 8 = 12$'' (false), then $p \lor q$ is the statement ``9 is prime \textbf{or} $3 + 8 = 12$'' (false).
+    \end{itemize}
+\end{example}
+
+\begin{exercise}[Combining Basic Connectives]
+    Define the statements $p$, $q$, and $r$, where
+    \begin{align*}
+        p: &\ \text{1 is a positive number},\\
+        q: &\ \text{1 is an even number}, \text{ and}\\
+        r: &\ \text{1 is an odd number}.
+    \end{align*}
+    Is the statement ``$\lnot((p \lor q) \land r)$ is false'' true?
+\end{exercise}
 
 \subsection{Conditional}
 TODO: Add
