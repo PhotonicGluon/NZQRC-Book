@@ -44,4 +44,42 @@
         \end{tabular}
     \end{table}
     Therefore we establish the required result.
+
+    % Q5
+    \item The first statement is proven by considering the truth table below.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c||c|c|c||c|c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot q}$ & $\boldsymbol{p \land q}$ & $\boldsymbol{\lnot(p \land q)}$ & $\boldsymbol{(\lnot p) \lor (\lnot q)}$ \\ \hhline{|=|=#=|=|=#=|=|}
+            T & T & F & F & T & F & F \\ \hline
+            T & F & F & T & F & T & T \\ \hline
+            F & T & T & F & F & T & T \\ \hline
+            F & F & T & T & F & T & T \\ \hline
+        \end{tabular}
+    \end{table}
+    The second statement is proven by considering the truth table below.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c||c|c|c||c|c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot q}$ & $\boldsymbol{p \lor q}$ & $\boldsymbol{\lnot(p \lor q)}$ & $\boldsymbol{(\lnot p) \land (\lnot q)}$ \\ \hhline{|=|=#=|=|=#=|=|}
+            T & T & F & F & T & F & F \\ \hline
+            T & F & F & T & T & F & F \\ \hline
+            F & T & T & F & T & F & F \\ \hline
+            F & F & T & T & F & T & T \\ \hline
+        \end{tabular}
+    \end{table}
+
+    % Q6
+    \item One sees that
+    \begin{align*}
+        &((p \lor \lnot q) \land \lnot r) \lor p\\
+        &\equiv p \lor ((p \lor \lnot q) \land \lnot r) & (\text{Commutativity})\\
+        &\equiv (p \lor (p \lor \lnot q)) \land (p \lor \lnot r) & (\text{Distributivity})\\
+        &\equiv ((p \lor p) \lor \lnot q) \land (p \lor \lnot r) & (\text{Associativity})\\
+        &\equiv (p \lor \lnot q) \land (p \lor \lnot r) & (\text{Clearly } p \lor p \equiv p)\\
+        &\equiv p \lor (\lnot q \land \lnot r) & (\text{Distributivity})\\
+        &\equiv p \lor \lnot(q \lor r). & (\text{De Morgan's Law})
+    \end{align*}
 \end{questions}
