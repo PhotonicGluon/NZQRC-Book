@@ -207,14 +207,105 @@ Thus, the disjunction of two statements is true if and only if at least one of t
     Is the statement ``$\lnot((p \lor q) \land r)$ is false'' true?
 \end{exercise}
 
-\subsection{Conditional}
-TODO: Add
+\subsection{Conditional/Implication}
+The conditional (or implication) connective is harder to motivate. Connecting the statements $p$ and $q$ with the conditional has essentially the same meaning as ``if $p$ then $q$''. However, there is a notable quirk with the definition of the conditional connective which we will see below.
+
+\begin{definition}[Conditional/Implication]
+    Let $p$ and $q$ be statements. The statement connecting $p$ and $q$ with the \term{conditional}\index{logical connective!conditional} or \term{implication}\index{logical connective!implication} connective, denoted $p \implies q$ and typically read ``$p$ implies $q$'', has the following truth table.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c||c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \implies q}$ \\ \hhline{|=|=#=|}
+            T & T & T \\ \hline
+            T & F & F \\ \hline
+            F & T & T \\ \hline
+            F & F & T \\ \hline
+        \end{tabular}
+    \end{table}
+    A statement of the form ``$p$ implies $q$'' is called a \term{conditional statement}\index{statement!conditional}, and $p$ is called the \term{antecedent}\index{antecedent} while $q$ is called the \term{consequent}\index{consequent}.
+\end{definition}
+
+\begin{remark}
+    The statement ``$p \implies q$'' can be read many ways. For instance,
+    \begin{itemize}
+        \item $p$ implies $q$;
+        \item if $p$ then $q$;
+        \item $q$ if $p$;
+        \item $p$ only if $q$;
+        \item $p$ is a sufficient condition for $q$; and
+        \item $q$ is a necessary condition for $p$.
+    \end{itemize}
+\end{remark}
+
+Let us motivate the reason why we define the truth table for the conditional as above. Suppose a mother tells her child that ``if it is sunny, then we will go to the park''. In this case, the statement $p$ is ``it is sunny'' and the statement $q$ is ``we will go to the park'', making the overall statement $p \implies q$. So what are the possibilities for the truth or falsity of this overall statement?
+\begin{itemize}
+    \item If it is sunny and they went to the park, the promise of the overall statement was not broken. Thus, if $p$ and $q$ are both true then $p \implies q$ is also true.
+    \item If it is sunny and they did not go to the park, clearly the mother broke her promise. So if $p$ is true but $q$ is false then we can say that $p \implies q$ is false.
+    \item If instead it is not sunny (maybe it is cloudy) and they went to the park, at no point was the promise broken. The only thing that the mother said was that they would go to the park if it was sunny; it was not the \textbf{only} reason that they could go to the park. Perhaps the child was very well behaved and she wanted to reward her child. Perhaps they were on the way back from school and coincidentally pass by the park. Either way, if $p$ is false but $q$ is true, we say that $p \implies q$ is true.
+    \item If it is not sunny and they did not go to the park, it is intuitive to say that the promise was not broken. It could be raining, and so going to the park would be a terrible idea! So if both $p$ and $q$ are false then $p \implies q$ is still true.
+\end{itemize}
+
+Thus, the only case when $p \implies q$ is false is if $p$ is true but $q$ is false.
+
+\begin{remark}
+    A conditional statement that is true by virtue of the antecedent being false is said to be \term{vacuously true}\index{vacuously true}.
+\end{remark}
+
+\begin{example}
+    \begin{itemize}
+        \item The statement ``if 3 is odd then 4 is even'' is clearly true, with both antecedent and consequent being true.
+        \item The statement ``if 5 is prime then 6 is prime'' is clearly false, with a true antecedent and a false consequent.
+        \item The statement ``if 0 equals 1 then 5 is odd'' is true since the antecedent is false, meaning that the statement is vacuously true (with a true consequent).
+        \item The statement ``if 1 equals 2 then 1234 equals 5678'' is true since the antecedent is false, meaning that this is a vacuously true statement (with a false consequent).
+    \end{itemize}    
+\end{example}
 
 \subsection{Biconditional}
-TODO: Add
+Sometimes we would want to form a statement of the form ``if $p$ then $q$, and if $p$ then $q$''. Using symbolic notation we could write it as ``$(p \implies q) \land (q \implies p)$'', but this is a little clunky to write every time we wish to write such a statement. This motivates the biconditional connective.
+
+\begin{definition}[Biconditional]
+    Let $p$ and $q$ be statements. The statement connecting $p$ and $q$ with the \term{biconditional}\index{logical connective!biconditional} connective, denoted $p \iff q$ and typically read ``$p$ if and only if $q$'', has the following truth table.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c||c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \iff q}$ \\ \hhline{|=|=#=|}
+            T & T & T \\ \hline
+            T & F & F \\ \hline
+            F & T & F \\ \hline
+            F & F & T \\ \hline
+        \end{tabular}
+    \end{table}
+    A statement of the form ``$p$ if and only if $q$'' is called a \term{biconditional statement}\index{statement!biconditional}.
+\end{definition}
+
+\begin{remark}
+    The statement ``$p \iff q$'' can also be read many ways. For instance,
+    \begin{itemize}
+        \item $p$ if and only if $q$;
+        \item $p$ iff $q$ (i.e., ``iff'' is a shorthand for ``if and only if'');
+        \item $p$ is a necessary and sufficient condition for $q$; and
+        \item $p$ is equivalent to $q$.
+    \end{itemize}
+\end{remark}
+
+\begin{exercise}[(Bi)conditionals]
+    Let $t$ be the conditional statement ``20 is a multiple of 5 if 20 ends in a 0 or 5''. Let $r$ be the antecedent of $t$ and $s$ be the consequent of $t$.
+    \begin{partquestions}{\roman*}
+        \item Write down the statement $s$ in English.
+        \item Define atomic statements $p$ and $q$ such that $r$ is a molecular statement formed by $p$ and $q$.
+        \item Write the statement $t$ using only atomic statements and logical connectives.
+        \item Write the biconditional statement ``$s \iff r$'' in English. Is ``$s \iff r$'' true?
+    \end{partquestions}
+\end{exercise}
 
 \section{Logical Equivalence}
 TODO: Add
+
+\begin{remark}[For the Pedantic]
+    Logical equivalences is really the same as biconditionals. That is, when we write ``$p \equiv q$'' it is the same as ``$p \iff q$''. However, for this book, we will write ``$p \equiv q$'' to mean ``$p$ and $q$ have the same truth table'', whereas we will write ``$p \iff q$'' if we intend to mean that ``if $p$ then $q$ and if $q$ then $p$'' (i.e., the `traditional' biconditional meaning).
+\end{remark}
 
 % Logical equivalence examples and properties of logical connectives, incl. order of operations
 
