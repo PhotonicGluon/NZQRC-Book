@@ -10,8 +10,9 @@
 % 1. Counter ID, if provided (e.g., result)
 % 2. Environment ID (e.g., theorem)
 % 3. Environment name (e.g., Theorem)
-% 4. Colour
-\newcommand{\makenewresultstyle}[4][result]{
+% 4. Bounding box colour
+% 5. Title text colour
+\newcommand{\makenewresultstyle}[5][result]{
     \newaliascnt{#2}{#1}
     \newenvironment{#2}[1][]
     {
@@ -22,7 +23,7 @@
                 frametitle={
                     \hspace{-3mm}
                     \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=#4]{\strut #3~\csname the#2\endcsname};
+                    \node[anchor=east,rectangle,fill=#4,text=#5]{\strut #3~\csname the#2\endcsname};
                 }
             }
         }
@@ -31,7 +32,7 @@
                 frametitle={
                     \hspace{-3mm}
                     \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=#4]{\strut #3~\csname the#2\endcsname\textnormal{:~##1}};
+                    \node[anchor=east,rectangle,fill=#4,text=#5]{\strut #3~\csname the#2\endcsname\textnormal{:~##1}};
                 }
             }
         }
@@ -47,12 +48,12 @@
     {\end{mdframed}}
 }
 
-\makenewresultstyle{theorem}{Theorem}{Aquamarine3}
-\makenewresultstyle{lemma}{Lemma}{LightGoldenrod3}
-\makenewresultstyle{proposition}{Proposition}{DarkSeaGreen3}
-\makenewresultstyle{corollary}{Corollary}{NavajoWhite3}
-\makenewresultstyle{definition}{Definition}{SlateGray3}
-\makenewresultstyle{axiom}{Axiom}{Plum3}
+\makenewresultstyle{theorem}{Theorem}{Aquamarine3}{black}
+\makenewresultstyle{lemma}{Lemma}{LightGoldenrod3}{black}
+\makenewresultstyle{proposition}{Proposition}{DarkSeaGreen3}{black}
+\makenewresultstyle{corollary}{Corollary}{NavajoWhite3}{black}
+\makenewresultstyle{definition}{Definition}{SlateGray3}{black}
+\makenewresultstyle{axiom}{Axiom}{Plum3}{black}
 
 \crefname{axiom}{Axiom}{Axioms}
 
@@ -78,8 +79,9 @@
 % 1. Counter ID, if provided (e.g., result)
 % 2. Environment ID (e.g., theorem)
 % 3. Environment name (e.g., Theorem)
-% 4. Colour
-\newcommand{\makenewquestionstyle}[4][]{
+% 4. Bounding box colour
+% 5. Title text colour
+\newcommand{\makenewquestionstyle}[5][]{
     \newenvironment{#2}[1][]
     {
         \refstepcounter{#1}
@@ -91,7 +93,7 @@
                     {
                         \hfill
                         \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                        \node[anchor=east,rectangle,fill=#4]{\strut #3~\csname the#1\endcsname};
+                        \node[anchor=east,rectangle,fill=#4,text=#5]{\strut #3~\csname the#1\endcsname};
                         \hfill
                     }
                 }
@@ -104,7 +106,7 @@
                     {
                         \hfill
                         \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                        \node[anchor=east,rectangle,fill=#4]{\strut #3~\csname the#1\endcsname\textnormal{:~##1}};
+                        \node[anchor=east,rectangle,fill=#4,text=#5]{\strut #3~\csname the#1\endcsname\textnormal{:~##1}};
                         \hfill
                     }
                 }
@@ -122,7 +124,7 @@
     {\end{mdframed}}
 }
 
-\makenewquestionstyle[exercise]{exercise}{Exercise}{SkyBlue3}
+\makenewquestionstyle[exercise]{exercise}{Exercise}{SkyBlue2}{black}
 
 \crefname{exercise}{Exercise}{Exercises}
 
@@ -131,7 +133,7 @@
 % 1. Counter ID, if provided (e.g., result)
 % 2. Environment ID (e.g., theorem)
 % 3. Environment name (e.g., Theorem)
-% 4. Colour
+% 4. Bounding box colour
 \newcommand{\makenewmiscstyle}[4][]{
     \ifstrempty{#1}{}{\newaliascnt{#2}{#1}}
     \newenvironment{#2}[1][]
