@@ -7,22 +7,22 @@
 
 %======== 'Results' Environments =========
 % Arguments to this command are:
-% 1. Environment ID (e.g., theorem)
-% 2. Environment name (e.g., Theorem)
-% 3. Colour
-% 4. Counter ID (e.g., result)
-\newcommand{\makenewresultstyle}[4]{
-    \newaliascnt{#1}{#4}
-    \newenvironment{#1}[1][]
+% 1. Counter ID, if provided (e.g., result)
+% 2. Environment ID (e.g., theorem)
+% 3. Environment name (e.g., Theorem)
+% 4. Colour
+\newcommand{\makenewresultstyle}[4][result]{
+    \newaliascnt{#2}{#1}
+    \newenvironment{#2}[1][]
     {
-        \refstepcounter{#1}
+        \refstepcounter{#2}
         \ifstrempty{##1}
         {
             \mdfsetup{
                 frametitle={
                     \hspace{-3mm}
                     \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=#3]{\strut #2~\csname the#4\endcsname};
+                    \node[anchor=east,rectangle,fill=#4]{\strut #3~\csname the#2\endcsname};
                 }
             }
         }
@@ -31,13 +31,13 @@
                 frametitle={
                     \hspace{-3mm}
                     \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=#3]{\strut #2~\csname the#4\endcsname\textnormal{:~##1}};
+                    \node[anchor=east,rectangle,fill=#4]{\strut #3~\csname the#2\endcsname\textnormal{:~##1}};
                 }
             }
         }
         \mdfsetup{
             innertopmargin=0pt,
-            linecolor=#3,
+            linecolor=#4,
             linewidth=2pt,
             frametitleaboveskip=\dimexpr-\ht\strutbox\relax
         }
@@ -47,12 +47,12 @@
     {\end{mdframed}}
 }
 
-\makenewresultstyle{theorem}{Theorem}{Aquamarine3}{result}
-\makenewresultstyle{lemma}{Lemma}{LightGoldenrod3}{result}
-\makenewresultstyle{proposition}{Proposition}{DarkSeaGreen3}{result}
-\makenewresultstyle{corollary}{Corollary}{NavajoWhite3}{result}
-\makenewresultstyle{definition}{Definition}{SlateGray3}{result}
-\makenewresultstyle{axiom}{Axiom}{Plum3}{result}
+\makenewresultstyle{theorem}{Theorem}{Aquamarine3}
+\makenewresultstyle{lemma}{Lemma}{LightGoldenrod3}
+\makenewresultstyle{proposition}{Proposition}{DarkSeaGreen3}
+\makenewresultstyle{corollary}{Corollary}{NavajoWhite3}
+\makenewresultstyle{definition}{Definition}{SlateGray3}
+\makenewresultstyle{axiom}{Axiom}{Plum3}
 
 \crefname{axiom}{Axiom}{Axioms}
 
@@ -75,14 +75,14 @@
 }
 
 % Arguments to this command are:
-% 1. Environment ID (e.g., theorem)
-% 2. Environment name (e.g., Theorem)
-% 3. Colour
-% 4. Counter ID (e.g., result)
-\newcommand{\makenewquestionstyle}[4]{
-    \newenvironment{#1}[1][]
+% 1. Counter ID, if provided (e.g., result)
+% 2. Environment ID (e.g., theorem)
+% 3. Environment name (e.g., Theorem)
+% 4. Colour
+\newcommand{\makenewquestionstyle}[4][]{
+    \newenvironment{#2}[1][]
     {
-        \refstepcounter{#4}
+        \refstepcounter{#1}
         \ifstrempty{##1}
         {
             \mdfsetup{
@@ -91,7 +91,7 @@
                     {
                         \hfill
                         \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                        \node[anchor=east,rectangle,fill=#3]{\strut #2~\csname the#4\endcsname};
+                        \node[anchor=east,rectangle,fill=#4]{\strut #3~\csname the#1\endcsname};
                         \hfill
                     }
                 }
@@ -104,7 +104,7 @@
                     {
                         \hfill
                         \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                        \node[anchor=east,rectangle,fill=#3]{\strut #2~\csname the#4\endcsname\textnormal{:~##1}};
+                        \node[anchor=east,rectangle,fill=#4]{\strut #3~\csname the#1\endcsname\textnormal{:~##1}};
                         \hfill
                     }
                 }
@@ -112,7 +112,7 @@
         }
         \mdfsetup{
             innertopmargin=0pt,
-            linecolor=#3,
+            linecolor=#4,
             linewidth=2pt,
             frametitleaboveskip=\dimexpr-\ht\strutbox\relax
         }
@@ -122,7 +122,7 @@
     {\end{mdframed}}
 }
 
-\makenewquestionstyle{exercise}{Exercise}{SkyBlue3}{exercise}
+\makenewquestionstyle[exercise]{exercise}{Exercise}{SkyBlue3}
 
 \crefname{exercise}{Exercise}{Exercises}
 
