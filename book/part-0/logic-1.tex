@@ -301,11 +301,227 @@ Sometimes we would want to form a statement of the form ``if $p$ then $q$, and i
 \end{exercise}
 
 \section{Logical Equivalence}
-TODO: Add
+Sometimes, the molecular statements that we are considering will have an equivalent form that is simpler to work with. This means that, regardless of the underlying truth values of the atomic statements making up the molecular statements, they hold the same truth value. This is the idea of logical equivalences.
+
+\begin{definition}
+    Two statements $p$ and $q$ are \term{logically equivalent}\index{logically equivalent} if and only if they have identical truth values, regardless of the atomic statements that make up them.
+
+    We write $p \equiv q$ if and only if the statements $p$ and $q$ are logically equivalent.
+\end{definition}
 
 \begin{remark}[For the Pedantic]
     Logical equivalences is really the same as biconditionals. That is, when we write ``$p \equiv q$'' it is the same as ``$p \iff q$''. However, for this book, we will write ``$p \equiv q$'' to mean ``$p$ and $q$ have the same truth table'', whereas we will write ``$p \iff q$'' if we intend to mean that ``if $p$ then $q$ and if $q$ then $p$'' (i.e., the `traditional' biconditional meaning).
 \end{remark}
+
+To show that two statements are logically equivalent, we typically consider their truth tables.
+
+\begin{example}
+    Let $p$ and $q$ be statements. We show that $(p \implies q) \equiv (\lnot p) \lor q$ by considering the truth tables of the two statements.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c||c||c|c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{p \implies q}$ & $\boldsymbol{(\lnot p) \lor q}$ \\ \hhline{|=|=#=#=|=|}
+            T & T & F & T & T \\ \hline
+            T & F & F & F & F \\ \hline
+            F & T & T & T & T \\ \hline
+            F & F & T & T & T \\ \hline
+        \end{tabular}
+    \end{table}
+    By inspection, we can see that $(\lnot p) \lor q$ has the same truth values as $p \implies q$ regardless of the truth values of $p$ and $q$. Thus, the $p \implies q$ is logically equivalent to $(\lnot p) \lor q$.
+\end{example}
+\begin{remark}
+    We separate the intermediate value(s) from the rest by drawing a double line to the sides of the intermediate values.
+\end{remark}
+
+\begin{example}
+    We show that
+    \[
+        (p \iff q) \equiv (p \land q) \lor ((\lnot p) \land (\lnot q))
+    \]
+    for any statements $p$ and $q$. For brevity, let $r = p \land q$, $s = (\lnot p) \land (\lnot q)$, and $t = (p \land q) \lor ((\lnot p) \land (\lnot q))$. So we are to show that $(p \iff q) \equiv t$.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c||c|c|c|c||c|c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot q}$ & $\boldsymbol{r}$ & $\boldsymbol{s}$ & $\boldsymbol{p \iff q}$ & $\boldsymbol{t}$ \\ \hhline{|=|=#=|=|=|=#=|=|}
+            T & T & F & F & T & F & T & T \\ \hline
+            T & F & F & T & F & F & F & F \\ \hline
+            F & T & T & F & F & F & F & F \\ \hline
+            F & F & T & T & F & T & T & T \\ \hline
+        \end{tabular}
+    \end{table}
+    By inspection of the truth table we establish the required result.
+\end{example}
+
+\begin{exercise}\label{exercise:contrapositive}
+    Show that
+    \[
+        (p \implies q) \equiv ((\lnot q) \implies (\lnot p))
+    \]
+    for all statements $p$ and $q$. 
+\end{exercise}
+
+What \myref{exercise:contrapositive} reveals is an important relationship regarding conditional statements.
+
+\begin{definition}[Contrapositive]
+    Let $p$ and $q$ be statements. The \term{contrapositive}\index{contrapositive} of the conditional statement $p \implies q$ is $(\lnot q) \implies (\lnot p)$.
+\end{definition}
+\begin{proposition}
+    The contrapositive of a conditional statement is equivalent to the conditional statement.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:contrapositive}.
+\end{proof}
+
+There are other properties of logical connectives that we will note down in the following propositions.
+
+\begin{proposition}[Commutivity of AND and OR]
+    Let $p$ and $q$ be statements. Then $p \land q \equiv q \land p$ and $p \lor q \equiv q \lor p$.
+\end{proposition}
+\begin{proof}
+    We consider truth tables.
+    \begin{table}[H]
+        \centering
+        \begin{minipage}{.45\linewidth}
+            \centering
+            \begin{tabular}{|c|c||c|c|}
+                \hline
+                $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \land q}$ & $\boldsymbol{q \land p}$ \\ \hhline{|=|=#=|=|}
+                T & T & T & T \\ \hline
+                T & F & F & F \\ \hline
+                F & T & F & F \\ \hline
+                F & F & F & F \\ \hline
+            \end{tabular}
+        \end{minipage}
+        \begin{minipage}{.45\linewidth}
+            \centering
+            \begin{tabular}{|c|c||c|c|}
+                \hline
+                $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \lor q}$ & $\boldsymbol{q \lor p}$ \\ \hhline{|=|=#=|=|}
+                T & T & T & T \\ \hline
+                T & F & T & T \\ \hline
+                F & T & T & T \\ \hline
+                F & F & F & F \\ \hline
+            \end{tabular}
+        \end{minipage}
+    \end{table}
+    From the above truth tables, the result is established.
+\end{proof}
+
+\begin{proposition}[Associativity of AND and OR]
+    Let $p$, $q$, and $r$ be statements. Then $p \land (q \land r) \equiv (p \land q) \land r$ and $p \lor (q \lor r) \equiv (p \lor q) \lor r$.
+\end{proposition}
+\begin{proof}
+    We first show $p \land (q \land r) \equiv (p \land q) \land r$.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c||c|c||c|c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{r}$ & $\boldsymbol{p \land q}$ & $\boldsymbol{q \land r}$ & $\boldsymbol{p \land (q \land r)}$ & $\boldsymbol{(p \land q) \land r}$ \\ \hhline{|=|=|=#=|=#=|=|}
+            T & T & T & T & T & T & T \\ \hline
+            T & T & F & T & F & F & F \\ \hline
+            T & F & T & F & F & F & F \\ \hline
+            T & F & F & F & F & F & F \\ \hline
+            F & T & T & F & T & F & F \\ \hline
+            F & T & F & F & F & F & F \\ \hline
+            F & F & T & F & F & F & F \\ \hline
+            F & F & F & F & F & F & F \\ \hline
+        \end{tabular}
+    \end{table}
+    From the above truth table, the result is established. We now show $p \lor (q \lor r) \equiv (p \lor q) \lor r$.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c||c|c||c|c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{r}$ & $\boldsymbol{p \lor q}$ & $\boldsymbol{q \lor r}$ & $\boldsymbol{p \lor (q \lor r)}$ & $\boldsymbol{(p \lor q) \lor r}$ \\ \hhline{|=|=|=#=|=#=|=|}
+            T & T & T & T & T & T & T \\ \hline
+            T & T & F & T & T & T & T \\ \hline
+            T & F & T & T & T & T & T \\ \hline
+            T & F & F & T & F & T & T \\ \hline
+            F & T & T & T & T & T & T \\ \hline
+            F & T & F & T & T & T & T \\ \hline
+            F & F & T & F & T & T & T \\ \hline
+            F & F & F & F & F & F & F \\ \hline
+        \end{tabular}
+    \end{table}
+    This proves the second claim.
+\end{proof}
+
+\begin{proposition}[Distributivity of AND and OR]
+    Let $p$, $q$, and $r$ be statements. Then $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$ and $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$.
+\end{proposition}
+\begin{proof}
+    We first prove the first claim.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c||c|c|c||c|c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{r}$ & $\boldsymbol{p \land q}$ & $\boldsymbol{p \land r}$ & $\boldsymbol{q \lor r}$ & $\boldsymbol{p \land (q \lor r)}$ & $\boldsymbol{(p \land q) \lor (p \land r)}$ \\ \hhline{|=|=|=#=|=|=#=|=|}
+            T & T & T & T & T & T & T & T \\ \hline
+            T & T & F & T & F & T & F & F \\ \hline
+            T & F & T & F & T & T & T & T \\ \hline
+            T & F & F & F & F & F & F & F \\ \hline
+            F & T & T & F & F & T & F & F \\ \hline
+            F & T & F & F & F & T & F & F \\ \hline
+            F & F & T & F & F & T & F & F \\ \hline
+            F & F & F & F & F & F & F & F \\ \hline
+        \end{tabular}
+    \end{table}
+    We now prove the second claim.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c||c|c|c||c|c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{r}$ & $\boldsymbol{p \lor q}$ & $\boldsymbol{p \lor r}$ & $\boldsymbol{q \land r}$ & $\boldsymbol{p \lor (q \land r)}$ & $\boldsymbol{(p \lor q) \land (p \lor r)}$ \\ \hhline{|=|=|=#=|=|=#=|=|}
+            T & T & T & T & T & T & T & T \\ \hline
+            T & T & F & T & T & F & T & T \\ \hline
+            T & F & T & T & T & F & T & T \\ \hline
+            T & F & F & T & T & F & T & T \\ \hline
+            F & T & T & T & T & T & T & T \\ \hline
+            F & T & F & T & F & F & F & F \\ \hline
+            F & F & T & F & T & F & F & F \\ \hline
+            F & F & F & F & F & F & F & F \\ \hline
+        \end{tabular}
+    \end{table}
+    This proves the second claim.
+\end{proof}
+
+We now note an important set of properties regarding logical connectives.
+
+\begin{proposition}[De Morgan's Laws]\label{prop:de-morgan}\index{De Morgan's Laws}
+    Let $p$ and $q$ be statements. Then $\lnot (p \land q) \equiv (\lnot p) \lor (\lnot q)$ and $\lnot (p \lor q) \equiv (\lnot p) \land (\lnot q)$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:de-morgan} (later).
+\end{proof}
+
+We end this section by looking at the order of precedence for logical connectives.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Connective} & \textbf{Precedence} \\ \hline
+        $\lnot$ & 1 \\ \hline
+        $\land$ and $\lor$ & 2 \\ \hline
+        $\implies$ and $\iff$ & 3 \\ \hline
+    \end{tabular}
+\end{table}
+To disambiguate the order of operations, we use parentheses (i.e., brackets).
+
+\begin{exercise}\label{exercise:de-morgan}
+    % TODO: Add solution
+    Prove \myref{prop:de-morgan}.
+\end{exercise}
+
+\begin{exercise}
+    % TODO: Add solution
+    Let $p$, $q$, and $r$ be statements. Simplify the statement
+    \[
+        ((p \lor \lnot q) \land \lnot r) \lor ((p \lor \lnot q) \land (p \lor r) \land (p \lor \lnot r))
+    \]
+    into a statement that uses only three logical connectives in total.
+\end{exercise}
 
 % Logical equivalence examples and properties of logical connectives, incl. order of operations
 
