@@ -2,9 +2,51 @@
 \Lettrine[loversize=0.1,nindent=0pt]{The} most fundamental object that we will be using in our exploration of the structure of numbers is the set. Sets are omnipresent throughout mathematics, so it is important that one is fluent in the language of sets. This chapter serves as an introduction to sets, as we will be formally defining what they are in a later chapter.
 
 \section{What Are Sets?}
-TODO: ADD
+\begin{definition}[A Simple Definition of Sets]
+    A \term{set}\index{set} is a collection of things called \term{elements}\index{element} of the set.
+\end{definition}
 
-% Introduce basics of sets, empty sets, infinite sets, and special sets
+Of course, we will formally define what sets are in a future chapter, but this would suffice for now.
+
+A set is often described by listing elements separated by commas, or by a characterizing property of its elements, within braces ($\{ \ \}$).
+
+\begin{example}[Examples of Sets]
+    \begin{itemize}[leftmargin=*]
+        \item The collection $\{a, b, c\}$ is a set with 3 elements, namely $a$, $b$, and $c$. This is read ``the set containing the elements $a$, $b$, and $c$''.
+        \item The collection $\{2, 3, 4, 5\}$ is a set with 4 elements, namely 2, 3, 4, and 5.
+        \item The collection $\{\{1, 2, 3\}, \{4, 5\}, \{6, \{7\}\}\}$ is a set with 3 elements, which are also sets. Namely, it contains the set $\{1, 2, 3\}$, containing the elements 1, 2, and 3, the set $\{4, 5\}$, containing the elements 4 and 5, and the set $\{6, \{7\}\}$, containing the number 6 and the set $\{7\}$ which contains a single element 7.
+    \end{itemize}
+\end{example}
+
+What if a set has no elements?
+\begin{definition}[Empty Set]
+    The \term{empty set}\index{set!empty} is the set $\{\}$ and is denoted by $\emptyset$. That is, $\emptyset = \{\}$.
+\end{definition}
+
+The empty set will come in useful when we are defining the natural numbers.
+
+We end this section by looking at the equality of sets.
+
+\begin{definition}[Set Equality]\index{set!equality}
+    Two sets $A$ and $B$ are equal if and only if they contain the same elements.
+    
+    To reflect that the sets $A$ and $B$ are equal to each other, we write $A = B$. If the sets $A$ and $B$ are not equal to each other, we instead write $A \neq B$.
+\end{definition}
+
+\begin{example}
+    Consider the sets $\{1, 2, 3, 4\}$, $\{4, 3, 2, 1\}$, and $\{3, 4, 1, 2\}$. These sets are equal to each other even though their elements are listed in a different order. Thus we can write
+    \[
+        \{1, 2, 3, 4\} = \{4, 3, 2, 1\} = \{3, 4, 1, 2\}.
+    \]
+    However $\{1, 2, 3, 4\}$ and $\{1, 2, 3, 5\}$ are not not equal since the elements in the two sets differ. Hence,
+    \[
+        \{1, 2, 3, 4\} \neq \{1, 2, 3, 5\}.
+    \]
+\end{example}
+
+It is important to emphasise that the order of elements in the sets do not matter.
+
+% Introduce basics of sets, empty sets, and special sets
 
 \section{Set Operations}
 TODO: ADD
@@ -17,6 +59,6 @@ TODO: ADD
 \section{Set-Builder Notation}
 TODO: ADD
 
-% Introduce set-builder notation
+% Introduce set-builder notation and infinite sets
 
 % TODO: Where should cardinality be placed?
