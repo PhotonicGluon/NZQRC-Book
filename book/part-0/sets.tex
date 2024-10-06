@@ -25,7 +25,7 @@ What if a set has no elements?
 
 The empty set will come in useful when we are defining the natural numbers.
 
-We end this section by looking at the equality of sets.
+Let's now look at set equality.
 
 \begin{definition}[Set Equality]\index{set!equality}
     Two sets $A$ and $B$ are equal if and only if they contain the same elements.
@@ -46,19 +46,56 @@ We end this section by looking at the equality of sets.
 
 It is important to emphasise that the order of elements in the sets do not matter.
 
-% Introduce basics of sets, empty sets, and special sets
+We have specific notation to denote that an object is in a set.
 
-\section{Set Operations}
-TODO: ADD
+\begin{definition}
+    Let $A$ be a set. We write $x \in A$ if and only if $x$ is an element of $A$. Otherwise we write $x \notin A$.
+\end{definition}
 
-% Include 'element of', 'subset of', etc.
-% Introduce basic operation on sets, including union, intersection, difference, cartesian product
+\begin{example}
+    Consider the set $A = \{1, 2, 3\}$. Then clearly 1, 2, and 3 are elements of the set $A$, and so we may write $1 \in A$, $2 \in A$, and $3 \in A$. We could also write this more compactly as $1, 2, 3 \in A$. On the other hand, one sees that 0, -1, and 4 are not elements of the set, so $0 \notin A$, $-1 \notin A$, and $4 \notin A$ (or $0, -1, 4 \notin A$).
+\end{example}
 
-% TODO: Where should the power set be placed?
+To end this section, we introduce the idea of subsets.
+
+\begin{definition}
+    Let $A$ and $B$ be sets.
+    \begin{itemize}
+        \item $A$ is a \term{subset}\index{subset} of $B$ if and only if all elements of $A$ are elements of $B$. This is denoted by $A \subseteq B$.
+        \item $A$ is a \term{proper subset}\index{subset!proper} if and only if $A$ is a subset of $B$ and $B$ contains at least one element not in $A$. In this case, we write $A \subset B$.
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    Consider the sets $A = \{1, 2\}$, $B = \{1, 2, 3\}$, $C = \{1, 4\}$, and $S = \{1, 2, 3\}$. Then $A \subseteq S$ since the elements of $A$, namely 1 and 2, also appear in $S$. Also $B \subseteq S$ since all elements of $B$ appear in $S$. However $C \not\subseteq S$ since 4 is not an element of $S$.
+
+    We note that $B \not\subset S$ since $S$ does not contain an element that is not in $B$. But $A \subset S$ since 3 is not in $A$.
+\end{example}
+
+\begin{exercise}
+    Let $S$ be a non-empty set where $S \neq \{\emptyset\}$. Determine whether the following are true or false.
+    \begin{partquestions}{\alph*}[2]
+        \item $\{1, 2\} \subset \{1, 2, 3, 4\}$
+        \item $\{1, 2, 3\} \subseteq \{1, 2, 4\}$
+        \item $\emptyset \subseteq \emptyset$
+        \item $S \subset S$
+        \item $S \in \{S, \emptyset\}$
+        \item $\{S\} \notin \{S, \emptyset\}$
+        \item $S \subseteq \{S, \emptyset\}$
+        \item $\{S\} \subseteq \{S, \emptyset\}$
+    \end{partquestions}
+\end{exercise}
 
 \section{Set-Builder Notation}
 TODO: ADD
 
 % Introduce set-builder notation and infinite sets
+
+\section{Set Operations}
+TODO: ADD
+
+% Introduce basic operation on sets, including union, intersection, difference, cartesian product
+
+% TODO: Where should the power set be placed?
 
 % TODO: Where should cardinality be placed?
