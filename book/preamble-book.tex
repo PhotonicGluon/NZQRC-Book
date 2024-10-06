@@ -77,6 +77,8 @@
 \makeatletter
 \define@key{lettrine-key}{lines}{\def\thislines{#1}}
 \define@key{lettrine-key}{depth}{\def\thisdepth{#1}}
+\define@key{lettrine-key}{loversize}{\def\thisloversize{#1}}
+\define@key{lettrine-key}{lraise}{\def\thislraise{#1}}
 \define@key{lettrine-key}{findent}{\def\thisfindent{#1}}
 \define@key{lettrine-key}{nindent}{\def\thisnindent{#1}}
 \makeatother
@@ -85,6 +87,8 @@
     % Set default key values
     \def\thislines{2}%
     \def\thisdepth{0}%
+    \def\thisloversize{0}%
+    \def\thislraise{0}%
     \def\thisfindent{0pt}%
     \def\thisnindent{0.25em}%
     % Set keys
@@ -97,9 +101,10 @@
     \lettrine[%
         lines=\thislines,%
         depth=\thisdepth,%
+        loversize=\thisloversize,%
+        lraise=\thislraise,%
         findent=\thisfindent,%
-        nindent=\thisnindent,%
-        realheight%
+        nindent=\thisnindent%
     ]{\FirstChar}{}\RemainingChars
 }
 
