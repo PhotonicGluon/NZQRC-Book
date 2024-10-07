@@ -4,7 +4,7 @@
 \section{Mathematical Statements}
 The core of mathematics is in writing mathematical statements. Maybe your mathematics experience so far has mostly involved finding answers to problems. However, as we begin defining numbers from scratch, we must be adept at writing and communicating mathematical ideas. Precision is vital, so we must first consider the basic building blocks of all mathematical ideas: mathematical statements.
 
-\begin{definition}[Mathematical Statements]
+\begin{definition}[Statements]
     A \term{statement}\index{statement} (or \term{proposition}\index{proposition}) is a sentence that is definitely true or definitely false, but not both.
 \end{definition}
 
@@ -522,7 +522,65 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
 \end{exercise}
 
 \section{Predicates and Quantifiers}
-TODO: ADD
+It would certainly be useful to include variables in our statements. Suppose I wanted to claim that ``if $n$ is odd, then $n + 1$ is not odd''. This looks like a conditional statement, but because $n$ is a variable, this is not a statement. In fact, such sentences are called predicates.
+
+\begin{definition}[Predicates]
+    A \term{predicate}\index{predicate} is a sentence that contains a finite number of \term{free variables}\index{free variable}\index{variable!free} and becomes a statement when specific values are substituted for the variables.
+\end{definition}
+
+For notational clarity, and to avoid confusing predicates with statements, we denote predicates using uppercase letters.
+
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item Consider the sentence ``$n$ is a multiple of 3''. This is not a statement since we have the free variable ``$n$'' within the sentence; this is a predicate. Denoting this predicate by $P(n)$, we see that $P(0)$ is a true statement, $P(1)$ is a false statement, $P(2)$ is a false statement, $P(3)$ is a true statement, and so on.
+        \item Let the predicate $Q(n)$ be ``$n$ is a factor of 9''. Then $Q(1)$, $Q(3)$, and $Q(9)$ are true statements.
+    \end{itemize}
+\end{example}
+
+Returning back to our opening example, we could let $P(n)$ denote the predicate ``if $n$ is odd, then $n + 1$ is not odd''. One observes that, no matter what integer we substitute for $n$, the statement $P(n)$ is always true. What we really want to do with ``if $n$ is odd, then $n + 1$ is not odd'' is to quantify that this is true for all integers $n$.
+
+There are two main quantifiers that we will look at here. The first is called the universal quantifier.
+
+\begin{definition}[Universal Quantification]
+    The \term{universal quantifier}\index{quantifier!universal} is $\forall$ and is read ``for all'' or ``every''.
+
+    A statement $q$ of the form ``$\forall x, P(x)$'' where $P(x)$ is a predicate is called a \term{statement!universal}. The statement $q$ is true if and only if $P(x)$ is true for all values of $x$.
+\end{definition}
+
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item We can express the (false) statement that ``every number is greater than 0'' as ``$\forall x, x>0$''. Here the predicate $P(x)$ is ``$x>0$''. This is clearly false since 0 is not greater than 0.
+        \item We can express the (true) statement that ``for every integer $n$, the integer $2n$ is even'' as ``$\forall x, ((n \text{ is an integer}) \implies (2n \text{ is even}))$''.
+    \end{itemize}
+\end{example}
+\begin{remark}[For Those Who Know Sets]
+    We can write ``for every integer $n$, the integer $2n$ is even'' as ``$\forall x \in \Z, (2n \text{ is even})$'' instead.
+\end{remark}
+
+The second quantifier is called the existential quantifier.
+
+\begin{definition}[Existential Quantification]
+    The \term{existential quantifier}\index{quantifier!existential} is $\exists$ and is read ``there exists'' or ``there is''.
+
+    A statement $q$ of the form ``$\exists x, P(x)$'' where $P(x)$ is a predicate is called a \term{existential statement}\index{statement!existential}. The statement $q$ is true if and only if $P(x)$ is true for at least one value of $x$.
+\end{definition}
+
+\begin{example}
+    We can express the (true) statement that ``there is a number greater than 0'' as ``$\exists x, x > 0$''. Here the predicate $P(x)$ is ``$x > 0$''. This is clearly true since 1 is greater than 0.
+\end{example}
+
+\begin{remark}[In Aid of Clarity]
+    We can write ``$\exists x, P(x)$'' as ``$\exists x \text{ such that } P(x)$''. We can write ``such that'' as ``s.t.'' to make it more concise, i.e. ``$\exists x, P(x)$'' is the same as ``$\exists x \text{ s.t. } P(x)$''.
+\end{remark}
+
+It is critical to note that the truth or falsity of such quantified statements depends on the \term{domain of discourse}\index{domain!of discourse}. Consider the quantified statement ``$\forall x, \exists y \text{ s.t. } (y<x)$''. Certainly if we are considering all the real numbers this is a true statement! We could easily set $y = x - 1$ and we would be done here. However, over the positive integers, such a trick no longer works. If $x = 1$, then $y = 1 - 1 = 0$ is not a positive integer. So it is essential to clarify the domain of discourse when writing down quantified statements.
+
+\begin{exercise}
+    % TODO: Add solution
+    Suppose our domain of discourse is the positive integers. Convert the statement ``for all $n > 2$ the equation $x^n + y^n = z^n$ has no solution'' into symbolic notation using quantifiers and connectives.
+\end{exercise}
+
+% TODO: Add negation of quantified statements
 
 \section{Hierarchy of Mathematical Results}
 Mathematical statements often have a certain `tier' attached to them. We look at the hierarchy of some of these `tiers'.
