@@ -58,7 +58,7 @@ We have specific notation to denote that an object is in a set.
 
 To end this section, we introduce the idea of subsets.
 
-\begin{definition}
+\begin{definition}[Subsets]
     Let $A$ and $B$ be sets.
     \begin{itemize}
         \item $A$ is a \term{subset}\index{subset} of $B$ if and only if all elements of $A$ are elements of $B$. This is denoted by $A \subseteq B$.
@@ -87,7 +87,90 @@ To end this section, we introduce the idea of subsets.
 \end{exercise}
 
 \section{Set-Builder Notation}
-TODO: ADD
+For all the sets above, we were able to list down all the elements of the set. Sometimes, this is hard to do, especially when there are many elements in the set. In these cases, we use set-builder notation to describe the sets.
+
+\begin{definition}[Set-Builder Notation]\index{set-builder notation}
+    A set $S$ defined using \term{set-builder notation}\index{set!builder notation} has the syntax
+    \[
+        S = \{x \ | \ P(x)\},
+    \]
+    where the elements of $S$ are all $x$ that satisfy the predicate $P(x)$. The vertical line can be read as ``such that'' or ``satisfying''.
+\end{definition}
+\begin{remark}
+    Some authors use the colon instead of a vertical line. For example, they may write $S = \{x \ : \ P(x)\}$.
+\end{remark}
+
+\begin{example}[Set of Even Integers]
+    Consider the set of even integers,
+    \[
+        E = \{\dots, -6, -4, -2, 0, 2, 4, 6, \dots\},
+    \]
+    but defining it in this way is quite imprecise. If we let $\Z$ be the set of integers, then we can say that
+    \[
+        E = \{x \vert (x \in \Z) \land (\exists n \in \Z \text{ s.t. } x = 2n)\},
+    \]
+    i.e. the set $E$ is the set of all $x$ such that $x$ is an integer and that there is another integer $n$ such that $x = 2n$.
+\end{example}
+
+It may be a little awkward to specify that ``$x \in \Z$'' along with the actual condition ``$\exists n \in \Z \text{ s.t. } x = 2n$'' in the predicate inside the set-builder notation. In such cases, we appeal to the following definition to have cleaner notation.
+
+\begin{definition}[Set-Builder Notation with a Domain]
+    Let $D$ be a set. The set
+    \[
+        \{x \in D \ | \ P(x)\}
+    \]
+    is defined to be equal to the set
+    \[
+        \{x \ | \ (x \in D) \land P(x)\}.
+    \]
+\end{definition}
+
+\begin{example}
+    Let $\Z$ be the set of integers and $\Q$ be the set of rational numbers.
+    \begin{itemize}
+        \item The set $\{x \in \Z \vert (x \geq -2) \land (x \leq 3)\} = \{-2, -1, 0, 1, 2, 3\}$.
+        \item The set $\{x \in \Q \vert x^2 = 2\} = \emptyset$.
+        \item The set $\{x \in \Q \vert \exists n \in \Z \text{ s.t. } 3x = n\}$ is the set of all rational numbers with a denominator of 3.
+    \end{itemize}
+\end{example}
+
+There is one more useful variant of set-builder notation -- one where we can have a more complex expression on the left-hand side.
+
+\begin{definition}[Set-Builder Notation with Expressions]
+    Let $f(x)$ be an expression. The set
+    \[
+        \{f(x) \vert P(x)\}
+    \]
+    is defined to be equal to the set
+    \[
+        \{y \vert \exists x \text{ s.t. } ((y = f(x)) \land P(x))\}
+    \]
+    where $P(x)$ is a predicate.
+\end{definition}
+
+\begin{example}
+    Recall that we can define the set of even integers as
+    \[
+        E = \{x \vert (x \in \Z) \land (\exists n \in \Z \text{ s.t. } x = 2n)\}.
+    \]
+    Using our new definitions, we can write $E$ as
+    \[
+        E = \{x \in \Z \vert \exists n \in \Z \text{ s.t. } x = 2n\}
+    \]
+    or
+    \[
+        E = \{2x \vert x \in \Z\}.
+    \]
+\end{example}
+
+\begin{exercise}[Building Sets]
+    Let $\Z$ be the set of integers and $\Q$ be the set of rational numbers.
+    \begin{partquestions}{\alph*}
+        \item What is the set $\left\{\frac pq \vert (p, q \in \Z) \land (q \neq 0)\right\}$?
+        \item What is the set $\left\{x \in \Q \vert \frac12 x \in \Z\right\}$? Describe it in English.
+        \item What is the set $\left\{x \vert (x \in \Z) \land \left(\frac{x+1}{2} \in \Z\right)\right\}$? Describe it in set-builder notation with an expression on the left-hand side.
+    \end{partquestions}
+\end{exercise}
 
 % Introduce set-builder notation and infinite sets
 
