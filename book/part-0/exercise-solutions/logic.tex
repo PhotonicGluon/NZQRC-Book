@@ -85,4 +85,24 @@
 
     % Q7
     \item One formulation is ``$\forall n, ((n > 2) \implies (\forall x, y, z, (x^n + y^n \neq z^n)))$''.
+    
+    % Q8
+    \item We use a truth table.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c||c|c||c|c|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot q}$ & $\boldsymbol{p \implies q}$ & $\boldsymbol{\lnot(p \implies q)}$ & $\boldsymbol{p \land \lnot q}$ \\ \hhline{|=|=#=|=#=|=|}
+            T & T & F & T & F & F \\ \hline
+            T & F & T & F & T & T \\ \hline
+            F & T & F & T & F & F \\ \hline
+            F & F & T & T & F & F \\ \hline
+        \end{tabular}
+    \end{table}
+
+    % Q9
+    \item \begin{partquestions}{\roman*}
+        \item One formulation is ``$\forall x, ((x \neq 0) \implies (\exists y \text{ s.t. } xy = 1))$''.
+        \item The negation of the above formulation is ``$\exists x \text{ s.t. } ((x \neq 0) \land (\forall y, xy \neq 1))$''.
+    \end{partquestions}
 \end{questions}
