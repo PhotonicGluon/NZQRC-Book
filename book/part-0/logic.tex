@@ -544,7 +544,7 @@ There are two main quantifiers that we will look at here. The first is called th
 \begin{definition}[Universal Quantification]
     The \term{universal quantifier}\index{quantifier!universal} is $\forall$ and is read ``for all'' or ``every''.
 
-    A statement $q$ of the form ``$\forall x, P(x)$'' where $P(x)$ is a predicate is called a \term{statement!universal}. The statement $q$ is true if and only if $P(x)$ is true for all values of $x$.
+    A statement $q$ of the form ``$\forall x, P(x)$'' where $P(x)$ is a predicate is called a \term{statement}\index{statement!universal}. The statement $q$ is true if and only if $P(x)$ is true for all values of $x$.
 \end{definition}
 
 \begin{example}
@@ -579,7 +579,82 @@ It is critical to note that the truth or falsity of such quantified statements d
     Suppose our domain of discourse is the positive integers. Convert the statement ``for all $n > 2$ the equation $x^n + y^n = z^n$ has no solution'' into symbolic notation using quantifiers and connectives.
 \end{exercise}
 
-% TODO: Add negation of quantified statements
+Let us now look back at the example ``$\forall x, \exists y \text{ s.t. } (y<x)$'' using the positive integers as the domain of discourse. To prove that this statement is false, we gave the \term{counterexample}\index{counterexample} of $x = 1$. In fact, we proved the statement ``$\exists x \text{ s.t. } \forall y, (y \not< x)$'', i.e. ``$\exists x \text{ s.t. } \forall y, (y \geq x)$''. This is an example of negating a quantified statement.
+
+\begin{proposition}[Negating Quantified Statements]
+    Let $P(x)$ be a predicate. Then
+    \begin{itemize}
+        \item $\lnot(\forall x, P(x)) \equiv \exists x \text{ s.t. } (\lnot P(x))$; and
+        \item $\lnot(\exists x \text{ s.t. } P(x)) \equiv \forall x, (\lnot P(x))$.
+    \end{itemize}
+\end{proposition}
+\begin{proof}
+    For the first equivalence, recall that the statement ``$\forall x, P(x)$'' is true if and only if all $x$ in the domain of discourse makes $P(x)$ true. Hence as long as one $x$ makes $P(x)$ false, then the statement is false. Thus the negation would be ``$\exists x \text{ s.t. } (\lnot P(x))$''.
+
+    Likewise, for the second equivalence, the statement ``$\exists x \text{ s.t. } P(x)$'' is true if there is at least one $x$ in the domain of discourse that makes $P(x)$ true. So if that statement is false, then there cannot be any $x$ that makes $P(x)$ true. Hence the negation would be ``$\forall x, (\lnot P(x))$''.
+\end{proof}
+
+\begin{example}[Negating Quantified Statements]
+    \begin{itemize}[leftmargin=*]
+        \item Consider the statement ``$2n$ is even for all $n$'', using the positive integers as the domain of discourse. One may write this using quantifiers as ``$\forall n, (2n \text{ is even})$''. The negation of this statement is thus ``$\exists n \text{ s.t. } (2n \text{ is not even})$'', i.e. ``$\exists n \text{ s.t. } (2n \text{ is odd})$''.
+        \item Now consider the statement ``there is a prime $p$ such that $p = n^2 + 1$ for some $n$'', where we again use the positive integers as the domain of discourse. We can write this symbolically as ``$\exists p \text{ s.t. } (\exists n \text{ s.t. } p = n^2 + 1)$''. Negating this statement would yield ``$\forall p, (\forall n, (p \neq n^2 + 1))$''.
+    \end{itemize}
+\end{example}
+
+We can also negate quantified statements that contain conditionals. We just have to appeal to the following fact.
+
+\begin{proposition}[Negating Conditional Statements]\label{prop:negating-conditional}
+    Let $p$ and $q$ be statements. Then $\lnot (p \implies q) \equiv p \land \lnot q$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:negating-conditional} (later).
+\end{proof}
+
+This fact is very useful when we are negating quantified conditional statements.
+
+\begin{example}[Negating Quantified Conditionals]
+    Consider the statement ``$n^3$ is odd if $n$ is odd for all $n$'' where the domain of discourse is the integers. We can write this as
+    \[
+        \forall n, ((n \text{ is odd}) \implies (n^3 \text{ is odd})).
+    \]
+    The negation of this statement would hence be
+    \[
+        \exists n \text{ s.t. } ((n \text{ is odd}) \land \lnot(n^3 \text{ is odd})),
+    \]
+    which in English would be ``there exists $n$ such that $n$ is odd and $n^3$ is even''.
+\end{example}
+
+\begin{exercise}\label{exercise:negating-conditional}
+    % TODO: Add solution
+    Prove \myref{prop:negating-conditional}.
+\end{exercise}
+
+\begin{exercise}
+    % TODO: Add solution
+    Suppose our domain of discourse is the real numbers. Consider the statement ``for all non-zero $x$, there exists a $y$ such that $xy = 1$''.
+    \begin{partquestions}{\roman*}
+        \item Express the above statement symbolically.
+        \item Negate the above statement, writing your answer in symbolic notation.
+    \end{partquestions}
+\end{exercise}
+
+Lastly, let us take a look at a peculiar case of universal statements -- ones where no element in the domain of discourse satisfies it.
+
+Consider the universal statement ``all my cats are dogs'' where the domain of discourse are all the cats that I own. We can write this semi-symbolically as ``$\forall x, \mathrm{Dog}(x)$'' where the predicate $\mathrm{Dog}(x)$ is true if and only if $x$ is a dog. Clearly, this is absurd! This surely must be a false statement! But consider the case when I have no cats. Is this statement true?
+
+Consider its negation, i.e. ``there is a cat that is not a dog''. We can write this using the above symbols as ``$\exists x \text{ s.t. } \lnot \mathrm{Dog}(x)$''. Now recall that this existential statement is true if and only if there is an element that satisfies the predicate. In this case, one must give an example of $x$ such that ``$\lnot \mathrm{Dog}(x)$'' is true. However, I have no cats! It is impossible to give an example that makes ``$\lnot \mathrm{Dog}(x)$'' true. Thus, the statement ``there is a cat that is not a dog'' is false.
+
+However, recall that ``there is a cat that is not a dog'' is the negation of ``all my cats are dogs''. If the negation of that statement is false, that means that the original statement is true! Indeed, ``all my cats are dogs'' is true because I have no cats!
+
+This is yet another example of a \term{vacuously true}\index{vacuously true} statement. If the domain of discourse is empty, then all universal statements are automatically true.
+
+\begin{example}[Vacuously True Universal Statements]
+    \begin{itemize}[leftmargin=*]
+        \item If the domain of discourse is the set of pennies that I have, and if I have no pennies, then ``all my pennies are \$100 dollar bills'' is vacuously true.
+        \item Similarly, ``none of my pennies are \$100 dollar bills'' is also vacuously true.
+        \item A child may say that ``I ate every vegetable on my plate''. This is true when there were no vegetables on their plate in the first place.
+    \end{itemize}
+\end{example}
 
 \section{Hierarchy of Mathematical Results}
 Mathematical statements often have a certain `tier' attached to them. We look at the hierarchy of some of these `tiers'.
