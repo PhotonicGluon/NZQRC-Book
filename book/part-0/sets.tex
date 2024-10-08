@@ -163,16 +163,34 @@ There is one more useful variant of set-builder notation -- one where we can hav
     \]
 \end{example}
 
+With set-builder notation we can define an important set -- the power set of any set.
+
+\begin{definition}[Power Set]
+    Let $A$ be a set. The \term{power set}\index{power set} of $A$ is
+    \[
+        \Power{A} = \{S \vert S \subseteq A\},
+    \]
+    i.e. $\Power{A}$ is the set of all subsets of $A$.
+\end{definition}
+
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item $\Power{\emptyset} = \{\emptyset\}$, since the empty set is always a subset of any set, including itself.
+        \item $\Power{\{1\}} = \{\emptyset, \{1\}\}$.
+        \item $\Power{\{1, 2\}} = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\}$.
+        \item $\Power{\{1, 2, 3\}} = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\}$.
+    \end{itemize}
+\end{example}
+
 \begin{exercise}[Building Sets]
     Let $\Z$ be the set of integers and $\Q$ be the set of rational numbers.
     \begin{partquestions}{\alph*}
         \item What is the set $\left\{\frac pq \vert (p, q \in \Z) \land (q \neq 0)\right\}$?
         \item What is the set $\left\{x \in \Q \vert \frac12 x \in \Z\right\}$? Describe it in English.
         \item What is the set $\left\{x \vert (x \in \Z) \land \left(\frac{x+1}{2} \in \Z\right)\right\}$? Describe it in set-builder notation with an expression on the left-hand side.
+        \item What is $\Power{\{\emptyset\}}$?
     \end{partquestions}
 \end{exercise}
-
-% Introduce set-builder notation and infinite sets
 
 \section{Set Operations}
 TODO: ADD
