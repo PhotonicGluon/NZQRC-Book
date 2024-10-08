@@ -61,8 +61,14 @@ To end this section, we introduce the idea of subsets.
 \begin{definition}[Subsets]
     Let $A$ and $B$ be sets.
     \begin{itemize}
-        \item $A$ is a \term{subset}\index{subset} of $B$ if and only if all elements of $A$ are elements of $B$. This is denoted by $A \subseteq B$.
-        \item $A$ is a \term{proper subset}\index{subset!proper} if and only if $A$ is a subset of $B$ and $B$ contains at least one element not in $A$. In this case, we write $A \subset B$.
+        \item $A$ is a \term{subset}\index{subset} of $B$ if and only if all elements of $A$ are elements of $B$. This is denoted by $A \subseteq B$. Symbolically,
+        \[
+            A \subseteq B \iff \forall x, ((x \in A) \implies (x \in B)).
+        \]
+        \item $A$ is a \term{proper subset}\index{subset!proper} if and only if $A$ is a subset of $B$ and $B$ contains at least one element not in $A$. In this case, we write $A \subset B$. Symbolically,
+        \[
+            A \subset B \iff (A \subseteq B) \land (\exists x \text{ s.t. } ((x \notin A) \land (x \in B))).
+        \]
     \end{itemize}
 \end{definition}
 
