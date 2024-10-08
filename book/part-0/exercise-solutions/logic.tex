@@ -1,6 +1,6 @@
 \section{Mathematical Logic}
 \begin{questions}
-    % Q1
+    % Statement Detective
     \item \begin{partquestions}{\alph*}
         \item Not a statement; it is neither true nor false, it is just a sentence.
         \item A statement; it is definitely false.
@@ -11,7 +11,7 @@
         \item Not a statement. This is tricky since, algebraically, it is true for all $x$. However, the fact remains that we can only evaluate the truth of this statement by substituting values of $x$ since $x$ is an unknown.
     \end{partquestions}
 
-    % Q2
+    % Combining Basic Connectives
     \item We work from the inner-most bracket outwards. We note $p$ is true, $q$ is false, and $r$ is true.
     \begin{itemize}
         \item $p \lor q$ can be understood to be ``1 is a positive number \textbf{or} 1 is an even number''. This is true since 1 is indeed a positive number.
@@ -20,7 +20,7 @@
     \end{itemize}
     Hence, the overall statement ``$\lnot((p \lor q) \land r)$ is false'' is true.
 
-    % Q3
+    % (Bi)conditionals
     \item \begin{partquestions}{\roman*}
         \item $s$ is the statement ``20 is a multiple of 5''.
         \item The atomic statements are ``20 ends in a 0'' and ``20 ends in a 5''.
@@ -30,7 +30,7 @@
 
     \pagebreak
     
-    % Q4
+    % Contrapositive
     \item Again we consider a truth table.
     \begin{table}[H]
         \centering
@@ -45,7 +45,7 @@
     \end{table}
     Therefore we establish the required result.
 
-    % Q5
+    % De Morgan's Laws
     \item The first statement is proven by considering the truth table below.
     \begin{table}[H]
         \centering
@@ -71,7 +71,7 @@
         \end{tabular}
     \end{table}
 
-    % Q6
+    % Simplifying Statements
     \item One sees that
     \begin{align*}
         &((p \lor \lnot q) \land \lnot r) \lor p\\
@@ -83,10 +83,10 @@
         &\equiv p \lor \lnot(q \lor r). & (\text{De Morgan's Law})
     \end{align*}
 
-    % Q7
+    % Fermat's Last Theorem
     \item One formulation is ``$\forall n, ((n > 2) \implies (\forall x, y, z, (x^n + y^n \neq z^n)))$''.
     
-    % Q8
+    % Negating Conditional Statements
     \item We use a truth table.
     \begin{table}[H]
         \centering
@@ -100,7 +100,7 @@
         \end{tabular}
     \end{table}
 
-    % Q9
+    % An Exercise in Symbolic Negation
     \item \begin{partquestions}{\roman*}
         \item One formulation is ``$\forall x, ((x \neq 0) \implies (\exists y \text{ s.t. } xy = 1))$''.
         \item The negation of the above formulation is ``$\exists x \text{ s.t. } ((x \neq 0) \land (\forall y, xy \neq 1))$''.
