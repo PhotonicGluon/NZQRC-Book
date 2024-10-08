@@ -193,13 +193,175 @@ With set-builder notation we can define an important set -- the power set of any
 \end{exercise}
 
 \section{Set Operations}
-TODO: ADD
+We have already seen a lot of notation regarding sets, and there are more to come. We look at some of the most important set operations here.
 
-% Introduce basic operation on sets, including union, intersection, difference, cartesian product
+\begin{definition}[Set Union]
+    Let $A$ and $B$ be sets. The \term{union}\index{set!union} of $A$ and $B$ is
+    \[
+        A \cup B = \{x \vert (x \in A) \lor (x \in B)\}.
+    \]
+\end{definition}
 
-% TODO: Where should the power set be placed?
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item $\{1, 2, 3\} \cup \{4, 5, 6\} = \{1, 2, 3, 4, 5, 6\}$.
+        \item $\{1, 2, 3\} \cup \{2, 3, 4\} = \{1, 2, 3, 4\}$. Recall that we do not keep duplicates in sets.
+        \item $\{1, 2, 3\} \cup \emptyset = \{1, 2, 3\}$.
+    \end{itemize}
+\end{example}
 
-% TODO: Where should cardinality be placed?
+One may think of the set union as analogous to the disjunction operator. Likewise, the set intersection that we will define below is analogous to the conjunction operator.
+
+\begin{definition}[Set Intersection]
+    Let $A$ and $B$ be sets. The \term{intersection}\index{set!intersection} of $A$ and $B$ is
+    \[
+        A \cap B = \{x \vert (x \in A) \land (x \in B)\}.
+    \]
+\end{definition}
+
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item $\{1, 2, 3\} \cap \{1, 2, 3\} = \{1, 2, 3\}$.
+        \item $\{1, 2, 3\} \cap \{2, 3, 4\} = \{2, 3\}$.
+        \item $\{1, 2, 3\} \cap \{4, 5, 6\} = \emptyset$.
+    \end{itemize}
+\end{example}
+
+The next set operation has no analogous operation in logic. The set difference can be interpreted as the set of items in the original set that is not in the set that we are subtracting off.
+
+\begin{definition}[Set Difference]
+    Let $S$ and $A$ be sets. The \term{set difference}\index{set!difference} of $S$ and $A$ is
+    \[
+        S \setminus A = \{x \vert (x \in S) \land (x \notin A)\}.
+    \]
+\end{definition}
+\begin{remark}
+    Some authors will use the minus sign to denote the set difference, i.e. $S - A$ is the same as $S \setminus A$.
+\end{remark}
+
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item $\{1, 2, 3\} \setminus \{2, 3, 4\} = \{1\}$.
+        \item $\{2, 3, 4\} \setminus \{1, 2, 3\} = \{4\}$.
+        \item $\{1, 2, 3\} \setminus \{1, 2, 3\} = \emptyset$.
+    \end{itemize}
+\end{example}
+
+Another important operation that will come up in our investigation into numbers is the cartesian product. But first, we need to define $n$-tuples. One can interpret an $n$-tuple as an ordered sequence of $n$ items, whereas a set containing $n$ items is unordered. The notation of having $n$ ordered items, especially for the case when $n = 2$, is very useful.
+
+\begin{definition}[$n$-tuples]
+    Let $A_1, A_2, \dots, A_n$ be sets, and let $a_1 \in A_1$, $a_2 \in A_2$, \dots, and $a_n \in A_n$. Then an \term{$n$-tuple}\index{$n$-tuple}
+    \[
+        (a_1, a_2, \dots, a_n) = \{a_1, \{a_1, a_2\}, \{a_1, a_2, a_3\}, \dots, \{a_1, a_2, \dots, a_n\}\}.
+    \]
+\end{definition}
+\begin{remark}[Special Names for Specific $n$-Tuples]
+    A 2-tuple is called an (ordered) \term{pair}\index{pair}. A 3-tuple is called an (ordered) \term{triplet}\index{triplet}. A 4-tuple is called an (ordered) \term{quadruplet}\index{quadruplet}.
+\end{remark}
+
+As mentioned, the important property of $n$-tuples is that they are ordered.
+
+\begin{proposition}[$n$-Tuples are Ordered]
+    Let $A_1, A_2, \dots, A_n$ be sets, and let $a_1, b_1 \in A_1$, $a_2, b_2 \in A_2$, \dots, and $a_n, b_n \in A_n$. Then $(a_1, a_2, \dots, a_n) = (b_1, b_2, \dots, b_n)$ if and only if $a_1 = b_1$, $a_2 = b_2$, \dots, and $a_n = b_n$.
+\end{proposition}
+\begin{proof}
+    The reverse direction is trivial, so we show the forward direction only. Suppose $(a_1, a_2, \dots, a_n) = (b_1, b_2, \dots, b_n)$. Thus
+    \[
+        \{a_1, \{a_1, a_2\}, \dots, \{a_1, a_2, \dots, a_n\}\} = \{b_1, \{b_1, b_2\}, \dots, \{b_1, b_2, \dots, b_n\}\}
+    \]
+    by definition of $n$-tuples. By equality of sets we thus obtain
+    \begin{align*}
+        a_1 &= b_1,\\
+        \{a_1, a_2\} &= \{b_1, b_2\},\\
+        \{a_1, a_2, a_3\} &= \{b_1, b_2, b_3\},\\
+        \vdots\\
+        \{a_1, a_2, \dots, a_n\} &= \{b_1, b_2, \dots, b_n\}.
+    \end{align*}
+    The first equality immediately gives $a_1 = b_1$. So if $\{a_1, a_2\} = \{b_1, b_2\} = \{a_1, b_2\}$ we must have $a_2 = b_2$. Therefore for $\{a_1, a_2, a_3\} = \{b_1, b_2, b_3\} = \{a_1, a_2, b_3\}$ we must have $a_3 = b_3$, and so on. Hence $a_1 = b_1$, $a_2 = b_2$, \dots, and $a_n = b_n$.
+\end{proof}
+
+We usually abstract away the details of the $n$-tuple and just think of it as an ordered list of $n$ items. That is, we do not really think about the underlying set of $n$-tuples when we use them; we just use their properties.
+
+With $n$-tuples defined, we can define the cartesian product.
+
+\begin{definition}[Cartesian Product of 2 Sets]
+    Let $A$ and $B$ be sets. The \term{cartesian product}\index{cartesian product} of $A$ and $B$ is
+    \[
+        A \times B = \{(a, b) \vert (a \in A) \land (b \in B)\}.
+    \]
+\end{definition}
+
+\begin{example}
+    Let $A = \{1, 2, 3\}$ and $B = \{4, 5\}$. Then
+    \[
+        A \times B = \{(1, 4), (2, 4), (3, 4), (1, 5), (2, 5), (3, 5)\}.
+    \]
+    Also note
+    \[
+        B \times A = \{(4, 1), (5, 1), (4, 2), (5, 2), (4, 3), (5, 3)\}.
+    \]
+    Thus $A \times B \neq B \times A$ in general.
+\end{example}
+
+We can define the cartesian product of more than 2 sets.
+
+\begin{definition}[General Cartesian Product]
+    Let $A_1, A_2, \dots, A_n$ be sets. The cartesian product of $A_1$, $A_2$, \dots, and $A_n$ is
+    \begin{align*}
+        &A_1 \times A_2 \times \cdots \times A_n\\
+        &= \{(a_1, a_2, \dots, a_n) \vert (a_1 \in A_1) \land (a_2 \in A_2) \land \cdots \land (a_n \in A_n)\}.
+    \end{align*}
+\end{definition}
+\begin{remark}
+    In particular, if $A$ is a set, then define $A^2 = A \times A$, $A^3 = A \times A \times A$, $A^4 = A \times A \times A \times A$, and so on.
+\end{remark}
+
+\begin{example}
+    Let $A = \{1, 2\}$, $B = \{3, 4\}$, and $C = \{5, 6\}$. Then
+    \begin{align*}
+        A \times B \times C &= \{(1,3,5), (1,3,6), (1,4,5), (1,4,6),\\
+        &\quad\quad(2,3,5), (2,3,6), (2,4,5), (2,4,6)\}.
+    \end{align*}
+\end{example}
+
+\begin{exercise}
+    Let $S = \{1,2,3,4\}$, $T = \{2,3,5\}$, and $U = \{(2,2), (3,3), (5,5)\}$. Determine whether the following statements are true or false.
+    \begin{partquestions}{\alph*}[2]
+        \item $S \cup T = \{1, 2, 3, 4, 5\}$
+        \item $S \cup U = \{1, 2, 3, (5, 5)\}$
+        \item $S \cap T = \{2, 3\}$
+        \item $T \cap U = \emptyset$
+        \item $S \setminus T = \{1, 4\}$
+        \item $S \setminus \{1, 4\} = T$
+        \item $T^2 = U$
+        \item $U \subset (S \cup T)^2$
+    \end{partquestions}
+\end{exercise}
+
+We end this section by looking at a way to quantify the number of items in a set.
+
+\begin{definition}[Set Cardinality]
+    Let $A$ be a set. Then the \term{cardinality}\index{cardinality}\index{set!cardinality} of $A$, denoted $|A|$, is a measure of the size of $A$.
+\end{definition}
+
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item $|\{1, 2, 3\}| = 3$ since there are 3 elements in the set $\{1, 2, 3\}$.
+        \item $|\{2, 3, 5, 7, 11\}| = 5$ since there are 5 elements in the set.
+        \item $|\emptyset| = 0$ since the empty set contains no elements.
+    \end{itemize}
+\end{example}
+
+Note that this definition of cardinality of sets only works if there is a finite number of elements in the set. For infinite sets, there is a more technical definition, but we will address it when we come to it.
+
+\begin{exercise}
+    Let $\Z$ be the set of integers.
+    \begin{partquestions}{\alph*}
+        \item Let $S = \{n \in \Z \vert (-10 \leq n \leq 10) \land (\exists m \in \Z \text{ s.t. } n=2m+1)\}$. What is $|S|$?
+        \item Find two sets $A$ and $B$ such that $|A| = 5$, $|B| = 6$, and $|A \cup B| = 7$. What is $|A \cap B|$?
+        \item Let $|A| = n$. What is $|A^p|$, where $p$ is a positive integer? What is $|\Power{A}|$?
+    \end{partquestions}
+\end{exercise}
 
 \section{An Aside: Quantified Statements}  % Should this be numbered?
 TODO: ADD
