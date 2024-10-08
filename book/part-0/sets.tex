@@ -363,7 +363,35 @@ Note that this definition of cardinality of sets only works if there is a finite
     \end{partquestions}
 \end{exercise}
 
-\section{An Aside: Quantified Statements}  % Should this be numbered?
-TODO: ADD
+\section{Quantified Statements with a Domain of Discourse}
+Recall that we introduced quantified statements in the previous chapter. For quantified statements, we need to specify a domain of discourse. With sets under our belt, we can define some notation to symbolically define a domain of discourse.
 
-% Introduce notation about specifying the domain of discourse
+\begin{definition}[Quantified Statements with a Domain of Discourse]
+    Let $D$ be a set and $P(x)$ be a predicate. The universal statement
+    \[
+        \forall x \in D, P(x)
+    \]
+    is defined to be the equal to the statement
+    \[
+        \forall x, ((x \in D) \land P(x)).
+    \]
+    Likewise, the existential statement
+    \[
+        \exists x \in D \text{ s.t. } P(x)
+    \]
+    is defined to be equal to the statement
+    \[
+        \exists x \text{ s.t. } ((x \in D) \land P(x)).
+    \]
+    In each case the domain of discourse is everything in the set $D$.
+\end{definition}
+
+\begin{example}
+    Let $\Z$ denote the set of positive integers.
+    \begin{itemize}
+        \item $\forall x \in \Z, ((x \text{ is odd}) \implies (x+1 \text{ is even}))$ means ``for all integers $x$, if $x$ is odd then $x+1$ is even'', which is a true statement.
+        \item $\exists x \in \Z \text{ s.t. } ((x \text{ is prime}) \land (\exists m \in \Z \text{ s.t. } x = m^2 + 1))$ means ``there exists an integer $x$ such that $x$ is prime and $x = m^2 + 1$ for some integer $m$''. This is true using the example $x = 5$ and $m = 2$.
+        \item $\forall x \in \emptyset, (x > 0)$ is a vacuously true statement.
+        \item $\exists x \in \emptyset \text{ s.t. } (x \leq 0)$ is a false statement, since we cannot produce an example of $x$ from the empty set that is less than or equal to zero.
+    \end{itemize}
+\end{example}
