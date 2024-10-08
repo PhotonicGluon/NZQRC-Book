@@ -372,14 +372,14 @@ Note that this definition of cardinality of sets only works if there is a finite
 \section{Quantified Statements with a Domain of Discourse}
 Recall that we introduced quantified statements in the previous chapter. For quantified statements, we need to specify a domain of discourse. With sets under our belt, we can define some notation to symbolically define a domain of discourse.
 
-\begin{definition}[Quantified Statements with a Domain of Discourse]
+\begin{definition}[Quantified Statements with Domain]
     Let $D$ be a set and $P(x)$ be a predicate. The universal statement
     \[
         \forall x \in D, P(x)
     \]
     is defined to be the equal to the statement
     \[
-        \forall x, ((x \in D) \land P(x)).
+        \forall x, ((x \in D) \implies P(x)).
     \]
     Likewise, the existential statement
     \[
