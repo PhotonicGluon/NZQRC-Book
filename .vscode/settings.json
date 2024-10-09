@@ -2,8 +2,11 @@
     "cSpell.words": [
         "biconditional",
         "biconditionals",
+        "Hasse",
         "lettrine",
-        "nzqrc"
+        "nzqrc",
+        "poset",
+        "posets"
     ],
     "files.exclude": {
         "**/*-blx.bib": true,
