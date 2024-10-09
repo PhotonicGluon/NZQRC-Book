@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: NZQRC-Book  # TODO: Modify
+message: Please cite this book using the metadata from this file.
+type: software
+authors:
+  - family-names: Kan
+    given-names: Onn Kit
+    orcid: https://orcid.org/0009-0003-5357-2109
+repository-code: 'https://github.com/PhotonicGluon/NZQRC-Book'
+license: CC-BY-SA-4.0
