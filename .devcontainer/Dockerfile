@@ -19,9 +19,9 @@ RUN pip install poetry --break-system-packages
 
 # Install needed packages
 RUN tlmgr update --self
+COPY . .
 RUN tlmgr install `cat latex-packages.txt`
 RUN texhash
 
 # Set up workspace
 WORKDIR /workspace
-COPY . .
