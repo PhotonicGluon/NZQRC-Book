@@ -10,7 +10,8 @@
         "manim",
         "nzqrc",
         "poset",
-        "posets"
+        "posets",
+        "typer"
     ],
     "files.exclude": {
         "**/*-blx.bib": true,
