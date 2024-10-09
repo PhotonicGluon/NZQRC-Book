@@ -9,12 +9,18 @@
     ],
     "shutdownAction": "stopCompose",
     "workspaceFolder": "/workspace",
-    "postCreateCommand": "",
+    "postCreateCommand": [
+        "/bin/sh",
+        "-c",
+        "/bin/bash ./.devcontainer/postCreateCommand.sh"
+    ],
     "customizations": {
         "vscode": {
             "extensions": [
                 "james-yu.latex-workshop",
+                "ms-python.python",
                 "streetsidesoftware.code-spell-checker",
+                "tamasfe.even-better-toml",
                 "yzhang.markdown-all-in-one"
             ],
             "settings": {

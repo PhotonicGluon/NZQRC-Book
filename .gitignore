@@ -499,6 +499,8 @@ venv
 !book/part*/**/*.pdf
 !book/images/**/*.pdf
 
+media/
+
 # File exclusions
 .DS_Store
 ~$*
