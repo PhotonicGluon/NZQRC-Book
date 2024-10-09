@@ -18,6 +18,7 @@
         "vscode": {
             "extensions": [
                 "james-yu.latex-workshop",
+                "ms-python.black-formatter",
                 "ms-python.python",
                 "streetsidesoftware.code-spell-checker",
                 "tamasfe.even-better-toml",

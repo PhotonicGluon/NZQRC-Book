@@ -6,6 +6,7 @@
         "ipylab",
         "ipynb",
         "lettrine",
+        "magics",
         "manim",
         "nzqrc",
         "poset",
