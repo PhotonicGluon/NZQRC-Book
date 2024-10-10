@@ -10,7 +10,7 @@ import typer
 MEDIA_FOLDER = "media/images/image-generation"
 BOOK_IMAGES_FOLDER = "../book/images"
 
-IMAGE_REGEX = r"(?P<part>\d)-(?P<chapter>[a-z]+)-(?P<name>\w+\.png)"
+IMAGE_REGEX = r"(?P<part>\d)-(?P<chapter>[a-z]+)-(?P<name>[\w\-]+\.png)"
 
 
 def main(
