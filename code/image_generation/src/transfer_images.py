@@ -14,8 +14,8 @@ def transfer_images(
     Transfers images from the media folder into the actual book's folder.
 
     Args:
-        media_folder: media folder that contains all the images
-        book_image_folder: book's actual image folder
+        media_folder: media folder that contains all the images.
+        book_image_folder: book's actual image folder.
         copy_images: whether to copy the images or just move them. Defaults to True.
         dry_run: whether to perform a dry run. Defaults to False.
         silent: whether extra output should be made. Defaults to False.

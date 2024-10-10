@@ -1,16 +1,17 @@
+import os
 from typing import Optional
 
 from PIL import Image, ImageChops
 from rich import print
 
 
-def trim(im: Image.Image, throw_if_cannot_trim: bool = True, add_excess_of: int = 0) -> Optional[Image.Image]:
+def trim(im: Image.Image, throw_if_cannot_trim: bool = False, add_excess_of: int = 0) -> Optional[Image.Image]:
     """
     Trims excess background from the image.
 
     Args:
         im: image to trim background from.
-        throw_if_cannot_trim: whether to throw an error if we cannot trim image. Defaults to True.
+        throw_if_cannot_trim: whether to throw an error if we cannot trim image. Defaults to False.
         add_excess_of: number of pixels to surround the main content. Defaults to 0.
 
     Raises:
@@ -35,7 +36,6 @@ def trim(im: Image.Image, throw_if_cannot_trim: bool = True, add_excess_of: int 
         if throw_if_cannot_trim:
             raise ValueError("No bounding box; cannot trim")
         else:
-            print("[yellow]No bounding box; cannot trim[/yellow]")
             return None
 
     # Expand bounding box by `add_excess_of` pixels
@@ -46,3 +46,40 @@ def trim(im: Image.Image, throw_if_cannot_trim: bool = True, add_excess_of: int 
         min(bbox[3] + add_excess_of, im.size[1]),
     )
     return im.crop(crop_to)
+
+
+def trim_images(
+    media_folder: str,
+    output_folder: str,
+    throw_if_cannot_trim: bool = False,
+    add_excess_of: int = 0,
+    silent: bool = False,
+):
+    """
+    Trims images in the media folder and places it in the output folder.
+
+    Args:
+        media_folder: media folder that contains all the images.
+        output_folder: folder to place the trimmed images.
+        throw_if_cannot_trim: whether to throw an error if we cannot trim image. Defaults to True.
+        add_excess_of: number of pixels to surround the main content. Defaults to 0.
+        silent: whether extra output should be made. Defaults to False.
+    """
+    if not os.path.isdir(output_folder):
+        os.makedirs(output_folder, exist_ok=True)
+
+    images = os.listdir(media_folder)
+
+    for image in images:
+        im = Image.open(os.path.join(media_folder, image))
+        trimmed_im = trim(im, throw_if_cannot_trim=throw_if_cannot_trim, add_excess_of=add_excess_of)
+
+        if trimmed_im:
+            trimmed_im.save(os.path.join(output_folder, image))
+            if not silent:
+                print(f"Trimmed [cyan]'{image}'[/cyan].")
+        else:
+            if not silent:
+                print(f"[yellow]No bounding box for '{image}'; cannot trim.[/yellow]")
+
+    print("[green]Done![/green]")
