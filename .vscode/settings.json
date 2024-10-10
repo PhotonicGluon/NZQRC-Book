@@ -32,7 +32,8 @@
         "**/*.run.xml": true,
         "**/*.synctex.gz": true,
         "**/*.toc": true,
-        "Cipher": true
+        "**/.ipynb_checkpoints": true,
+        "**/__pycache__": true
     },
     "editor.wordWrap": "bounded",
     "autoDocstring.docstringFormat": "google-notypes",

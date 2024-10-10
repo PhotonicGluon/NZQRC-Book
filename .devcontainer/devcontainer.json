@@ -20,10 +20,11 @@
                 "james-yu.latex-workshop",
                 "ms-python.black-formatter",
                 "ms-python.python",
+                "ms-python.isort",
+                "njpwerner.autodocstring",
                 "streetsidesoftware.code-spell-checker",
                 "tamasfe.even-better-toml",
-                "yzhang.markdown-all-in-one",
-                "njpwerner.autodocstring"
+                "yzhang.markdown-all-in-one"
             ],
             "settings": {
                 // General settings

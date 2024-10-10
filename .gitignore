@@ -507,4 +507,4 @@ media/
 .DS_Store
 ~$*
 Release Checklist.md
-svg-diagram-displayer.tex
+experiments.ipynb

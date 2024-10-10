@@ -4,16 +4,11 @@ import shutil
 
 from rich import print
 
-
 IMAGE_REGEX = r"(?P<part>\d)-(?P<chapter>[a-z]+)-(?P<name>[\w\-]+\.png)"
 
 
 def transfer_images(
-    media_folder: str,
-    book_image_folder: str,
-    copy_images: bool = True,
-    dry_run: bool = False,
-    silent: bool = False,
+    media_folder: str, book_image_folder: str, copy_images: bool = True, dry_run: bool = False, silent: bool = False
 ):
     """
     Transfers images from the media folder into the actual book's folder.
