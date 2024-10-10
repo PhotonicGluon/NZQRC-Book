@@ -2,8 +2,8 @@ from typing_extensions import Annotated
 
 import typer
 
-from src.transfer_images import transfer_images
-from src.trim_images import trim_images
+from image_generation.src.transfer_images import transfer_images
+from image_generation.src.trim_images import trim_images
 
 
 MEDIA_FOLDER = "media/images/image-generation"
