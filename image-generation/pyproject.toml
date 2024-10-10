@@ -9,13 +9,14 @@ packages = [{ include = "src" }]
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"
 
+[tool.poetry.group.main.dependencies]
+typer = "^0.12.5"
+pillow = "^10.4.0"
+
 [tool.poetry.group.manim.dependencies]
 manim = "~0.18.1"
 jupyter = "^1.1.1"
 notebook = "^7.2.2"
-
-[tool.poetry.group.misc.dependencies]
-typer = "^0.12.5"
 
 [build-system]
 requires = ["poetry-core"]
