@@ -1,11 +1,48 @@
 \Chapter{Relations}
-\Lettrine{One} of mathematics's most essential abilities is noticing and describing relationships. We come across many patterns and links that could be characterised by relations in our everyday lives, like a relation between a parent and child or between an employer and an employee. The idea of relationships between sets is essential, and we will look at their properties here.
+\Lettrine{One} of mathematicians' most essential abilities is noticing and describing relationships. We come across many patterns and links that could be characterised by relations in our everyday lives, like a relation between a parent and child or between an employer and an employee. The idea of relationships between sets is essential, and we will look at their properties here.
 
 \section{What is a Relation?}
-TODO: Add
+A high-level explanation of a relation is simply a way to `create a connection' between items in two sets. However, the abstract definition of a relation is much less enlightening.
+
+\begin{definition}[Relation]
+    Let $X$ and $Y$ be sets. A \term{relation from $X$ to $Y$}\index{relation} is a subset of $X \times Y$.
+
+    Let $R$ be a relation, $x \in X$, and $y \in Y$. We say that \term{$x$ is related to $y$ by $R$}\index{related to} (or that \term{$x$ is $R$-related to $y$}), denoted $x\mathrel{R}y$, if and only if $(x, y) \in R$. We write $x\not\mathrel{R}y$ if and only if $(x, y) \notin R$.
+
+    If there is no confusion of what relation we are talking about, we can just say that \term{$x$ is related to $y$}.
+\end{definition}
+
+This is clearly way too abstract of a definition to see how this captures the idea of `creating connections' between set elements, so let's take a look at some concrete examples.
+
+\begin{example}[The ``Is Born In'' Relation]
+    Let $M$, a subset of the set of all mathematicians, be
+    \[
+        \{\text{Cardano}, \text{Lagrange}, \text{Dedekind}, \text{Euler}, \text{Noether}, \text{Zassenhaus}\}
+    \]
+    and let $C$, a subset of the set of all countries, be
+    \[
+        \{\text{Italy}, \text{Switzerland}, \text{Germany}, \text{England}\}.
+    \]
+    Then we can define $R$ to be the ``is born in'' relation. In particular,
+    \begin{align*}
+        R &= \{(\text{Cardano}, \text{Italy}),(\text{Lagrange}, \text{Italy}),\\
+        &\quad\quad(\text{Dedekind}, \text{Germany}), (\text{Euler}, \text{Switzerland}),\\
+        &\quad\quad(\text{Noether}, \text{Italy}),(\text{Zassenhaus}, \text{Germany})\}.
+    \end{align*}
+
+    We can show this relation diagrammatically.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=8cm]{images/part-0/relations/is-born-in.png}
+    \end{figure}
+
+    % TODO: Continue
+\end{example}
+
+% TODO: Continue
 
 % Introduce relations and relations on a set
-% Do we include inverse relations?
+% TODO: Do we include inverse relations?
 
 \section{Equivalence Relations}
 TODO: Add

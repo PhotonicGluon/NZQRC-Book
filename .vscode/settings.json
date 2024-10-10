@@ -8,10 +8,12 @@
         "lettrine",
         "magics",
         "manim",
+        "Noether",
         "nzqrc",
         "poset",
         "posets",
-        "typer"
+        "typer",
+        "Zassenhaus"
     ],
     "files.exclude": {
         "**/*-blx.bib": true,
