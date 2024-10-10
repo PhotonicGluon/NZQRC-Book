@@ -9,9 +9,11 @@ packages = [{ include = "image_generation" }]
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"
 
-[tool.poetry.group.main.dependencies]
 typer = "^0.12.5"
 pillow = "^10.4.0"
+
+[tool.poetry.group.manim]
+optional = true
 
 [tool.poetry.group.manim.dependencies]
 manim = "~0.18.1"

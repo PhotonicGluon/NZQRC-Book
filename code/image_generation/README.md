@@ -1,12 +1,22 @@
 # Image Generation
 
+## Setup
+
+Install the manim dependencies by running
+
+```bash
+poetry install --with manim
+```
+
+## Main Operations
+
 For all of the following, make sure the commands are running in this folder. You can ensure that by running
 
 ```bash
 cd code/image-generation
 ```
 
-## Running Manim Notebook/Lab Server
+### Running Manim Notebook/Lab Server
 
 For running Jupyter notebook with Manim:
 
@@ -20,7 +30,7 @@ For running Jupyter lab with Manim:
 ipylab
 ```
 
-## Moving Generated Images
+### Moving Generated Images
 
 Run:
 ```bash
