@@ -20,6 +20,12 @@ manim = "~0.18.1"
 jupyter = "^1.1.1"
 notebook = "^7.2.2"
 
+[tool.poetry.group.qr]
+optional = true
+
+[tool.poetry.group.qr.dependencies]
+qrcode = {extras = ["pil"], version = "^8.0"}
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
