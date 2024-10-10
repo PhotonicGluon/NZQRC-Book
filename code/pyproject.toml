@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "nzqrc-img-gen"
+name = "nzqrc-code"
 version = "0.1.0"
-description = "Code that generates (most of) the images in the book."
+description = "Companion code for the book."
 authors = ["PhotonicGluon <25820201+PhotonicGluon@users.noreply.github.com>"]
 readme = "README.md"
-packages = [{ include = "src" }]
+packages = [{ include = "image_generation" }]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"

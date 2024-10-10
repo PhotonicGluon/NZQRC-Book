@@ -3,7 +3,7 @@
 For all of the following, make sure the commands are running in this folder. You can ensure that by running
 
 ```bash
-cd image-generation
+cd code/image-generation
 ```
 
 ## Running Manim Notebook/Lab Server

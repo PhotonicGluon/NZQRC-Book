@@ -7,7 +7,7 @@ from src.trim_images import trim_images
 
 
 MEDIA_FOLDER = "media/images/image-generation"
-BOOK_IMAGES_FOLDER = "../book/images"
+BOOK_IMAGES_FOLDER = "../../book/images"
 
 IMAGE_REGEX = r"(?P<part>\d)-(?P<chapter>[a-z]+)-(?P<name>[\w\-]+\.png)"
 
@@ -18,13 +18,9 @@ app = typer.Typer()
 def transfer_images_cmd(
     copy_images: Annotated[
         bool,
-        typer.Option(
-            help="If true, will make a copy of the images. If false, will move the images instead."
-        ),
+        typer.Option(help="If true, will make a copy of the images. If false, will move the images instead."),
     ] = True,
-    dry_run: Annotated[
-        bool, typer.Option(help="Whether to dry run the moving of images.")
-    ] = False,
+    dry_run: Annotated[bool, typer.Option(help="Whether to dry run the moving of images.")] = False,
     silent: Annotated[bool, typer.Option(help="Whether to silence info.")] = False,
 ):
     """

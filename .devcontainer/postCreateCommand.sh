@@ -2,9 +2,9 @@
 
 # Set up poetry
 echo "export PYTHON_PATH='$PYTHON_PATH:$PWD'" >> ~/.zshrc
-poetry install --directory=image-generation
+poetry install --directory=code
 
-export temporary=$(cd image-generation && poetry env info --path)
+export temporary=$(cd code && poetry env info --path)
 echo "export PATH='$temporary/bin:$PATH'" >> ~/.zshrc
 
 # Set up aliases
