@@ -30,6 +30,14 @@ For running Jupyter lab with Manim:
 ipylab
 ```
 
+### Trimming Generated Images
+
+Run:
+
+```bash
+poetry run python image_operations.py trim-images -o media/images/trimmed
+```
+
 ### Moving Generated Images
 
 Run:
@@ -41,4 +49,10 @@ For doing a dry run before the actual move:
 
 ```bash
 poetry run python image_operations.py transfer_images --dry-run
+```
+
+For moving trimmed images:
+
+```bash
+poetry run python image_operations.py transfer-images --media-folder media/images/trimmed
 ```
