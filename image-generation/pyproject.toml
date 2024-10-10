@@ -3,7 +3,8 @@ name = "nzqrc-img-gen"
 version = "0.1.0"
 description = "Code that generates (most of) the images in the book."
 authors = ["PhotonicGluon <25820201+PhotonicGluon@users.noreply.github.com>"]
-package-mode = false
+readme = "README.md"
+packages = [{ include = "src" }]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"

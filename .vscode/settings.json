@@ -33,4 +33,7 @@
         "Cipher": true
     },
     "editor.wordWrap": "bounded",
+    "autoDocstring.docstringFormat": "google-notypes",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
 }

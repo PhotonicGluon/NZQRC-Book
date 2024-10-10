@@ -1,34 +1,36 @@
 import os
 import re
 import shutil
-from typing_extensions import Annotated
 
 from rich import print
-import typer
 
-
-MEDIA_FOLDER = "media/images/image-generation"
-BOOK_IMAGES_FOLDER = "../book/images"
 
 IMAGE_REGEX = r"(?P<part>\d)-(?P<chapter>[a-z]+)-(?P<name>[\w\-]+\.png)"
 
 
-def main(
-    copy_images: Annotated[
-        bool, typer.Option(help="If true, will make a copy of the images. If false, will move the images instead.")
-    ] = True,
-    dry_run: Annotated[bool, typer.Option(help="Whether to dry run the moving of images.")] = False,
-    silent: Annotated[bool, typer.Option(help="Whether to silence info.")] = False
+def transfer_images(
+    media_folder: str,
+    book_image_folder: str,
+    copy_images: bool = True,
+    dry_run: bool = False,
+    silent: bool = False,
 ):
     """
     Transfers images from the media folder into the actual book's folder.
+
+    Args:
+        media_folder: media folder that contains all the images
+        book_image_folder: book's actual image folder
+        copy_images: whether to copy the images or just move them. Defaults to True.
+        dry_run: whether to perform a dry run. Defaults to False.
+        silent: whether extra output should be made. Defaults to False.
     """
 
     if dry_run:
         print("[yellow]Dry run mode.[/yellow]")
 
     # Get all images
-    images = os.listdir(MEDIA_FOLDER)
+    images = os.listdir(media_folder)
 
     for image in images:
         match = re.match(IMAGE_REGEX, image)
@@ -37,7 +39,7 @@ def main(
         part, chapter, name = match.groups()
 
         # Create appropriate folder
-        folder = os.path.join(BOOK_IMAGES_FOLDER, f"part-{part}", chapter)
+        folder = os.path.join(book_image_folder, f"part-{part}", chapter)
 
         if not dry_run:
             os.makedirs(folder, exist_ok=True)
@@ -45,7 +47,7 @@ def main(
             print(f"Created folder [cyan]'{folder}'[/cyan]")
 
         # Transfer image
-        src = os.path.join(MEDIA_FOLDER, image)
+        src = os.path.join(media_folder, image)
         dst = os.path.join(folder, name)
         if copy_images:
             if not dry_run:
@@ -59,7 +61,3 @@ def main(
                 print(f"Moved [cyan]'{src}'[/cyan] to [cyan]'{dst}'[/cyan]")
 
     print("[green]Done![/green]")
-
-
-if __name__ == "__main__":
-    typer.run(main)

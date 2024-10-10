@@ -24,11 +24,11 @@ ipylab
 
 Run:
 ```bash
-poetry run python transfer_images.py
+poetry run python image_operations.py transfer_images
 ```
 
 For doing a dry run before the actual move:
 
 ```bash
-poetry run python transfer_images.py --dry-run
+poetry run python image_operations.py transfer_images --dry-run
 ```
