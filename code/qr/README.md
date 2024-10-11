@@ -8,16 +8,30 @@ Install the QR dependencies by running
 poetry install --with qr
 ```
 
-## Main Operation
+## Generating QR Images
 
 Run:
 
 ```bash
-poetry run python main.py
+poetry run python main.py generate 
 ```
 
 To see all available options:
 
 ```bash
-poetry run python main.py --help
+poetry run python main.py generate --help
+```
+
+## Transferring QR Images
+
+Run:
+
+```bash
+poetry run python main.py transfer
+```
+
+To see all available options:
+
+```bash
+poetry run python main.py transfer --help
 ```

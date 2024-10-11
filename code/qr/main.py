@@ -1,3 +1,7 @@
+import os
+from pathlib import Path
+import re
+import shutil
 from typing import Tuple
 
 import typer
@@ -6,11 +10,17 @@ from typing_extensions import Annotated
 
 from qr.src.ops import create_split_qr
 
+IMAGE_FILE_REGEX = r"(?P<part>\d).png"
 MESSAGE_FILE = "Message.txt"
+
 IMAGES_FOLDER = "images"
+BOOK_IMAGES_FOLDER = "../../book/images"
+
+app = typer.Typer()
 
 
-def main(
+@app.command(name="generate")
+def generate(
     split: Annotated[Tuple[int, int], typer.Option(help="Number of splits along width and height respectively.")],
     box_size: Annotated[int, typer.Option(help="Side length of each 'box' in the QR code, in pixels.")] = 10,
     version_penalty: Annotated[
@@ -34,7 +44,13 @@ def main(
 
     # Generate the splitted QR code
     images = create_split_qr(
-        message, split, box_size=box_size, version_penalty=version_penalty, resize=resize, invert=invert, verbose=verbose
+        message,
+        split,
+        box_size=box_size,
+        version_penalty=version_penalty,
+        resize=resize,
+        invert=invert,
+        verbose=verbose,
     )
 
     # Save them
@@ -44,5 +60,60 @@ def main(
     print("[green]Done![/green]")
 
 
+@app.command(name="transfer")
+def transfer(
+    images_folder: Annotated[
+        Path,
+        typer.Option(help="Folder containing the images to transfer.", exists=True, file_okay=False, dir_okay=True),
+    ] = IMAGES_FOLDER,
+    book_images_folder: Annotated[
+        Path,
+        typer.Option(help="Folder containing images for the book.", exists=True, file_okay=False, dir_okay=True),
+    ] = BOOK_IMAGES_FOLDER,
+    copy_images: Annotated[
+        bool,
+        typer.Option(help="Whether to copy the images. Otherwise will move the images instead."),
+    ] = True,
+    final_name: Annotated[str, typer.Option(help="Name that the files should have at the destination.")] = "qr.png",
+    dry_run: Annotated[bool, typer.Option(help="Whether to dry run the moving of images.")] = False,
+    silent: Annotated[bool, typer.Option(help="Whether to silence info.")] = False,
+):
+    if dry_run:
+        print("[yellow]Dry run mode.[/yellow]")
+
+    # Get all images
+    files = os.listdir(images_folder)
+
+    for file in files:
+        match = re.match(IMAGE_FILE_REGEX, file)
+        if not match:
+            continue
+        part = match.group("part")
+
+        # Create appropriate folder
+        folder = os.path.join(book_images_folder, f"part-{part}")
+
+        if not dry_run and not os.path.exists(folder):
+            os.makedirs(folder, exist_ok=True)
+            if not silent:
+                print(f"Created folder [cyan]'{folder}'[/cyan]")
+
+        # Transfer image
+        src = os.path.join(images_folder, file)
+        dst = os.path.join(folder, final_name)
+        if copy_images:
+            if not dry_run:
+                shutil.copy(src, dst)
+            if not silent:
+                print(f"Copied [cyan]'{src}'[/cyan] to [cyan]'{dst}'[/cyan]")
+        else:
+            if not dry_run:
+                shutil.move(src, dst)
+            if not silent:
+                print(f"Moved [cyan]'{src}'[/cyan] to [cyan]'{dst}'[/cyan]")
+
+    print("[green]Done![/green]")
+
+
 if __name__ == "__main__":
-    typer.run(main)
+    app()
