@@ -28,8 +28,22 @@ def create_qr(text: str, version: Optional[int] = None, box_size: int = 10, bord
     return qr
 
 
+def find_min_qr_version(text: str) -> int:
+    """
+    Finds the minimum QR version to store the data.
+
+    Args:
+        text: text to encode.
+
+    Returns:
+        minimum QR code version.
+    """
+
+    return create_qr(text, version=None, box_size=1).version
+
+
 def find_best_qr_version(
-    split: Tuple[int, int], min_version: int = 1, version_penalty: float = 0.25
+    split: Tuple[int, int], min_version: int = 1, version_penalty: float = 0.25, verbose: bool = False
 ) -> Tuple[int, int]:
     """
     Finds the best QR version for the best looking QR code split.
@@ -39,6 +53,7 @@ def find_best_qr_version(
         min_version: minimum QR code version. Defaults to 1.
         version_penalty: penalty to apply for versions. Higher versions get penalised more. Defaults
             to 0.25.
+        verbose: Whether extra information should be printed to the screen. Defaults to False.
 
     Returns:
         a tuple. First integer is the best QR code version, second integer is the ideal block length
@@ -73,6 +88,9 @@ def find_best_qr_version(
         error = (part_width - last_width) / part_width + (part_height - last_height) / part_height
         error *= 1 + version_penalty * version
 
+        if verbose:
+            print(f"- V{version} has error {error}")
+
         if error < min_error:
             min_error = error
             best_version = version
@@ -87,6 +105,7 @@ def create_split_qr(
     box_size: int = 10,
     version_penalty: float = 0.25,
     resize: bool = False,
+    verbose: bool = False,
 ) -> List[Image.Image]:
     """
     Generates a splitted QR code.
@@ -99,19 +118,23 @@ def create_split_qr(
             to 0.25.
         resize: whether to resize smaller parts to be the same size as the bigger parts. Defaults to
             False.
+        verbose: Whether extra information should be printed to the screen. Defaults to False.
 
     Returns:
         list of parts of the QR code.
     """
 
-    # Find the minimum version needed
-    qr = create_qr(text, version=None, box_size=1)
-    min_version = qr.version
+    # Find the minimum version
+    min_version = find_min_qr_version(text)
+    if verbose:
+        print("Minimum QR version:", min_version)
 
     # Find the best version
     version, ideal_length_in_boxes = find_best_qr_version(
-        split, min_version=min_version, version_penalty=version_penalty
+        split, min_version=min_version, version_penalty=version_penalty, verbose=verbose
     )
+    if verbose:
+        print("Best QR version:   ", version)
 
     # Generate the actual QR code
     qr = create_qr(text, version=version, box_size=box_size, border=0)
