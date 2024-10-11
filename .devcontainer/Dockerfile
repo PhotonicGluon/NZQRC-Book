@@ -12,7 +12,8 @@ RUN apt-get install -y \
 RUN apt-get install -y \
     libcairo2-dev \
     libpango1.0-dev \
-    ffmpeg
+    ffmpeg \
+    dvisvgm
 
 # Install poetry
 RUN pip install poetry --break-system-packages

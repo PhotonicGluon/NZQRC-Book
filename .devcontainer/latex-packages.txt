@@ -31,6 +31,8 @@ multirow
 needspace
 parskip
 pgf
+preview
+standalone
 tex-gyre
 thmtools
 tocloft
