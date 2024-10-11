@@ -1,3 +1,3 @@
 # Companion Code
 
-TODO: Add
+This folder contains companion code for the book.

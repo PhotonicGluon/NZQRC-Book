@@ -19,8 +19,8 @@
             "extensions": [
                 "james-yu.latex-workshop",
                 "ms-python.black-formatter",
-                "ms-python.python",
                 "ms-python.isort",
+                "ms-python.python",
                 "njpwerner.autodocstring",
                 "streetsidesoftware.code-spell-checker",
                 "tamasfe.even-better-toml",
