@@ -1,7 +1,7 @@
-from typing_extensions import Annotated
 from pathlib import Path
 
 import typer
+from typing_extensions import Annotated
 
 from image_generation.src.transfer_images import transfer_images
 from image_generation.src.trim_images import trim_images

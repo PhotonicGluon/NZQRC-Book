@@ -3,7 +3,7 @@ from math import lcm
 from typing import List, Optional, Tuple
 
 import qrcode
-from PIL import Image
+from PIL import Image, ImageOps
 
 from qr.qr_consts import VERSION_LENGTHS
 
@@ -105,6 +105,7 @@ def create_split_qr(
     box_size: int = 10,
     version_penalty: float = 0.25,
     resize: bool = False,
+    invert: bool = False,
     verbose: bool = False,
 ) -> List[Image.Image]:
     """
@@ -118,6 +119,7 @@ def create_split_qr(
             to 0.25.
         resize: whether to resize smaller parts to be the same size as the bigger parts. Defaults to
             False.
+        invert: whether to invert the colours of the QR code. Defaults to False.
         verbose: Whether extra information should be printed to the screen. Defaults to False.
 
     Returns:
@@ -153,6 +155,8 @@ def create_split_qr(
         im_part = im.crop(box)
         if resize:
             im_part = im_part.resize((part_width, part_height))
+        if invert:
+            im_part = ImageOps.invert(im_part)
         parts.append(im_part)
 
     return parts
