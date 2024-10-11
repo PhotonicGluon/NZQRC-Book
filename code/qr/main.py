@@ -4,7 +4,7 @@ import typer
 from rich import print
 from typing_extensions import Annotated
 
-from qr.qr_ops import create_split_qr
+from qr.src.ops import create_split_qr
 
 MESSAGE_FILE = "Message.txt"
 IMAGES_FOLDER = "images"

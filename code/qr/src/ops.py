@@ -5,7 +5,7 @@ from typing import List, Optional, Tuple
 import qrcode
 from PIL import Image, ImageOps
 
-from qr.qr_consts import VERSION_LENGTHS
+from qr.src.consts import VERSION_LENGTHS
 
 
 def create_qr(text: str, version: Optional[int] = None, box_size: int = 10, border: int = 0) -> qrcode.QRCode:
