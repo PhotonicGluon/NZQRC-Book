@@ -106,6 +106,7 @@ def create_split_qr(
     version_penalty: float = 0.25,
     resize: bool = False,
     invert: bool = False,
+    transparent: bool = True,
     verbose: bool = False,
 ) -> List[Image.Image]:
     """
@@ -120,6 +121,7 @@ def create_split_qr(
         resize: whether to resize smaller parts to be the same size as the bigger parts. Defaults to
             False.
         invert: whether to invert the colours of the QR code. Defaults to False.
+        transparent: whether to make the *white* parts of the image transparent. Defaults to True.
         verbose: Whether extra information should be printed to the screen. Defaults to False.
 
     Returns:
@@ -143,7 +145,20 @@ def create_split_qr(
     im: Image.Image = qr.make_image()
     orig_length = im.size[0]
 
-    # Then get splitted images
+    # Invert images, if specified
+    if invert:
+        im = ImageOps.invert(im)
+    
+    # Handle transparency, if specified
+    if transparent:
+        im = im.convert("RGBA")
+        for x in range(im.size[0]):
+            for y in range(im.size[1]):
+                pixel = im.getpixel((x, y))
+                if pixel == (255,255,255,255):
+                    im.putpixel((x, y), (0, 0, 0, 0))
+
+    # Then generate splitted images
     ideal_length = ideal_length_in_boxes * box_size
     part_width = ideal_length // split[0]
     part_height = ideal_length // split[1]
@@ -155,8 +170,6 @@ def create_split_qr(
         im_part = im.crop(box)
         if resize:
             im_part = im_part.resize((part_width, part_height))
-        if invert:
-            im_part = ImageOps.invert(im_part)
         parts.append(im_part)
 
     return parts

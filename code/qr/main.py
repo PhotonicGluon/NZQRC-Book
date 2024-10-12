@@ -31,6 +31,7 @@ def generate(
     ] = 0.25,
     resize: Annotated[bool, typer.Option(help="Whether to resize the splitted images.")] = False,
     invert: Annotated[bool, typer.Option(help="Whether to invert the splitted images.")] = False,
+    transparent: Annotated[bool, typer.Option(help="Whether to make the *white* parts of the image transparent.")] = True,
     verbose: Annotated[bool, typer.Option(help="Whether to output extra information.")] = False,
 ):
     """
@@ -50,6 +51,7 @@ def generate(
         version_penalty=version_penalty,
         resize=resize,
         invert=invert,
+        transparent=transparent,
         verbose=verbose,
     )
 
