@@ -56,3 +56,11 @@ For moving trimmed images:
 ```bash
 poetry run python main.py transfer-images --media-folder media/images/trimmed
 ```
+
+### Do-All
+
+Run:
+
+```bash
+poetry run python main.py do-all
+```

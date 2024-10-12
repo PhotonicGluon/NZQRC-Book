@@ -36,10 +36,10 @@ def transfer_images(
         # Create appropriate folder
         folder = os.path.join(book_image_folder, f"part-{part}", chapter)
 
-        if not dry_run:
+        if not dry_run and not os.path.exists(folder):
             os.makedirs(folder, exist_ok=True)
-        if not silent:
-            print(f"Created folder [cyan]'{folder}'[/cyan]")
+            if not silent:
+                print(f"Created folder [cyan]'{folder}'[/cyan]")
 
         # Transfer image
         src = os.path.join(media_folder, image)
