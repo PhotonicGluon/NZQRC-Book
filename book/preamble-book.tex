@@ -116,8 +116,7 @@
 \renewcommand{\qedsymbol}{\qedproof}  % Actually changes the QED symbol
 
 % Quote definitions
-\newcommand{\quoteattr}[4][0.15cm]{
-    \vspace{-0.35cm}
+\newcommand{\quoteattr}[4][0.5cm]{
     \vspace{#1}
     \begin{center}
         \parbox{9cm}{
@@ -247,7 +246,9 @@
     \thispagestyle{partpage}
     \begin{center}
         \vspace*{\fill}
+        \hrulefill
         #2
+        \hrule
         \vspace*{\fill}
     \end{center}
 }
