@@ -57,9 +57,6 @@
 \newlength{\normalparindent}
 \setlength{\normalparindent}{\parindent}
 
-% Heading format
-\setkomafont{sectioning}{\sffamily\bfseries\boldmath}
-
 %=========== (Re)definitions =============
 % Lettrine configuration
 \makeatletter
@@ -160,11 +157,14 @@
 
 \input{../symbols.tex}
 
-%======== Custom Chapter Styling =========
+%===== Custom Section Stuff Styling ======
 % Fix part numbering
 \renewcommand*{\thepart}{\ZeroRoman{part}}
 
 \makeatletter
+% Set section format
+\setkomafont{sectioning}{\sffamily\bfseries\boldmath}
+
 % Set chapter page format
 \renewcommand{\chaptermark}[1]{
     \markboth{\if@mainmatter\chapapp~\thechapter.\ \fi#1}{}
@@ -210,28 +210,37 @@
 \newcommand*{\Chapter}[1]{\cleardoubleoddpage\chapter{#1}}
 
 % Set part page format
-\newcommand{\partkernlen}{2pt}
+\setkomafont{part}{\fontsize{36pt}{10pt}\selectfont}
+
+\newcommand{\partkernlen}{3pt}
 \renewcommand*{\partformat}{
-    {\fontsize{28pt}{0pt}\selectfont \MakeUppercase{P{\kern\partkernlen}A{\kern\partkernlen}R{\kern\partkernlen}T~~~\thepart}}
+    {
+        \fontsize{20pt}{0pt}\selectfont
+        \MakeUppercase{
+            P{\kern\partkernlen}%
+            A{\kern\partkernlen}%
+            R{\kern\partkernlen}%
+            T%
+            ~~~\thepart
+        }%
+    }
 }
 
 \renewcommand*{\partlineswithprefixformat}[3]{
     \Ifstr{#1}{part}{
         \thispagestyle{partpage}
-        \Ifstr{#2}{}{  % Doesn't have a part title
-            \begin{mdframed}[linewidth=2pt,roundcorner=20pt,backgroundcolor=none]
-                \centering#3
-            \end{mdframed}
-        }{
-            \begin{mdframed}[linewidth=2pt,roundcorner=20pt,backgroundcolor=none]
-                \begin{center}
-                    \vspace{7.5px}
-                    #2
-                    \vspace{-25px}
-                    #3
-                \end{center}
-            \end{mdframed}
-        }
+        \begin{raggedleft}
+            \Ifstr{#2}{}{
+                % No part title; no need to modify
+            }{
+                % Have part title
+                #2
+                \vspace{-5mm}
+            }
+            #3
+        \end{raggedleft}
+
+        
     }{#2#3}
 }
 
