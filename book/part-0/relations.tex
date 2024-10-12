@@ -41,9 +41,59 @@ This is clearly way too abstract of a definition to see how this captures the id
     On the left is the set $M$, and on the right is the set $C$. The arrows shows how they are related. For example, the arrow from ``Peano'' points to ``Italy'' since Giuseppe Peano lived in Italy. Notice that Bertrand Russell did not live in any of the countries in $C$, and that no mathematician in $M$ lived in France.
 \end{example}
 
-% TODO: Continue
+\begin{example}[The ``is less than'' Relation]
+    Let $A = \{0, 1, 2\}$ and $B = \{1, 2, 3\}$. Define the relation $R$ such that
+    \[
+        x\mathrel{R}y \iff x < y
+    \]
+    for all $x \in A$ and $y \in B$. Then $0\mathrel{R}1$, $0\mathrel{R}2$, $0\mathrel{R}3$, $1\mathrel{R}2$, $1\mathrel{R}3$, and $2\mathrel{R}3$. However we see $1 \not\mathrel{R} 1$, $2 \not\mathrel{R} 1$, and $2 \not\mathrel{R} 2$. Thus
+    \[
+        R = \{(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)\}.
+    \]
 
-% Introduce relations and relations on a set
+    Again, we may show this relation diagrammatically.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=4cm]{images/part-0/relations/less-than-relation.png}
+        \caption{Arrow Diagram of $R$}
+    \end{figure}
+\end{example}
+
+Relations may also be performed on the same set.
+
+\begin{definition}[Relation on a Set]
+    A \term{relation $R$ on a set $A$}\index{relation!on a set} is a relation from $A$ to $A$. That is, $R$ is a subset of $A^2$.
+\end{definition}
+
+\begin{example}[Relation on a Set]
+    Let $A = \{3, 4, 5, 6, 7\}$ and define a relation $R$ on $A$ such that
+    \[
+        x\mathrel{R}y \iff x - y \text{ is an even number}
+    \]
+    for all $x, y \in A$. Then one sees that
+    \begin{align*}
+        R &= \{(3, 3), (3, 5), (3, 7), (4, 4), (4, 6), (5, 3), (5, 5),\\
+        &\quad\quad(5, 7), (6, 4), (6, 6), (7, 3), (7, 5), (7, 7)\}.
+    \end{align*}
+
+    We can, of course, show this relationship using the standard arrow diagram, but we can also use a directed graph (a graph with directed edges) to represent it.
+
+    \begin{figure}[H]
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3.5cm]{images/part-0/relations/relation-on-a-set_arrow-diagram.png}
+            \caption{Arrow Diagram}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3.5cm]{images/part-0/relations/relation-on-a-set_directed-graph.png}
+            \caption{Directed Graph}
+        \end{subfigure}
+        \caption{Diagrammatic Representations of $R$} 
+    \end{figure}
+\end{example}
+
 % TODO: Do we include inverse relations?
 
 \section{Equivalence Relations}
