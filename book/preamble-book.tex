@@ -61,23 +61,6 @@
 \setkomafont{sectioning}{\sffamily\bfseries\boldmath}
 
 %=========== (Re)definitions =============
-% Part page configuration
-\let\oldpart\part
-\renewcommand*{\part}[1]{\cleardoubleoddpage\oldpart{#1}\cleardoubleemptypage}
-\newcommand{\unnumberedpart}[1]{
-    \cleardoubleoddpage
-    \addcontentsline{toc}{part}{#1}
-    \oldpart*{#1}
-    \cleardoubleemptypage
-}
-
-\makeatletter
-\patchcmd{\set@@@@preamble}{#6}{\setlength{\parindent}{\normalparindent}#6}{}{}  % Make paragraph indent correctly for part preambles
-\makeatother
-
-% Chapter page configuration
-\newcommand*{\Chapter}[1]{\cleardoubleoddpage\chapter{#1}}
-
 % Lettrine configuration
 \makeatletter
 \define@key{lettrine-key}{lines}{\def\thislines{#1}}
@@ -221,6 +204,8 @@
     \vspace{-3mm}
 }
 
+\newcommand*{\Chapter}[1]{\cleardoubleoddpage\chapter{#1}}
+
 % Set part page format
 \newcommand{\partkernlen}{2pt}
 \renewcommand*{\partformat}{
@@ -245,6 +230,17 @@
             \end{mdframed}
         }
     }{#2#3}
+}
+
+\patchcmd{\set@@@@preamble}{#6}{\setlength{\parindent}{\normalparindent}#6}{}{}  % Make paragraph indent correctly for part preambles
+
+\let\oldpart\part
+\renewcommand*{\part}[1]{\cleardoubleoddpage\oldpart{#1}\cleardoubleemptypage}
+\newcommand{\unnumberedpart}[1]{
+    \cleardoubleoddpage
+    \addcontentsline{toc}{part}{#1}
+    \oldpart*{#1}
+    \cleardoubleemptypage
 }
 
 \makeatother
