@@ -14,29 +14,31 @@ A high-level explanation of a relation is simply a way to `create a connection' 
 
 This is clearly way too abstract of a definition to see how this captures the idea of `creating connections' between set elements, so let's take a look at some concrete examples.
 
-\begin{example}[The ``Is Born In'' Relation]  % TODO: Maybe change to "has lived in" for a better example of general relations
+\begin{example}[The ``lived in'' Relation]
     Let $M$, a subset of the set of all mathematicians, be
     \[
-        \{\text{Cardano}, \text{Lagrange}, \text{Dedekind}, \text{Euler}, \text{Noether}, \text{Zassenhaus}\}
+        \{\text{Peano}, \text{Cantor}, \text{Dedekind}, \text{Russell}, \text{Euler}, \text{Hilbert}\}
     \]
     and let $C$, a subset of the set of all countries, be
     \[
-        \{\text{Italy}, \text{Switzerland}, \text{Germany}, \text{England}\}.
+        \{\text{Italy}, \text{Switzerland}, \text{Russia}, \text{Germany}, \text{France}\}.
     \]
-    Then we can define $R$ to be the ``is born in'' relation. In particular,
+    Then we can define $R$ to be the ``lived in'' relation. In particular,
     \begin{align*}
-        R &= \{(\text{Cardano}, \text{Italy}),(\text{Lagrange}, \text{Italy}),\\
-        &\quad\quad(\text{Dedekind}, \text{Germany}), (\text{Euler}, \text{Switzerland}),\\
-        &\quad\quad(\text{Noether}, \text{Italy}),(\text{Zassenhaus}, \text{Germany})\}.
+        R &= \{(\text{Peano}, \text{Italy}), (\text{Cantor}, \text{Russia}),\\
+        &\quad\quad(\text{Cantor}, \text{Germany}), (\text{Dedekind}, \text{Germany}),\\
+        &\quad\quad(\text{Euler}, \text{Switzerland}), (\text{Euler}, \text{Germany}),\\
+        &\quad\quad(\text{Euler}, \text{Russia}), (\text{Hilbert}, \text{Germany})\}.
     \end{align*}
 
     We can show this relation diagrammatically.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=6cm]{images/part-0/relations/is-born-in.png}
+        \includegraphics[width=6cm]{images/part-0/relations/lived-in-relation.png}
+        \caption{Arrow Diagram of $R$}
     \end{figure}
 
-    % TODO: Continue
+    On the left is the set of all mathematicians, and on the right is the set of all countries. The arrows shows how they are related. For example, the arrow from ``Peano'' points to ``Italy'' since Giuseppe Peano lived in Italy. Notice that Bertrand Russell did not live in any of the countries in $C$, and that no mathematician in $M$ lived in France.
 \end{example}
 
 % TODO: Continue
