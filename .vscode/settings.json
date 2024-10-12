@@ -5,6 +5,7 @@
         "getbbox",
         "getpixel",
         "Hasse",
+        "imgen",
         "ipylab",
         "ipynb",
         "lettrine",

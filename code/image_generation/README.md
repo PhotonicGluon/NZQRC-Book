@@ -2,10 +2,10 @@
 
 ## Setup
 
-Install the manim dependencies by running
+Install the image generation dependencies by running
 
 ```bash
-poetry install --with manim
+poetry install --with imgen
 ```
 
 ## Main Operations
