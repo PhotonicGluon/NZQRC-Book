@@ -1,19 +1,24 @@
+import os
+import shutil
 from pathlib import Path
 
 import typer
+from rich import print
 from typing_extensions import Annotated
 
+from image_generation.src.execute_notebooks import execute_notebooks
 from image_generation.src.transfer_images import transfer_images
 from image_generation.src.trim_images import trim_images
-
 
 MEDIA_FOLDER = "media/images/image_generation"
 BOOK_IMAGES_FOLDER = "../../book/images"
 
+ALL_NOTEBOOKS = ["part-0.ipynb"]
+
 app = typer.Typer()
 
 
-@app.command(name="transfer-images")
+@app.command(name="transfer")
 def transfer_images_cmd(
     media_folder: Annotated[
         Path,
@@ -37,7 +42,7 @@ def transfer_images_cmd(
     transfer_images(media_folder, book_images_folder, copy_images, dry_run, silent)
 
 
-@app.command(name="trim-images")
+@app.command(name="trim")
 def trim_images_cmd(
     media_folder: Annotated[
         Path,
@@ -69,6 +74,75 @@ def trim_images_cmd(
         add_excess_of=add_excess_of,
         silent=silent,
     )
+
+
+@app.command("do-all")
+def do_all_cmd(
+    media_folder: Annotated[
+        Path,
+        typer.Option(help="Folder containing the images.", dir_okay=True),
+    ] = MEDIA_FOLDER,
+    trimmed_images_folder: Annotated[
+        Path,
+        typer.Option(
+            "--trimmed-images-folder",
+            "-t",
+            help="Folder to place the trimmed images.",
+            dir_okay=True,
+        ),
+    ] = f"{MEDIA_FOLDER}/../trimmed",
+    book_images_folder: Annotated[
+        Path,
+        typer.Option(
+            "--output-folder",
+            "-o",
+            help="Folder containing subfolders for the images.",
+            exists=True,
+            file_okay=False,
+            dir_okay=True,
+        ),
+    ] = BOOK_IMAGES_FOLDER,
+):
+    """
+    A "do-all" command. Executes all notebooks, trims images, and then transfers images to the book
+    folder.
+    """
+
+    # Clear the media folder
+    if os.path.exists(media_folder):
+        print(f"[yellow]Warning: this operation will delete the media folder '{media_folder}'[/yellow]")
+        print("Press ENTER to proceed.", end="")
+        input()
+
+        shutil.rmtree(media_folder, ignore_errors=True)
+    
+    os.makedirs(media_folder, exist_ok=True)
+
+    # Execute all notebooks
+    print("[cyan]Executing notebooks...[/cyan]")
+    execute_notebooks(*ALL_NOTEBOOKS)
+
+    # Trim images
+    print("[cyan]Trimming images...[/cyan]")
+    trim_images(
+        media_folder,
+        trimmed_images_folder,
+        throw_if_cannot_trim=False,
+        add_excess_of=0,
+        silent=False,
+    )
+
+    # Transfer images
+    print("[cyan]Transferring images...[/cyan]")
+    transfer_images(
+        trimmed_images_folder,
+        book_images_folder,
+        copy_images=True,
+        dry_run=False,
+        silent=False,
+    )
+
+    print("[b green]All done![/b green]")
 
 
 if __name__ == "__main__":
