@@ -1,2 +1,1 @@
-from .remove_pdftex_comments import remove_pdftex_comments
-from .remove_trailing_whitespace import strip_trailing_whitespace
+from .whitespace import strip_trailing_whitespace
