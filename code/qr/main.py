@@ -31,7 +31,9 @@ def generate(
     ] = 0.25,
     resize: Annotated[bool, typer.Option(help="Whether to resize the splitted images.")] = False,
     invert: Annotated[bool, typer.Option(help="Whether to invert the splitted images.")] = False,
-    transparent: Annotated[bool, typer.Option(help="Whether to make the *white* parts of the image transparent.")] = True,
+    transparent: Annotated[
+        bool, typer.Option(help="Whether to make the *white* parts of the image transparent.")
+    ] = True,
     verbose: Annotated[bool, typer.Option(help="Whether to output extra information.")] = False,
 ):
     """
@@ -41,7 +43,11 @@ def generate(
     # Load the message first
     # with open(MESSAGE_FILE) as f:
     #     message = f.read()
-    message = """4ZZToscbkyzUCPSAlTguJdRJ0xTVRmJ8KCoSLJGSrzmeATkAIlehHEQjdt0ErpS8cOZ514vAvq6YUkdRVr9TJCGUaP2QaeXMtHFwRReHa6F65ETfzOefSNGxwlgbW4kqelUbsQAN0rXESN7PmQ84mblgQuLIfq4GybWk7iz9XFTAmD86F3rQxH3kkxmwkp7rB919sfOPwSz8qvzvRHIds2YuC44cR1FerCqUNEmYl13gIlcyLoQj9Sd1cFq8PUC3ad3SZqM1lHAEg7GOKEL3oE2fUyIjWFVwrViBHGzfjVtwMr4dHyUTBCj93y1MpKF4ZWPrgGTc37io14IRm6zRyCfZAVUwNOxj7KxhuIjQzUO6XOlZugxK"""  # TODO: Remove
+    message = "4ZZToscbkyzUCPSAlTguJdRJ0xTVRmJ8KCoSLJGSrzmeATkAIlehHEQjdt0ErpS8cOZ514vAvq6YUkd"  # TODO: Remove
+
+    # Ensure that the output folder is present
+    if not os.path.exists(IMAGES_FOLDER):
+        os.makedirs(IMAGES_FOLDER)
 
     # Generate the splitted QR code
     images = create_split_qr(
