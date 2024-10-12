@@ -244,19 +244,23 @@
 
     % Second page, containing the quote
     \thispagestyle{partpage}
+    \vspace*{\fill}
+    \vspace{-2cm}
     \begin{center}
-        \vspace*{\fill}
         \hrulefill
         #2
         \hrule
-        \vspace*{\fill}
     \end{center}
+    \vspace*{\fill}
+    \cleardoubleemptypage
+    \pagecolor{white}
 }
 \newcommand{\unnumberedpart}[1]{
     \cleardoubleoddpage
     \addcontentsline{toc}{part}{#1}
     \part*{#1}
     \cleardoubleemptypage
+    \pagecolor{white}
 }
 
 \makeatother
