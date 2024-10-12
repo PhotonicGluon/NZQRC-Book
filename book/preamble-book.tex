@@ -150,6 +150,11 @@
 \newcommand{\draftstartmark}{\fancyfoot[EC,OC]{\textsc{Work In Progress~\Ifstr{\buildnumber}{}{}{(Build \buildnumber)}}}}
 \newcommand{\draftendmark}{\fancyfoot[EC,OC]{}}
 
+% Miscellaneous commands
+\makeatletter
+\renewcommand*{\hrulefill}[1][0.4pt]{\leavevmode\leaders\hrule height #1\hfill\kern\z@}
+\makeatother
+
 %============ Environments ===============
 \input{environments.tex}
 
@@ -224,9 +229,7 @@
             \end{mdframed}
         }{
             \begin{mdframed}[linewidth=2pt,roundcorner=20pt,backgroundcolor=none]
-                \begin{center}
-                    \includegraphics[height=2cm]{images/part-\number\value{part}/qr.png}
-                    
+                \begin{center}                    
                     \vspace{7.5px}
                     #2
                     \vspace{-25px}
@@ -249,9 +252,15 @@
     \vspace*{\fill}
     \vspace{-2cm}
     \begin{center}
-        \hrulefill
+        \hrulefill[0.75pt]
+        \raisebox{-6mm}{
+            \hspace{2mm}
+            \includegraphics[height=1.2cm]{images/part-\number\value{part}/qr.png}
+            \hspace{2mm}
+        }
+        \hrulefill[0.75pt]
         #2
-        \hrule
+        \hrule height 2pt
     \end{center}
     \vspace*{\fill}
     \cleardoubleemptypage
