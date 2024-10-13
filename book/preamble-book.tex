@@ -249,7 +249,13 @@
 
 \patchcmd{\set@@@@preamble}{#6}{\setlength{\parindent}{\normalparindent}#6}{}{}  % Make paragraph indent correctly for part preambles
 
-\newcommand{\Part}[2]{
+% Arguments for this command are:
+% 1. Part title
+% 2. Head shot image for the post-part page content
+% 3. Post-part page quote
+% 4. Quote author and date
+% 5. Quote Citation
+\newcommand{\Part}[5]{
     \cleardoubleoddpage
     % First page, containing the part title
     \part{#1}
@@ -259,6 +265,14 @@
     \vspace*{\fill}
     \vspace{-2cm}
     \begin{center}
+        \Ifstr{#2}{}{
+            % No head shot to put
+        }{
+            \begin{figure}[H]
+                \centering
+                \includegraphics[height=4cm]{#2}
+            \end{figure}
+        }
         \hrulefill[0.75pt]
         \raisebox{-5mm}{
             \hspace{2mm}
@@ -266,7 +280,7 @@
             \hspace{2mm}
         }
         \hrulefill[0.75pt]
-        #2
+        \quoteattr[0.5cm]{#3}{#4}{#5}
         \hrule height 2pt
     \end{center}
     \vspace*{\fill}
