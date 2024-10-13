@@ -99,7 +99,7 @@ def transfer(
         part = match.group("part")
 
         # Create appropriate folder
-        folder = os.path.join(book_images_folder, f"part-{part}")
+        folder = os.path.join(book_images_folder, f"part-{part}", "preamble")
 
         if not dry_run and not os.path.exists(folder):
             os.makedirs(folder, exist_ok=True)
