@@ -258,7 +258,7 @@ Another important operation that will come up in our investigation into numbers 
 \begin{definition}[$n$-tuples]
     Let $A_1, A_2, \dots, A_n$ be sets, and let $a_1 \in A_1$, $a_2 \in A_2$, \dots, and $a_n \in A_n$. Then an \term{$n$-tuple}\index{$n$-tuple}
     \[
-        (a_1, a_2, \dots, a_n) = \{a_1, \{a_1, a_2\}, \{a_1, a_2, a_3\}, \dots, \{a_1, a_2, \dots, a_n\}\}.
+        (a_1, a_2, \dots, a_n) = \{\{a_1\}, \{a_1, a_2\}, \{a_1, a_2, a_3\}, \dots, \{a_1, a_2, \dots, a_n\}\}.
     \]
 \end{definition}
 \begin{remark}[Special Names for Specific $n$-Tuples]
@@ -273,11 +273,11 @@ As mentioned, the important property of $n$-tuples is that they are ordered.
 \begin{proof}
     The reverse direction is trivial, so we show the forward direction only. Suppose $(a_1, a_2, \dots, a_n) = (b_1, b_2, \dots, b_n)$. Thus
     \[
-        \{a_1, \{a_1, a_2\}, \dots, \{a_1, a_2, \dots, a_n\}\} = \{b_1, \{b_1, b_2\}, \dots, \{b_1, b_2, \dots, b_n\}\}
+        \{\{a_1\}, \{a_1, a_2\}, \dots, \{a_1, a_2, \dots, a_n\}\} = \{\{b_1\}, \{b_1, b_2\}, \dots, \{b_1, b_2, \dots, b_n\}\}
     \]
     by definition of $n$-tuples. By equality of sets we thus obtain
     \begin{align*}
-        a_1 &= b_1,\\
+        \{a_1\} &= \{b_1\},\\
         \{a_1, a_2\} &= \{b_1, b_2\},\\
         \{a_1, a_2, a_3\} &= \{b_1, b_2, b_3\},\\
         \vdots\\
