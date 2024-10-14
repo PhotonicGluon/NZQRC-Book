@@ -16,7 +16,7 @@ For brevity, we will write \ZF to mean Zermelo-Frankel set theory\index{Zermelo-
 \ZF has 8 main axioms.
 \begin{enumerate}
     \item \textbf{Axiom of Extensionality}: Two sets are equal if they have the same elements.
-    \item \textbf{Axiom of Pairing}: For any two objects, there always exist a set containing these two objects.
+    \item \textbf{Axiom of Pairing}: Any two objects have a pair.
     \item \textbf{Axiom Schema of Specification}: An axiom describing how a set can be created using set-builder notation.
     \item \textbf{Axiom of Union}: The union of the elements in a set exists.
     \item \textbf{Axiom of Power Set}: The power set of a set exists.
@@ -34,7 +34,7 @@ The first axiom that we will look at is the axiom of extensionality.
 
 \begin{axiom}[Extensionality]\index{axiom!of extensionality}\index{Zermelo-Frankel Set Theory!extensionality}
     \[
-        \forall A \forall B \left(\forall x \left((x \in A \iff x \in B) \implies A = B\right)\right).
+        \forall A \forall B \left(\forall x \left((x \in A \iff x \in B) \implies A = B\right)\right)
     \]
 \end{axiom}
 
@@ -43,7 +43,15 @@ Let us understand what this means. For all $A$ and $B$, remembering the golden r
 Some may interpret this axiom as the foundational property of sets. Sets are equal if they have the same members. That is what all they are. All the other axioms simply tell us what sets exist.
 
 \section{Axiom of Pairing}
-TODO: Add
+The next axiom starts to give us an idea of what sets could exist.
+
+\begin{axiom}[Pairing]\index{axiom!of pairing}\index{Zermelo-Frankel Set Theory!pairing}
+    \[
+        \forall x \forall y \exists S \forall z \left(z \in S \iff (z = x \lor z = y)\right)
+    \]
+\end{axiom}
+
+In English, this means that for all $x$ and $y$, there exists a set $S$ such that any element $z$ in $S$ must be either $x$ or $y$. Clearly, this must mean that the set $S$ in question is the set containing only $x$ and $y$, i.e. the set $\{x, y\}$. This is why this is called the axiom of pairing -- it guarantees that the unordered pair exists.
 
 \section{Axiom Schema of Specification}  % aka Axiom of Subsets
 TODO: Add
