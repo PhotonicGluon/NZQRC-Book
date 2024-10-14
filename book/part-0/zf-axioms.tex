@@ -1,16 +1,31 @@
 \Chapter{Axiomatic Set Theory}
 \Lettrine[loversize=0.1,nindent=0pt]{Paradoxes} are the bane of creating a consistent system in mathematics. However, set theory, as we have introduced it, is full of paradoxes. For example, as stated so far, a set could contain itself. However, this leads to Russell's paradox of the set of all sets that are not members of themselves. To that end, we look at a more axiomatic definition of what sets are, inspired by the work of Ernst Zermelo Abraham Fraenkel, to create a system that is (hopefully) devoid of paradoxes.
 
-\section{Formal Language for Sets}
-TODO: Add
+% \section{Formal Language for Sets}
+% We already introduced the basic logical symbols that we use back in an earlier chapter, so these notations are not surprising. However, their conciseness will require some getting used to.
 
-% Introduce the idea of Well-Formed Formulae (WFFs) for ZF-Axioms
+% \begin{itemize}
+%     \item We will use 
+% \end{itemize}
 
 \section{Introduction to Zermelo-Fraenkel Set Theory}
-TODO: Add
+The modern study of set theory was initiated by Richard Dedekind and Georg Cantor in the 19th century. Unfortunately, these early systems are rife with paradoxes, prompting the creation of more robust axiomatic systems. Zermelo-Fraenkel set theory is the most is still the best-known and most studied, and it will be what we use to define numbers from the ground up.
 
-% Give an overview of the 8 main axioms of ZF
-% cf. https://mathworld.wolfram.com/Zermelo-FraenkelAxioms.html
+For brevity, we will write \ZF to mean Zermelo-Frankel set theory\index{Zermelo-Frankel Set Theory}.
+
+\ZF has 8 main axioms.
+\begin{enumerate}
+    \item \textbf{Axiom of Extensionality}: Two sets are equal if they have the same elements.
+    \item \textbf{Axiom of Pairing}: For any two objects, there always exist a set containing these two objects.
+    \item \textbf{Axiom Schema of Specification}: An axiom describing how a set can be created using set-builder notation.
+    \item \textbf{Axiom of Union}: The union of the elements in a set exists.
+    \item \textbf{Axiom of Power Set}: The power set of a set exists.
+    \item \textbf{Axiom of Infinity}: An infinite set exists.
+    \item \textbf{Axiom of Replacement}: The image of any function exists.
+    \item \textbf{Axiom of Foundation}: Every non-empty set $A$ contains an element $B$ which is disjoint from $A$. This is used to prevent paradoxes about sets containing themselves.
+\end{enumerate}
+
+There is a controversial ninth axiom, called the \textbf{Axiom of Choice}. Essentially, it states that a Cartesian product of a collection of non-empty sets is non-empty. This also includes sets that are infinite. \ZF with the axiom of choice included is usually denoted \textsf{ZFC}. However, for our exploration of number here, we do not require the axiom of choice.
 
 \section{Axiom of Extensionality}
 TODO: Add
