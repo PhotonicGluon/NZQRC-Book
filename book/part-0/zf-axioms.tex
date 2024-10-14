@@ -30,7 +30,17 @@ There is a controversial ninth axiom, called the \textbf{Axiom of Choice}. Essen
 An important thing to note when we are working in \ZF is that \textbf{everything is a set}. The foundational object that we are discussing is the set, and we are defining everything in terms of sets. We are simply specifying that the properties of these objects (sets) are. Thus awkward notation like $a \in b$ or $1 \cup 2$ is readily explained way when we remember that all objects are sets.
 
 \section{Axiom of Extensionality}
-TODO: Add
+The first axiom that we will look at is the axiom of extensionality.
+
+\begin{axiom}[Extensionality]\index{axiom!of extensionality}\index{Zermelo-Frankel Set Theory!extensionality}
+    \[
+        \forall A \forall B \left(\forall x \left((x \in A \iff x \in B) \implies A = B\right)\right).
+    \]
+\end{axiom}
+
+Let us understand what this means. For all $A$ and $B$, remembering the golden rule that everything is a set, if for all $x$, $x$ is a member of $A$ if and only if $x$ is a member of $B$, then $A$ and $B$ are equal. In other words, if any element in $A$ is in $B$, and vice versa, then $A$ and $B$ are equal, and this holds for all sets.
+
+Some may interpret this axiom as the foundational property of sets. Sets are equal if they have the same members. That is what all they are. All the other axioms simply tell us what sets exist.
 
 \section{Axiom of Pairing}
 TODO: Add
