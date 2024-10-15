@@ -7,34 +7,49 @@ In English, one may consider a sentence a sequence of words and think of an Engl
 \begin{definition}[Formal Language]\index{formal language}
     A formal language $\Lang$ is a structure comprising two things.
     \begin{itemize}
-        \item A set $\Alphabet$ of symbols, called the \term{alphabet}\index{alphabet}\index{formal language!alphabet} of $\Lang$.
-        \item A \term{formal grammar}\index{formal grammar}\index{formal language!formal grammar} comprising \term{formation rules}\index{formation rule}\index{formal language!formation rule} that specify which \term{words}\index{word}\index{formal language!word}, which are sequences of symbols from $\Alphabet$, belong to $\Lang$.
+        \item A set $\Alphabet$ of symbols, called the \term{alphabet} of $\Lang$.
+        \item A \term{formal grammar} comprising \term{formation rules}\index{formation rule} that specify which \term{words}, which are sequences of symbols from $\Alphabet$, belong to $\Lang$.
     \end{itemize}
 \end{definition}
 
-\subsection{Alphabet}
-In English, our (primary) alphabet is A to Z, along with the two cases each letter can come in (i.e., uppercase or lowercase). These 54 characters define all the valid letters we can use in English. Likewise, we can define symbols that make up our alphabet in a formal language.
+We will explore more about alphabets, words, formal grammar, and their related constructs in the following pages.
+
+\subsection{Alphabets and Words}
+In English, our (primary) alphabet is A to Z, along with the two cases each letter can come in (i.e., uppercase or lowercase). These 54 characters define all the valid letters we can use in English. We use these valid letters to form words via concatenating letters together. Likewise, we can define symbols that make up our alphabet in a formal language and define words that use the symbols present in our alphabet.
 
 \begin{definition}[Alphabet]
     Let $\Lang$ be a formal language. The \term{alphabet}\index{alphabet}\index{formal language!alphabet} of $\Lang$, usually denoted $\Alphabet$, is the set of symbols used to construct words in $\Lang$.
 \end{definition}
 
-TODO: Add
+\begin{definition}[Word]
+    Let $\Lang$ be a formal language. A \term{word}\index{word}\index{formal language!word} (or string) is either a finite concatenation of symbols from $\Alphabet$ in $\Lang$ or the empty string $\emptystring$.
 
-\subsection{Words}
-TODO: Add
+    The \term{length}\index{word!length} of a word is the number of symbols making up the word, with the empty string having length 0.
+\end{definition}
+\begin{remark}[Making Words]
+    Some authors may permit words to be formed from other means, not just concatenation. For example, using $\Alphabet = \{a, b\}$, a word could be formed from other words by the rule
+    \[
+        \square b,
+    \]
+    i.e. all words must end with $b$, or
+    \[
+        aaa\square bab \square aaa,
+    \]
+    i.e. two (not necessarily distinct) words can be joined together with $bab$ in the middle and by placing $aaa$ at the front or end of the combined string. However we will stick with simple concatenation.
+\end{remark}
 
-\subsection{Grammar}
+\begin{example}[A Simple Alphabet]
+    Let $\Alphabet = \{a, b\}$. Then $\emptystring$ (the empty word), $a$, $b$, $aa$, $ab$ $ba$, $bb$, $aaa$, $aab$, $aba$, $baa$, etc. are all valid words. Notice that we have not defined any rules on what words belong in our formal language -- these are just words formed from $\Alphabet$.
+\end{example}
+
+\subsection{Grammar and Well-Formed Words}
 TODO: Add
 
 \section{Language of Predicate Logic}
 TODO: Add
 
-\subsection{Alphabet/Variables}
+\subsection{Variables and Formulae}
 TODO: Add
 
-\subsection{Words/Sentences}
-TODO: Add
-
-\subsection{Grammar}
+\subsection{Grammar and Well-Formed Formulae}
 TODO: Add
