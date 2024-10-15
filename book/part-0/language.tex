@@ -2,9 +2,27 @@
 \Lettrine[loversize=0.1,nindent=0pt]{Writing} clear, concise, and logical sentences is essential in mathematics. We need a consistent way to write statements to arrive at the axioms required for defining the foundations of mathematics. That is a job reserved for format language, a structure we will explore in this chapter for predicate logic.
 
 \section{An Introduction to Formal Language}
-TODO: Add
+In English, one may consider a sentence a sequence of words and think of an English word as a sequence of letters. However, not every sequence of letters is a valid word, and not every sequence of words is a grammatically sound sentence. The idea of formal language is to generalise this idea of valid words and valid sentences.
+
+\begin{definition}[Formal Language]\index{formal language}
+    A formal language $\Lang$ is a structure comprising two things.
+    \begin{itemize}
+        \item A set $\Alphabet$ of symbols, called the \term{alphabet}\index{alphabet}\index{formal language!alphabet} of $\Lang$.
+        \item A \term{formal grammar}\index{formal grammar}\index{formal language!formal grammar} comprising \term{formation rules}\index{formation rule}\index{formal language!formation rule} that specify which \term{words}\index{word}\index{formal language!word}, which are sequences of symbols from $\Alphabet$, belong to $\Lang$.
+    \end{itemize}
+\end{definition}
+
+We will explore more about alphabets, words, and formal grammar in the following subsections.
 
 \subsection{Alphabet}
+In English, our (primary) alphabet is A to Z, along with the two cases each letter can come in (i.e., uppercase or lowercase). These 54 characters define all the valid letters we can use in English. Likewise, we can define symbols that make up our alphabet in a formal language.
+
+\pagebreak
+
+\begin{definition}[Alphabet]
+    Let $\Lang$ be a formal language. The \term{alphabet}\index{alphabet}\index{formal language!alphabet} of $\Lang$, usually denoted $\Alphabet$, is the set of symbols used to construct words in $\Lang$.
+\end{definition}
+
 TODO: Add
 
 \subsection{Words}

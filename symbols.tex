@@ -8,5 +8,19 @@
 
 \newcommand*{\Power}[1]{\mathcal{P}(#1)}  % Power set
 
-% Text
-\newcommand*{\ZF}{\textsf{ZF}~}  % Zermelo-Frankel Set Theory
+%================ Part 0 =================
+% Formal Language
+\newcommand*{\Lang}{\mathcal{L}}  % Symbol for a formal language
+
+\makeatletter
+\newcommand*{\Alphabet}{%
+    \@ifstar{%
+        \Sigma^\ast%  % Set of all valid words in an alphabet
+    }{%
+        \Sigma%       % Symbol for an alphabet
+    }%
+}
+\makeatother
+
+% Axiomatic Set Theory
+\newcommand*{\ZF}{\textsf{ZF}~}    % Zermelo-Frankel Set Theory
