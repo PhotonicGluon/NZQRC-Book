@@ -32,7 +32,7 @@ An important thing to note when we are working in \ZF is that \textbf{everything
 \section{Axiom of Extensionality}
 The first axiom that we will look at is the axiom of extensionality.
 
-\begin{axiom}[Extensionality]\index{axiom!of extensionality}\index{Zermelo-Frankel Set Theory!extensionality}
+\begin{axiom}[Extensionality]\label{axiom:extensionality}\index{axiom!of extensionality}\index{Zermelo-Frankel Set Theory!extensionality}
     \[
         \forall A \forall B \left(\forall x \left((x \in A \iff x \in B) \implies A = B\right)\right)
     \]
@@ -45,13 +45,60 @@ Some may interpret this axiom as the foundational property of sets. Sets are equ
 \section{Axiom of Pairing}
 The next axiom starts to give us an idea of what sets could exist.
 
-\begin{axiom}[Pairing]\index{axiom!of pairing}\index{Zermelo-Frankel Set Theory!pairing}
+\begin{axiom}[Pairing]\label{axiom:pairing}\index{axiom!of pairing}\index{Zermelo-Frankel Set Theory!pairing}
     \[
         \forall x \forall y \exists S \left(\forall z \left(z \in S \iff ((z = x) \lor (z = y))\right)\right)
     \]
 \end{axiom}
 
 In English, this means that for all $x$ and $y$, there exists a set $S$ such that any element $z$ in $S$ must be either $x$ or $y$. Clearly, this must mean that the set $S$ in question is the set containing only $x$ and $y$, i.e. the set $\{x, y\}$. This is why this is called the axiom of pairing -- it guarantees that the unordered pair exists.
+
+We now consider sets with one element.
+
+\begin{definition}[Singleton]
+    A \term{singleton}\index{singleton} is a set containing one element. We denote a singleton containing the element $x$ by $\{x\}$.
+\end{definition}
+
+\myref{axiom:pairing} allows us to definitively prove within \ZF that singletons exist.
+
+\begin{proposition}[Singletons Exist]\label{prop:singletons-exist}
+    Singletons exist. Formally,
+    \[
+        \forall x \exists S \left(\forall z \left(z \in S \iff z = x\right)\right).
+    \]
+\end{proposition}
+\begin{proof}
+    \myref{axiom:pairing} says that
+    \[
+        \forall x \forall y \exists S \left(\forall z \left(z \in S \iff ((z = x) \lor (z = y))\right)\right).
+    \]
+    In particular we may choose $y = x$. Thus the statement reduces to
+    \[
+        \forall x \exists S \left(\forall z \left(z \in S \iff z = x\right)\right)
+    \]
+    as required.
+\end{proof}
+
+\myref{axiom:pairing} also allows us show that sets have `no repeated elements'. For example, we can show that the sets $\{a, a\}$ and $\{a\}$ are the same set.
+
+\begin{proposition}[The `No Repeated Elements' Property]\index{no repeated elements}
+    $\{a, a\} = \{a\}$ for all $a$. Formally,
+    \[
+        \forall a (\{a,a\} = \{a\}).
+    \]
+\end{proposition}
+\begin{proof}
+    First, note for any $a$ that the sets $\{a, a\}$ and $\{a\}$ do indeed exist by \myref{axiom:pairing} and \myref{prop:singletons-exist} respectively. Next, recall that \myref{axiom:extensionality} tells us that
+    \[
+        \forall A \forall B \left(\forall x \left((x \in A \iff x \in B) \implies A = B\right)\right).
+    \]
+    In particular, let $A = \{a, a\}$ and $B = \{a\}$.
+    \begin{itemize}
+        \item If $x \in A$, then $x$ is forced to be $a$. Clearly this means that $x \in B$.
+        \item If $x \in B$, then $x$ is either $a$ (the first one) or $a$ (the second one). In either case we have $x = a$. Thus $x \in A$ also.
+    \end{itemize}
+    Hence the condition ``$x \in A \iff x \in B$'' is satisfied. So that axiom tells us that $A = B$, i.e. $\{a, a\} = \{a\}$.
+\end{proof}
 
 \section{Axiom Schema of Specification}  % aka Axiom of Subsets
 TODO: Add
