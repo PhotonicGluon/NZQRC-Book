@@ -14,20 +14,20 @@ In English, one may consider a sentence a sequence of words and think of an Engl
 
 We will explore more about alphabets, words, formal grammar, and their related constructs in the following pages.
 
-\subsection{Alphabets and Words}
-In English, our (primary) alphabet is A to Z, along with the two cases each letter can come in (i.e., uppercase or lowercase). These 54 characters define all the valid letters we can use in English. We use these valid letters to form words via concatenating letters together. Likewise, we can define symbols that make up our alphabet in a formal language and define words that use the symbols present in our alphabet.
+\subsection{Alphabets and Strings}
+In English, our (primary) alphabet is A to Z, along with the two cases each letter can come in (i.e., uppercase or lowercase). These 54 characters define all the valid letters we can use in English. We use these valid letters to form words via concatenating letters together. Likewise, we can define symbols that make up our alphabet in a formal language and define strings that use the symbols present in our alphabet.
 
 \begin{definition}[Alphabet]
-    Let $\Lang$ be a formal language. The \term{alphabet}\index{alphabet}\index{formal language!alphabet} of $\Lang$, usually denoted $\Alphabet$, is the set of symbols used to construct words in $\Lang$.
+    Let $\Lang$ be a formal language. The \term{alphabet}\index{alphabet}\index{formal language!alphabet} of $\Lang$, usually denoted $\Alphabet$, is the set of symbols used to construct strings in $\Lang$.
 \end{definition}
 
-\begin{definition}[Word]
-    Let $\Lang$ be a formal language. A \term{word}\index{word}\index{formal language!word} (or string) is either a finite concatenation of symbols from $\Alphabet$ in $\Lang$ or the empty string $\emptystring$.
+\begin{definition}[String]
+    Let $\Lang$ be a formal language. A \term{string}\index{string}\index{formal language!string} (or string) is either a finite concatenation of symbols from $\Alphabet$ in $\Lang$ or the empty string $\emptystring$.
 
-    The \term{length}\index{word!length} of a word is the number of symbols making up the word, with the empty string having length 0.
+    The \term{length}\index{string!length} of a string is the number of symbols making up the string, with the empty string having length 0.
 \end{definition}
-\begin{remark}[Making Words]
-    Some authors may permit words to be formed from other means, not just concatenation. For example, using $\Alphabet = \{a, b\}$, a word could be formed from other words by the rule
+\begin{remark}[Making Strings]
+    Some authors may permit strings to be formed from other means, not just concatenation. For example, using $\Alphabet = \{a, b\}$, a string could be formed from other string by the rule
     \[
         \square b,
     \]
@@ -35,15 +35,16 @@ In English, our (primary) alphabet is A to Z, along with the two cases each lett
     \[
         aaa\square bab \square aaa,
     \]
-    i.e. two (not necessarily distinct) words can be joined together with $bab$ in the middle and by placing $aaa$ at the front or end of the combined string. However we will stick with simple concatenation.
+    i.e. two (not necessarily distinct) strings can be joined together with $bab$ in the middle and by placing $aaa$ at the front or end of the combined string. However we will stick with simple concatenation.
 \end{remark}
 
 \begin{example}[A Simple Alphabet]
-    Let $\Alphabet = \{a, b\}$. Then $\emptystring$ (the empty word), $a$, $b$, $aa$, $ab$ $ba$, $bb$, $aaa$, $aab$, $aba$, $baa$, etc. are all valid words. Notice that we have not defined any rules on what words belong in our formal language -- these are just words formed from $\Alphabet$.
+    Let $\Alphabet = \{a, b\}$. Then $\emptystring$ (the empty string), $a$, $b$, $aa$, $ab$ $ba$, $bb$, $aaa$, $aab$, $aba$, $baa$, etc. are all valid strings. Notice that we have not defined any rules on what strings belong in our formal language -- these are just strings formed from $\Alphabet$.
 \end{example}
 
-\subsection{Grammar and Well-Formed Words}
+\subsection{Grammar and Well-Formed Strings}
 TODO: Add
+% Add remark that 'words' here means 'well-formed strings'
 
 \section{Language of Predicate Logic}
 TODO: Add
