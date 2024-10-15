@@ -101,7 +101,20 @@ We now consider sets with one element.
 \end{proof}
 
 \section{Axiom Schema of Specification}  % aka Axiom of Subsets
-TODO: Add
+The axiom schema of specification, also known as the axiom of subsets\index{axiom!of subsets}, allows us to restrict the elements of a set to those that satisfy a specific condition.
+
+\begin{axiom}[Schema of Specification]\index{axiom!schema of specification}\index{Zermelo-Frankel Set Theory!schema of specification}
+    \[
+        \forall A \exists S \forall x \left(x \in S \iff (x \in A \land \phi(x))\right)
+    \]
+    where $\phi(x)$ is a wff.
+\end{axiom}
+
+In other words, for every set $A$ there exists a set $S$ such that $x$ is in $S$ if and only if $x$ is in $A$ and that $\phi(x)$ is satisfied.
+
+Note that we require one instance of the above for every wff $\phi(x)$. Thus, this is an axiom schema and not just an axiom.
+
+% TODO: Continue with applications of the above 3 axioms
 
 \section{Axiom of Union}
 TODO: Add
