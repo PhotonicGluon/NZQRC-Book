@@ -25,6 +25,7 @@ koma-script
 latexmk
 lato
 lettrine
+mathalpha
 mathpazo
 mathtools
 mdframed
@@ -33,6 +34,7 @@ needspace
 parskip
 pgf
 preview
+rsfso
 standalone
 tex-gyre
 thmtools
