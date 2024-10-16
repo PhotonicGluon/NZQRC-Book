@@ -1,9 +1,6 @@
 %=========== Custom Commands =============
 \newcommand*{\PredLang}{\mathcal{L}} % Symbol for the formal language of predicate logic
 
-% \newcommand*{\VAR}{\mathrm{VAR}}  % Set of variables
-% \newcommand*{\PredSym}[1][]{\mathcal{P}\ifstrempty{#1}{true}{_{#1}}}  % Set of predicate symbols
-
 %=========================================
 \Chapter{The Language of Predicate Logic}
 \Lettrine[loversize=0.1,nindent=0pt]{Writing} clear, concise, and logical sentences is essential in mathematics. We need a consistent way to write statements to arrive at the axioms required for defining the foundations of mathematics. That is a job reserved for format language, a structure we will explore in this chapter for predicate logic.
@@ -29,7 +26,7 @@ In English, our (primary) alphabet is A to Z, along with the two cases each lett
 \end{definition}
 
 \begin{definition}[String]
-    Let $\Lang$ be a formal language. A \term{string}\index{string}\index{formal language!string} (or string) is either a finite concatenation of symbols from $\Alphabet$ in $\Lang$ or the empty string $\emptystring$.
+    Let $\Lang$ be a formal language. A \term{string}\index{string}\index{formal language!string} is either a finite concatenation of symbols from $\Alphabet$ in $\Lang$ or the empty string $\emptystring$.
 
     The \term{length}\index{string!length} of a string is the number of symbols making up the string, with the empty string having length 0.
 \end{definition}
@@ -124,8 +121,6 @@ Let us now look at a way of writing down expressions without using parentheses. 
     \end{partquestions}
 \end{exercise}
 
-There is, of course, more to discuss about formal languages, but this is enough for us.
-
 \section{Language of Predicate Logic}
 Predicates written in English are messy and prone to misinterpretation by others. Using formal language in predicate logic helps us alleviate any ambiguity of statements.
 
@@ -160,6 +155,30 @@ To start, we need to define the alphabet in $\PredLang$.
         If the arity of a non-logical symbol is clear from context, we may elect to omit the superscript.
     \end{itemize}
 \end{definition}
+
+With the alphabet, we can define the strings in $\PredLang$. Although, we have a more `fancy' name for such strings.
+
+\begin{definition}[Formulae]
+    A string in $\PredLang$ is called a \term{formula}\index{formula}\index{predicate logic language!formula}. More explicitly, a formula is either a finite concatenation of symbols in the alphabet of $\PredLang$ or the empty string $\emptystring$.
+\end{definition}
+
+\begin{exercise}[What's a Formula?]
+    Which of the following strings are formulae in $\PredLang$?
+    \begin{partquestions}{\alph*}[3]
+        \item $x$
+        \item $xy$
+        \item $xy = x$
+        \item $=$
+        \item $p \lor q$
+        \item $p \land q$
+        \item $\implies (p \lnot q)$
+        \item $\iff$
+        \item $\forall$
+        \item $\forall x (\exists y (x \in y))$
+        \item $\forall \iff \exists$
+        \item $\exists \land \forall$
+    \end{partquestions}
+\end{exercise}
 
 % TODO: Continue
 
