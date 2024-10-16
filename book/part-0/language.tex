@@ -1,11 +1,11 @@
 %=========== Custom Commands =============
-\newcommand*{\PredLang}{\mathcal{L}} % Symbol for the formal language of predicate logic
+\newcommand*{\SetLang}{\mathcal{L}} % Symbol for the formal language of sets
 
 %=========================================
-\Chapter{The Language of Predicate Logic}
-\Lettrine[loversize=0.1,nindent=0pt]{Writing} clear, concise, and logical sentences is essential in mathematics. We need a consistent way to write statements to arrive at the axioms required for defining the foundations of mathematics. That is a job reserved for format language, a structure we will explore in this chapter for predicate logic.
+\Chapter{The Language of Sets}
+\Lettrine[loversize=0.1,nindent=0pt]{Writing} clear, concise, and logical sentences is essential in mathematics. We need a consistent way to write statements to arrive at the axioms required for defining the foundations of mathematics. That is a job reserved for formal language, a structure we will explore in this chapter.
 
-\section{An Introduction to Formal Language}
+\section{An Introduction to Formal Languages}
 In English, one may consider a sentence a sequence of words and think of an English word as a sequence of letters. However, not every sequence of letters is a valid word, and not every sequence of words is a grammatically sound sentence. The idea of formal language is to generalise this idea of valid words and valid sentences.
 
 \begin{definition}[Formal Language]\index{formal language}
@@ -20,6 +20,8 @@ We will explore more about alphabets, words, formal grammar, and their related c
 
 \subsection{Alphabets and Strings}
 In English, our (primary) alphabet is A to Z, along with the two cases each letter can come in (i.e., uppercase or lowercase). These 54 characters define all the valid letters we can use in English. We use these valid letters to form words via concatenating letters together. Likewise, we can define symbols that make up our alphabet in a formal language and define strings that use the symbols present in our alphabet.
+
+\pagebreak  % TODO: Find a way to remove this ugly page break
 
 \begin{definition}[Alphabet]
     Let $\Lang$ be a formal language. The \term{alphabet}\index{alphabet}\index{formal language!alphabet} of $\Lang$, usually denoted $\Alphabet$, is the set of symbols used to construct strings in $\Lang$.
@@ -121,18 +123,18 @@ Let us now look at a way of writing down expressions without using parentheses. 
     \end{partquestions}
 \end{exercise}
 
-\section{Language of Predicate Logic}
-Predicates written in English are messy and prone to misinterpretation by others. Using formal language in predicate logic helps us alleviate any ambiguity of statements.
+\section{The Formal Language of Sets}
+Statements written in English are messy and prone to misinterpretation by others. Using formal language when talking about sets helps us alleviate any ambiguity of statements.
 
-For the following, let $\PredLang$ denote the formal language for predicate logic.
+For the following, let $\SetLang$ denote the formal language for sets.
 
 \subsection{Variables and Formulae}
-To start, we need to define the alphabet in $\PredLang$.
+To start, we need to define the alphabet in $\SetLang$.
 
-\begin{definition}[Alphabet of $\PredLang$]
-    The alphabet of $\PredLang$ consist of two main types of symbols.
+\begin{definition}[Alphabet of $\SetLang$]
+    The alphabet of $\SetLang$ consist of two main types of symbols.
     \begin{itemize}
-        \item \term{Logical Symbols}\index{predicate logic language!logical symbol}: These symbols have some intrinsic meaning to them. These include
+        \item \term{Logical Symbols}\index{set formal language!logical symbol}: These symbols have some intrinsic meaning to them. These include
         \begin{itemize}
             \item an infinite set of variables, often denoted by lowercase letters at the end of the English alphabet and can be distinguished using subscripts (e.g., $x$, $y$, $z$, $x_0$, $y_1$, $z_0$);
             \item the equality symbol (i.e., $=$), denoting equality;
@@ -140,14 +142,14 @@ To start, we need to define the alphabet in $\PredLang$.
             \item the universal quantifier $\forall$ and the existential quantifier$\exists$; and
             \item parentheses (i.e., $($ and $)$) and other punctuation symbols.
         \end{itemize}
-        \item \term{Non-Logical Symbols}\index{predicate logic language!non-logical symbol}: these represent predicates, functions and constants. In particular,
+        \item \term{Non-Logical Symbols}\index{set formal language!non-logical symbol}: these represent predicates, functions and constants. In particular,
         \begin{itemize}
-            \item for every integer $n \geq 0$ we have an infinite collection of \term{predicate symbols}\index{predicate logic language!predicate symbol} with arity $n$, which we can write, for example, as
+            \item for every integer $n \geq 0$ we have an infinite collection of \term{predicate symbols}\index{set formal language!predicate symbol} with arity $n$, which we can write, for example, as
             \[
                 P_0^n,\;P_1^n,\;P_2^n,\;P_3^n,\;P_4^n,\;\dots;
             \]
             and
-            \item for every integer $n \geq 0$ we have an infinite collection of \term{function symbols}\index{predicate logical language!function symbol} with arity $n$, which we can write, for example, as
+            \item for every integer $n \geq 0$ we have an infinite collection of \term{function symbols}\index{set formal language!function symbol} with arity $n$, which we can write, for example, as
             \[
                 f_0^n,\;f_1^n,\;f_2^n,\;f_3^n,\;f_4^n,\;\dots.
             \]
@@ -156,14 +158,14 @@ To start, we need to define the alphabet in $\PredLang$.
     \end{itemize}
 \end{definition}
 
-With the alphabet, we can define the strings in $\PredLang$. Although, we have a more `fancy' name for such strings.
+With the alphabet, we can define the strings in $\SetLang$. Although, we have a more `fancy' name for such strings.
 
 \begin{definition}[Formulae]
-    A string in $\PredLang$ is called a \term{formula}\index{formula}\index{predicate logic language!formula}. More explicitly, a formula is either a finite concatenation of symbols in the alphabet of $\PredLang$ or the empty string $\emptystring$.
+    A string in $\SetLang$ is called a \term{formula}\index{formula}\index{set formal language!formula}. More explicitly, a formula is either a finite concatenation of symbols in the alphabet of $\SetLang$ or the empty string $\emptystring$.
 \end{definition}
 
 \begin{exercise}[What's a Formula?]
-    Which of the following strings are formulae in $\PredLang$?
+    Which of the following strings are formulae in $\SetLang$?
     \begin{partquestions}{\alph*}[3]
         \item $x$
         \item $xy$
@@ -172,11 +174,11 @@ With the alphabet, we can define the strings in $\PredLang$. Although, we have a
         \item $p \lor q$
         \item $p \land q$
         \item $\implies (p \lnot q)$
-        \item $\iff$
+        \item $\in \in \in$
         \item $\forall$
         \item $\forall x (\exists y (x \in y))$
         \item $\forall \iff \exists$
-        \item $\exists \land \forall$
+        \item $\exists \land \forall \in \lnot ()$
     \end{partquestions}
 \end{exercise}
 
