@@ -21,6 +21,8 @@ mdframed
 multirow
 needspace
 pgf
+preview
+standalone
 rsfs
 rsfso
 tex-gyre
