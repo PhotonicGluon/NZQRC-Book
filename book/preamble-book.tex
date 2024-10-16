@@ -126,23 +126,6 @@
     \vspace{#1}
 }
 
-% PDF-TeX image definitions
-\newcommand{\pdfteximg}[3][10pt]{
-    {
-        \fontsize{#1}{0pt}\selectfont
-        \def\svgwidth{#2}
-        \input{#3}
-    }
-}
-
-\newcommand{\pdfteximgframed}[3][10pt]{
-    {
-        \fontsize{#1}{0pt}\selectfont
-        \def\svgwidth{#2}
-        \fbox{\input{#3}}
-    }
-}
-
 % Draft commands
 \newcommand{\draftstartmark}{\fancyfoot[EC,OC]{\textsc{Work In Progress~\Ifstr{\buildnumber}{}{}{(Build \buildnumber)}}}}
 \newcommand{\draftendmark}{\fancyfoot[EC,OC]{}}
