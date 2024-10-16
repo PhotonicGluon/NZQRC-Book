@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "arity",
         "biconditional",
         "biconditionals",
         "extensionality",
@@ -20,6 +21,7 @@
         "posets",
         "qrcode",
         "typer",
+        "ukasiewicz",
         "Zassenhaus"
     ],
     "files.exclude": {

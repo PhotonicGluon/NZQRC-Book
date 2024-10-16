@@ -26,25 +26,81 @@ In English, our (primary) alphabet is A to Z, along with the two cases each lett
 
     The \term{length}\index{string!length} of a string is the number of symbols making up the string, with the empty string having length 0.
 \end{definition}
-\begin{remark}[Making Strings]
-    Some authors may permit strings to be formed from other means, not just concatenation. For example, using $\Alphabet = \{a, b\}$, a string could be formed from other string by the rule
-    \[
-        \square b,
-    \]
-    i.e. all words must end with $b$, or
-    \[
-        aaa\square bab \square aaa,
-    \]
-    i.e. two (not necessarily distinct) strings can be joined together with $bab$ in the middle and by placing $aaa$ at the front or end of the combined string. However we will stick with simple concatenation.
+
+\begin{remark}[Words]
+    Some authors will call strings using symbols from $\Alphabet$ \term{words}\index{word}\index{formal language!word} formed from $\Alphabet$. However, we will stick with the term ``string'' here as the term ``empty word'' seems awkward to use.
 \end{remark}
 
 \begin{example}[A Simple Alphabet]
-    Let $\Alphabet = \{a, b\}$. Then $\emptystring$ (the empty string), $a$, $b$, $aa$, $ab$ $ba$, $bb$, $aaa$, $aab$, $aba$, $baa$, etc. are all valid strings. Notice that we have not defined any rules on what strings belong in our formal language -- these are just strings formed from $\Alphabet$.
+    Let $\Alphabet = \{a, b\}$. Then $\emptystring$ (the empty string), ``$a$'', ``$b$'', ``$aa$'', ``$ab$'', ``$ba$'', ``$bb$'', ``$aaa$'', ``$aab$'', ``$aba$'', ``$baa$'', etc. are all valid strings. Notice that we have not defined any rules on what strings belong in our formal language -- these are just strings formed from $\Alphabet$.
 \end{example}
 
 \subsection{Grammar and Well-Formed Strings}
-TODO: Add
-% Add remark that 'words' here means 'well-formed strings'
+It is undoubtedly unhelpful to say that every string, essentially a combination of letters in our alphabet, is meaningful within our language. In English, for example, the `words' ``hjbhjx'', ``jsadbhf'', and ``jkdswjaaa'' should not count as words! We want to have some restrictions on what strings belong in our formal language and which ones do not. That is the job of formation rules that make up our formal grammar.
+
+\begin{definition}[Formation Rule]
+    Let $\Lang$ be a formal language with alphabet $\Alphabet$. A \term{formation rule}\index{formation rule}\index{formal language!formation rule} of $\Lang$ is a rule describing which strings formed from $\Alphabet$ belong to $\Lang$ and which do not. Such strings are called \term{well-formed strings}\index{well-formed string}\index{string!well-formed}\index{formal language!string!well-formed} of $\Lang$.
+\end{definition}
+\begin{remark}[(Well-Formed) Words]
+    It is more common to see ``well-formed strings'' called \term{words}\index{word}\index{formal language!word} of the formal language, adding to the confusion to the earlier remark that some authors just call any string of the formal language a word. For these authors, ``well-formed strings'' would be called \term{well-formed words}\index{word!well-formed}\index{formal language!word!well-formed} instead.
+    
+    However, to aid the motivation of ``well-formed formulae'' later in this chapter, we will stick to using ``well-formed strings'', although it is important that ``word'' has the same meaning as the aforementioned.
+\end{remark}
+
+\begin{definition}[Formal Grammar]
+    Let $\Lang$ be a formal language. The \term{formal grammar}\index{formal grammar}\index{formal language!formal grammar} of $\Lang$ is the set of formation rules of $\Lang$.
+\end{definition}
+
+With formation rules and formal grammar defined, we can finally look at some examples of formal languages.
+
+\begin{example}[Simple Formal Languages]
+    Let $\Alphabet = \{x,y\}$.
+    \begin{itemize}[leftmargin=*]
+        \item Let $L_1$ be the formal language using the alphabet $\Alphabet$ such that $L_1$ contains strings of length at most 3 and ends with the symbol $y$. Thus one sees that
+        \[
+            L_1 = \{y, xy, yy, xxy, xyy, yxy, yyy\}.
+        \]
+        Note that the empty string $\emptystring$ does not belong in $L_1$ since it does not end with the symbol $y$.
+
+        \item Let $L_2$ be the formal language using the alphabet $\Alphabet$ such that $L_2$ contains strings that read the same forwards as they do backwards (i.e., palindromes). So $L_2$ contains at least the strings
+        \[
+            \emptystring, ``x'', ``y'', ``xx'', ``yy'', ``xxx'', ``xyx'', ``yxy'', ``yyy'', ``xxxx'',
+        \]
+        among infinitely many others. Note that the empty string will vacuously belong in $L_2$ since it has no characters and thus read the same forwards as it does backwards.
+    \end{itemize}
+\end{example}
+
+\begin{example}[{\L}ukasiewicz Notation]
+    \setlength{\parindent}{1.5em}
+    Our standard way of writing expressions, such as $a+b$, is said to use infix notation (since the operator sits \textbf{in between} the two operands $a$ and $b$). In 1920, the Polish mathematician Jan
+    {\L}ukasiewicz introduced prefix and postfix notation, which we now call \term{{\L}ukasiewicz notation}\index{{\L}ukasiewicz Notation} (or \term{Polish notation}\index{Polish Notation}) and \term{reversed {\L}ukasiewicz notation}\index{{\L}ukasiewicz Notation!reversed} (or \term{reversed Polish notation}\index{Polish Notation!reversed}) respectively. Using our earlier example of $a+b$, it would be written $+ab$ in {\L}ukasiewicz notation and $ab+$ in reversed {\L}ukasiewicz notation. We may add spaces to aid clarity when writing in (reversed) {\L}ukasiewicz notation, i.e. $+\;a\;b$ and $a\;b\;+$.
+
+    We can use formal language to describe {\L}ukasiewicz notation. Suppose we have an alphabet $\Alphabet$ consisting of symbols. Some of these symbols could be operators (e.g., $+$, $-$, $\times$, $\div$) taking some number of operands (this number is called the \term{arity}\index{arity} of the operator). Define the arity of a non-operator symbol to be 0 (for example, 3 takes in no operands as it is a number). The formal grammar of the formal language $L$ describing {\L}ukasiewicz notation contains only one formation rule as follows.
+    \begin{quote}
+        If $s \in \Alphabet$ has arity $n$ and $\phi_1, \phi_2, \dots, \phi_n$ are well-formed strings in $L$, then
+        \[
+            s\phi_1\phi_2\dots\phi_n
+        \]
+        is also a well-formed string in $L$.
+    \end{quote}
+    Notably, any non-operator symbol is a well-formed string in $L$.
+    \begin{itemize}
+        \item ``$+\;2\;3$'' in $L$ is equivalent to ``$2+3$'' when written in infix notation.
+        \item ``$+\;2\;3\;\times\;4$'' in $L$ is equivalent to $(2 + 3) \times 4$ when written in infix notation.
+        \item ``$+-\;\div\;2\;3\div\;4\;5\;6$'' in $L$ is the same as ``$((2 \div 3) - (4 \div 5)) + 6$'' when written in infix notation.
+    \end{itemize}
+\end{example}
+
+\begin{exercise}[An Exercise in Languages]
+    \begin{partquestions}{\alph*}
+        \item Let $\Alphabet = \{1,2,3\}$. Write down a string of length 5 in $\Alphabet$ without consecutive symbols.
+        \item Suppose $L$ is a formal language that contains the strings ``$a$'', ``$abba$'', and ``$abracadabra$''. What symbols must be in the alphabet of $L$? Assume each symbol is a string of length 1.
+        \item Write the expression $4 + ((5 - 6) \times 7)$, which is in infix notation, using {\L}ukasiewicz notation and reversed {\L}ukasiewicz notation, without using brackets (parentheses).
+        \item Let $L$ be the formal language for reversed {\L}ukasiewicz notation. What is the formal grammar of $L$?
+    \end{partquestions}
+\end{exercise}
+
+There is, of course, more to discuss about formal languages, but this is enough for us.
 
 \section{Language of Predicate Logic}
 TODO: Add
