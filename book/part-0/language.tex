@@ -1,3 +1,10 @@
+%=========== Custom Commands =============
+\newcommand*{\PredLang}{\mathcal{L}} % Symbol for the formal language of predicate logic
+
+% \newcommand*{\VAR}{\mathrm{VAR}}  % Set of variables
+% \newcommand*{\PredSym}[1][]{\mathcal{P}\ifstrempty{#1}{true}{_{#1}}}  % Set of predicate symbols
+
+%=========================================
 \Chapter{The Language of Predicate Logic}
 \Lettrine[loversize=0.1,nindent=0pt]{Writing} clear, concise, and logical sentences is essential in mathematics. We need a consistent way to write statements to arrive at the axioms required for defining the foundations of mathematics. That is a job reserved for format language, a structure we will explore in this chapter for predicate logic.
 
@@ -120,10 +127,41 @@ Let us now look at a way of writing down expressions without using parentheses. 
 There is, of course, more to discuss about formal languages, but this is enough for us.
 
 \section{Language of Predicate Logic}
-TODO: Add
+Predicates written in English are messy and prone to misinterpretation by others. Using formal language in predicate logic helps us alleviate any ambiguity of statements.
+
+For the following, let $\PredLang$ denote the formal language for predicate logic.
 
 \subsection{Variables and Formulae}
-TODO: Add
+To start, we need to define the alphabet in $\PredLang$.
+
+\begin{definition}[Alphabet of $\PredLang$]
+    The alphabet of $\PredLang$ consist of two main types of symbols.
+    \begin{itemize}
+        \item \term{Logical Symbols}\index{predicate logic language!logical symbol}: These symbols have some intrinsic meaning to them. These include
+        \begin{itemize}
+            \item an infinite set of variables, often denoted by lowercase letters at the end of the English alphabet and can be distinguished using subscripts (e.g., $x$, $y$, $z$, $x_0$, $y_1$, $z_0$);
+            \item the equality symbol (i.e., $=$), denoting equality;
+            \item the logical connectives $\land$, $\lor$, $\lnot$, $\implies$, and $\iff$;
+            \item the universal quantifier $\forall$ and the existential quantifier$\exists$; and
+            \item parentheses (i.e., $($ and $)$) and other punctuation symbols.
+        \end{itemize}
+        \item \term{Non-Logical Symbols}\index{predicate logic language!non-logical symbol}: these represent predicates, functions and constants. In particular,
+        \begin{itemize}
+            \item for every integer $n \geq 0$ we have an infinite collection of \term{predicate symbols}\index{predicate logic language!predicate symbol} with arity $n$, which we can write, for example, as
+            \[
+                P_0^n,\;P_1^n,\;P_2^n,\;P_3^n,\;P_4^n,\;\dots;
+            \]
+            and
+            \item for every integer $n \geq 0$ we have an infinite collection of \term{function symbols}\index{predicate logical language!function symbol} with arity $n$, which we can write, for example, as
+            \[
+                f_0^n,\;f_1^n,\;f_2^n,\;f_3^n,\;f_4^n,\;\dots.
+            \]
+        \end{itemize}
+        If the arity of a non-logical symbol is clear from context, we may elect to omit the superscript.
+    \end{itemize}
+\end{definition}
+
+% TODO: Continue
 
 \subsection{Grammar and Well-Formed Formulae}
 TODO: Add

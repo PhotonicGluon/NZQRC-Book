@@ -11,17 +11,8 @@
 %================ Part 0 =================
 % Formal Language
 \newcommand*{\Lang}{\mathscr{L}}         % Symbol for a formal language
+\newcommand*{\Alphabet}{\Sigma}          % Symbol for an alphabet
 \newcommand*{\emptystring}{\varepsilon}  % Symbol for an empty string
-
-\makeatletter
-\newcommand*{\Alphabet}{%
-    \@ifstar{%
-        \Sigma^\ast%  % Set of all valid words in an alphabet
-    }{%
-        \Sigma%       % Symbol for an alphabet
-    }%
-}
-\makeatother
 
 % Axiomatic Set Theory
 \newcommand*{\ZF}{\textsf{ZF}~}    % Zermelo-Frankel Set Theory
