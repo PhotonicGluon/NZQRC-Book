@@ -70,12 +70,29 @@ With formation rules and formal grammar defined, we can finally look at some exa
     \end{itemize}
 \end{example}
 
+Before we look at the next example, let us look at the idea of arity.
+
+\begin{definition}[Arity]
+    The \term{arity}\index{arity} is the number of arguments or operands taken in by a function or operation.
+\end{definition}
+
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item The arity of the function $f(x) = x^2$ is 1 since it only takes in one argument.
+        \item The arity of the function $f(x, y, z) = x+yz$ is 3 as it takes in three arguments.
+        \item The arity of the plus operator is 2 as it takes in two operands.
+        \item The arity of a constant (e.g., 3, 7, 11) is 0 since it does not accept any operands/arguments.
+    \end{itemize}
+\end{example}
+
+Let us now look at a way of writing down expressions without using parentheses. In fact, some programming languages (e.g. Lisp) use a similar format of writing down statements.
+
 \begin{example}[{\L}ukasiewicz Notation]
     \setlength{\parindent}{1.5em}
     Our standard way of writing expressions, such as $a+b$, is said to use infix notation (since the operator sits \textbf{in between} the two operands $a$ and $b$). In 1920, the Polish mathematician Jan
     {\L}ukasiewicz introduced prefix and postfix notation, which we now call \term{{\L}ukasiewicz notation}\index{{\L}ukasiewicz Notation} (or \term{Polish notation}\index{Polish Notation}) and \term{reversed {\L}ukasiewicz notation}\index{{\L}ukasiewicz Notation!reversed} (or \term{reversed Polish notation}\index{Polish Notation!reversed}) respectively. Using our earlier example of $a+b$, it would be written $+ab$ in {\L}ukasiewicz notation and $ab+$ in reversed {\L}ukasiewicz notation. We may add spaces to aid clarity when writing in (reversed) {\L}ukasiewicz notation, i.e. $+\;a\;b$ and $a\;b\;+$.
 
-    We can use formal language to describe {\L}ukasiewicz notation. Suppose we have an alphabet $\Alphabet$ consisting of symbols. Some of these symbols could be operators (e.g., $+$, $-$, $\times$, $\div$) taking some number of operands (this number is called the \term{arity}\index{arity} of the operator). Define the arity of a non-operator symbol to be 0 (for example, 3 takes in no operands as it is a number). The formal grammar of the formal language $L$ describing {\L}ukasiewicz notation contains only one formation rule as follows.
+    We can use formal language to describe {\L}ukasiewicz notation. Suppose we have an alphabet $\Alphabet$ consisting of symbols. Some of these symbols could be operators (e.g., $+$, $-$, $\times$, $\div$). Define the arity of a non-operator symbol to be 0 (for example, 3 takes in no operands as it is a number). The formal grammar of the formal language $L$ describing {\L}ukasiewicz notation contains only one formation rule as follows.
     \begin{quote}
         If $s \in \Alphabet$ has arity $n$ and $\phi_1, \phi_2, \dots, \phi_n$ are well-formed strings in $L$, then
         \[
