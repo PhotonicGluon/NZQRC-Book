@@ -136,13 +136,13 @@ To start, we need to define the alphabet in $\SetLang$.
     \begin{itemize}
         \item \term{Logical Symbols}\index{set formal language!logical symbol}: These symbols have some intrinsic meaning to them. These include
         \begin{itemize}
-            \item an infinite set of variables, often denoted by lowercase letters at the end of the English alphabet and can be distinguished using subscripts (e.g., $x$, $y$, $z$, $x_0$, $y_1$, $z_0$);
+            \item an infinite set of variables, often denoted by lowercase letters at the end of the English alphabet and can be distinguished using subscripts (e.g., $x$, $y$, $z$, $x_0$, $y_1$, $z_0$), although we may use any English letter if it serves to aid comprehension;
             \item the equality symbol (i.e., $=$), denoting equality;
             \item the logical connectives $\land$, $\lor$, $\lnot$, $\implies$, and $\iff$;
-            \item the universal quantifier $\forall$ and the existential quantifier$\exists$; and
+            \item the universal quantifier $\forall$ and the existential quantifier $\exists$; and
             \item parentheses (i.e., $($ and $)$) and other punctuation symbols.
         \end{itemize}
-        \item \term{Non-Logical Symbols}\index{set formal language!non-logical symbol}: these represent predicates, functions and constants. In particular,
+        \item \term{Non-Logical Symbols}\index{set formal language!non-logical symbol}: These represent predicates, functions and constants. In particular,
         \begin{itemize}
             \item for every integer $n \geq 0$ we have an infinite collection of \term{predicate symbols}\index{set formal language!predicate symbol} with arity $n$, which we can write, for example, as
             \[
@@ -151,8 +151,9 @@ To start, we need to define the alphabet in $\SetLang$.
             and
             \item for every integer $n \geq 0$ we have an infinite collection of \term{function symbols}\index{set formal language!function symbol} with arity $n$, which we can write, for example, as
             \[
-                f_0^n,\;f_1^n,\;f_2^n,\;f_3^n,\;f_4^n,\;\dots.
+                f_0^n,\;f_1^n,\;f_2^n,\;f_3^n,\;f_4^n,\;\dots,
             \]
+            where the function symbols of arity 0 are called \term{constants}\index{set formal language!constant}.
         \end{itemize}
         If the arity of a non-logical symbol is clear from context, we may elect to omit the superscript.
     \end{itemize}
