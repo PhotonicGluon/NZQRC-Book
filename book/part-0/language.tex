@@ -79,15 +79,15 @@ With formation rules and formal grammar defined, we can finally look at some exa
 Before we look at the next example, let us look at the idea of arity.
 
 \begin{definition}[Arity]
-    The \term{arity}\index{arity} is the number of arguments or operands taken in by a function or operation.
+    The \term{arity}\index{arity} is the number of arguments or operands taken in by a function or operation. An \term{$n$-ary}\index{$n$-ary} function or operation is a function or operation of arity $n$.
 \end{definition}
 
 \begin{example}
     \begin{itemize}[leftmargin=*]
-        \item The arity of the function $f(x) = x^2$ is 1 since it only takes in one argument.
-        \item The arity of the function $f(x, y, z) = x+yz$ is 3 as it takes in three arguments.
-        \item The arity of the plus operator is 2 as it takes in two operands.
-        \item The arity of a constant (e.g., 3, 7, 11) is 0 since it does not accept any operands/arguments.
+        \item The arity of the function $f(x) = x^2$ is 1 since it only takes in one argument. Thus $f(x)$ is a 1-ary (i.e., \term{uniary}\index{uniary}\index{arity!uniary}) function.
+        \item The function $f(x, y, z) = x+yz$ is 3-ary (i.e., \term{ternary}\index{ternary}\index{arity!ternary}) as it takes in three arguments.
+        \item The arity of the plus operator is 2 as it takes in two operands. Thus the plus operator is a 2-ary (i.e., \term{binary}\index{binary}\index{arity!binary}) operator.
+        \item The arity of a constant (e.g., 3, 7, 11) is 0 since it does not accept any operands/arguments. They can be considered outputs of a 0-ary (i.e., \term{nullary}\index{nullary}\index{arity!nullary}) operation.
     \end{itemize}
 \end{example}
 
@@ -98,11 +98,11 @@ Let us now look at a way of writing down expressions without using parentheses. 
     Our standard way of writing expressions, such as $a+b$, is said to use infix notation (since the operator sits \textbf{in between} the two operands $a$ and $b$). In 1920, the Polish mathematician Jan
     {\L}ukasiewicz introduced prefix and postfix notation, which we now call \term{{\L}ukasiewicz notation}\index{{\L}ukasiewicz Notation} (or \term{Polish notation}\index{Polish Notation}) and \term{reversed {\L}ukasiewicz notation}\index{{\L}ukasiewicz Notation!reversed} (or \term{reversed Polish notation}\index{Polish Notation!reversed}) respectively. Using our earlier example of $a+b$, it would be written $+ab$ in {\L}ukasiewicz notation and $ab+$ in reversed {\L}ukasiewicz notation. We may add spaces to aid clarity when writing in (reversed) {\L}ukasiewicz notation, i.e. $+\;a\;b$ and $a\;b\;+$.
 
-    We can use formal language to describe {\L}ukasiewicz notation. Suppose we have an alphabet $\Alphabet$ consisting of symbols. Some of these symbols could be operators (e.g., $+$, $-$, $\times$, $\div$). Define the arity of a non-operator symbol to be 0 (for example, 3 takes in no operands as it is a number). The formal grammar of the formal language $L$ describing {\L}ukasiewicz notation contains only one formation rule as follows.
+    We can use formal language to describe {\L}ukasiewicz notation. Suppose we have an alphabet $\Alphabet$ consisting of symbols. Some of these symbols could be operators (e.g., $+$, $-$, $\times$, $\div$). Define non-operator symbols have arity 0 (i.e., nullary). The formal grammar of the formal language $L$ describing {\L}ukasiewicz notation contains only one formation rule as follows.
     \begin{quote}
-        If $s \in \Alphabet$ has arity $n$ and $\phi_1, \phi_2, \dots, \phi_n$ are well-formed strings in $L$, then
+        If $s \in \Alphabet$ is $n$-ary and $\phi_1, \phi_2, \phi_3, \dots, \phi_n$ are well-formed strings in $L$, then
         \[
-            s\phi_1\phi_2\dots\phi_n
+            s\phi_1\phi_2\phi_3\dots\phi_n
         \]
         is also a well-formed string in $L$.
     \end{quote}
@@ -144,16 +144,16 @@ To start, we need to define the alphabet in $\SetLang$.
         \end{itemize}
         \item \term{Non-Logical Symbols}\index{set formal language!non-logical symbol}: These represent predicates, functions and constants. In particular,
         \begin{itemize}
-            \item for every integer $n \geq 0$ we have an infinite collection of \term{predicate symbols}\index{set formal language!predicate symbol} with arity $n$, which we can write, for example, as
+            \item for every integer $n \geq 0$ we have an infinite collection of $n$-ary \term{predicate symbols}\index{set formal language!predicate symbol}, which we can write, for example, as
             \[
                 P_0^n,\;P_1^n,\;P_2^n,\;P_3^n,\;P_4^n,\;\dots;
             \]
             and
-            \item for every integer $n \geq 0$ we have an infinite collection of \term{function symbols}\index{set formal language!function symbol} with arity $n$, which we can write, for example, as
+            \item for every integer $n \geq 0$ we have an infinite collection of $n$-ary \term{function symbols}\index{set formal language!function symbol}, which we can write, for example, as
             \[
                 f_0^n,\;f_1^n,\;f_2^n,\;f_3^n,\;f_4^n,\;\dots,
             \]
-            where the function symbols of arity 0 are called \term{constants}\index{set formal language!constant}.
+            where the nullary function symbols are called \term{constants}\index{set formal language!constant}.
         \end{itemize}
         If the arity of a non-logical symbol is clear from context, we may elect to omit the superscript.
     \end{itemize}
