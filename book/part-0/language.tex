@@ -116,22 +116,36 @@ Let us now look at a way of writing down expressions without using parentheses. 
 
 \begin{exercise}[An Exercise in Languages]
     \begin{partquestions}{\alph*}
-        \item Let $\Alphabet = \{1,2,3\}$. Write down a string of length 5 in $\Alphabet$ without consecutive symbols.
+        % \item Let $\Alphabet = \{1,2,3\}$. Write down a string of length 5 in $\Alphabet$ without consecutive symbols.
         \item Suppose $L$ is a formal language that contains the strings ``$a$'', ``$abba$'', and ``$abracadabra$''. What symbols must be in the alphabet of $L$? Assume each symbol is a string of length 1.
         \item Write the expression $4 + ((5 - 6) \times 7)$, which is in infix notation, using {\L}ukasiewicz notation and reversed {\L}ukasiewicz notation, without using brackets (parentheses).
         \item Let $L$ be the formal language for reversed {\L}ukasiewicz notation. What is the formal grammar of $L$?
     \end{partquestions}
 \end{exercise}
 
-\section{The Formal Language of Sets}
-Statements written in English are messy and prone to misinterpretation by others. Using formal language when talking about sets helps us alleviate any ambiguity of statements.
+\begin{exercise}[Language Construction Puzzle]
+    Let $\Alphabet = \{a,b\}$. Suppose $L$ is a formal language with a formal grammar comprising the following rules.
+    \begin{enumerate}[start=0]
+        \item $\emptystring$ and ``$ba$'' are well-formed strings.
+        \item If $\phi$ is a well-formed string, then so is $a\phi$.
+        \item If $\phi$ is a well-formed string, then so is $\phi b$.
+    \end{enumerate}
+    Which of the following strings are well-formed strings in $L$?
+    \begin{partquestions}{\alph*}[4]
+        \item ``$abab$''
+        \item ``$aaabbb$''
+        \item ``$aababa$''
+        \item ``$ababbb$''
+    \end{partquestions}
+\end{exercise}
 
-For the following, let $\SetLang$ denote the formal language for sets.
+\section{The Formal Language of Sets}
+Using formal language when talking about sets helps us alleviate any ambiguity of statements. For the following, let $\SetLang$ denote the formal language for sets. 
 
 \subsection{Variables and Formulae}
-To start, we need to define the alphabet in $\SetLang$.
+To start, we need to define the alphabet in the formal language for sets. 
 
-\begin{definition}[Alphabet of $\SetLang$]
+\begin{definition}[The Alphabet of the Language of Sets]
     The alphabet of $\SetLang$ consist of two main types of symbols.
     \begin{itemize}
         \item \term{Logical Symbols}\index{set formal language!logical symbol}: These symbols have some intrinsic meaning to them. These include

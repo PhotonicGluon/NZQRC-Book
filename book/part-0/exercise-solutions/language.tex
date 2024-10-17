@@ -2,7 +2,7 @@
 \begin{questions}
     % An Exercise in Languages
     \item \begin{partquestions}{\alph*}
-        \item Some possible strings are ``12121'', ``12312'', ``12321'', ``23123'', and ``32323''.
+        % \item Some possible strings are ``12121'', ``12312'', ``12321'', ``23123'', and ``32323''.
         \item The alphabet of $L$ must contain the symbols $a$, $b$, $c$, $d$, and $r$.
         \item {\L}ukasiewicz notation: ``$+\;4\;\times\;-\;5\;6\;7$''. Reversed {\L}ukasiewicz notation: ``$4\;5\;6\;-\;7\;\times\;+$''.
         \item The formal grammar of $L$ contains only one formation rule.
@@ -14,6 +14,15 @@
             is also a well-formed string in $L$.
         \end{quote}
         This is similar to {\L}ukasiewicz notation, except that the $s$ is placed at the end instead of at the front.
+    \end{partquestions}
+
+    % Language Construction Puzzle
+    \item To argue which of the strings are well-formed and which are not, observe that we may only have at most one $a$ that may come after a $b$, regardless of the number of $b$s that are in between. Thus any string that has more than one inversion will not be a well-formed string.
+    \begin{partquestions}{\alph*}
+        \item Well-formed string. $ba \overset{1}{\longrightarrow} aba \overset{2}{\longrightarrow} abab$.
+        \item Well-formed string. $\emptystring \overset{1}{\longrightarrow} a \overset{1}{\longrightarrow} aa \overset{1}{\longrightarrow} aaa \overset{2}{\longrightarrow} aaab \overset{2}{\longrightarrow} aaabb \overset{2}{\longrightarrow} aaabbb$.
+        \item Not a well-formed string by above observation. From the 1st $b$ there are 2 $a$s that come after it.
+        \item Well-formed string. $ba \overset{1}{\longrightarrow} aba \overset{2}{\longrightarrow} abab \overset{2}{\longrightarrow} ababb \overset{2}{\longrightarrow} ababbb$.
     \end{partquestions}
 
     % What's a Formula?
