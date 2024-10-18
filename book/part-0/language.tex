@@ -148,7 +148,7 @@ To start, we need to define the alphabet.
     \begin{itemize}
         \item \term{Logical Symbols}\index{set formal language!logical symbol}: These symbols have some intrinsic meaning to them. These include
         \begin{itemize}
-            \item an infinite set of \term{variables}\index{set formal language!variable}, often denoted by lowercase letters at the end of the English alphabet and can be distinguished using subscripts (e.g., $x$, $y$, $z$, $x_0$, $y_1$, $z_0$), although we may use any English letter if it serves to aid comprehension;
+            \item an infinite set of \term{variables}\index{variable}\index{set formal language!variable}, often denoted by lowercase letters at the end of the English alphabet and can be distinguished using subscripts (e.g., $x$, $y$, $z$, $x_0$, $y_1$, $z_0$), although we may use any English letter if it serves to aid comprehension;
             \item the equality symbol (i.e., $=$), denoting equality;
             \item the logical connectives $\land$, $\lor$, $\lnot$, $\implies$, and $\iff$;
             \item the universal quantifier $\forall$ and the existential quantifier $\exists$; and
@@ -165,7 +165,7 @@ To start, we need to define the alphabet.
             \[
                 f_0^n,\;f_1^n,\;f_2^n,\;f_3^n,\;f_4^n,\;\dots,
             \]
-            where the nullary function symbols are called \term{constants}\index{set formal language!constant}.
+            where the nullary function symbols are called \term{constants}\index{constant}\index{set formal language!constant}.
         \end{itemize}
         If the arity of a non-logical symbol is clear from context, we may elect to omit the superscript.
     \end{itemize}
@@ -196,7 +196,7 @@ We can now move on to defining the words in $\SetLang$. There are two main types
 
 \begin{definition}[Term]
     A \term{term}\index{term}\index{set formal language!term} in $\SetLang$ is formed by applying the following two rules a finite number of times.
-    \begin{enumerate}[label=\textbf{T\arabic*.},start=0,leftmargin=1.25\parindent]
+    \begin{enumerate}[label=\textbf{T\arabic*.},start=0,leftmargin=1.35\parindent]
         \item Any variable is a term.
         \item If $f$ is an $n$-ary function symbol and $t_1, t_2, \dots, t_n$ are terms, then the string $f(t_1,t_2,\dots,t_n)$ is also a term. In particular, constants are nullary function symbols and thus are terms.
     \end{enumerate}
@@ -204,7 +204,7 @@ We can now move on to defining the words in $\SetLang$. There are two main types
 
 \begin{definition}[Well-Formed Formula (\wff*)]\label{definition:well-formed-formula}
     A \term{well-formed formula}\index{formula!well-formed}\index{set formal language!well-formed formula} (often abbreviated as \wff\index{wff}\index{set formal language!wff}) in $\SetLang$ is formed by applying the following five rules a finite number of times.
-    \begin{enumerate}[label=\textbf{F\arabic*.},leftmargin=1.25\parindent]
+    \begin{enumerate}[label=\textbf{F\arabic*.},leftmargin=1.35\parindent]
         \item If $t_1$ and $t_2$ are terms, then the string $t_1=t_2$ is a \wff.
         \item If $P$ is an $n$-ary predicate symbol and $t_1, t_2, \dots, t_n$ are terms, then the string $P(t_1,t_2,\dots,t_n)$ is a \wff.
         \item If $\phi$ is a \wff, then the string $\lnot \phi$ is also a \wff.
@@ -220,3 +220,52 @@ We can now move on to defining the words in $\SetLang$. There are two main types
 \end{definition}
 
 % TODO: Add examples and exercises
+
+Notice that variables may be used in \wffs. Some of the variables appear to be `controlled' by, say, a quantifier, while others are not. This is an important observation.
+
+\begin{definition}[Free and Bound Variables]
+    Let $x$ be a variable and $\chi$ be a \wff. The variable $x$ is said to be either \term{bound}\index{variable!bound} or \term{free}\index{variable!free} based on the following rules.
+    \begin{enumerate}[label=\textbf{V\arabic*.},leftmargin=1.35\parindent]
+        \item If $\chi$ is an atomic formula, then $x$ is free in $\chi$ if and only if $x$ appears in $\chi$. There are no bound variables in atomic formulae.
+        \item If $\chi$ takes the form $\lnot \phi$ where $\phi$ is a \wff, then
+        \begin{itemize}
+            \item $x$ is free in $\chi$ if and only if $x$ is free in $\phi$; and
+            \item $x$ is bound in $\chi$ if and only if $x$ is bound in $\phi$.
+        \end{itemize}
+        \item If $\chi$ takes the form $\phi\land\psi$, $\phi\lor\psi$, $\phi\implies\psi$, or $\phi\iff\psi$, where $\phi$ and $\psi$ are \wffs, then
+        \begin{itemize}
+            \item $x$ is free in $\chi$ if and only if $x$ is free in either $\phi$ or $\psi$; and
+            \item $x$ is bound in $\chi$ if and only if $x$ is bound in either $\phi$ or $\psi$.
+        \end{itemize}
+        \item If $\chi$ takes the form $\forall y \phi$ or $\exists y \phi$, where $y$ is a variable and $\phi$ is a \wff, then
+        \begin{itemize}
+            \item $x$ is free in $\chi$ if and only if $x$ is free in $\phi$ and $x$ is a different variable from $y$; and
+            \item $x$ is bound in $\chi$ if and only if $x$ is bound in $\phi$ or $x$ is the same variable as $y$.
+        \end{itemize}
+        The variable $y$ is bound in $\chi$.
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item Consider the \wff~``$x=y$''. This is an atomic formula, and thus both $x$ and $y$ are free in it by \textbf{V1}.
+        \item In the \wff~``$\lnot(x=y)$'', since $x$ and $y$ are both free in the \wff~``$x=y$'', thus both $x$ and $y$ are free in ``$\lnot(x=y)$'' by \textbf{V2}.
+        \item The \wff~``$\forall x (x=y)$'' has a bound variable $x$ and a free variable $y$ by \textbf{V4}.
+        \item The \wff~``$\exists a (P(x) \implies Q(x, a))$'' has a bound variable $a$ and a free variable $x$ by both \textbf{V3} (applied to the \wff~``$P(x) \implies Q(x, a)$'') and \textbf{V4}.
+        \item In the \wff~``$\forall x \forall y \exists z (P(x,y)\implies (Q(x,z) \lor Q(y,z)))$'', the variables $x$, $y$, and $z$ are all bound. Note that the variable $w$ is neither bound nor free since it does not appear in the \wff.
+    \end{itemize}
+\end{example}
+
+Note that a variable could be both bound and free in the same \wff. This is rare, but possible.
+
+\begin{example}
+    Consider the \wff
+    \[
+        P(x) \implies \exists x Q(x).
+    \]
+    On the left side of the \wff, $x$ is free. However, on the right side, $x$ is bound. However, to avoid confusion, we would usually use a different variable to express the existential statement on the right. For example,
+    \[
+        P(x) \implies \exists y Q(y).
+    \]
+    Now $x$ is free on both sides of the \wff~(and thus free in the \wff).
+\end{example}
