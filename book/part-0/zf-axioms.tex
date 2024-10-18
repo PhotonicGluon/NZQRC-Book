@@ -105,14 +105,14 @@ The axiom schema of specification, also known as the axiom of subsets\index{axio
 
 \begin{axiom}[Schema of Specification]\index{axiom!schema of specification}\index{Zermelo-Frankel Set Theory!schema of specification}
     \[
-        \forall A \exists S \forall x \left(x \in S \iff (x \in A \land \phi(x))\right)
+        \forall A \forall w_1 \forall w_2 \cdots \forall w_n \exists S \forall x \left(x \in S \iff (x \in A \land \phi)\right)
     \]
-    where $\phi(x)$ is a wff.
+    where $\phi$ is a \wff~such that $x$, $w_1$, $w_2$, \dots, $w_n$, and $A$ are free in $\phi$ but $S$ is not free in $\phi$.
 \end{axiom}
 
-In other words, for every set $A$ there exists a set $S$ such that $x$ is in $S$ if and only if $x$ is in $A$ and that $\phi(x)$ is satisfied.
+In other words, for every set $A$ and for every $w_1$ to $w_n$ there exists a set $S$ such that $x$ is in $S$ if and only if $x$ is in $A$ and that $\phi$ is satisfied.
 
-Note that we require one instance of the above for every wff $\phi(x)$. Thus, this is an axiom schema and not just an axiom.
+Note that we require one instance of the above for every \wff~$\phi$. Thus, this is an axiom schema and not just an axiom.
 
 % TODO: Continue with applications of the above 3 axioms
 
