@@ -129,4 +129,9 @@
 
     // Other settings
     "autoDocstring.docstringFormat": "google-notypes",
+    "wordcounter.side.left": [
+        "word",
+        "paragraph",
+        "readingtime"
+    ],
 }

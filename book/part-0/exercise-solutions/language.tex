@@ -7,24 +7,24 @@
         \item {\L}ukasiewicz notation: ``$+\;4\;\times\;-\;5\;6\;7$''. Reversed {\L}ukasiewicz notation: ``$4\;5\;6\;-\;7\;\times\;+$''.
         \item The formal grammar of $L$ contains only one formation rule.
         \begin{quote}
-            If $s \in \Alphabet$ is $n$-ary and $\phi_1, \phi_2, \phi_3, \dots, \phi_n$ are well-formed strings in $L$, then
+            If $s \in \Alphabet$ is $n$-ary and $\phi_1, \phi_2, \phi_3, \dots, \phi_n$ are words in $L$, then
             \[
                 \phi_1\phi_2\phi_3\dots\phi_ns
             \]
-            is also a well-formed string in $L$.
+            is also a word in $L$.
         \end{quote}
         This is similar to {\L}ukasiewicz notation, except that the $s$ is placed at the end instead of at the front.
     \end{partquestions}
 
     % Language Construction Puzzle
-    \item To argue which of the strings are well-formed and which are not, observe that we may only have at most one $a$ that may come after a $b$, regardless of the number of $b$s that are in between. Thus any string that has more than one inversion will not be a well-formed string.
+    \item To argue which of the strings are words and which are not, observe that we may only have at most one $a$ that may come after a $b$, regardless of the number of $b$s that are in between.
     \begin{partquestions}{\alph*}
-        \item Well-formed string. $ba \overset{1}{\longrightarrow} aba \overset{2}{\longrightarrow} abab$.
-        \item Well-formed string. $\emptystring \overset{1}{\longrightarrow} a \overset{1}{\longrightarrow} aa \overset{1}{\longrightarrow} aaa \overset{2}{\longrightarrow} aaab \overset{2}{\longrightarrow} aaabb \overset{2}{\longrightarrow} aaabbb$.
-        \item Not a well-formed string by above observation. From the 1st $b$ there are 2 $a$s that come after it.
-        \item Well-formed string. $ba \overset{1}{\longrightarrow} aba \overset{2}{\longrightarrow} abab \overset{2}{\longrightarrow} ababb \overset{2}{\longrightarrow} ababbb$.
+        \item Word. $ba \overset{1}{\longrightarrow} aba \overset{2}{\longrightarrow} abab$.
+        \item Word. $\emptystring \overset{1}{\longrightarrow} a \overset{1}{\longrightarrow} aa \overset{1}{\longrightarrow} aaa \overset{2}{\longrightarrow} aaab \overset{2}{\longrightarrow} aaabb \overset{2}{\longrightarrow} aaabbb$.
+        \item Not a word by above observation. From the 1st $b$ there are 2 $a$s that come after it.
+        \item Word. $ba \overset{1}{\longrightarrow} aba \overset{2}{\longrightarrow} abab \overset{2}{\longrightarrow} ababb \overset{2}{\longrightarrow} ababbb$.
     \end{partquestions}
 
-    % What's a Formula?
-    \item All of them are formulae, but most are not \textbf{valid} formulae (i.e., well-formed formulae).
+    % Strings in $\SetLang$
+    \item All of them are strings, but most are not words.
 \end{questions}

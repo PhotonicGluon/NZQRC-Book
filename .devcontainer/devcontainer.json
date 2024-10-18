@@ -18,6 +18,7 @@
         "vscode": {
             "extensions": [
                 "james-yu.latex-workshop",
+                "kirozen.wordcounter",
                 "ms-python.black-formatter",
                 "ms-python.isort",
                 "ms-python.python",

@@ -30,25 +30,22 @@ In English, our (primary) alphabet is A to Z, along with the two cases each lett
 
     The \term{length}\index{string!length} of a string is the number of symbols making up the string, with the empty string having length 0.
 \end{definition}
-
 \begin{remark}[Words]
-    Some authors will call strings using symbols from $\Alphabet$ \term{words}\index{word}\index{formal language!word} formed from $\Alphabet$. However, we will stick with the term ``string'' here as the term ``empty word'' is awkward to use.
+    Some authors will call strings \term{words}\index{word}\index{formal language!word} formed from $\Alphabet$. However, we will stick with the term ``string'' here as the term ``empty word'' is awkward to use. Also, this may cause confusion with our definition of words later on.
 \end{remark}
 
 \begin{example}[A Simple Alphabet]
     Let $\Alphabet = \{a, b\}$. Then $\emptystring$ (the empty string), ``$a$'', ``$b$'', ``$aa$'', ``$ab$'', ``$ba$'', ``$bb$'', ``$aaa$'', ``$aab$'', ``$aba$'', ``$baa$'', etc. are all valid strings. Notice that we have not defined any rules on what strings belong in our formal language -- these are just strings formed from $\Alphabet$.
 \end{example}
 
-\subsection{Grammar and Well-Formed Strings}
+\subsection{Grammar and Words}
 It is undoubtedly unhelpful to say that every string, essentially a combination of letters in our alphabet, is meaningful within our language. In English, for example, the `words' ``hjbhjx'', ``jsadbhf'', and ``jkdswjaaa'' should not count as words! We want to have some restrictions on what strings belong in our formal language and which ones do not. That is the job of formation rules that make up our formal grammar.
 
 \begin{definition}[Formation Rule]
-    Let $\Lang$ be a formal language with alphabet $\Alphabet$. A \term{formation rule}\index{formation rule}\index{formal language!formation rule} of $\Lang$ is a rule describing which strings formed from $\Alphabet$ belong to $\Lang$ and which do not. Such strings are called \term{well-formed strings}\index{well-formed string}\index{string!well-formed}\index{formal language!string!well-formed} of $\Lang$.
+    Let $\Lang$ be a formal language with alphabet $\Alphabet$. A \term{formation rule}\index{formation rule}\index{formal language!formation rule} of $\Lang$ is a rule describing which strings formed from $\Alphabet$ belong to $\Lang$ and which do not. Such strings are called the \term{words}\index{word}\index{formal language!word} of $\Lang$.
 \end{definition}
-\begin{remark}[(Well-Formed) Words]
-    It is more common to see ``well-formed strings'' called \term{words}\index{word}\index{formal language!word} of the formal language, adding to the confusion to the earlier remark that some authors just call any string of the formal language a word. For these authors, ``well-formed strings'' would be called \term{well-formed words}\index{word!well-formed}\index{formal language!word!well-formed} instead.
-    
-    However, to aid the motivation of ``well-formed formulae'' later in this chapter, we will stick to using ``well-formed strings'', although it is important that ``word'' has the same meaning as the aforementioned.
+\begin{remark}[Well-Formed Formulae]
+    It is common to see words called \term{well-formed formulae}\index{well-formed formulae} (or \term{well-formed formulas}) in other contexts. However, we will stick to using the term ``words'' as this will hopefully reduce the confusion when we actually introduce the well-formed formulae that are in the formal language of axiomatic set theory.
 \end{remark}
 
 \begin{definition}[Formal Grammar]
@@ -64,9 +61,9 @@ With formation rules and formal grammar defined, we can finally look at some exa
         \[
             L_1 = \{y, xy, yy, xxy, xyy, yxy, yyy\}.
         \]
-        Note that the empty string $\emptystring$ does not belong in $L_1$ since it does not end with the symbol $y$.
+        Note that the empty string $\emptystring$ is not a word in $L_1$ since it does not end with the symbol $y$.
 
-        \item Let $L_2$ be the formal language using the alphabet $\Alphabet$ such that $L_2$ contains strings that read the same forwards as they do backwards (i.e., palindromes). So $L_2$ contains at least the strings
+        \item Let $L_2$ be the formal language using the alphabet $\Alphabet$ such that $L_2$ contains strings that read the same forwards as they do backwards (i.e., palindromes). So $L_2$ contains at least words
         \[
             \emptystring, ``x'', ``y'', ``xx'', ``yy'', ``xxx'', ``xyx'', ``yxy'', ``yyy'', ``xxxx'',
         \]
@@ -98,13 +95,13 @@ Let us now look at a way of writing down expressions without using parentheses. 
 
     We can use formal language to describe {\L}ukasiewicz notation. Suppose we have an alphabet $\Alphabet$ consisting of symbols. Some of these symbols could be operators (e.g., $+$, $-$, $\times$, $\div$). Define non-operator symbols have arity 0 (i.e., nullary). The formal grammar of the formal language $L$ describing {\L}ukasiewicz notation contains only one formation rule as follows.
     \begin{quote}
-        If $s \in \Alphabet$ is $n$-ary and $\phi_1, \phi_2, \phi_3, \dots, \phi_n$ are well-formed strings in $L$, then
+        If $s \in \Alphabet$ is $n$-ary and $\phi_1, \phi_2, \phi_3, \dots, \phi_n$ are words in $L$, then
         \[
             s\phi_1\phi_2\phi_3\dots\phi_n
         \]
-        is also a well-formed string in $L$.
+        is also a word in $L$.
     \end{quote}
-    Notably, any non-operator symbol is a well-formed string in $L$.
+    Notably, any non-operator symbol is a word in $L$.
     \begin{itemize}
         \item ``$+\;2\;3$'' in $L$ is equivalent to ``$2+3$'' when written in infix notation.
         \item ``$+\;2\;3\;\times\;4$'' in $L$ is equivalent to $(2 + 3) \times 4$ when written in infix notation.
@@ -124,11 +121,11 @@ Let us now look at a way of writing down expressions without using parentheses. 
 \begin{exercise}[Language Construction Puzzle]
     Let $\Alphabet = \{a,b\}$. Suppose $L$ is a formal language with a formal grammar comprising the following rules.
     \begin{enumerate}[start=0]
-        \item $\emptystring$ and ``$ba$'' are well-formed strings.
-        \item If $\phi$ is a well-formed string, then so is $a\phi$.
-        \item If $\phi$ is a well-formed string, then so is $\phi b$.
+        \item $\emptystring$ and ``$ba$'' are words.
+        \item If $\phi$ is a word, then so is $a\phi$.
+        \item If $\phi$ is a word, then so is $\phi b$.
     \end{enumerate}
-    Which of the following strings are well-formed strings in $L$?
+    Which of the following strings are words in $L$?
     \begin{partquestions}{\alph*}[4]
         \item ``$abab$''
         \item ``$aaabbb$''
@@ -140,7 +137,6 @@ Let us now look at a way of writing down expressions without using parentheses. 
 \section{The Formal Language of Axiomatic Set Theory}
 Using formal language when talking about sets helps us alleviate any ambiguity of statements. For the following, let $\SetLang$ denote the formal language of axiomatic set theory.
 
-\subsection{Variables and Formulae}
 To start, we need to define the alphabet.
 
 \begin{definition}[The Alphabet of Axiomatic Set Theory]
@@ -174,14 +170,14 @@ To start, we need to define the alphabet.
     The alphabet defined here is almost the same as the alphabet used in first order logic, except that we include ``$\in$'' in the language.
 \end{remark}
 
-With the alphabet, we can define the strings in $\SetLang$. Although, we have a more `fancy' name for such strings.
+% With the alphabet, we can define the strings in $\SetLang$.
 
-\begin{definition}[Formulae]
-    A string in $\SetLang$ is called a \term{formula}\index{formula}\index{set formal language!formula}. More explicitly, a formula is either a finite concatenation of symbols in the alphabet of $\SetLang$ or the empty string $\emptystring$.
-\end{definition}
+% \begin{definition}[Formulae]
+%     A string in $\SetLang$ is called a \term{formula}\index{formula}\index{set formal language!formula}. More explicitly, a formula is either a finite concatenation of symbols in the alphabet of $\SetLang$ or the empty string $\emptystring$.
+% \end{definition}
 
-\begin{exercise}[What's a Formula?]
-    Which of the following are formulae in $\SetLang$?
+\begin{exercise}[Strings in $\SetLang$]
+    Which of the following are strings in $\SetLang$?
     \begin{partquestions}{\alph*}[3]
         \item $x$
         \item $xy$
@@ -198,5 +194,4 @@ With the alphabet, we can define the strings in $\SetLang$. Although, we have a 
     \end{partquestions}
 \end{exercise}
 
-\subsection{Grammar and Well-Formed Formulae}
-TODO: Add
+% TODO: Continue
