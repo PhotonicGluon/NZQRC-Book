@@ -1,4 +1,8 @@
 %=========== Custom Commands =============
+\newcommand*{\Lang}{\mathscr{L}}         % Symbol for a formal language
+\newcommand*{\Alphabet}{\Sigma}          % Symbol for an alphabet
+\newcommand*{\emptystring}{\varepsilon}  % Symbol for an empty string
+
 \newcommand*{\SetLang}{\mathcal{L}}  % Symbol for the language of axiomatic set theory
 
 %=========================================
@@ -144,7 +148,7 @@ To start, we need to define the alphabet.
     \begin{itemize}
         \item \term{Logical Symbols}\index{set formal language!logical symbol}: These symbols have some intrinsic meaning to them. These include
         \begin{itemize}
-            \item an infinite set of variables, often denoted by lowercase letters at the end of the English alphabet and can be distinguished using subscripts (e.g., $x$, $y$, $z$, $x_0$, $y_1$, $z_0$), although we may use any English letter if it serves to aid comprehension;
+            \item an infinite set of \term{variables}\index{set formal language!variable}, often denoted by lowercase letters at the end of the English alphabet and can be distinguished using subscripts (e.g., $x$, $y$, $z$, $x_0$, $y_1$, $z_0$), although we may use any English letter if it serves to aid comprehension;
             \item the equality symbol (i.e., $=$), denoting equality;
             \item the logical connectives $\land$, $\lor$, $\lnot$, $\implies$, and $\iff$;
             \item the universal quantifier $\forall$ and the existential quantifier $\exists$; and
@@ -170,12 +174,6 @@ To start, we need to define the alphabet.
     The alphabet defined here is almost the same as the alphabet used in first order logic, except that we include ``$\in$'' in the language.
 \end{remark}
 
-% With the alphabet, we can define the strings in $\SetLang$.
-
-% \begin{definition}[Formulae]
-%     A string in $\SetLang$ is called a \term{formula}\index{formula}\index{set formal language!formula}. More explicitly, a formula is either a finite concatenation of symbols in the alphabet of $\SetLang$ or the empty string $\emptystring$.
-% \end{definition}
-
 \begin{exercise}[Strings in $\SetLang$]
     Which of the following are strings in $\SetLang$?
     \begin{partquestions}{\alph*}[3]
@@ -194,4 +192,31 @@ To start, we need to define the alphabet.
     \end{partquestions}
 \end{exercise}
 
-% TODO: Continue
+We can now move on to defining the words in $\SetLang$. There are two main types of words in $\SetLang$, namely \term{terms} and \term{well-formed formulae}.
+
+\begin{definition}[Term]
+    A \term{term}\index{term}\index{set formal language!term} in $\SetLang$ is formed by applying the following two rules a finite number of times.
+    \begin{enumerate}[label=\textbf{T\arabic*.},start=0,leftmargin=1.25\parindent]
+        \item Any variable is a term.
+        \item If $f$ is an $n$-ary function symbol and $t_1, t_2, \dots, t_n$ are terms, then the string $f(t_1,t_2,\dots,t_n)$ is also a term. In particular, constants are nullary function symbols and thus are terms.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Well-Formed Formula (\wff*)]\label{definition:well-formed-formula}
+    A \term{well-formed formula}\index{formula!well-formed}\index{set formal language!well-formed formula} (often abbreviated as \wff\index{wff}\index{set formal language!wff}) in $\SetLang$ is formed by applying the following five rules a finite number of times.
+    \begin{enumerate}[label=\textbf{F\arabic*.},leftmargin=1.25\parindent]
+        \item If $t_1$ and $t_2$ are terms, then the string $t_1=t_2$ is a \wff.
+        \item If $P$ is an $n$-ary predicate symbol and $t_1, t_2, \dots, t_n$ are terms, then the string $P(t_1,t_2,\dots,t_n)$ is a \wff.
+        \item If $\phi$ is a \wff, then the string $\lnot \phi$ is also a \wff.
+        \item If both $\phi$ and $\psi$ are \wffs, then the strings $\phi\land\psi$, $\phi\lor\psi$, $\phi\implies\psi$, and $\phi\iff\psi$ are all \wffs.
+        \item If $x$ is a variable and $\phi$ is a \wff, then the strings $\forall x\phi$ (meaning ``for all $x$, $\phi$ holds'') and $\exists x\phi$ (meaning ``there exists $x$ such that $\phi$ holds'') are both \wffs.
+    \end{enumerate}
+\end{definition}
+
+\wffs* that only use the rules \textbf{F1} and \textbf{F2} have a special name.
+
+\begin{definition}[Atomic Formulae]
+    A \wff~that uses only the rules \textbf{F1} and \textbf{F2} as described in \myref{definition:well-formed-formula} is called an \term{atomic formula}\index{atomic formula}\index{set formal language!atomic formula}.
+\end{definition}
+
+% TODO: Add examples and exercises
