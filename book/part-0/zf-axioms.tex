@@ -1,21 +1,14 @@
 \Chapter{Axiomatic Set Theory}
-\Lettrine[loversize=0.1,nindent=0pt]{Paradoxes} are the bane of creating a consistent system in mathematics. However, set theory, as we have introduced it, is full of paradoxes. For example, as stated so far, a set could contain itself. However, this leads to Russell's paradox of the set of all sets that are not members of themselves. To that end, we look at a more axiomatic definition of what sets are, inspired by the work of Ernst Zermelo Abraham Fraenkel, to create a system that is (hopefully) devoid of paradoxes.
+\Lettrine[loversize=0.1,nindent=0pt]{Paradoxes} are the bane of creating a consistent system in mathematics. However, set theory, as we have introduced it, is full of paradoxes. For example, as stated so far, a set could contain itself. However, this leads to Russell's paradox of the set of all sets that are not members of themselves. To that end, we look at a more axiomatic definition of what sets are, inspired by the work of Ernst Zermelo and Abraham Fraenkel, to create a system that is (hopefully) devoid of paradoxes.
 
-% \section{Formal Language for Sets}
-% We already introduced the basic logical symbols that we use back in an earlier chapter, so these notations are not surprising. However, their conciseness will require some getting used to.
+\section{An Introduction to Zermelo-Fraenkel Set Theory}
+The modern study of set theory was initiated by Richard Dedekind and Georg Cantor in the 19th century. Unfortunately, these early systems are rife with paradoxes, prompting the creation of more robust axiomatic systems. Zermelo-Fraenkel set theory\index{Zermelo-Frankel Set Theory} (often abbreviated as \ZF\index{ZF}) is the most is still the best-known and most studied, and it will be what we use to define numbers from the ground up.
 
-% \begin{itemize}
-%     \item We will use 
-% \end{itemize}
+\ZF~has 9 main axioms.
 
-\section{Introduction to Zermelo-Fraenkel Set Theory}
-The modern study of set theory was initiated by Richard Dedekind and Georg Cantor in the 19th century. Unfortunately, these early systems are rife with paradoxes, prompting the creation of more robust axiomatic systems. Zermelo-Fraenkel set theory is the most is still the best-known and most studied, and it will be what we use to define numbers from the ground up.
-
-For brevity, we will write \ZF to mean Zermelo-Frankel set theory\index{Zermelo-Frankel Set Theory}\index{ZF}.
-
-\ZF has 8 main axioms.
 \begin{enumerate}
     \item \textbf{Axiom of Extensionality}: Two sets are equal if they have the same elements.
+    \item \textbf{Axiom of the Empty Set}: The empty set exists.
     \item \textbf{Axiom of Pairing}: Any two objects have a pair.
     \item \textbf{Axiom Schema of Specification}: An axiom describing how a set can be created using set-builder notation.
     \item \textbf{Axiom of Union}: The union of the elements in a set exists.
@@ -24,10 +17,20 @@ For brevity, we will write \ZF to mean Zermelo-Frankel set theory\index{Zermelo-
     \item \textbf{Axiom Schema of Replacement}: The image of any function exists.
     \item \textbf{Axiom of Foundation}: Every non-empty set $A$ contains an element $B$ which is disjoint from $A$. This is used to prevent paradoxes about sets containing themselves.
 \end{enumerate}
+\begin{remark}[Axiom of Choice]
+    There is a controversial tenth axiom, called the \textbf{Axiom of Choice}. Essentially, it states that a Cartesian product of a collection of non-empty sets is non-empty. This also includes sets that are infinite. \ZF with the axiom of choice included is usually denoted \textsf{ZFC}\index{ZFC}. However, for our exploration of number here, we do not require the axiom of choice.    
+\end{remark}
+\begin{remark}[Choice of Axioms]
+    Apart from the controversial axiom of choice, the names and statements of the axioms in \ZF~are, frustratingly, inconsistent.
+    \begin{itemize}
+        \item Some authors call the axiom schema of specification the axiom of subsets.
+        \item Some call the axiom of foundation the axiom of regularity.
+        \item Many authors will group the axiom of the empty set along with the axiom of infinity.
+    \end{itemize}
+    The 9 axioms that we look here are what should be the most illuminating and essential ones.
+\end{remark}
 
-There is a controversial ninth axiom, called the \textbf{Axiom of Choice}. Essentially, it states that a Cartesian product of a collection of non-empty sets is non-empty. This also includes sets that are infinite. \ZF with the axiom of choice included is usually denoted \textsf{ZFC}\index{ZFC}. However, for our exploration of number here, we do not require the axiom of choice.
-
-An important thing to note when we are working in \ZF is that \textbf{everything is a set}. The foundational object that we are discussing is the set, and we are defining everything in terms of sets. We are simply specifying that the properties of these objects (sets) are. Thus awkward notation like $a \in b$ or $1 \cup 2$ is readily explained way when we remember that all objects are sets.
+An important thing to note when we are working in \ZF~is that \textbf{everything is a set}. The foundational object that we are discussing is the set, and we are defining everything in terms of sets. We are simply specifying that the properties of these objects (sets) are. Thus awkward notation like $a \in b$ or $1 \cup 2$ is readily explained way when we remember that all objects are sets.
 
 \section{Axiom of Extensionality}
 The first axiom that we will look at is the axiom of extensionality.
@@ -42,8 +45,13 @@ Let us understand what this means. For all $A$ and $B$, remembering the golden r
 
 Some may interpret this axiom as the foundational property of sets. Sets are equal if they have the same members. That is what all they are. All the other axioms simply tell us what sets exist.
 
-\section{Axiom of Pairing}
+\section{Axiom of the Empty Set}
 The next axiom starts to give us an idea of what sets could exist.
+
+TODO: Add
+
+\section{Axiom of Pairing}
+The axiom of pairing gives us another example of what sets exist.
 
 \begin{axiom}[Pairing]\label{axiom:pairing}\index{axiom!of pairing}\index{Zermelo-Frankel Set Theory!pairing}
     \[
@@ -59,7 +67,7 @@ We now consider sets with one element.
     A \term{singleton}\index{singleton} is a set containing one element. We denote a singleton containing the element $x$ by $\{x\}$.
 \end{definition}
 
-\myref{axiom:pairing} allows us to definitively prove within \ZF that singletons exist.
+\myref{axiom:pairing} allows us to definitively prove within \ZF~that singletons exist.
 
 \begin{proposition}[Singletons Exist]\label{prop:singletons-exist}
     Singletons exist. Formally,
