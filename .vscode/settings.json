@@ -3,6 +3,7 @@
         "arity",
         "biconditional",
         "biconditionals",
+        "devcontainer",
         "extensionality",
         "Georg",
         "getbbox",
@@ -21,6 +22,7 @@
         "poset",
         "posets",
         "qrcode",
+        "tlmgr",
         "typer",
         "ukasiewicz",
         "Zassenhaus"
