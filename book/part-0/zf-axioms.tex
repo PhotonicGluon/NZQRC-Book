@@ -112,10 +112,13 @@ We now consider sets with one element.
 The axiom schema of specification, also known as the axiom of subsets\index{axiom!of subsets}, allows us to restrict the elements of a set to those that satisfy a specific condition.
 
 \begin{axiom}[Schema of Specification]\index{axiom!schema of specification}\index{Zermelo-Frankel Set Theory!schema of specification}
-    \[
-        \forall A \forall w_1 \forall w_2 \cdots \forall w_n \exists S \forall x \left(x \in S \iff (x \in A \land \phi)\right)
-    \]
-    where $\phi$ is a \wff~such that $x$, $w_1$, $w_2$, \dots, $w_n$, and $A$ are free in $\phi$ but $S$ is not free in $\phi$.
+    Let $\phi$ be a \wff. Then
+    \begin{align*}
+        &\forall A \forall w_1 \forall w_2 \cdots \forall w_n \exists S(\\
+        &\quad\quad\forall x \left(x \in S \iff (x \in A \land \phi(x, w_1, w_2, \dots, w_n, A))\right)\\
+        &)
+    \end{align*}
+    where $S$ is not free in $\phi$.
 \end{axiom}
 
 In other words, for every set $A$ and for every $w_1$ to $w_n$ there exists a set $S$ such that $x$ is in $S$ if and only if $x$ is in $A$ and that $\phi$ is satisfied.
