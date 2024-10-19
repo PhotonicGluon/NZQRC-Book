@@ -221,7 +221,7 @@ We can now move on to defining the words in $\SetLang$. There are two main types
 
 % TODO: Add examples and exercises
 
-Notice that variables may be used in \wffs. Some of the variables appear to be `controlled' by, say, a quantifier, while others are not. This is an important observation.
+Notice that variables may appear in \wffs. Some of the variables appear to be `controlled' by, say, a quantifier, while others are not. This is an important observation.
 
 \begin{definition}[Free and Bound Variables]
     Let $x$ be a variable and $\chi$ be a \wff. The variable $x$ is said to be either \term{bound}\index{variable!bound} or \term{free}\index{variable!free} based on the following rules.
@@ -269,3 +269,12 @@ Note that a variable could be both bound and free in the same \wff. This is rare
     \]
     Now $x$ is free on both sides of the \wff~(and thus free in the \wff).
 \end{example}
+
+Explicitly stating which variables are free in a \wff~is tedious when there are many variables to list. We have a shorthand for this, which we will add on as a sixth rule for creating \wffs~along the rules in \myref{definition:well-formed-formula}.
+
+\begin{definition}[\wffs*~with Free Variables]
+    Let $\phi$ be a \wff~and let the variables be $x_1, x_2, \dots, x_n$ be free in $\phi$. This fact can be written as $\phi(x_1, x_2, \dots, x_n)$. In addition, the following rule is another valid approach for creating \wffs~in $\SetLang$.
+    \begin{enumerate}[label=\textbf{F\arabic*.},start=6,leftmargin=1.35\parindent]
+        \item If $\phi$ is a \wff~and the variables $x_1, x_2, \dots, x_n$ are all free in $\phi$, then the string $\phi(x_1, x_2, \dots, x_n)$ is a \wff~encapsulating the idea that the aforementioned variables are free in $\phi$. This string has the same meaning as the \wff~$\phi$ itself.
+    \end{enumerate}
+\end{definition}
