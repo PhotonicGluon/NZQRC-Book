@@ -165,17 +165,6 @@ With this result we can prove that the more general Cartesian product exists.
     Let $A_1, A_2, \dots, A_n$ be non-empty sets where $n \geq 2$. Then the Cartesian product $A_1 \times A_2 \times \cdots \times A_n$ is indeed a set.
 \end{theorem}
 \begin{proof}
-    % We will induct on $n$. The base case of $n = 2$ is proven by \myref{lemma:cartesian-product-of-two-sets-is-a-set}.
-
-    % Now, assume that the induction hypothesis holds for some $k \geq 2$, i.e. the Cartesian product of $A_1, A_2, \dots, A_k$ is a set. For brevity let $B = A_1 \times A_2 \times \cdots \times A_k$. We show that the Cartesian product $A_1 \times A_2 \times \cdots \times A_{k+1}$ is also a set.
-
-    % We first make the following observation about $n$-tuples. Let $a_1 \in A_1$, $a_2 \in A_2$, \dots, $a_k \in A_k$, and $a_{k+1} \in A_{k+1}$. Note $(a_1, a_2, \dots, a_k) \in B$, and that $((a_1, a_2, \dots, a_k), a_{k+1}) \in B \times A_{k+1}$. But observe that
-    % \begin{align*}
-    %     &((a_1, a_2, \dots, a_k), a_{k+1})\\
-    %     &= \{(a_1, a_2, \dots, a_k), \{(a_1, a_2, \dots, a_k), a_{k+1}\}\} & (\text{2-tuple definition})\\
-    %     &=
-    % \end{align*}
-
     We make the following claim.
     \begin{quote}
         The Cartesian product of the sets $A_1, A_2, \dots, A_n$ is a subset of $\Power{\Power{A_1 \cup A_2 \cup \cdots \cup A_n}}$.
