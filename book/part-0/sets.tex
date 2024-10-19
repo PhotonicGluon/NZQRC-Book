@@ -256,7 +256,7 @@ The next set operation has no analogous operation in logic. The set difference c
 Another important operation that will come up in our investigation into numbers is the cartesian product. But first, we need to define $n$-tuples. One can interpret an $n$-tuple as an ordered sequence of $n$ items, whereas a set containing $n$ items is unordered. The notation of having $n$ ordered items, especially for the case when $n = 2$, is very useful.
 
 \begin{definition}[$n$-tuples]
-    Let $A_1, A_2, \dots, A_n$ be sets, and let $a_1 \in A_1$, $a_2 \in A_2$, \dots, and $a_n \in A_n$. Then an \term{$n$-tuple}\index{$n$-tuple}
+    Let $A_1, A_2, \dots, A_n$ be non-empty sets, and let $a_1 \in A_1$, $a_2 \in A_2$, \dots, and $a_n \in A_n$. Then an \term{$n$-tuple}\index{$n$-tuple}
     \[
         (a_1, a_2, \dots, a_n) = \{\{a_1\}, \{a_1, a_2\}, \{a_1, a_2, a_3\}, \dots, \{a_1, a_2, \dots, a_n\}\}.
     \]
@@ -268,7 +268,7 @@ Another important operation that will come up in our investigation into numbers 
 As mentioned, the important property of $n$-tuples is that they are ordered.
 
 \begin{proposition}[$n$-Tuples are Ordered]
-    Let $A_1, A_2, \dots, A_n$ be sets, and let $a_1, b_1 \in A_1$, $a_2, b_2 \in A_2$, \dots, and $a_n, b_n \in A_n$. Then $(a_1, a_2, \dots, a_n) = (b_1, b_2, \dots, b_n)$ if and only if $a_1 = b_1$, $a_2 = b_2$, \dots, and $a_n = b_n$.
+    Let $A_1, A_2, \dots, A_n$ be non-empty sets, and let $a_1, b_1 \in A_1$, $a_2, b_2 \in A_2$, \dots, and $a_n, b_n \in A_n$. Then $(a_1, a_2, \dots, a_n) = (b_1, b_2, \dots, b_n)$ if and only if $a_1 = b_1$, $a_2 = b_2$, \dots, and $a_n = b_n$.
 \end{proposition}
 \begin{proof}
     The reverse direction is trivial, so we show the forward direction only. Suppose $(a_1, a_2, \dots, a_n) = (b_1, b_2, \dots, b_n)$. Thus
