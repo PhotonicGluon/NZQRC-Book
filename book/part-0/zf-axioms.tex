@@ -48,7 +48,13 @@ Some may interpret this axiom as the foundational property of sets. Sets are equ
 \section{Axiom of the Empty Set}
 The next axiom starts to give us an idea of what sets could exist.
 
-TODO: Add
+\begin{axiom}[Empty Set]\label{axiom:empty-set}\index{axiom!empty set}\index{Zermelo-Frankel Set Theory!empty set}
+    \[
+        \exists A (\lnot \exists x (x \in A))
+    \]
+\end{axiom}
+
+Simply put, there exists a set $A$ such that there does not exist an $x$ that is in $A$. This applies to all $x$, meaning that there must be nothing in $A$. Hence we see that $A$ is the empty set $\emptyset$.
 
 \section{Axiom of Pairing}
 The axiom of pairing gives us another example of what sets exist.
