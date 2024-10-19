@@ -270,11 +270,22 @@ Note that a variable could be both bound and free in the same \wff. This is rare
     Now $x$ is free on both sides of the \wff~(and thus free in the \wff).
 \end{example}
 
-Explicitly stating which variables are free in a \wff~is tedious when there are many variables to list. We have a shorthand for this, which we will add on as a sixth rule for creating \wffs~along the rules in \myref{definition:well-formed-formula}.
+Explicitly stating which variables are free in a \wff~is tedious when there are many variables to list. We have a shorthand for this.
 
 \begin{definition}[\wffs*~with Free Variables]
-    Let $\phi$ be a \wff~and let the variables be $x_1, x_2, \dots, x_n$ be free in $\phi$. This fact can be written as $\phi(x_1, x_2, \dots, x_n)$. In addition, the following rule is another valid approach for creating \wffs~in $\SetLang$.
-    \begin{enumerate}[label=\textbf{F\arabic*.},start=6,leftmargin=1.35\parindent]
-        \item If $\phi$ is a \wff~and the variables $x_1, x_2, \dots, x_n$ are all free in $\phi$, then the string $\phi(x_1, x_2, \dots, x_n)$ is a \wff~encapsulating the idea that the aforementioned variables are free in $\phi$. This string has the same meaning as the \wff~$\phi$ itself.
-    \end{enumerate}
+    Let $\phi$ be a \wff~and let the variables be $x_1, x_2, \dots, x_n$ be free in $\phi$. This fact can be written as $\phi(x_1, x_2, \dots, x_n)$.
 \end{definition}
+
+Note that the string ``$\phi(x_1, x_2, \dots, x_n)$'' is \textbf{not} technically a \wff~in $\SetLang$. However, if this string does appear, it means to substitute $\phi$ with its actual statement, replacing the $x_1$, $x_2$, \dots, $x_n$ with the corresponding values as listed in the parentheses. The result of this process will create a \wff.
+
+\begin{example}
+    Let $\phi$ be the \wff~``$x=y$''. Note
+    \[
+        \forall x \phi(x, x)
+    \]
+    is \textbf{not} technically a \wff. However, using our interpretation above, we will substitute the appropriate variables to get
+    \[
+        \forall x (x=x)
+    \]
+    which is a \wff.
+\end{example}
