@@ -27,4 +27,22 @@
 
     % Strings in $\SetLang$
     \item All of them are strings, but most are not words.
+    
+    % What's in $\SetLang$?
+    \item \begin{partquestions}{\alph*}
+        \item This is a term. From \textbf{T0} we know that $x$ is a term, and \textbf{T1} tells us that 7, being a nullary function symbol, is also a term. Thus \textbf{T1} tells us that $f(x,7)$ is a term.
+        \item This is a \wff, but not an atomic formula since quantifiers are being used in the string.
+        \item Neither a term nor a \wff. Observe that both $f(x)$ and 3 are terms by \textbf{T1}, but there is no rule (for terms and for \wffs) that allows concatenating the two terms together into the form $3(f(x))$.
+        \item This is a \wff, but not an atomic formula.
+        \item This is a \wff, but not an atomic formula.
+        \item Neither a term nor a \wff. The string $x=y$ is a \wff~by \textbf{F1}, so it is not a term. Hence having ``$x=y$'' being used as an argument for the predicate symbol $P$ is invalid.
+    \end{partquestions}
+
+    % Bound and Free Variables
+    \item \begin{partquestions}{\alph*}
+        \item Bound.
+        \item Both bound and free. The left side (i.e., ``$x=f(y)$'') has $x$ being a free variable, while the right side (i.e., ``$\forall x \exists y (y = x)$'') has $x$ being a bound variable.
+        \item Free.
+        \item Neither. The variable $x$ does not appear in the \wff.
+    \end{partquestions}
 \end{questions}

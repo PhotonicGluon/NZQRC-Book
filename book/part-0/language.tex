@@ -242,8 +242,7 @@ In addition, it should be noted that parentheses can be included as appropriate 
 \end{example}
 
 \begin{exercise}[What's in $\SetLang$?]
-    % TODO: Add solution
-    Characterise the following strings as terms or \wffs. If the string is a \wff, determine if it is an atomic formula.
+    Characterise the following strings as terms, \wffs, or neither. If the string is a \wff, determine if it is an atomic formula.
     \begin{partquestions}{\alph*}
         \item $f(x,7)$ where $x$ is a variable and the function $f$ is a binary function symbol.
         \item $\forall x (P(x)\iff Q(x,x))$ where $x$ is a variable, $P$ is a unary predicate symbol, and $Q$ is a binary predicate symbol.
@@ -302,6 +301,16 @@ Note that a variable could be both bound and free in the same \wff. This is rare
     \]
     Now $x$ is free on both sides of the \wff~(and thus free in the \wff).
 \end{example}
+
+\begin{exercise}[Bound and Free Variables]
+    In the following \wffs, determine if the variable $x$ is bound, free, both, or neither.
+    \begin{partquestions}{\alph*}
+        \item $\forall x (\lnot P(x))$ where $P$ is a unary predicate symbol.
+        \item $(x=f(y)) \implies \forall x \exists y (y=x)$ where $y$ is a variable and $f$ is a unary function symbol.
+        \item $P(x) \implies (\exists y (Q(x, y)))$ where $y$ is a variable, $P$ is a unary predicate symbol, and $Q$ is a binary predicate variable.
+        \item $P(a) \implies (P(b) \implies (P(c) \implies P(d)))$ where $a$, $b$, $c$, and $d$ are all variables and $P$ is a unary predicate symbol.
+    \end{partquestions}
+\end{exercise}
 
 Explicitly stating which variables are free in a \wff~is tedious when there are many variables to list. We have a shorthand for this.
 
