@@ -125,6 +125,23 @@ Remember how we can take the union of sets? This next axiom explicitly gives us 
 
 We can interpret this in English as saying that given any set $A$, there exists a set $U$ (the union) such that any element $x$ in $U$ must be in some set $S$ in $A$ (recalling that everything is thought of as a set in \ZF).
 
+The combination of \myref{axiom:pairing} and \myref{axiom:union} allows us to create a set from an arbitrary list of items.
+
+\begin{theorem}[Set of Any List of Items]\label{theorem:set-of-any-list-of-items}
+    For any $a_1, a_2, \dots, a_n$, the set $\{a_1, a_2, \dots, a_n\}$ exists.
+\end{theorem}
+\begin{proof}
+    We induct on $n$.
+
+    The base case of $n = 1$ is readily proven by \myref{prop:singletons-exist}.
+
+    Suppose the theorem holds true for any positive integer $k$, i.e. the set $\{a_1, \dots, a_k\}$ exists for any $a_1, \dots, a_k$. We show that $\{a_1, \dots, a_k, a_{k+1}\}$ exists for any $a_1, \dots, a_k, a_{k+1}$.
+
+    We know that the singleton $\{a_{k+1}\}$ exists by \myref{prop:singletons-exist}. Thus \myref{axiom:pairing} tells us that $\{\{a_1, \dots, a_k\}, \{a_{k+1}\}\}$ exists. Hence applying \myref{axiom:union} to this set tells us that $\{a_1, \dots, a_k, a_{k+1}\}$ exists, proving the theorem for $k + 1$.
+
+    Hence, by mathematical induction, the theorem is proven.
+\end{proof}
+
 % TODO: Do we add more details?
 
 \section{Axiom of Power Set}
@@ -152,7 +169,7 @@ This axiom, along with \myref{axiom:union}, can be used to prove that the Cartes
 
     Now \myref{prop:singletons-exist} tells us that the set containing only $a$ (i.e., $\{a\}$) exists. Furthermore \myref{axiom:pairing} tells us that the set containing only $a$ and $b$ (i.e., $\{a, b\}$) exists. Clearly both $\{a\}$ and $\{a, b\}$ are subsets of $A \cup B$. Since the power set of $A \cup B$ (i.e., $\Power{A \cup B}$) exists by \myref{axiom:power-set}, thus we can write $\{a\}, \{a, b\} \in \Power{A \cup B}$.
 
-    Recall that the ordered pair $(a, b)$ is defined to be the set $\{\{a\}, \{a, b\}\}$, and that this exists due to \myref{axiom:pairing}. One sees that
+    Recall that the ordered pair $(a, b)$ is defined to be the set $\{\{a\}, \{a, b\}\}$. One sees that
     \[
         \{\{a\}, \{a, b\}\} \in \Power{\Power{A \cup B}}.
     \]
@@ -177,7 +194,7 @@ With this result we can prove that the more general Cartesian product exists.
 
     We know that $\{a_1\}, \{a_1, a_2\}, \{a_1, a_2, a_3\}, \dots, \{a_1, a_2, \dots, a_k\} \in \Power{A_1 \cup A_2 \cup \cdots \cup A_k}$ from the induction hypothesis. Note that $A_1 \cup \cdots \cup A_k \cup A_{k+1}$ exists by \myref{axiom:union}, and that $a_1, \dots, a_k, a_{k+1} \in A_1 \cup \cdots \cup A_k \cup A_{k+1}$.
 
-    Note that $\{a_{k+1}\}$ and $\{a_1, a_2, \dots, a_k\}$ are both subsets of $\Power{A_1 \cup \cdots \cup A_k \cup A_{k+1}}$, where the former exists due to \myref{prop:singletons-exist} and the latter exists due to the induction hypothesis. Hence their union, namely $\{a_1, a_2, \dots, a_k, a_{k+1}\}$, exists by \myref{axiom:union}, and is a member of $\Power{A_1 \cup \cdots \cup A_k \cup A_{k+1}}$.
+    Note that $\{a_{k+1}\}$ and $\{a_1, a_2, \dots, a_k\}$ are both subsets of $\Power{A_1 \cup \cdots \cup A_k \cup A_{k+1}}$, where the former exists due to \myref{prop:singletons-exist} and the latter exists due to the induction hypothesis. Hence their union, namely $\{a_1, a_2, \dots, a_k, a_{k+1}\}$, exists, and is a member of $\Power{A_1 \cup \cdots \cup A_k \cup A_{k+1}}$.
 
     Therefore, the object
     \[
