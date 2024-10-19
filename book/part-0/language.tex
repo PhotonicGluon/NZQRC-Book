@@ -202,10 +202,18 @@ We can now move on to defining the words in $\SetLang$. There are two main types
     \end{enumerate}
 \end{definition}
 
+\begin{example}[Terms in $\SetLang$]
+    \begin{itemize}[leftmargin=*]
+        \item The symbols $x$, $y$, $a$, $b$, etc. can all be considered variables and thus are terms by \textbf{T0}.
+        \item Suppose $f$ is a binary function symbol and $x$ and $y$ are variables. Thus $f(x,y)$ is a term by \textbf{T0} and \textbf{T1}.
+        \item The constants $3$, $7$, $11$, etc. are nullary function symbols and thus are terms by \textbf{T1}.
+    \end{itemize}
+\end{example}
+
 \begin{definition}[Well-Formed Formula (\wff*)]\label{definition:well-formed-formula}
     A \term{well-formed formula}\index{formula!well-formed}\index{set formal language!well-formed formula} (often abbreviated as \wff\index{wff}\index{set formal language!wff}) in $\SetLang$ is formed by applying the following five rules a finite number of times.
     \begin{enumerate}[label=\textbf{F\arabic*.},leftmargin=1.35\parindent]
-        \item If $t_1$ and $t_2$ are terms, then the string $t_1=t_2$ is a \wff.
+        \item If $t_1$ and $t_2$ are terms, then the strings $t_1=t_2$ and $t_1 \in t_2$ are \wff.  % TODO: Check the set inclusion case
         \item If $P$ is an $n$-ary predicate symbol and $t_1, t_2, \dots, t_n$ are terms, then the string $P(t_1,t_2,\dots,t_n)$ is a \wff.
         \item If $\phi$ is a \wff, then the string $\lnot \phi$ is also a \wff.
         \item If both $\phi$ and $\psi$ are \wffs, then the strings $\phi\land\psi$, $\phi\lor\psi$, $\phi\implies\psi$, and $\phi\iff\psi$ are all \wffs.
@@ -219,7 +227,32 @@ We can now move on to defining the words in $\SetLang$. There are two main types
     A \wff~that uses only the rules \textbf{F1} and \textbf{F2} as described in \myref{definition:well-formed-formula} is called an \term{atomic formula}\index{atomic formula}\index{set formal language!atomic formula}.
 \end{definition}
 
-% TODO: Add examples and exercises
+In other words, atomic formulae do not use any binary operators such as $\land$, $\lor$, $\implies$, or $\iff$. They also do not include any quantifiers such as $\forall$ or $\exists$.
+
+In addition, it should be noted that parentheses can be included as appropriate to properly parse \wffs.
+
+\begin{example}[\wffs* in $\SetLang$]
+    \begin{itemize}[leftmargin=*]
+        \item We know that both $x$ and $y$, as variables, are terms by \textbf{T0}. Thus the strings $x=y$ and $x \in y$ are \wffs~by \textbf{F1}. In fact, both the strings mentioned are atomic formulae.
+        \item Suppose $P$ is a predicate symbol and $x$ and $y$ are variables. Thus the string $P(x,y)$ is a \wff~by \textbf{F2}. Notice that the string $P(x,y)$ is also an atomic formula.
+        \item Since $x=y$ is a \wff, the string $\lnot(x=y)$, which can also be written as $x \neq y$ in a more familiar notation, is also a \wff~by \textbf{F3}.
+        \item As both $x=y$ and $P(x,y)$ are \wffs~by above observations, thus $(x=y)\land P(x,y)$ is also a \wff~by \textbf{F4}.
+        \item We know that $x=x$ is a \wff. Thus $\forall x(x=x)$ and $\exists x(x=x)$ are both \wffs~by \textbf{F5}.
+    \end{itemize}
+\end{example}
+
+\begin{exercise}[What's in $\SetLang$?]
+    % TODO: Add solution
+    Characterise the following strings as terms or \wffs. If the string is a \wff, determine if it is an atomic formula.
+    \begin{partquestions}{\alph*}
+        \item $f(x,7)$ where $x$ is a variable and the function $f$ is a binary function symbol.
+        \item $\forall x (P(x)\iff Q(x,x))$ where $x$ is a variable, $P$ is a unary predicate symbol, and $Q$ is a binary predicate symbol.
+        \item $3(f(x))=7$ where $x$ is a variable and the $f$ is a unary function symbol.
+        \item $\lnot (\exists x (\forall y (f(x) = f(y))))$ where $x$ and $y$ are variables and $f$ is a unary function symbol.
+        \item $\forall x (\exists y (x \in y))$ where $x$ and $y$ are variables.
+        \item $P(x=y,x,f(x))$ where $x$ and $y$ are variables, $f$ is a unary function symbol, and $P$ is a ternary predicate symbol.
+    \end{partquestions}
+\end{exercise}
 
 Notice that variables may appear in \wffs. Some of the variables appear to be `controlled' by, say, a quantifier, while others are not. This is an important observation.
 
