@@ -131,18 +131,46 @@ The combination of \myref{axiom:pairing} and \myref{axiom:union} allows us to cr
     For any $a_1, a_2, \dots, a_n$, the set $\{a_1, a_2, \dots, a_n\}$ exists.
 \end{theorem}
 \begin{proof}
-    We induct on $n$.
+    See \myref{exercise:set-of-any-list-of-items} (later).
+\end{proof}
+\begin{remark}[Infinite Sets]
+    Note that the theorem only works for a finite number of items. The argument by induction does not work for an infinite number of items, which is partly the reason why we need to define the axiom of infinity (to be introduced later).
+\end{remark}
 
-    The base case of $n = 1$ is readily proven by \myref{prop:singletons-exist}.
+A related result is the union of an arbitrary (but finite) number of sets.
 
-    Suppose the theorem holds true for any positive integer $k$, i.e. the set $\{a_1, \dots, a_k\}$ exists for any $a_1, \dots, a_k$. We show that $\{a_1, \dots, a_k, a_{k+1}\}$ exists for any $a_1, \dots, a_k, a_{k+1}$.
+\begin{theorem}[Union of Finite Number of Sets Exists]\index{theorem:union-of-finite-number-of-sets-exists}
+    For any finite number of sets $A_1, \dots, A_n$, the set
+    \[
+        \bigcup_{i=1}^n A_i = A_1 \cup A_2 \cup \cdots \cup A_n
+    \]
+    exists.
+\end{theorem}
+\begin{proof}
+    We consider induction on $n$.
 
-    We know that the singleton $\{a_{k+1}\}$ exists by \myref{prop:singletons-exist}. Thus \myref{axiom:pairing} tells us that $\{\{a_1, \dots, a_k\}, \{a_{k+1}\}\}$ exists. Hence applying \myref{axiom:union} to this set tells us that $\{a_1, \dots, a_k, a_{k+1}\}$ exists, proving the theorem for $k + 1$.
+    The base case when $n = 1$ is trivial since $\bigcup_{i=1}^n A_i = A_1$ exists.
+
+    Suppose the induction hypothesis holds for some number of sets $k \geq 1$, i.e. the set $\bigcup_{i=1}^k A_i$ exists for any sets $A_1$, \dots, $A_k$. We show that the set $\bigcup_{i=1}^{k+1} A_i$ exists for any sets $A_1$, \dots, $A_k$, $A_{k+1}$.              
+    
+    By induction hypothesis the set $\bigcup_{i=1}^k A_i$ exists. By \myref{axiom:pairing} we can form a set
+    \[
+        \left\{\bigcup_{i=1}^k A_i, A_{k+1}\right\}.
+    \]
+    Thus by \myref{axiom:union}, the set
+    \[
+        \left(\bigcup_{i=1}^k A_i\right) \cup A_{k+1} = \bigcup_{i=1}^{k+1} A_i
+    \]
+    exists, proving the case for $k+1$.
 
     Hence, by mathematical induction, the theorem is proven.
 \end{proof}
 
-% TODO: Do we add more details?
+% TODO: Do we add more to this section?
+
+\begin{exercise}[Set of Any List of Items]\label{exercise:set-of-any-list-of-items}
+    Prove \myref{theorem:set-of-any-list-of-items}.
+\end{exercise}
 
 \section{Axiom of Power Set}
 The power set is the set of all subsets of a set. This set is explicitly instantiated for all sets in \ZF~via the axiom of power set.

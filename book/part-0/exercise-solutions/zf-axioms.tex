@@ -1,0 +1,13 @@
+\section{Axiomatic Set Theory}
+\begin{questions}
+    % Set of Any List of Items
+    \item We induct on $n$.
+
+    The base case of $n = 1$ is readily proven by \myref{prop:singletons-exist}.
+
+    Suppose the theorem holds true for any positive integer $k$, i.e. the set $\{a_1, \dots, a_k\}$ exists for any $a_1, \dots, a_k$. We show that $\{a_1, \dots, a_k, a_{k+1}\}$ exists for any $a_1, \dots, a_k, a_{k+1}$.
+
+    We know that the singleton $\{a_{k+1}\}$ exists by \myref{prop:singletons-exist}. Thus \myref{axiom:pairing} tells us that $\{\{a_1, \dots, a_k\}, \{a_{k+1}\}\}$ exists. Hence applying \myref{axiom:union} to this set tells us that $\{a_1, \dots, a_k, a_{k+1}\}$ exists, proving the theorem for $k + 1$.
+
+    Hence, by mathematical induction, the theorem is proven.
+\end{questions}
