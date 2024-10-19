@@ -185,8 +185,8 @@ In other words, for any set $A$ there is a set $P$ (the power set of $A$) such t
 
 This axiom, along with \myref{axiom:union}, can be used to prove that the Cartesian product exists. Recall that the Cartesian product of two sets $A$ and $B$ is the collection of 2-tuples where the first element comes from $A$ and the second comes from $B$.
 
-\begin{lemma}[Cartesian Product of Two Sets is a Set]\label{lemma:cartesian-product-of-two-sets-is-a-set}
-    Let $A$ and $B$ be non-empty sets. Then their Cartesian product,
+\begin{lemma}[Cartesian Product of Two Finite Sets is a Set]\label{lemma:cartesian-product-of-two-finite-sets-is-a-set}
+    Let $A$ and $B$ be finite, non-empty sets. Then their Cartesian product,
     \[
         A \times B = \{(a, b) \vert a \in A \land b \in B\},
     \]
@@ -201,12 +201,15 @@ This axiom, along with \myref{axiom:union}, can be used to prove that the Cartes
     \[
         \{\{a\}, \{a, b\}\} \in \Power{\Power{A \cup B}}.
     \]
-    and so $(a, b) = \{\{a\}, \{a, b\}\}$ exists and is an element of $\Power{\Power{A \cup B}}$. Thus the collection of all such $(a,b)$ is indeed a set by \myref{axiom:union}.
+    and so $(a, b) = \{\{a\}, \{a, b\}\}$ exists and is an element of $\Power{\Power{A \cup B}}$. Thus the collection of all such $(a,b)$ is indeed a set by \myref{theorem:set-of-any-list-of-items}.
 \end{proof}
+\begin{remark}[Cartesian Product of Two Infinite Sets]
+    The nuance at play in the proof of the above lemma, and the reason it doesn't work for infinite sets, is that \myref{theorem:set-of-any-list-of-items} only works for a finite number of items. The infinite case actually requires the axiom of choice.
+\end{remark}
 
 With this result we can prove that the more general Cartesian product exists.
 
-\begin{theorem}[Cartesian Product is a Set]
+\begin{theorem}[Cartesian Product of Finite Sets is a Set]
     Let $A_1, A_2, \dots, A_n$ be non-empty sets where $n \geq 2$. Then the Cartesian product $A_1 \times A_2 \times \cdots \times A_n$ is indeed a set.
 \end{theorem}
 \begin{proof}
@@ -216,7 +219,7 @@ With this result we can prove that the more general Cartesian product exists.
     \end{quote}
     We will prove this using induction on $n$, which will immediately prove the theorem.
 
-    The base case of $n = 2$ is given by \myref{lemma:cartesian-product-of-two-sets-is-a-set}.
+    The base case of $n = 2$ is given by \myref{lemma:cartesian-product-of-two-finite-sets-is-a-set}.
 
     Now assume that the induction hypothesis holds for some $k \geq 2$, i.e. the Cartesian product $A_1 \times \cdots \times A_k$ is a subset of $\Power{\Power{A_1 \cup \cdots \cup A_k}}$. We will show that the Cartesian product $A_1 \times \cdots \times A_k \times A_{k+1}$ is a subset of $\Power{\Power{A_1 \cup \cdots \cup A_k \cup A_{k+1}}}$.
 
@@ -230,6 +233,9 @@ With this result we can prove that the more general Cartesian product exists.
     \]
     which is $(a_1, \dots, a_k, a_{k+1})$, is a set. In particular, it is in $\Power{\Power{A_1 \cup \cdots \cup A_k \cup A_{k+1}}}$. Therefore the collection of all such objects, i.e. the Cartesian product $A_1 \times \cdots \times A_k \times A_{k+1}$, exists because it is a subset of $\Power{\Power{A_1 \cup \cdots \cup A_k \cup A_{k+1}}}$.
 \end{proof}
+\begin{remark}[Cartesian Product of Infinite Sets]
+    Again, because \myref{lemma:cartesian-product-of-two-finite-sets-is-a-set} only works for finite sets, the Cartesian product for infinite sets has not yet been proven to exist.
+\end{remark}
 
 \section{Axiom Schema of Specification}  % aka Axiom of Subsets
 The axiom schema of specification, also known as the axiom of subsets\index{axiom!of subsets}, allows us to restrict the elements of a set to those that satisfy a specific condition.
