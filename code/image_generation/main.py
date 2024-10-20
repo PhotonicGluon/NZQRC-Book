@@ -10,7 +10,8 @@ from image_generation.src.execute_notebooks import execute_notebooks
 from image_generation.src.transfer_images import transfer_images
 from image_generation.src.trim_images import trim_images
 
-MEDIA_FOLDER = "media/images/image_generation"
+MEDIA_FOLDER = "media"
+MEDIA_IMAGES_FOLDER = f"{MEDIA_FOLDER}/images/image_generation"
 BOOK_IMAGES_FOLDER = "../../book/images"
 
 ALL_NOTEBOOKS = ["part-1.ipynb"]
@@ -20,10 +21,10 @@ app = typer.Typer()
 
 @app.command(name="transfer")
 def transfer_images_cmd(
-    media_folder: Annotated[
+    media_images_folder: Annotated[
         Path,
         typer.Option(help="Folder containing the images to transfer.", exists=True, file_okay=False, dir_okay=True),
-    ] = MEDIA_FOLDER,
+    ] = MEDIA_IMAGES_FOLDER,
     book_images_folder: Annotated[
         Path,
         typer.Option(help="Folder containing subfolders for the images.", exists=True, file_okay=False, dir_okay=True),
@@ -39,15 +40,15 @@ def transfer_images_cmd(
     Transfers images from the media folder into the actual book's folder.
     """
 
-    transfer_images(media_folder, book_images_folder, copy_images, dry_run, silent)
+    transfer_images(media_images_folder, book_images_folder, copy_images, dry_run, silent)
 
 
 @app.command(name="trim")
 def trim_images_cmd(
-    media_folder: Annotated[
+    media_images_folder: Annotated[
         Path,
         typer.Option(help="Folder containing the images to trim.", exists=True, file_okay=False, dir_okay=True),
-    ] = MEDIA_FOLDER,
+    ] = MEDIA_IMAGES_FOLDER,
     output_folder: Annotated[
         Path,
         typer.Option(
@@ -68,7 +69,7 @@ def trim_images_cmd(
     """
 
     trim_images(
-        media_folder,
+        media_images_folder,
         output_folder,
         throw_if_cannot_trim=throw_if_cannot_trim,
         add_excess_of=add_excess_of,
@@ -80,8 +81,12 @@ def trim_images_cmd(
 def do_all_cmd(
     media_folder: Annotated[
         Path,
-        typer.Option(help="Folder containing the images.", dir_okay=True),
+        typer.Option(help="Media folder.", dir_okay=True),
     ] = MEDIA_FOLDER,
+    media_images_folder: Annotated[
+        Path,
+        typer.Option(help="Folder that will contain the generated images.", dir_okay=True),
+    ] = MEDIA_IMAGES_FOLDER,
     trimmed_images_folder: Annotated[
         Path,
         typer.Option(
@@ -90,7 +95,7 @@ def do_all_cmd(
             help="Folder to place the trimmed images.",
             dir_okay=True,
         ),
-    ] = f"{MEDIA_FOLDER}/../trimmed",
+    ] = f"{MEDIA_IMAGES_FOLDER}/../trimmed",
     book_images_folder: Annotated[
         Path,
         typer.Option(
@@ -115,7 +120,7 @@ def do_all_cmd(
         input()
 
         shutil.rmtree(media_folder, ignore_errors=True)
-    
+
     os.makedirs(media_folder, exist_ok=True)
 
     # Execute all notebooks
@@ -125,7 +130,7 @@ def do_all_cmd(
     # Trim images
     print("[cyan]Trimming images...[/cyan]")
     trim_images(
-        media_folder,
+        media_images_folder,
         trimmed_images_folder,
         throw_if_cannot_trim=False,
         add_excess_of=0,
