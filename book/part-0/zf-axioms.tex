@@ -1,7 +1,7 @@
-\Chapter{Axiomatic Set Theory}
+\Chapter{Introduction to Axiomatic Set Theory}
 \Lettrine[loversize=0.1,nindent=0pt]{Paradoxes} are the bane of creating a consistent system in mathematics. However, set theory, as we have introduced it, is full of paradoxes. For example, as stated so far, a set could contain itself. However, this leads to Russell's paradox of the set of all sets that are not members of themselves. To that end, we look at a more axiomatic definition of what sets are, inspired by the work of Ernst Zermelo and Abraham Fraenkel, to create a system that is (hopefully) devoid of paradoxes.
 
-\section{An Introduction to Zermelo-Fraenkel Set Theory}
+\section{Zermelo-Fraenkel Set Theory}
 The modern study of set theory was initiated by Richard Dedekind and Georg Cantor in the 19th century. Unfortunately, these early systems are rife with paradoxes, prompting the creation of more robust axiomatic systems. Zermelo-Fraenkel set theory\index{Zermelo-Frankel Set Theory} (often abbreviated as \ZF\index{ZF}) is the most is still the best-known and most studied, and it will be what we use to define numbers from the ground up.
 
 \ZF~has 9 main axioms.
@@ -11,11 +11,11 @@ The modern study of set theory was initiated by Richard Dedekind and Georg Canto
     \item \textbf{Axiom of the Empty Set}: The empty set exists.
     \item \textbf{Axiom of Pairing}: Any two objects have a pair.
     \item \textbf{Axiom of Union}: The union of the elements in a set exists.
-    \item \textbf{Axiom of Power Set}: The power set of a set exists.
     \item \textbf{Axiom Schema of Specification}: An axiom describing how a set can be created using set-builder notation.
+    \item \textbf{Axiom of Regularity}: Every non-empty set $A$ contains an element $B$ which is disjoint from $A$. This is used to prevent paradoxes about sets containing themselves.
     \item \textbf{Axiom Schema of Replacement}: The image of any function exists.
-    \item \textbf{Axiom of Foundation}: Every non-empty set $A$ contains an element $B$ which is disjoint from $A$. This is used to prevent paradoxes about sets containing themselves.
     \item \textbf{Axiom of Infinity}: An infinite set exists.
+    \item \textbf{Axiom of Power Set}: The power set of any set exists.
 \end{enumerate}
 \begin{remark}[Axiom of Choice]
     There is a controversial tenth axiom, called the \textbf{Axiom of Choice}. Essentially, it states that a Cartesian product of a collection of non-empty sets is non-empty. This also includes sets that are infinite. \ZF~with the axiom of choice included is usually denoted \textsf{ZFC}\index{ZFC}. However, for our exploration of number here, we do not require the axiom of choice.    
@@ -31,6 +31,8 @@ The modern study of set theory was initiated by Richard Dedekind and Georg Canto
 \end{remark}
 
 An important thing to note when we are working in \ZF~is that \textbf{everything is a set}. The foundational object that we are discussing is the set, and we are defining everything in terms of sets. We are simply specifying that the properties of these objects (sets) are. Thus awkward notation like $a \in b$ or $1 \cup 2$ is readily explained way when we remember that all objects are sets.
+
+To avoid overloading content at this juncture, we will only look at the first six of the nine axioms of \ZF. The rest will be introduced in later chapters as required.
 
 \section{Axiom of Extensionality}
 The first axiom that we will look at is the axiom of extensionality.
@@ -172,19 +174,6 @@ A related result is the union of an arbitrary (but finite) number of sets.
     Prove \myref{theorem:set-of-any-list-of-items}.
 \end{exercise}
 
-\section{Axiom of Power Set}
-The power set is the set of all subsets of a set. This set is explicitly instantiated for all sets in \ZF~via the axiom of power set.
-
-\begin{axiom}[Power Set]\label{axiom:power-set}\index{axiom!power set}\index{Zermelo-Frankel Set Theory!power set}
-    \[
-        \forall A \exists P \forall S (S \in P \iff \forall x (x \in S \implies x \in A))
-    \]
-\end{axiom}
-
-In other words, for any set $A$ there is a set $P$ (the power set of $A$) such that for all sets $S$ in $P$, any element in $S$ is also in $A$. This clearly must mean that $S$ is a subset of $A$ and thus $P$, being the collection of all such subsets, is the power set $\Power{A}$.
-
-% TODO: Add more details
-
 \section{Axiom Schema of Specification}  % aka Axiom of Subsets
 This axiom schema, also known as the axiom of subsets\index{axiom!of subsets}, allows us to restrict the elements of a set to those that satisfy a specific condition.
 
@@ -260,12 +249,22 @@ Note that we require one instance of the above for every \wff~$\phi$. Thus, this
 
 % TODO: Continue with applications of the above axioms
 
-\section{Axiom Schema of Replacement}  % aka Axiom of Replacement
+\section{Axiom of Regularity}  % aka Axiom of Foundation
 TODO: Add
 
-\section{Axiom of Foundation}  % aka Axiom of Regularity
-TODO: Add
+%============= Deprecated ================
+% TODO: Move these other chapters, introducing them as needed
 
-\section{Axiom of Infinity}
-TODO: Add
-% Probably need to motivate the reason for how this axiom is defined
+% \section{Axiom of Infinity}
+% % Probably need to motivate the reason for how this axiom is defined
+
+% \section{Axiom of Power Set}
+% The power set is the set of all subsets of a set. This set is explicitly instantiated for all sets in \ZF~via the axiom of power set.
+
+% \begin{axiom}[Power Set]\label{axiom:power-set}\index{axiom!power set}\index{Zermelo-Frankel Set Theory!power set}
+%     \[
+%         \forall A \exists P \forall S (S \in P \iff \forall x (x \in S \implies x \in A))
+%     \]
+% \end{axiom}
+
+% In other words, for any set $A$ there is a set $P$ (the power set of $A$) such that for all sets $S$ in $P$, any element in $S$ is also in $A$. This clearly must mean that $S$ is a subset of $A$ and thus $P$, being the collection of all such subsets, is the power set $\Power{A}$.
