@@ -13,7 +13,7 @@ from image_generation.src.trim_images import trim_images
 MEDIA_FOLDER = "media/images/image_generation"
 BOOK_IMAGES_FOLDER = "../../book/images"
 
-ALL_NOTEBOOKS = ["part-0.ipynb"]
+ALL_NOTEBOOKS = ["part-1.ipynb"]
 
 app = typer.Typer()
 
