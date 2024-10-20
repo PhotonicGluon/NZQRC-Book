@@ -174,6 +174,8 @@ To start, we need to define the alphabet.
     The alphabet defined here is almost the same as the alphabet used in first order logic, except that we include ``$\in$'' in the language.
 \end{remark}
 
+Don't worry too much about what functions (and functions symbols) are. For now, one can interpret functions as a black box that takes in a number of inputs (i.e., the arity of the function) and returns a single output. We will cover more about functions when we get to it.
+
 \begin{exercise}[Strings in $\SetLang$]
     Which of the following are strings in $\SetLang$?
     \begin{partquestions}{\alph*}[3]
@@ -235,9 +237,9 @@ In addition, it should be noted that parentheses can be included as appropriate 
     \begin{itemize}[leftmargin=*]
         \item We know that both $x$ and $y$, as variables, are terms by \textbf{T0}. Thus the strings $x=y$ and $x \in y$ are \wffs~by \textbf{F1}. In fact, both the strings mentioned are atomic formulae.
         \item Suppose $P$ is a predicate symbol and $x$ and $y$ are variables. Thus the string $P(x,y)$ is a \wff~by \textbf{F2}. Notice that the string $P(x,y)$ is also an atomic formula.
-        \item Since $x=y$ is a \wff, the string $\lnot(x=y)$, which can also be written as $x \neq y$ in a more familiar notation, is also a \wff~by \textbf{F3}.
-        \item As both $x=y$ and $P(x,y)$ are \wffs~by above observations, thus $(x=y)\land P(x,y)$ is also a \wff~by \textbf{F4}.
-        \item We know that $x=x$ is a \wff. Thus $\forall x(x=x)$ and $\exists x(x=x)$ are both \wffs~by \textbf{F5}.
+        \item Since $x=y$ is a \wff, the string $\lnot(x=y)$, which can also be written as $x \neq y$ in a more familiar notation, is also a \wff~by \textbf{F3}. However the \wff~$\lnot(x=y)$ is not an atomic formula.
+        \item As both $x=y$ and $P(x,y)$ are \wffs~by above observations, thus $(x=y)\land P(x,y)$ is also a \wff~by \textbf{F4}. Again, this \wff~is not an atomic formula.
+        \item We know that $x=x$ is a \wff. Thus $\forall x(x=x)$ and $\exists x(x=x)$ are both \wffs~(but not atomic formulae) by \textbf{F5}.
     \end{itemize}
 \end{example}
 
@@ -291,15 +293,7 @@ Notice that variables may appear in \wffs. Some of the variables appear to be `c
 Note that a variable could be both bound and free in the same \wff. This is rare, but possible.
 
 \begin{example}
-    Consider the \wff
-    \[
-        P(x) \implies \exists x Q(x).
-    \]
-    On the left side of the \wff, $x$ is free. However, on the right side, $x$ is bound. However, to avoid confusion, we would usually use a different variable to express the existential statement on the right. For example,
-    \[
-        P(x) \implies \exists y Q(y).
-    \]
-    Now $x$ is free on both sides of the \wff~(and thus free in the \wff).
+    Consider the \wff~$P(x) \implies \exists x Q(x)$. On the left side of the \wff, $x$ is free. However, on the right side, $x$ is bound. However, to avoid confusion, we would usually use a different variable to express the existential statement on the right. For example, $P(x) \implies \exists y Q(y)$. Now $x$ is free on both sides of the \wff~(and thus free in the \wff).
 \end{example}
 
 \begin{exercise}[Bound and Free Variables]
