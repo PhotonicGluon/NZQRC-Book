@@ -191,6 +191,25 @@ In other words, for every set $A$ and for every $w_1$ to $w_n$ there exists a se
 
 Note that we require one instance of the above for every \wff~$\phi$. Thus, this is an axiom schema and not just an axiom.
 
+This axiom schema can be used to prove several things.
+
+\subsection{Intersection}
+First we will show that the intersection of two sets exists.
+
+\begin{theorem}[Intersection of Sets is a Set]\label{theorem:intersection-of-sets-is-a-set}
+    Let $A$ and $B$ be sets. Then their intersection $A \cap B$ is also a set.
+\end{theorem}
+\begin{proof}
+    We first use \myref{axiom:schema-of-specification} to create an axiom for the \wff~$\phi$, where $\phi$ is ``$x \in B$''. The axiom generated is
+    \[
+        \forall A \exists S (\forall x (x \in S \iff (x \in A \land x \in B))).
+    \]
+    Since this applies to all $A$, this must apply to the $A$ mentioned in the statement of the theorem. Thus there must exist a set $S$ such that $x \in S$ if and only if $x \in A$ and $x \in B$. This is exactly the definition of the set intersection.
+\end{proof}
+
+Henceforth the string ``$A \cap B$'' that appear in axioms and other results will refer to the intersection of the sets $A$ and $B$ given by \myref{theorem:intersection-of-sets-is-a-set}.
+
+\subsection{Cartesian Product}
 This axiom, along with the previous axioms, can be used to prove that the Cartesian product exists. Recall that the Cartesian product of two sets $A$ and $B$ is the collection of 2-tuples where the first element comes from $A$ and the second comes from $B$.
 
 \begin{lemma}[Cartesian Product of Two Sets is a Set]\label{lemma:cartesian-product-of-two-sets-is-a-set}
