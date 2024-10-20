@@ -250,7 +250,10 @@
 % 4. Quote author and date
 % 5. Quote Citation
 \newcommand{\Part}[5]{
+    % Set up
     \cleardoubleoddpage
+    \color{white}
+    
     % First page, containing the part title
     \part{#1}
 
@@ -278,14 +281,24 @@
         \hrule height 2pt
     \end{center}
     \vspace*{\fill}
+
+    % Clean up
     \cleardoubleemptypage
+    \color{black}
     \pagecolor{white}
 }
 \newcommand{\unnumberedpart}[1]{
+    % Set up
     \cleardoubleoddpage
     \addcontentsline{toc}{part}{#1}
+    \color{white}
+
+    % Main page
     \part*{#1}
+
+    % Clean up
     \cleardoubleemptypage
+    \color{black}
     \pagecolor{white}
 }
 
@@ -328,7 +341,7 @@
 \fancypagestyle{partpage}{
     \fancyhf{}  % To clear page numbers from footer
     \renewcommand{\headrulewidth}{0pt}  % Clear header line at the start of every part
-    \pagecolor{LightCyan1}
+    \pagecolor{black}
 }
 
 % Set up default page style
