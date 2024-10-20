@@ -16,7 +16,7 @@ BOOK_IMAGES_FOLDER = "../../book/images"
 
 ALL_NOTEBOOKS = ["part-1.ipynb"]
 
-app = typer.Typer()
+app = typer.Typer(no_args_is_help=True)
 
 
 @app.command(name="transfer")

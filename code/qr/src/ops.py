@@ -6,6 +6,7 @@ import qrcode
 from PIL import Image, ImageOps
 
 from qr.src.consts import VERSION_LENGTHS
+from qr.src.misc import hex_to_rgb
 
 
 def create_qr(text: str, version: Optional[int] = None, box_size: int = 10, border: int = 0) -> qrcode.QRCode:
@@ -107,6 +108,7 @@ def create_split_qr(
     resize: bool = False,
     invert: bool = False,
     transparent: bool = True,
+    transparent_colour: str = "#FFFFFF",
     verbose: bool = False,
 ) -> List[Image.Image]:
     """
@@ -121,12 +123,16 @@ def create_split_qr(
         resize: whether to resize smaller parts to be the same size as the bigger parts. Defaults to
             False.
         invert: whether to invert the colours of the QR code. Defaults to False.
-        transparent: whether to make the *white* parts of the image transparent. Defaults to True.
+        transparent: whether to make the parts of the image that is `transparent_color` transparent.
+            Defaults to True.
+        transparent_colour: the colour to make transparent as a RGB hex code. Defaults to "#FFFFFF".
         verbose: Whether extra information should be printed to the screen. Defaults to False.
 
     Returns:
         list of parts of the QR code.
     """
+
+    transparent_colour = hex_to_rgb(transparent_colour)
 
     # Find the minimum version
     min_version = find_min_qr_version(text)
@@ -148,14 +154,14 @@ def create_split_qr(
     # Invert images, if specified
     if invert:
         im = ImageOps.invert(im)
-    
+
     # Handle transparency, if specified
     if transparent:
         im = im.convert("RGBA")
         for x in range(im.size[0]):
             for y in range(im.size[1]):
                 pixel = im.getpixel((x, y))
-                if pixel == (255,255,255,255):
+                if pixel == (*transparent_colour, 255):
                     im.putpixel((x, y), (0, 0, 0, 0))
 
     # Then generate splitted images

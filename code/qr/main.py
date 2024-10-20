@@ -16,7 +16,7 @@ MESSAGE_FILE = "Message.txt"
 IMAGES_FOLDER = "images"
 BOOK_IMAGES_FOLDER = "../../book/images"
 
-app = typer.Typer()
+app = typer.Typer(no_args_is_help=True)
 
 
 @app.command(name="generate")
@@ -34,6 +34,7 @@ def generate(
     transparent: Annotated[
         bool, typer.Option(help="Whether to make the *white* parts of the image transparent.")
     ] = True,
+    transparent_colour: Annotated[str, typer.Option(help="The colour to make transparent.")] = "#FFFFFF",
     verbose: Annotated[bool, typer.Option(help="Whether to output extra information.")] = False,
 ):
     """
@@ -58,6 +59,7 @@ def generate(
         resize=resize,
         invert=invert,
         transparent=transparent,
+        transparent_colour=transparent_colour,
         verbose=verbose,
     )
 
@@ -86,6 +88,10 @@ def transfer(
     dry_run: Annotated[bool, typer.Option(help="Whether to dry run the moving of images.")] = False,
     silent: Annotated[bool, typer.Option(help="Whether to silence info.")] = False,
 ):
+    """
+    Transfers QR images from the media folder into the actual book's folder.
+    """
+    
     if dry_run:
         print("[yellow]Dry run mode.[/yellow]")
 
