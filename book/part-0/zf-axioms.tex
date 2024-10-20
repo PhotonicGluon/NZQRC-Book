@@ -252,7 +252,40 @@ With this result we can prove that the more general Cartesian product exists.
 % TODO: Do we add more details?
 
 \section{Axiom of Regularity}  % aka Axiom of Foundation
-TODO: Add
+The last axiom that we will look at in this chapter is one that helps alleviate some issues with the `intuitive' definition of sets.
+
+\subsection{Why Regularity?}
+Before we introduce the axiom, let us explore why we need this axiom.
+
+Consider our original definition of a set, which is just a collection of items. For example we can think of the set $\{1, 2, 3\}$ as the collection containing the items 1, 2, and 3. The issue comes to when we have sets in sets; in particular, sets that reference themselves.
+
+Our axioms so far do not restrict us putting sets in themselves. In fact, without regularity, the set $A$ given by
+\[
+    A = \{x \vert x \in x\},
+\]
+i.e. the set containing sets that contain themselves, would certainly not raise any eyebrows. An infinitely nested set (which we can uglily write down as $\{\{\{\dots\}\}\}$) would still exist in $A$. However, things get weird if we continue tugging at this string.
+
+Consider the set $R$ (sometimes called \term{the Russell set}\index{Russell Set}) given by
+\[
+    R = \{x \vert x \notin x\}.
+\]
+We can note down some examples of sets in $R$. For one, the empty set is in $R$ since the empty set does not contain itself. The set $\{1\}$ is in $R$ since $\{1\}$ does not contain itself. However, the infinitely nested set $\{\{\{\dots\}\}\}$ would not be in $R$ since it would contain itself. The trouble is this: does $R$ contain $R$?
+\begin{itemize}
+    \item Suppose $R$ contains $R$. This means $R \in R$. However by definition of $R$, this must mean that $R$ is not in $R$ (since $R$ contains all sets that are not members of themselves, including $R$).
+    \item Suppose now $R$ does not contain $R$. This means $R \notin R$. But the definition of $R$ means that $R$ necessarily contains $R$ (since $R$ contains all sets that are not members of themselves, including $R$).
+\end{itemize}
+This is a paradox! If $R$ contains $R$ then $R$ does not contain $R$; if $R$ does not contain $R$ then $R$ contains $R$. This is known as \term{Russell's Paradox}\index{Russell's Paradox}.
+
+\subsection{The Axiom}
+To avoid issues of sets containing themselves (and paradoxes like those mentioned earlier), we introduce the axiom of regularity in an attempt to regulate what sets can contain.
+
+\begin{axiom}[Regularity]\label{axiom:regularity}\index{axiom!regularity}\index{Zermelo-Frankel Set Theory!regularity}
+    \[
+        \forall A \left(A \neq \emptyset \implies \exists x \left(x \in A  \land x \cap A = \emptyset\right)\right)
+    \]
+\end{axiom}
+
+% TODO: Continue
 
 %============= Deprecated ================
 % TODO: Move these other chapters, introducing them as needed
