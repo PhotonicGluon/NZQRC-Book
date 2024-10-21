@@ -14,7 +14,7 @@ MEDIA_FOLDER = "media"
 MEDIA_IMAGES_FOLDER = f"{MEDIA_FOLDER}/images/image_generation"
 BOOK_IMAGES_FOLDER = "../../book/images"
 
-ALL_NOTEBOOKS = ["part-1.ipynb"]
+ALL_NOTEBOOKS = ["part-2.ipynb"]
 
 app = typer.Typer(no_args_is_help=True)
 
