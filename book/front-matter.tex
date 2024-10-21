@@ -10,55 +10,46 @@
 }
 
 %============= Front Matter ==============
-\Ifstr{\isebook}{true}{
-    % Title page
-    \begin{titlepage}
-        \newgeometry{hmargin=2cm, vmargin=2.5cm}
+% TODO: Update
+% \Ifstr{\isebook}{true}{
+\Ifstr{USING PAPERBACK TITLE PAGE UNTIL NEW COVER IS READY}{true}{
+    % % Title page
+    % \begin{titlepage}
+    %     \newgeometry{hmargin=2cm, vmargin=2.5cm}
 
-        % \AddToShipoutPictureBG*{%
-        %     \AtPageLowerLeft{%
-        %         \includegraphics[width=\paperwidth,height=\paperheight]{images/cover/front-only/cover-page-background.jpg}%
-        %     }%
-        % }
+    %     % \AddToShipoutPictureBG*{%
+    %     %     \AtPageLowerLeft{%
+    %     %         \includegraphics[width=\paperwidth,height=\paperheight]{images/cover/front-only/cover-page-background.jpg}%
+    %     %     }%
+    %     % }
 
-        \vspace*{\fill}
+    %     \vspace*{\fill}
 
-        \begin{center}
-            % \color{white}
+    %     \begin{center}
+    %         \color{white}
 
-            % {\fontsize{16pt}{0pt}\selectfont \textbf{A Complete}\\\textbf{Introduction to}}\\
+    %         {\fontsize{16pt}{0pt}\selectfont \textbf{A Complete}\\\textbf{Introduction to}}\\
 
-            % \vspace{0.3cm}
-            % {\fontsize{40pt}{0pt}\selectfont \textbf{ABSTRACT}}\\
-            % \vspace{0.15cm}
-            % {\fontsize{40pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
+    %         \vspace{0.3cm}
+    %         {\fontsize{40pt}{0pt}\selectfont \textbf{ABSTRACT}}\\
+    %         \vspace{0.15cm}
+    %         {\fontsize{40pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
 
-            % \vspace{0.4cm}
-            % {\fontsize{12pt}{0pt}\selectfont \editiontext}\\
+    %         \vspace{0.4cm}
+    %         {\fontsize{12pt}{0pt}\selectfont \editiontext}\\
 
-            % \vspace{0.9cm}
-            % {\fontsize{18pt}{0pt}\selectfont Kan Onn Kit}\\
-            % \vspace{0.25cm}
-
-            \vspace{-0.2cm}
-
-            {\fontsize{24pt}{0pt}\selectfont \textbf{NZQRC}}\\  % TODO: Change
-
-            \vspace{0.4cm}
-            {\fontsize{12pt}{0pt}\selectfont \editiontext}\\
-
-            \vspace{0.9cm}
-            {\fontsize{18pt}{0pt}\selectfont Kan Onn Kit}\\
-            \vspace{0.25cm}
-        \end{center}
-        \vspace*{\fill}
-    \end{titlepage}
+    %         \vspace{0.9cm}
+    %         {\fontsize{18pt}{0pt}\selectfont Kan Onn Kit}\\
+    %         \vspace{0.25cm}
+    %     \end{center}
+    %     \vspace*{\fill}
+    % \end{titlepage}
 }{
     % Half title page
     \thispagestyle{empty}
     \null\vspace{4cm}
     \begin{raggedleft}
-        {\fontsize{24pt}{0pt}\selectfont \textbf{NZQRC}}\\  % TODO: Change
+        {\fontsize{24pt}{0pt}\selectfont \textbf{\textsc{Axiomatic Arithmetic}}}\\
     \end{raggedleft}
 
     % Title page
@@ -72,7 +63,11 @@
             % \vspace{0.15cm}
             % {\fontsize{48pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
 
-            {\fontsize{24pt}{0pt}\selectfont \textbf{NZQRC}}\\  % TODO: Change
+            {\fontsize{36pt}{0pt}\selectfont \textbf{\textsc{Axiomatic}}}\\
+            \vspace{0.1cm}
+            {\fontsize{36pt}{0pt}\selectfont \textbf{\textsc{Arithmetic}}}\\
+            \vspace{0.3cm}
+            {\fontsize{20pt}{0pt}\selectfont \textbf{The Structure of Numbers}}\\
 
             \vspace{0.5cm}
             {\fontsize{16pt}{0pt}\selectfont \editiontext}\\
@@ -97,7 +92,7 @@
     Singapore
     \vspace{5cm}
 
-    \textbf{NZQRC}\par  % TODO: Update
+    \textbf{Axiomatic Arithmetic: The Structure of Numbers}\par
     \editiontext
     \vspace{0.3cm}
 
@@ -154,17 +149,19 @@
 % Table of contents
 \createtoc
 
-% Errata
-\chapter{Errata}
-TODO: ADD
+% TODO: Reactivate
 
-% Acknowledgements
-\chapter{Acknowledgements}
-TODO: ADD
+% % Errata
+% \chapter{Errata}
+% TODO: ADD
 
-% Preface
-\chapter{Preface}
-TODO: ADD
+% % Acknowledgements
+% \chapter{Acknowledgements}
+% TODO: ADD
+
+% % Preface
+% \chapter{Preface}
+% TODO: ADD
 
 % % Suggestions on the use of this book
 % \chapter{Suggestions on the Use of This Book}
