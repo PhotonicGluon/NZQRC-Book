@@ -298,13 +298,23 @@ This is a paradox! If $R$ contains $R$ then $R$ does not contain $R$; if $R$ doe
 \subsection{The Axiom}
 To avoid issues of sets containing themselves (and paradoxes like those mentioned earlier), we introduce the axiom of regularity in an attempt to regulate what sets can contain.
 
+Essentially, the axiom states that any non-empty set must contain at least one element (which is a set in \ZF) that has no elements in common with the original set. More formally, we can write this axiom as
+\[
+    \forall A \left(A \neq \emptyset \implies \exists x \left(x \in A  \land x \cap A = \emptyset\right)\right).
+\]
+Note, however, that this is not a valid string in $\SetLang$ -- the set intersection symbol is a valid symbol in $\SetLang$. Thus, we need to be more creative on how we state this axiom.
+
+One way is to notice that ``$x \cap A = \emptyset$'' precisely means that the intersection $x \cap A$ has no elements. That means that there does not exist any element that is both in $x$ and in $A$, i.e. ``$\lnot \exists y (y \in x \land y \in A)$''. On a related note, the condition ``$A \neq \emptyset$'' means that the set $A$ contains something, i.e. ``$\exists x (x \in A)$''.
+
+With this we can state the axiom of regularity in a more formal language.
+
 \begin{axiom}[Regularity]\label{axiom:regularity}\index{axiom!regularity}\index{Zermelo-Frankel Set Theory!regularity}
     \[
-        \forall A \left(A \neq \emptyset \implies \exists x \left(x \in A  \land x \cap A = \emptyset\right)\right)
+        \forall A (\exists x (x \in A) \implies \exists x (x \in A) \land (\lnot\exists y (y \in x \land y \in A)))
     \]
 \end{axiom}
 
-% TODO: Continue
+With the axiom of regularity, our foundations for \ZF~are set. We are now ready to define numbers, starting with the naturals.
 
 %============= Deprecated ================
 % TODO: Move these other chapters, introducing them as needed
