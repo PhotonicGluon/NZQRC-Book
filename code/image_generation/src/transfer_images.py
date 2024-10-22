@@ -4,7 +4,7 @@ import shutil
 
 from rich import print
 
-IMAGE_REGEX = r"(?P<part>\d)_(?P<chapter>[a-z]+)_(?P<name>[\w\-]+\.png)"
+IMAGE_REGEX = r"(?P<part>\d)_(?P<chapter>[a-z\-]+)_(?P<name>[\w\-]+\.png)"
 
 
 def transfer_images(
