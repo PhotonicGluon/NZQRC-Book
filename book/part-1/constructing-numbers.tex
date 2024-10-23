@@ -17,7 +17,26 @@ Of course, when it comes to asking what 3 is, at a fundamental level, we need to
 In this chapter, we will be focusing on defining the natural numbers using a set-theoretic approach. In particular, we will use \ZF~to construct representatives for \textbf{all} the natural numbers. That way, we will have no ambiguity when we discuss what 3, or 12, or 83, or 1289, or 89338, etc., really means at a fundamental level.
 
 \section{Defining Zero}
-TODO: Add
+The act of defining numbers has to start somewhere. The natural numbers all represent a certain quantity of things -- 3 things, 12 things, 83 things, 1289 things, 89338 things, etc. The problem with defining these other numbers without a good starting point is that there can be an argument of what these numbers really mean at a fundamental level. What is a ``thing''? How do we count these ``things''? How can we ensure that others count these ``things'' the same way? That is why we will start with zero -- the absence of anything.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4cm]{part-1/constructing-numbers/counting.png}
+    \caption{Counting Down To Zero}
+\end{figure}
+
+While other numbers (say 1) can have ambiguity of what they mean (e.g., 1 car, 1 square, 1 point, 1 circle, etc.), 0 necessarily means that there is nothing. It represents the absence of anything, and it does not matter what the type of ``thing'' is. We can agree that, whatever the ``thing'' is, they are not there, and the quantity of that number of items is 0.
+
+Let us appeal to the notion of sets to further elaborate on this. There are many sets that contain 3 items. For example, the sets $\{a, b, c\}$, $\{1, 2, 3\}$, $\{x, y, z\}$, $\{0, 1, 2\}$, $\{+, -, /\}$, and $\{\text{hi}, \text{hello}, \text{bye}\}$ all contain 3 items. But there is one set that contains zero items -- the empty set. Any other set containing zero items must necessarily be the equal to the empty set, since the items in a set uniquely define a set by the \ZF~axiom of extensionality (\myref{axiom:extensionality}).
+
+As such, we may define the number zero to be the empty set.
+\begin{definition}[Zero]\index{zero}
+    The number zero is defined to be the empty set. That is,
+    \[
+        0 = \emptyset.
+    \]
+\end{definition}
+This is definitely a little odd. Why are we defining a number to be a set? Recall that \textbf{everything is a set} under the axioms of \ZF. Thus every number must necessarily be a set. We might as well define 0, which represents the absence of anything, to be the empty set, the set devoid of everything. Surely any other choice of set that defines 0 would be absurd; why would we pick a non-empty set containing something to represent the lack of anything? Under this light, setting $0 = \emptyset$ is completely natural.
 
 \section{Successor}
 TODO: Add
