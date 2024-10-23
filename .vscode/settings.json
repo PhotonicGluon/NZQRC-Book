@@ -115,6 +115,8 @@
         "lettrine",
         "magics",
         "manim",
+        "mobject",
+        "mobjects",
         "Noether",
         "nullary",
         "nzqrc",
