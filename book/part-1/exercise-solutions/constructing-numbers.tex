@@ -1,0 +1,42 @@
+\section{Defining Natural Numbers}
+\begin{questions}
+    % Successor Practice
+    \item We note
+    \begin{align*}
+        \Successor{\Successor{\{x, y\}}} &= \Successor{\{x, y\} \cup \{\{x, y\}\}}\\
+        &= \Successor{\{x, y, \{x, y\}\}}\\
+        &= \{x, y, \{x, y\}\} \cup \{\{x, y, \{x, y\}\}\}\\
+        &= \{x, y, \{x, y\}, \{x, y, \{x, y\}\}\}.
+    \end{align*}
+
+    % Analysing Counter Sets
+    \item \begin{partquestions}{\roman*}
+        \item $5 = \{0,1,2,3,4\}$.
+        \item We see
+        \begin{align*}
+            5 &= \{\\
+            &\quad\quad\{\},\\
+            &\quad\quad\{\underbrace{\{\}}_0\},\\
+            &\quad\quad\{\underbrace{\{\}}_0, \underbrace{\{\{\}\}}_1\},\\
+            &\quad\quad\{\underbrace{\{\}}_0, \underbrace{\{\{\}\}}_1, \underbrace{\{\{\}, \{\{\}\}\}}_2\},\\
+            &\quad\quad\{\underbrace{\{\}}_0, \underbrace{\{\{\}\}}_1, \underbrace{\{\{\}, \{\{\}\}\}}_2, \underbrace{\{\{\}, \{\{\}\}, \{\{\}, \{\{\}\}\}\}}_3\}\\
+            &\}.
+        \end{align*}
+        \item We claim that the counter set of $n$ requires $2^n$ open curly braces. We prove this using induction.
+        
+        The counter set of 0 is $\{\}$ which requires $1 = 2^0$ open curly braces.
+
+        Suppose the claim holds true for some natural number $k$, i.e. the counter set of $k$ uses $2^k$ open curly braces. We prove that the counter set of $k+1$ uses $2^{k+1}$ open curly braces.
+
+        Recall that $k+1 = \Successor{k} = k \cup \{k\}$. Our induction hypothesis says that the counter set of $k$ uses $2^k$ open curly braces. Internally, we know that
+        \[
+            k = \{0, 1, 2, \dots, k-1\}
+        \]
+        which means that the part ``$0, 1, 2, \dots, k-1$'' uses $2^k - 1$ open curly braces (since the beginning of the set starts with an open curly brace). So ``$0, 1, 2, \dots, k-1, k$'' will use $(2^k - 1) + 2^k = 2^{k+1} - 1$ open curly braces. When this is placed in a set, this increases the number of open curly braces by 1, thus making the counter set of $k+1$ have $2^{k+1}$ open curly braces.
+
+        This proves the claim via induction. Hence the number of open curly braces for the counter set of 65536 is
+        \[
+            2^{65536} = 2^{2^{16}} = 2^{2^{2^4}} = 2^{2^{2^{2^2}}}.
+        \]
+    \end{partquestions}
+\end{questions}

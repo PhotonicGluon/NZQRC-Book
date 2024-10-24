@@ -1,3 +1,7 @@
+%=========== Custom Commands =============
+\newcommand*{\Successor}[1]{\mathcal{S}(#1)}  % Successor of a set
+
+%=========================================
 \Chapter{Defining Natural Numbers}
 \Lettrine[loversize=0.1,nindent=0pt]{To} define all the numbers, we have to start with the most basic of numbers -- the natural numbers. The natural numbers are the most basic of all numbers. They are considered our counting numbers, and understanding how they can be defined using the axioms of Zermelo-Frankel theory is essential for continuing to create the rest of the numbers.
 
@@ -39,9 +43,88 @@ As such, we may define the number zero to be the empty set.
 This is definitely a little odd. Why are we defining a number to be a set? Recall that \textbf{everything is a set} under the axioms of \ZF. Thus every number must necessarily be a set. We might as well define 0, which represents the absence of anything, to be the empty set, the set devoid of everything. Surely any other choice of set that defines 0 would be absurd; why would we pick a non-empty set containing something to represent the lack of anything? Under this light, setting $0 = \emptyset$ is completely natural.
 
 \section{Successor}
-TODO: Add
+Okay, we have defined zero. But what about the rest of the natural numbers?
 
-\section{The Natural Numbers}
+For the rest of the numbers, our key idea is to use the natural numbers defined before then to define that number itself. That is, to define a natural number $n$, we want to only use the sets 0, 1, 2, \dots, $n-1$ to define $n$. Appealing to the idea that each natural number $n$ should be a set containing $n$ items, it seems natural that we should define
+\[
+    n = \{0, 1, 2, \dots, n-1\}.
+\]
+This set contains $n$ items, and so it can be used to represent the natural number $n$.
+
+However, instead of directly defining what $n$ is, we will do it in a more roundabout way -- using something known as the successor of a set.
+
+\begin{definition}[Successor]
+    Let $A$ be a set. The \term{successor}\index{successor} of $A$ is
+    \[
+        \Successor{A} = A \cup \{A\}.
+    \]
+\end{definition}
+In other words, the successor of a set $A$ is the set containing the elements of $A$ and $A$ itself.
+
+\begin{example}[Successor]
+    \begin{itemize}[leftmargin=*]
+        \item $\Successor{\emptyset} = \emptyset \cup \{\emptyset\} = \emptyset$ since the empty set is, of course, empty.
+        \item $\Successor{\{a\}} = \{a\} \cup \{\{a\}\} = \{a, \{a\}\}$.
+        \item $\Successor{\{a, b, c\}} = \{a, b, c\} \cup \{\{a, b, c\}\} = \{a, b, c, \{a, b, c\}\}$.
+        \item $\Successor{\Successor{\{a\}}} = \Successor{\{a, \{a\}\}} = \{a, \{a\}, \{\{a, \{a\}\}\}\}$.
+    \end{itemize}
+\end{example}
+
+\begin{exercise}[Successor Practice]
+    What is $\Successor{\Successor{\{x, y\}}}$?
+\end{exercise}
+
+Usually the successor of a set is only used for defining the natural numbers. Observe that a very nice pattern emerges when we repeatedly find the successor of 0.
+\begin{itemize}
+    \item $\Successor{0} = \Successor{\emptyset} = \{\emptyset\}$. This set has 1 element.
+    \item $\Successor{\Successor{0}} = \Successor{\{\emptyset\}} = \{\emptyset, \{\emptyset\}\}$. This set has 2 elements.
+    \item $\Successor{\Successor{\Successor{0}}} = \Successor{\{\emptyset, \{\emptyset\}\}} = \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}$. This set has 3 elements.
+\end{itemize}
+
+We see that applying finding the $n$th successor of 0 exactly gives a set with $n$ elements. This repeated application of the successor defines the natural numbers.
+
+\begin{definition}[Defining A Natural Number]
+    The natural number\index{natural number} $n$ is defined to be the $n$th successor of 0, and The set that underlies $n$ is called the \term{counter set of $n$}\index{counter set}\index{natural number!counter set}. In other words,
+    \[
+        n = \overbrace{\Successor{\Successor{\Successor{\cdots\Successor{0}\cdots}}}}^{n \text{ applications}}.
+    \]
+    Alternatively,
+    \[
+        n = \begin{cases}
+            \emptyset & \text{if } n = 0\\
+            \Successor{n-1} & \text{if } n \geq 1
+        \end{cases}
+    \]
+\end{definition}
+\begin{remark}[Undefined Operations]
+    The alternative definition of $n$ suffers from the fact that we have not yet defined the subtraction (i.e., $-$) and greater-than-or-equals-to (i.e., $\geq$) operations.
+\end{remark}
+
+The counter sets of natural numbers can be drawn diagrammatically.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{images/part-1/constructing-numbers/counter-sets.png}
+    \caption{The First 5 Counter Sets}
+\end{figure}
+What we observe is interesting. The counter set of 1 contains the empty set (the counter set of 0), so we may write $1 = \{0\}$. The counter set of 2 contains both the empty set and the counter set of 1, so we may write $2 = \{0, 1\}$. We observe too that $3 = \{0, 1, 2\}$ and $4 = \{0, 1, 2, 3\}$. This observation allows us to make the definition of the natural numbers more concise.
+
+\begin{definition}[Defining A Natural Number, More Concisely]
+    Define the natural number
+    \begin{itemize}
+        \item 0 to be the empty set; and
+        \item $n$ to be the set $\{0,1,2,\dots,n-1\}$ for any other natural number $n$.
+    \end{itemize}
+\end{definition}
+
+\begin{exercise}[Analysing Counter Sets]
+    \begin{partquestions}{\roman*}
+        \item Write down the counter set of 5 in terms of 0, 1, 2, 3, and 4.
+        \item Write down the counter set of 5, using only the curly braces $\{$ and $\}$ and commas.
+        \item How many \textbf{open} curly braces (i.e., $\{$) would be used to define the counter set of 65536? Assume we only use the curly braces $\{$ and $\}$ as well as commas.
+    \end{partquestions}
+\end{exercise}
+
+\section{The Set of Natural Numbers}
 TODO: Add
 
 \section{Axiom of Infinity}
