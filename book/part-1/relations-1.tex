@@ -107,10 +107,45 @@ Relations may also be performed on the same set.
     \end{partquestions}
 \end{exercise}
 
-% TODO: Mention a link to how functions are defined
-
 \section{Properties of Relations}
-TODO: Add
+Let us now look at some properties of relations.
+
+\begin{definition}[Domain, Codomain, and Range]
+    Let $X$ and $Y$ be sets and $R$ be a relation from $X$ to $Y$.
+    \begin{itemize}
+        \item The \term{domain}\index{domain}\index{relation!domain} of $R$ is the set $\{x \in X \vert \exists y \in Y \text{ s.t. } x \mathrel{R} y\}$.
+        \item The \term{codomain}\index{codomain}\index{relation!codomain} of $R$ is the set $Y$.
+        \item The \term{range}\index{range}\index{relation!range} of $R$ is the set $\{y \in Y \vert \exists x \in X \text{ s.t. } x \mathrel{R} y\}$.
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    Let $A = \{1,2,3\}$ and $B = \{2,4,9\}$. Let the relation $R$ be a relation from $A$ to $B$ such that
+    \[
+        x \mathrel{R} y \iff x^2 = y.
+    \]
+    In particular, we see that
+    \[
+        R = \{(2, 4), (3, 9)\}.
+    \]
+    The domain of $R$ is
+    \begin{align*}
+        &\{a \in A \vert \exists b \in B \text{ s.t. } a \mathrel{R} b\}\\
+        &= \{a \in A \vert \exists b \in B \text{ s.t. } a^2 = b\}\\
+        &= \{2, 3\}.
+    \end{align*}
+
+    The codomain of $R$ is the set $B$, which is $\{2,4,9\}$.
+
+    The range of $R$ is
+    \begin{align*}
+        &\{b \in B \vert \exists a \in A \text{ s.t. } a \mathrel{R} b\}\\
+        &= \{b \in B \vert \exists a \in A \text{ s.t. } a^2 = b\}\\
+        &= \{4, 9\}.
+    \end{align*}
+\end{example}
+
+% TODO: Continue
 
 % Include domain, codomain, range, and inverse
 
