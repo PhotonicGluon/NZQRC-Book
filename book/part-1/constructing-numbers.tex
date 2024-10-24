@@ -125,8 +125,52 @@ What we observe is interesting. The counter set of 1 contains the empty set (the
 \end{exercise}
 
 \section{The Set of Natural Numbers}
-TODO: Add
+With the natural numbers defined, we are almost ready to define the set of natural numbers. However, we need to return back to \ZF~to include an important axiom.
 
-\section{Axiom of Infinity}
+\subsection{Axiom of Infinity}
+As defined so far, \ZF~does not explicitly state that a set of an infinite number of elements exists. Sure, we can create a set based of a list of items (\myref{theorem:set-of-any-list-of-items}), but this only works for a \textbf{finite} number of items. We can take the union of a list of sets (\myref{theorem:union-of-finite-number-of-sets-exists}), but this works only for a \textbf{finite} number of sets. Regardless of what operations we can do so far, we are limited to a finite number of items and finite sets. Repeatedly applying operations on finite sets will still make the resultant set finite.
+
+Thus, we need to make a leap of faith and bring into existence \textbf{one} infinite set. That is the job of the axiom of infinity -- an infinite set exists.
+
+Loosely, we can state the axiom as
+\[
+    \exists I ((\emptyset \in I) \land \forall x (x \in I \implies \Successor{x} \in I)),
+\]
+that is, there exists a set $I$ (an infinite set) such that the empty set is an element of $I$, and, for any element (which is a set, according to \ZF) in $I$, its successor is also in $I$. One sees that this would mean that there is an infinite number of elements in $I$ -- we can just repeatedly take the successor of elements in $I$ to create something that was not present in $I$. However, this is not stated in our formal language for axiomatic set theory. Can we make it more formal?
+
+The axiom of infinity asserts that an infinite set $I$ exists satisfying the following conditions:
+\begin{enumerate}[label=\textbf{I\arabic*.}]
+    \item the empty set is an element of $I$;
+    \item for any element in $I$, its successor is also in $I$.
+\end{enumerate}
+
+Condition \textbf{I1} is easy to state as
+\[
+    \exists O (O \in I \land \lnot(\exists x (x \in O))).
+\]
+This states that there is a set $O$ in $I$ such that nothing exists in $O$, which is precisely the definition of the empty set in the axiom of the empty set (\myref{axiom:empty-set}). Note that we use the letter $O$ instead of the standard symbol for the empty set (i.e., $\emptyset$) to avoid confusion.
+
+Condition \textbf{I2} is slightly trickier. Recall that the successor of a set $A$ is the set $A \cup \{A\}$. So an element in the successor must be an element of $A$, or $A$ itself. So if $S$ is the successor of $A$, we can write this down as
+\[
+    x \in S \iff (x \in A \lor x = A).
+\]
+Therefore \textbf{I2} can be written as
+\[
+    \forall x (x \in I \implies \exists S (S \in I \land \forall y (\underbrace{y \in S \iff (y \in x \lor y = x)}_{\text{Definition of Successor}}))).
+\]
+This means that any element in $I$ must have its successor also in $I$.
+
+We can now put \textbf{I1} and \textbf{I2} together to form the axiom of infinity.
+
+\begin{axiom}[Infinity]\label{axiom:infinity}\index{axiom!infinity}\index{Zermelo-Frankel Set Theory!infinity}
+    The infinite set $I$ exists. In particular,
+    \begin{align*}
+        &\exists I (\\
+            &\quad\exists O (O \in I \land \lnot(\exists x (x \in O)))\\
+            &\quad\land \forall x (x \in I \implies \exists S (S \in I \land \forall y (y \in S \iff (y \in x \lor y = x))))\\
+        &).
+    \end{align*}
+\end{axiom}
+
+\subsection{The Set of Natural Numbers}
 TODO: Add
-% Probably need to motivate the reason for how this axiom is defined
