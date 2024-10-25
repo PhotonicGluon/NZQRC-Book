@@ -41,7 +41,7 @@ This is clearly way too abstract of a definition to see how this captures the id
     On the left is the set $M$, and on the right is the set $C$. The arrows shows how they are related. For example, the arrow from ``Peano'' points to ``Italy'' since Giuseppe Peano lived in Italy. Notice that Bertrand Russell did not live in any of the countries in $C$, and that no mathematician in $M$ lived in France.
 \end{example}
 
-\begin{example}[The ``is less than'' Relation]
+\begin{example}[The ``is less than'' Relation]\label{example:is-less-than-relation}
     Let $A = \{0, 1, 2\}$ and $B = \{1, 2, 3\}$. Define the relation $R$ such that
     \[
         x\mathrel{R}y \iff x < y
@@ -145,9 +145,63 @@ Let us now look at some properties of relations.
     \end{align*}
 \end{example}
 
-% TODO: Continue
+Let us now look at the inverse of a relation.
 
-% Include domain, codomain, range, and inverse
+\begin{definition}[Inverse of a Relation]
+    Let $X$ and $Y$ be sets and $R$ be a relation from $X$ to $Y$. The inverse\index{relation!inverse} of $R$, denoted $R^{-1}$, is the relation from $Y$ to $X$ where $y \mathrel{R^{-1}} x$ if and only if $x \mathrel{R} y$ for any $x \in X$ and $y \in Y$. In other words,
+    \[
+        R^{-1} = \{(y, x) \vert (x \in X) \land (y \in Y) \land (x \mathrel{R} y)\}.
+    \]
+\end{definition}
+
+\begin{example}[The ``is less than'' Relation and its Inverse]
+    In \myref{example:is-less-than-relation}, we looked at the relation $R$ from the set $A = \{0, 1, 2\}$ to $B = \{1, 2, 3\}$ such that $x \mathrel{R} y \iff x < y$ for all $x \in A$ and $y \in B$. In particular, we found that
+    \[
+        R = \{(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)\}.
+    \]
+    Therefore
+    \begin{align*}
+        R^{-1} &= \{(1, 0), (2, 0), (3, 0), (2, 1), (3, 1), (3, 2)\} & (\text{Swap } x \text{ and } y)\\
+        &= \{(1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2)\}. & (\text{Reordering})
+    \end{align*}
+
+    As usual, we may show these relations diagrammatically.
+    \begin{figure}[H]
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3.5cm]{images/part-1/relations-1/less-than-relation.png}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3.5cm]{images/part-1/relations-1/less-than-relation-inverse.png}
+        \end{subfigure}
+        \caption{Diagrammatic Representations of $R$ and $R^{-1}$} 
+    \end{figure}
+    One sees that the arrow diagram for $R^{-1}$ is formed by reversing the arrows on the arrow diagram of $R$.
+\end{example}
+
+\begin{exercise}[Properties of the ``Divides'' Relation]
+    \setlength{\parindent}{0pt}
+    (\textit{Assume multiplication of integers is defined.})
+
+    Let $S = \{2, 3, 4, 5, 6, 7, 8\}$. Define a relation $D$ on $S$ such that
+    \[
+        x \mathrel{D} y \iff \exists m \in S \text{ s.t. } y = mx
+    \]
+    for all $x, y \in S$.
+
+    \begin{partquestions}{\roman*}
+        \item List the elements in $D$.
+        \item Hence list the elements in $D^{-1}$.
+        \item List the elements in the
+        \begin{partquestions}{\alph*}
+            \item domain of $D$;
+            \item codomain of $D$; and
+            \item range of $D$.
+        \end{partquestions}
+    \end{partquestions}
+\end{exercise}
 
 \section{Composition of Relations}
 TODO: Add

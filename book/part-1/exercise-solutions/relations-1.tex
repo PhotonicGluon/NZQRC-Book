@@ -10,4 +10,28 @@
         \item Note that $(5, 5) \notin A \times B$ so $R_6$ is not a relation from $A$ to $B$. However clearly $A^2 \subseteq A^2$, which means $R_6$ is a relation on $A$.
         \item Since $(6, 6) \notin A \times B$ and $(6, 6) \notin A^2$, thus $R_7$ is neither a relation from $A$ to $B$ nor a relation on $A$.
     \end{partquestions}
+
+    % Properties of the "Divides" Relation
+    \item \begin{partquestions}{\roman*}
+        \item We will do this step by step.
+        \begin{itemize}
+            \item For $x = 2$, notice that $2 \mathrel{D} 4$ (using $m = 2$), $2 \mathrel{D} 6$ (using $m = 3$), and $2 \mathrel{D} 8$ (using $m = 4$).
+            \item For $x = 3$, notice that only $3 \mathrel{D} 6$ (using $m = 2$).
+            \item For $x = 4$, notice that only $4 \mathrel{D} 8$ (using $m = 2$).
+            \item For $x = 5$, $x = 6$, $x = 7$, and $x = 8$, there are no valid $y$ that is related to them.
+        \end{itemize}
+        Thus $D = \{(2, 4), (2, 6), (2, 8), (3, 6), (4, 8)\}$.
+
+        \item We see
+        \begin{align*}
+            D^{-1} &= \{(4, 2), (6, 2), (8, 2), (6, 3), (8, 4)\} & (\text{Swap } x \text{ and } y)\\
+            &= \{(4, 2), (6, 2), (6, 3), (8, 2), (8, 4)\}. & (\text{Rearranging})
+        \end{align*}
+        
+        \item \begin{partquestions}{\alph*}
+            \item Domain of $D$ is $\{2, 3, 4\}$.
+            \item Codomain of $D$ is $S = \{2,3,4,5,6,7,8\}$.
+            \item Range of $D$ is $\{4, 6, 8\}$.
+        \end{partquestions}
+    \end{partquestions}
 \end{questions}
