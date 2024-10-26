@@ -35,7 +35,7 @@ ipylab
 Run:
 
 ```bash
-poetry run python main.py trim -o media/images/trimmed
+poetry run python main.py trim -o media/trimmed
 ```
 
 ### Moving Generated Images
@@ -54,7 +54,7 @@ poetry run python main.py transfer --dry-run
 For moving trimmed images:
 
 ```bash
-poetry run python main.py transfer --media-images-folder media/images/trimmed
+poetry run python main.py transfer --generated-images-folder media/trimmed
 ```
 
 ### Trim and Transfer Images
@@ -62,7 +62,7 @@ poetry run python main.py transfer --media-images-folder media/images/trimmed
 Run:
 
 ```bash
-python main.py trim -o media/images/trimmed; python main.py transfer --media-images-folder media/images/trimmed
+python main.py trim -o media/trimmed; python main.py transfer --generated-images-folder media/trimmed
 ```
 
 ### Do-All
