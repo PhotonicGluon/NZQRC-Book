@@ -14,7 +14,7 @@ A high-level explanation of a relation is simply a way to `create a connection' 
 
 This is clearly way too abstract of a definition to see how this captures the idea of `creating connections' between set elements, so let's take a look at some concrete examples.
 
-\begin{example}[The ``lived in'' Relation]
+\begin{example}[The ``lived in'' Relation]\label{example:lived-in-relation}
     Let $M$, a subset of the set of all mathematicians, be
     \[
         \{\text{Peano}, \text{Cantor}, \text{Dedekind}, \text{Russell}, \text{Euler}, \text{Hilbert}\}
@@ -34,7 +34,7 @@ This is clearly way too abstract of a definition to see how this captures the id
     We can show this relation diagrammatically.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=6cm]{images/part-1/relations-1/lived-in.png}
+        \includegraphics[height=3.75cm]{images/part-1/relations-1/lived-in.png}
         \caption{Arrow Diagram of $R$}
     \end{figure}
 
@@ -54,7 +54,7 @@ This is clearly way too abstract of a definition to see how this captures the id
     Again, we may show this relation diagrammatically.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=4cm]{images/part-1/relations-1/less-than.png}
+        \includegraphics[height=2.75cm]{images/part-1/relations-1/less-than.png}
         \caption{Arrow Diagram of $R$}
     \end{figure}
 \end{example}
@@ -150,7 +150,7 @@ Let us now look at the inverse of a relation.
 \begin{definition}[Inverse of a Relation]
     Let $X$ and $Y$ be sets and $R$ be a relation from $X$ to $Y$. The inverse\index{relation!inverse} of $R$, denoted $R^{-1}$, is the relation from $Y$ to $X$ where $y \mathrel{R^{-1}} x$ if and only if $x \mathrel{R} y$ for any $x \in X$ and $y \in Y$. In other words,
     \[
-        R^{-1} = \{(y, x) \vert (x \in X) \land (y \in Y) \land (x \mathrel{R} y)\}.
+        R^{-1} = \{(y, x) \in Y \times X \vert (x, y) \in X \times Y\}.
     \]
 \end{definition}
 
@@ -204,6 +204,106 @@ Let us now look at the inverse of a relation.
 \end{exercise}
 
 \section{Composition of Relations}
-TODO: Add
+We may sometimes want to find the overall relationship between two sets after a sequence of relations. This motivates the concept of composing relations.
 
-% Introduce composition of relations, associativity, and inverse of a composition
+\begin{definition}[Composition of Relations]
+    Let $A$, $B$, and $C$ be sets. Let $R$ and $S$ be relations from $A$ to $B$ and $B$ to $C$ respectively. The \term{composition of $R$ with $S$}\index{relation!composition}, written $S \circ R$, is a relation from $A$ to $C$ where
+    \[
+        a (\mathrel{S \circ R}) c \iff \exists b \in B \text{ s.t. } a \mathrel{R} b \land b \mathrel{S} c
+    \]
+    for all $a \in A$ and $c \in C$. In other words,
+    \[
+        S \circ R = \{(a, c) \in A \times C \vert \exists b \in B \text{ s.t. } ((a, b) \in R \land (b, c) \in S)\}.
+    \]
+\end{definition}
+\begin{remark}[Order Matters]
+    $S \circ R$ and $R \circ S$ are different. The former means that we apply $R$ \textbf{before} $S$, while the latter means that we apply $S$ \textbf{before} $R$. The reason we write ``$S \circ R$'' to mean that $R$ comes before $S$ is to match the notation for function composition (which will be covered later).
+\end{remark}
+
+\begin{example}[The ``lived in continent'' Relation]
+    In \myref{example:lived-in-relation}, we defined the sets
+    \begin{align*}
+        M &= \{\text{Peano}, \text{Cantor}, \text{Dedekind}, \text{Russell}, \text{Euler}, \text{Hilbert}\},\\
+        C &=\{\text{Italy}, \text{Switzerland}, \text{Russia}, \text{Germany}, \text{France}\}, \text{ and}\\
+        R &= \{(\text{Peano}, \text{Italy}), (\text{Cantor}, \text{Russia}),\\
+        &\quad\quad(\text{Cantor}, \text{Germany}), (\text{Dedekind}, \text{Germany}),\\
+        &\quad\quad(\text{Euler}, \text{Switzerland}), (\text{Euler}, \text{Germany}),\\
+        &\quad\quad(\text{Euler}, \text{Russia}), (\text{Hilbert}, \text{Germany})\},
+    \end{align*}
+    where $R$ is, in particular, a relation from $M$ to $C$ called the ``lived in'' relation. Now let the set $A$, a subset of all continents (``areas''), be
+    \[
+        \{\text{Europe}, \text{North America}, \text{Asia}\}.
+    \]
+    Define the relation $S$ from $C$ to $A$ to be the ``country of'' relation where
+    \begin{align*}
+        S &= \{(\text{Italy}, \text{Europe}), (\text{Switzerland}, \text{Europe}), (\text{Russia}, \text{Asia}),\\
+        &\quad\quad(\text{Germany}, \text{Europe}), (\text{France}, \text{Europe})\}.
+    \end{align*}
+    Thus the composition of $R$ with $S$ (i.e., $S \circ R$) is the ``lived in continent'' relation. In particular,
+    \begin{align*}
+        S \circ R &= \{(\text{Peano}, \text{Europe}), (\text{Cantor}, \text{Europe}), (\text{Cantor}, \text{Asia})\\
+        &\quad\quad (\text{Dedekind}, \text{Europe}), (\text{Euler}, \text{Europe}), (\text{Euler}, \text{Asia})\\
+        &\quad\quad (\text{Hilbert}, \text{Europe})\}.
+    \end{align*}
+
+    Like in \myref{example:lived-in-relation}, we can show this relation diagrammatically.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3.25cm]{images/part-1/relations-1/lived-in-continent_separate.png}
+        \caption{Arrow Diagram of $R$ and $S$}
+    \end{figure}
+    Removing the intermediate set $C$ yields the following arrow diagram.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3.5cm]{images/part-1/relations-1/lived-in-continent_composed.png}
+        \caption{Arrow Diagram of $S \circ R$}
+    \end{figure}
+\end{example}
+
+\begin{example}[Composition of a Relation on a Set]
+    Let $A = \{0, 1, 2, 3, 4\}$. Define the relation $R$ on $A$ such that $x\mathrel{R}y \iff x < y$ for all $x, y \in A$. Thus
+    \begin{align*}
+        R &= \{(0, 1), (0, 2), (0, 3), (0, 4), (1, 2),\\
+        &\quad\quad(1, 3), (1, 4), (2, 3), (2, 4), (3, 4)\}.
+    \end{align*}
+    Subsequently, one sees that
+    \[
+        R\circ R = \{(0, 2), (0, 3), (0, 4), (1, 3), (1, 4), (2, 4)\}.
+    \]
+    
+    We can draw the directed graphs of both relations.
+    \begin{figure}[H]
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3.5cm]{images/part-1/relations-1/composition-of-relation-on-a-set_original.png}
+            \caption{Directed Graph of $R$}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3.5cm]{images/part-1/relations-1/composition-of-relation-on-a-set_composed.png}
+            \caption{Directed Graph of $R \circ R$}
+        \end{subfigure}
+        \caption{Directed Graphs of $R$ and $R \circ R$} 
+    \end{figure}
+\end{example}
+\begin{remark}[$n$ Repeated Compositions of a Relation on a Set]
+    In the above example, the relation $R \circ R$ can be more concisely written as $R^2$. Likewise, the relation $R \circ (R \circ R)$ can be written as $R^3$, and so on.
+\end{remark}
+
+\begin{exercise}[Properties of Compositions]
+    Let $A$, $B$, and $C$ be 3 distinct non-empty sets. Let $R$ and $S$ be relations from $A$ to $B$ and $B$ to $C$ respectively such that $R$ and $S$ are both non-empty. Which of the following statements is/are always true?
+    \begin{partquestions}{\alph*}
+        \item The domain of $S \circ R$ can be empty.
+        \item The domain of $S \circ R$ is $A$.
+        \item The domain of $S \circ R$ can be $A$.
+        \item The codomain of $S \circ R$ can be empty.
+        \item The codomain of $S \circ R$ is $C$.
+        \item The codomain of $S \circ R$ can be $B$.
+        \item The range of $S \circ R$ can be empty.
+        \item The range of $S \circ R$ is $C$.
+        \item The range of $S \circ R$ can be $C$.
+    \end{partquestions}
+\end{exercise}
+
+% TODO: Introduce composition associativity, and inverse of a composition
