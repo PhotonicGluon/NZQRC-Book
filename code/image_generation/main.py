@@ -6,9 +6,9 @@ import typer
 from rich import print
 from typing_extensions import Annotated
 
-from image_generation.src.execute_notebooks import execute_notebooks
-from image_generation.src.transfer_images import transfer_images
-from image_generation.src.trim_images import trim_images
+from image_generation.cli.execute_notebooks import execute_notebooks
+from image_generation.cli.transfer_images import transfer_images
+from image_generation.cli.trim_images import trim_images
 
 MEDIA_FOLDER = "media"
 MEDIA_IMAGES_FOLDER = f"{MEDIA_FOLDER}/images/image_generation"
