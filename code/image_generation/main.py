@@ -14,7 +14,8 @@ MEDIA_FOLDER = "media"
 GENERATED_IMAGES_FOLDER = f"{MEDIA_FOLDER}/images"
 BOOK_IMAGES_FOLDER = "../../book/images"
 
-ALL_NOTEBOOKS = ["part-1.ipynb", "part-2.ipynb"]
+NOTEBOOKS_FOLDER = "notebooks"
+ALL_NOTEBOOKS = ["part-1/constructing-numbers.ipynb", "part-1/relations-1.ipynb"]
 
 app = typer.Typer(no_args_is_help=True)
 
@@ -127,7 +128,7 @@ def do_all_cmd(
 
     # Execute all notebooks
     print("[cyan]Executing notebooks...[/cyan]")
-    execute_notebooks(*ALL_NOTEBOOKS)
+    execute_notebooks(*[f"{NOTEBOOKS_FOLDER}/{notebook}" for notebook in ALL_NOTEBOOKS])
 
     # Trim images
     print("[cyan]Trimming images...[/cyan]")

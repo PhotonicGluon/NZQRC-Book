@@ -1,5 +1,6 @@
 import argparse
 import os
+import re
 import shutil
 import tempfile
 from pathlib import Path
@@ -7,8 +8,10 @@ from typing import Any, Dict, Optional
 
 from IPython.core.magic import Magics, cell_magic, magics_class
 
-PACKAGE_DIR_NAME = Path(os.path.abspath(__file__)).parent.parent.name
-DEFAULT_OUTPUT_DIR = "media/images"
+PACKAGE_DIR = Path(os.path.abspath(__file__)).parent.parent
+
+DEFAULT_OUTPUT_DIR = f"{PACKAGE_DIR}/media/images"
+DEFAULT_CONFIG_FILE = f"{PACKAGE_DIR}/manim.cfg"
 
 
 def load_ipython_extension(ipython):
@@ -45,12 +48,14 @@ class GenerateImageMagic(Magics):
         parser = argparse.ArgumentParser(prog="%%generate_image")
 
         # Mandatory arguments
-        parser.add_argument("part", type=int, help="Part number.")
         parser.add_argument("chapter", type=str, help="Chapter ID. Separate words using '-'.")
         parser.add_argument("name", type=str, help="Image name. Separate words using '-'.")
         parser.add_argument("scene_name", type=str, help="Name of the scene class.")
 
         # Options
+        parser.add_argument(
+            "-C", "--config-file", type=str, default=DEFAULT_CONFIG_FILE, help="Path to the manim config file."
+        )
         parser.add_argument(
             "-S", "--show-splash", action="store_true", help="Print splash message with version information."
         )
@@ -68,6 +73,19 @@ class GenerateImageMagic(Magics):
             return parser.parse_args(line.split(), namespace=local_ns)
         except SystemExit:
             return None
+
+    @staticmethod
+    def _get_notebook_parent_folder() -> Path:
+        """
+        Gets the parent folder of the current notebook file.
+
+        This function returns the absolute path to the parent folder of the current Jupyter notebook file.
+
+        Returns:
+            The absolute path to the parent folder of the current notebook file.
+        """
+
+        return Path(os.path.abspath(""))
 
     # Main methods
     @cell_magic
@@ -87,6 +105,20 @@ class GenerateImageMagic(Magics):
                 parsing.
         """
 
+        # Get the notebook's parent
+        notebook_parent = self._get_notebook_parent_folder()
+
+        # The parent folder's name should be of the form "part-X"
+        pattern = r"part-(?P<part>\d+)"
+        match = re.match(pattern, notebook_parent.name)
+        if not match:
+            raise ValueError(
+                f"Error: Improper parent folder with name '{notebook_parent.name}'. Parent folder should be of the form 'part-X'."
+            )
+        
+        # Get the part number from the notebook name
+        part = int(match.group("part"))
+
         # Get the arguments provided
         args = self._parse_args(line, local_ns=local_ns)
         if not args:
@@ -94,12 +126,14 @@ class GenerateImageMagic(Magics):
             return
 
         # Format the given arguments into the image name
-        image_name = f"{args.part}_{args.chapter}_{args.name}.png"
+        image_name = f"{part}_{args.chapter}_{args.name}.png"
 
         with tempfile.TemporaryDirectory(dir=os.getcwd()) as tmpdir:
             # Form the manim command
             command = [f"%%manim"]
             command.append(f"--output_file={image_name}")
+            command.append(f"--config_file={args.config_file}")
+
             if not args.show_splash:
                 command.append("--hide-splash")
 
@@ -117,4 +151,4 @@ class GenerateImageMagic(Magics):
 
             # Copy the image to the desired location
             os.makedirs(args.output_dir, exist_ok=True)
-            shutil.copy(f"{tmpdir}/images/{PACKAGE_DIR_NAME}/{image_name}", f"{args.output_dir}/{image_name}")
+            shutil.copy(f"{tmpdir}/images/{notebook_parent.name}/{image_name}", f"{args.output_dir}/{image_name}")
