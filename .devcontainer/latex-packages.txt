@@ -28,6 +28,7 @@ rsfso
 tex-gyre
 thmtools
 tocloft
+wrapfig
 xcolor
 xkeyval
 xstring

@@ -25,10 +25,9 @@ This is clearly way too abstract of a definition to see how this captures the id
     \]
     Then we can define $R$ to be the ``lived in'' relation. In particular,
     \begin{align*}
-        R &= \{(\text{Peano}, \text{Italy}), (\text{Cantor}, \text{Russia}),\\
-        &\quad\quad(\text{Cantor}, \text{Germany}), (\text{Dedekind}, \text{Germany}),\\
-        &\quad\quad(\text{Euler}, \text{Switzerland}), (\text{Euler}, \text{Germany}),\\
-        &\quad\quad(\text{Euler}, \text{Russia}), (\text{Hilbert}, \text{Germany})\}.
+        R &= \{(\text{Peano}, \text{Italy}), (\text{Cantor}, \text{Russia}), (\text{Cantor}, \text{Germany}),\\
+        &\quad\quad(\text{Dedekind}, \text{Germany}), (\text{Euler}, \text{Switzerland}),\\
+        &\quad\quad(\text{Euler}, \text{Germany}), (\text{Euler}, \text{Russia}), (\text{Hilbert}, \text{Germany})\}.
     \end{align*}
 
     We can show this relation diagrammatically.
@@ -176,7 +175,7 @@ Let us now look at the inverse of a relation.
             \centering
             \includegraphics[width=3.5cm]{images/part-1/relations-1/less-than_inverse.png}
         \end{subfigure}
-        \caption{Diagrammatic Representations of $R$ and $R^{-1}$} 
+        \caption{Arrow Diagrams of $R$ and $R^{-1}$} 
     \end{figure}
     One sees that the arrow diagram for $R^{-1}$ is formed by reversing the arrows on the arrow diagram of $R$.
 \end{example}
@@ -220,15 +219,14 @@ We may sometimes want to find the overall relationship between two sets after a 
     $S \circ R$ and $R \circ S$ are different. The former means that we apply $R$ \textbf{before} $S$, while the latter means that we apply $S$ \textbf{before} $R$. The reason we write ``$S \circ R$'' to mean that $R$ comes before $S$ is to match the notation for function composition (which will be covered later).
 \end{remark}
 
-\begin{example}[The ``lived in continent'' Relation]
+\begin{example}[The ``lived in continent'' Relation]\label{example:lived-in-content-relation}
     In \myref{example:lived-in-relation}, we defined the sets
     \begin{align*}
         M &= \{\text{Peano}, \text{Cantor}, \text{Dedekind}, \text{Russell}, \text{Euler}, \text{Hilbert}\},\\
         C &=\{\text{Italy}, \text{Switzerland}, \text{Russia}, \text{Germany}, \text{France}\}, \text{ and}\\
-        R &= \{(\text{Peano}, \text{Italy}), (\text{Cantor}, \text{Russia}),\\
-        &\quad\quad(\text{Cantor}, \text{Germany}), (\text{Dedekind}, \text{Germany}),\\
-        &\quad\quad(\text{Euler}, \text{Switzerland}), (\text{Euler}, \text{Germany}),\\
-        &\quad\quad(\text{Euler}, \text{Russia}), (\text{Hilbert}, \text{Germany})\},
+        R &= \{(\text{Peano}, \text{Italy}), (\text{Cantor}, \text{Russia}), (\text{Cantor}, \text{Germany}),\\
+        &\quad\quad(\text{Dedekind}, \text{Germany}), (\text{Euler}, \text{Switzerland}),\\
+        &\quad\quad(\text{Euler}, \text{Germany}), (\text{Euler}, \text{Russia}), (\text{Hilbert}, \text{Germany})\},
     \end{align*}
     where $R$ is, in particular, a relation from $M$ to $C$ called the ``lived in'' relation. Now let the set $A$, a subset of all continents (``areas''), be
     \[
@@ -249,7 +247,7 @@ We may sometimes want to find the overall relationship between two sets after a 
     Like in \myref{example:lived-in-relation}, we can show this relation diagrammatically.
     \begin{figure}[H]
         \centering
-        \includegraphics[height=3.25cm]{images/part-1/relations-1/lived-in-continent_separate.png}
+        \includegraphics[height=3.5cm]{images/part-1/relations-1/lived-in-continent_separate.png}
         \caption{Arrow Diagram of $R$ and $S$}
     \end{figure}
     Removing the intermediate set $C$ yields the following arrow diagram.
@@ -287,9 +285,9 @@ We may sometimes want to find the overall relationship between two sets after a 
         \caption{Directed Graphs of $R$ and $R \circ R$} 
     \end{figure}
 \end{example}
-\begin{remark}[$n$ Repeated Compositions of a Relation on a Set]
-    In the above example, the relation $R \circ R$ can be more concisely written as $R^2$. Likewise, the relation $R \circ (R \circ R)$ can be written as $R^3$, and so on.
-\end{remark}
+% \begin{remark}[$n$ Repeated Compositions of a Relation on a Set]
+%     In the above example, the relation $R \circ R$ can be more concisely written as $R^2$. Likewise, the relation $R \circ (R \circ R)$ can be written as $R^3$, and so on.
+% \end{remark}
 
 \begin{exercise}[Properties of Compositions]
     Let $A$, $B$, and $C$ be 3 distinct non-empty sets. Let $R$ and $S$ be relations from $A$ to $B$ and $B$ to $C$ respectively such that $R$ and $S$ are both non-empty. Which of the following statements is/are always true?
@@ -306,4 +304,69 @@ We may sometimes want to find the overall relationship between two sets after a 
     \end{partquestions}
 \end{exercise}
 
-% TODO: Introduce composition associativity, and inverse of a composition
+Let us now consider the inverse of a composed relation.
+
+\begin{example}[The ``lived in continent'' Relation's Inverse]
+    Recall in \myref{example:lived-in-content-relation} we have the sets
+    \begin{align*}
+        M &= \{\text{Peano}, \text{Cantor}, \text{Dedekind}, \text{Russell}, \text{Euler}, \text{Hilbert}\},\\
+        C &=\{\text{Italy}, \text{Switzerland}, \text{Russia}, \text{Germany}, \text{France}\}, \text{ and}\\
+        A &= \{\text{Europe}, \text{North America}, \text{Asia}\}
+    \end{align*}
+    and the relations
+    \begin{align*}
+        R &= \{(\text{Peano}, \text{Italy}), (\text{Cantor}, \text{Russia}), (\text{Cantor}, \text{Germany}),\\
+        &\quad\quad(\text{Dedekind}, \text{Germany}), (\text{Euler}, \text{Switzerland}),\\
+        &\quad\quad(\text{Euler}, \text{Germany}), (\text{Euler}, \text{Russia}), (\text{Hilbert}, \text{Germany})\}
+    \end{align*}
+    and
+    \begin{align*}
+        S &= \{(\text{Italy}, \text{Europe}), (\text{Switzerland}, \text{Europe}), (\text{Russia}, \text{Asia}),\\
+        &\quad\quad(\text{Germany}, \text{Europe}), (\text{France}, \text{Europe})\}
+    \end{align*}
+    from $M$ to $C$ and $C$ to $A$ respectively. We found that their composition was
+    \begin{align*}
+        S \circ R &= \{(\text{Peano}, \text{Europe}), (\text{Cantor}, \text{Europe}), (\text{Cantor}, \text{Asia})\\
+        &\quad\quad (\text{Dedekind}, \text{Europe}), (\text{Euler}, \text{Europe}), (\text{Euler}, \text{Asia})\\
+        &\quad\quad (\text{Hilbert}, \text{Europe})\}.
+    \end{align*}
+    The inverse is thus
+    \begin{align*}
+        (S \circ R)^{-1} &= \{(\text{Europe}, \text{Peano}), (\text{Europe}, \text{Cantor}), (\text{Asia}, \text{Cantor})\\
+        &\quad\quad (\text{Europe}, \text{Dedekind}), (\text{Europe}, \text{Euler}), (\text{Asia}, \text{Euler})\\
+        &\quad\quad (\text{Europe}, \text{Hilbert})\}.
+    \end{align*}
+
+    \begin{figure}[H]
+        \begin{subfigure}{0.4875\textwidth}
+            \centering
+            \includegraphics[width=5cm]{images/part-1/relations-1/lived-in-continent_composed.png}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.4875\textwidth}
+            \centering
+            \includegraphics[width=5cm]{images/part-1/relations-1/lived-in-continent-inverse_composed.png}
+        \end{subfigure}
+        \caption{Arrow Diagrams of $S \circ R$ and $(S \circ R)^{-1}$} 
+    \end{figure}
+
+    Now consider the relations $R^{-1}$ and $S^{-1}$. Their arrow diagrams can be combined as one.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3.5cm]{images/part-1/relations-1/lived-in-continent-inverse_separate.png}
+        \caption{Arrow Diagram of $R^{-1}$ and $S^{-1}$}
+    \end{figure}
+    From this diagram, we can see another method for finding $(S\circ R)^{-1}$ -- by first using the inverse of $S$ and then the inverse of $R$. In other words, we see that $(S \circ R)^{-1} = R^{-1} \circ S^{-1}$.
+\end{example}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \begin{center}
+        \includegraphics[width=3cm]{images/part-1/relations-1/shoes-and-socks.jpg}
+    \end{center}
+\end{wrapfigure}
+
+This observation that $(S\circ R)^{-1} = R^{-1} \circ S^{-1}$ is a key property of the inverse of a relation. This property is informally called the \term{shoes and socks property}\index{shoes and socks}.
+
+% TODO: Continue
+
+% TODO: Introduce composition associativity
