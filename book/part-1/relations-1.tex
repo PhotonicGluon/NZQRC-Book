@@ -202,6 +202,13 @@ Let us now look at the inverse of a relation.
     \end{partquestions}
 \end{exercise}
 
+\begin{exercise}[Inverse Relation of Inverse Relation]
+    Let $A$ and $B$ be sets. Let $R$ be a relation from $A$ to $B$. Prove that
+    \[
+        \left(R^{-1}\right)^{-1} = R.
+    \]
+\end{exercise}
+
 \section{Composition of Relations}
 We may sometimes want to find the overall relationship between two sets after a sequence of relations. This motivates the concept of composing relations.
 
@@ -359,14 +366,25 @@ Let us now consider the inverse of a composed relation.
     From this diagram, we can see another method for finding $(S\circ R)^{-1}$ -- by first using the inverse of $S$ and then the inverse of $R$. In other words, we see that $(S \circ R)^{-1} = R^{-1} \circ S^{-1}$.
 \end{example}
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-    \begin{center}
-        \includegraphics[width=3cm]{images/part-1/relations-1/shoes-and-socks.jpg}
-    \end{center}
+\begin{wrapfigure}{r}{0.35\textwidth}
+    \centering
+    \includegraphics[width=2.75cm]{images/part-1/relations-1/shoes-and-socks.jpg}
 \end{wrapfigure}
 
-This observation that $(S\circ R)^{-1} = R^{-1} \circ S^{-1}$ is a key property of the inverse of a relation. This property is informally called the \term{shoes and socks property}\index{shoes and socks}.
+This observation that $(S\circ R)^{-1} = R^{-1} \circ S^{-1}$ is a key property of the inverse of a relation, and is informally called the \term{shoes and socks theorem}. The intuition behind this property is similar to that of putting on socks and then shoes. To remove them both, you first have to take off your shoes (i.e., the second thing that you put on) and then take off your socks (i.e., the first thing that you put on).
 
-% TODO: Continue
+\begin{theorem}[Shoes and Socks (Relations)]\label{theorem:shoes-and-socks-relations}\index{shoes and socks}
+    Let $A$, $B$, and $C$ be sets, and let $R$ and $S$ be relations from $A$ to $B$ and $B$ to $C$ respectively. Then
+    \[
+        (S \circ R)^{-1} = R^{-1} \circ S^{-1}.
+    \]
+\end{theorem}
+\begin{proof}
+    See \myref{exercise:shoes-and-socks-relations} (later).
+\end{proof}
 
 % TODO: Introduce composition associativity
+
+\begin{exercise}[Shoes and Socks]\label{exercise:shoes-and-socks-relations}
+    Prove \myref{theorem:shoes-and-socks-relations}.
+\end{exercise}
