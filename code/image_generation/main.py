@@ -1,6 +1,7 @@
 import os
 import shutil
 from pathlib import Path
+from typing import List, Optional
 
 import typer
 from rich import print
@@ -82,6 +83,19 @@ def trim_images_cmd(
 
 @app.command("do-all")
 def do_all_cmd(
+    parts: Annotated[
+        Optional[List[int]],
+        typer.Option("--part", help="List of parts to generate. If not specified, will generate all parts."),
+    ] = None,
+    notebooks: Annotated[
+        Optional[List[Path]],
+        typer.Option(
+            "--notebook",
+            help="List of notebooks to generate. If not specified, will generate all notebooks. Overrides the `parts` option.",
+            exists=True,
+            dir_okay=False,
+        ),
+    ] = None,
     media_folder: Annotated[
         Path,
         typer.Option(help="Media folder.", dir_okay=True),
@@ -126,9 +140,34 @@ def do_all_cmd(
 
     os.makedirs(media_folder, exist_ok=True)
 
-    # Execute all notebooks
+    # Get the list of notebooks to execute
+    if parts and notebooks:
+        import warnings
+
+        warnings.warn("Both parts and notebooks specified; will ignore parts.")
+        parts = None
+
+    if not parts and not notebooks:
+        parts = range(0, 6)  # 0 to 5
+    if notebooks:
+        notebooks = [str(notebook) for notebook in notebooks]
+    if parts:
+        notebooks = []
+        for part in parts:
+            part_folder = f"{NOTEBOOKS_FOLDER}/part-{part}"
+            if not os.path.isdir(part_folder):
+                continue
+
+            files_in_part_folder = os.listdir(part_folder)
+            notebooks.extend([f"{part_folder}/{file}" for file in files_in_part_folder if file.endswith(".ipynb")])
+
+    # Execute the notebooks
+    if len(notebooks) == 0:
+        print("[yellow]No notebooks to execute. Exiting.[/yellow]")
+        exit(0)
+
     print("[cyan]Executing notebooks...[/cyan]")
-    execute_notebooks(*[f"{NOTEBOOKS_FOLDER}/{notebook}" for notebook in ALL_NOTEBOOKS])
+    execute_notebooks(*notebooks)
 
     # Trim images
     print("[cyan]Trimming images...[/cyan]")

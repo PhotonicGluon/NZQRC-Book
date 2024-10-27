@@ -72,3 +72,23 @@ Run:
 ```bash
 poetry run python main.py do-all
 ```
+
+To generate images for certain part(s):
+
+```bash
+# Single part
+poetry run python main.py do-all --part 0
+
+# Multiple parts
+poetry run python main.py do-all --part 0 --part 1 --part 2
+```
+
+To generate images for certain notebook(s):
+
+```bash
+# Single notebook
+poetry run python main.py do-all --notebook notebook_1_path.ipynb
+
+# Multiple notebooks
+poetry run python main.py do-all --notebook notebook_1_path.ipynb --notebook notebook_2_path.ipynb --notebook notebook_3_path.ipynb
+```
