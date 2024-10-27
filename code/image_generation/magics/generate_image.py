@@ -8,10 +8,14 @@ from typing import Any, Dict, Optional
 
 from IPython.core.magic import Magics, cell_magic, magics_class
 
+from image_generation.magics.helpers import get_notebook_path
+
 PACKAGE_DIR = Path(os.path.abspath(__file__)).parent.parent
 
 DEFAULT_OUTPUT_DIR = f"{PACKAGE_DIR}/media/images"
 DEFAULT_CONFIG_FILE = f"{PACKAGE_DIR}/manim.cfg"
+
+the_notebook_path = None  # Will be updated once extension is loaded
 
 
 def load_ipython_extension(ipython):
@@ -21,7 +25,10 @@ def load_ipython_extension(ipython):
     or be configured to be autoloaded by IPython at startup time.
     """
 
+    global the_notebook_path
+
     ipython.register_magics(GenerateImageMagic)
+    the_notebook_path = get_notebook_path()
     print("Loaded extension.")
 
 
@@ -48,7 +55,6 @@ class GenerateImageMagic(Magics):
         parser = argparse.ArgumentParser(prog="%%generate_image")
 
         # Mandatory arguments
-        parser.add_argument("chapter", type=str, help="Chapter ID. Separate words using '-'.")
         parser.add_argument("name", type=str, help="Image name. Separate words using '-'.")
         parser.add_argument("scene_name", type=str, help="Name of the scene class.")
 
@@ -74,19 +80,6 @@ class GenerateImageMagic(Magics):
         except SystemExit:
             return None
 
-    @staticmethod
-    def _get_notebook_parent_folder() -> Path:
-        """
-        Gets the parent folder of the current notebook file.
-
-        This function returns the absolute path to the parent folder of the current Jupyter notebook file.
-
-        Returns:
-            The absolute path to the parent folder of the current notebook file.
-        """
-
-        return Path(os.path.abspath(""))
-
     # Main methods
     @cell_magic
     def generate_image(self, line: str, cell: str, local_ns: Optional[Dict[str, Any]] = None):
@@ -105,19 +98,25 @@ class GenerateImageMagic(Magics):
                 parsing.
         """
 
-        # Get the notebook's parent
-        notebook_parent = self._get_notebook_parent_folder()
+        # Split the notebook's path into the part number and chapter ID
+        notebook_file = the_notebook_path.name
+        notebook_parent_folder = the_notebook_path.parent.name
 
-        # The parent folder's name should be of the form "part-X"
-        pattern = r"part-(?P<part>\d+)"
-        match = re.match(pattern, notebook_parent.name)
+        part_pattern = r"part-(?P<part>\d)"
+        chapter_pattern = r"(?P<chapter>[\w-]+)\.ipynb"
+
+        match = re.match(part_pattern, notebook_parent_folder)
         if not match:
             raise ValueError(
-                f"Error: Improper parent folder with name '{notebook_parent.name}'. Parent folder should be of the form 'part-X'."
+                f"Error: Improper notebook path '{the_notebook_path}'. Parent folder should be of the form 'part-X'."
             )
-        
-        # Get the part number from the notebook name
         part = int(match.group("part"))
+
+        match = re.match(chapter_pattern, notebook_file)
+        if not match:
+            raise ValueError(f"Error: Improper notebook name '{notebook_file}'.")
+
+        chapter = match.group("chapter")
 
         # Get the arguments provided
         args = self._parse_args(line, local_ns=local_ns)
@@ -126,7 +125,7 @@ class GenerateImageMagic(Magics):
             return
 
         # Format the given arguments into the image name
-        image_name = f"{part}_{args.chapter}_{args.name}.png"
+        image_name = f"{part}_{chapter}_{args.name}.png"
 
         with tempfile.TemporaryDirectory(dir=os.getcwd()) as tmpdir:
             # Form the manim command
@@ -151,4 +150,4 @@ class GenerateImageMagic(Magics):
 
             # Copy the image to the desired location
             os.makedirs(args.output_dir, exist_ok=True)
-            shutil.copy(f"{tmpdir}/images/{notebook_parent.name}/{image_name}", f"{args.output_dir}/{image_name}")
+            shutil.copy(f"{tmpdir}/images/{notebook_parent_folder}/{image_name}", f"{args.output_dir}/{image_name}")
