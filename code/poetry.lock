@@ -1610,6 +1610,24 @@ gui = ["dearpygui (>=1.0.0)"]
 jupyterlab = ["jupyterlab (>=3.0.0)", "notebook (>=6.0.0)"]
 
 [[package]]
+name = "manim-utils"
+version = "0.1.0"
+description = "Utilities for Manim."
+optional = false
+python-versions = ">=3.9,<3.13"
+files = []
+develop = false
+
+[package.dependencies]
+manim = "^0.18.1"
+
+[package.source]
+type = "git"
+url = "https://github.com/PhotonicGluon/Manim-Utils.git"
+reference = "c59e03f"
+resolved_reference = "c59e03f2dcffba35e7b81418c864fd2779af2ced"
+
+[[package]]
 name = "manimpango"
 version = "0.6.0"
 description = "Bindings for Pango for using with Manim."
@@ -3850,4 +3868,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.13"
-content-hash = "b39dea36c7ba8baac088d621db5e27a28f385d3d7581ec30d5790a1d5f17137b"
+content-hash = "1b7ac152c90c9f31e54236dc56080759707a41f6e8ec1ffdff3754854cfba952"

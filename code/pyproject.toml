@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [
     { include = "cleanup" },
     { include = "image_generation" },
-    { include = "qr" }
+    { include = "qr" },
 ]
 
 [tool.poetry.dependencies]
@@ -21,6 +21,7 @@ optional = true
 
 [tool.poetry.group.imgen.dependencies]
 manim = "~0.18.1"
+manim-utils = { git = "https://github.com/PhotonicGluon/Manim-Utils.git", rev="c59e03f" }
 jupyter = "~1.1.1"
 notebook = "~7.2.2"
 papermill = "~2.6.0"
@@ -30,7 +31,7 @@ tqdm = "~4.66.5"
 optional = true
 
 [tool.poetry.group.qr.dependencies]
-qrcode = {extras = ["pil"], version = "~8.0"}
+qrcode = { extras = ["pil"], version = "~8.0" }
 
 [build-system]
 requires = ["poetry-core"]
