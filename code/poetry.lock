@@ -1624,7 +1624,7 @@ manim = "^0.18.1"
 [package.source]
 type = "git"
 url = "https://github.com/PhotonicGluon/Manim-Utils.git"
-reference = "c59e03f"
+reference = "HEAD"
 resolved_reference = "c59e03f2dcffba35e7b81418c864fd2779af2ced"
 
 [[package]]
@@ -3868,4 +3868,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.13"
-content-hash = "1b7ac152c90c9f31e54236dc56080759707a41f6e8ec1ffdff3754854cfba952"
+content-hash = "a3b2eaa324d6c353494b65ab94573035d93093d7334f4e7d883d4d3592c211e6"

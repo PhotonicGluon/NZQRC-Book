@@ -1,6 +1,6 @@
 FROM qmcgaw/latexdevcontainer:latest
 
-# Install python cand its related dependencies
+# Install python and its related dependencies
 RUN apt-get update -y
 RUN apt-get install -y \
     build-essential \
