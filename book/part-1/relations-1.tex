@@ -383,8 +383,49 @@ This observation that $(S\circ R)^{-1} = R^{-1} \circ S^{-1}$ is a key property 
     See \myref{exercise:shoes-and-socks-relations} (later).
 \end{proof}
 
-% TODO: Introduce composition associativity
+Another property that the composition enjoys is associativity.
+
+\begin{theorem}[Associativity of Composition (Relations)]\index{relation!composition!associativity}
+    Let $A$, $B$, $C$, and $D$ be sets. Let $R$, $S$, and $T$ be relations from $A$ to $B$, $B$ to $C$, and $C$ to $D$ respectively. Then
+    \[
+        (T \circ S) \circ R = T \circ (S \circ R).
+    \]
+\end{theorem}
+\begin{proof}
+    We first note that $(T \circ S) \circ R \subseteq A \times D$ and $T \circ (S \circ R) \subseteq A \times D$. Now suppose $a \in A$ and $d \in D$. We see
+    \begin{align*}
+        &(a, d) \in (T \circ S) \circ R\\
+        \iff& a \mathrel{((T \circ S) \circ R)} d\\
+        \iff& \exists b \in B \text{ s.t. } (a \mathrel{R} b \land b \mathrel{(T\circ S)} d)\\
+        \iff& \exists b \in B \text{ s.t. } (a \mathrel{R} b \land (\exists c \in C \text{ s.t. } (b \mathrel{S} c \land c \mathrel{T} d)))\\
+        \iff& \exists b \in B, c \in C \text{ s.t. } (a \mathrel{R} b \land b \mathrel{S} c \land c \mathrel{T} d)\\
+        \iff& \exists c \in C \text{ s.t. } ((\exists b \in B \text{ s.t. } (a \mathrel{R} b \land b \mathrel{S} c)) \land c \mathrel{T} d)\\
+        \iff& \exists c \in C \text{ s.t. } (a \mathrel{(S \circ R)} c \land c \mathrel{T} d)\\
+        \iff& a \mathrel{(T \circ (S \circ R))} d\\
+        \iff& (a, d) \in T \circ (S \circ R).
+    \end{align*}
+    So any element in $(T \circ S) \circ R$ is also in $T \circ (S \circ R)$ and vice versa, thereby meaning that $(T \circ S) \circ R = T \circ (S \circ R)$.
+\end{proof}
+
+Since there is no distinction between $(T \circ S) \circ R$ and $T \circ (S \circ R)$, we can write ``$T \circ S \circ R$'' without any ambiguity.
+
+\begin{exercise}[Composition Commutivity?]
+    Let $A$ and $B$ be sets. Let $R$ and $S$ be relations from $A$ to $B$ and $B$ to $A$ respectively. Which of the following is/are true?
+    \begin{partquestions}{\alph*}
+        \item It is always the case that $S \circ R = R \circ S$.
+        \item It is never the case that $S \circ R = R \circ R$.
+        \item It is possible for $S \circ R = R \circ S$.
+    \end{partquestions}
+\end{exercise}
 
 \begin{exercise}[Shoes and Socks]\label{exercise:shoes-and-socks-relations}
     Prove \myref{theorem:shoes-and-socks-relations}.
+\end{exercise}
+
+\begin{exercise}[Composition of Relation and its Inverse]
+    Let $A$ and $B$ be sets and let $R$ be a relation from $A$ to $B$. Determine whether the following statement is true or false.
+    \[
+        R^{-1} \circ R \subseteq \{(x, y) \in A^2 \vert x = y\}.
+    \]
+    If it is true, prove it. Otherwise, give a counterexample.
 \end{exercise}

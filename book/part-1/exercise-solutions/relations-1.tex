@@ -57,6 +57,13 @@
         \item True, see \textbf{(c)}.
     \end{partquestions}
 
+    % Composition Commutativity?
+    \item \begin{partquestions}{\alph*}
+        \item False. Let $A = \{1\}$ and $B = \{2\}$. Let $R = \{(1, 2)\}$ and $S = \{(2, 1)\}$. We see $S \circ R = \{(1, 1)\} \neq \{(2, 2)\} = R \circ S$. Thus it is not always the case that $S \circ R = R \circ S$.
+        \item False. See \textbf{(c)}.
+        \item True. Let $A = B = \{1, 2\}$. Let $R = S = \{(1, 2), (2, 1)\}$. Thus $S \circ R = \{(1, 1), (2, 2)\} = R \circ S$. So it is possible for $S \circ R$ and $R \circ S$ to be the same.
+    \end{partquestions}
+
     % Shoes and Socks
     \item We work step by step.
     \begin{align*}
@@ -68,4 +75,7 @@
         \iff& (c, a) \in R^{-1} \circ S^{-1} & (\text{Definition of composition})
     \end{align*}
     Thus any element in $(S \circ R)^{-1}$ is also in $R^{-1} \circ S^{-1}$ and vice versa, thereby meaning that $(S \circ R)^{-1} = R^{-1} \circ S^{-1}$.
+
+    % Composition of Relation and its Inverse
+    \item The statement is false. Consider $A = B = \{1, 2, 3\}$ and the relation $R = \{(1, 3), (2, 3)\}$. We see that $R^{-1} = \{(3, 1), (3, 2)\}$. However, note that $(1, 2) \in R^{-1} \circ R$ since $1 \mathrel{R} 3$ and $3 \mathrel{R^{-1}} 2$. Thus $R^{-1} \circ R \not\subseteq \{(x, y) \in A^2 \vert x = y\} = \{(1, 1), (2, 2), (3, 3)\}$.
 \end{questions}
