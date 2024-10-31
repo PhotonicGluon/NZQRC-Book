@@ -2,8 +2,26 @@
 \Lettrine[loversize=0.1,nindent=0pt]{Picture} a machine that takes in inputs and produces outputs. It could, for instance, double every number put into it. It may return the sum of all of its inputs, the product of all its inputs, or the largest number among all the inputs. That is what a function is -- a relation that maps inputs to outputs. It is this kind of particular relation that we look at in this chapter.
 
 \section{What is a Function?}
-TODO: Add
-% Define functions
+\begin{definition}[Function]
+    A \term{function}\index{function} $f$ from a set $X$ to a set $Y$ is a relation from $X$ to $Y$ satisfying two properties.
+    \begin{enumerate}[label=\textbf{F\arabic*.},leftmargin=1.35\parindent]
+        \item $\forall x \in X, \exists y \in Y \text{ s.t. } (x \mathrel{f} y)$
+        \item $\forall x \in X, \forall y_1, y_2 \in Y, (((x \mathrel{f} y_1) \land (x \mathrel{f} y_2)) \implies (y_1 = y_2))$
+    \end{enumerate}
+    We denote such a function by $f: X \to Y$.
+\end{definition}
+
+The condition \textbf{F2} essentially says that if a single $x \in X$ is related to two (or more) elements in $Y$, then they must be equal. This can be thought of as the ``uniqueness'' property of a function.
+
+We can succinctly write both \textbf{F1} and \textbf{F2} in one statement using the \term{uniqueness quantifier}\index{uniqueness quantifier}\index{quantifier!uniqueness} $\exists!$. A statement of the form $\exists! x \text{ s.t. } P(x)$, where $P(x)$ is a predicate, is logically equivalent to the statement
+\[
+    \exists x \text{ s.t. } (P(x) \land (\forall y (P(y) \implies x = y))),
+\]
+i.e. there exists an $x$ that satisfies the predicate and any $y$ satisfying the predicate must be equal to $x$. Thus, we can combine \textbf{F1} and \textbf{F2} as
+\[
+    \forall x \in X, \exists! y \in Y \text{ s.t. } x \mathrel{f} y.
+\]
+
 % Introduce identity function
 % Introduce image of an element
 % Introduce function equality
