@@ -17,13 +17,52 @@ We can succinctly write both \textbf{F1} and \textbf{F2} in one statement using 
 \[
     \exists x \text{ s.t. } (P(x) \land (\forall y (P(y) \implies x = y))),
 \]
-i.e. there exists an $x$ that satisfies the predicate and any $y$ satisfying the predicate must be equal to $x$. Thus, we can combine \textbf{F1} and \textbf{F2} as
+i.e. there exists an $x$ that satisfies the predicate and any $y$ satisfying the predicate must be equal to $x$. Thus, we can combine \textbf{F1} and \textbf{F2} into the single condition
 \[
     \forall x \in X, \exists! y \in Y \text{ s.t. } x \mathrel{f} y.
 \]
+This formulation of the function condition is what we will be using most of the time.
 
-% Introduce identity function
-% Introduce image of an element
+As mentioned, we may think of a function as a machine or process that takes in inputs and produce outputs. In particular, the `machine' for the function $f: X \to Y$ is a machine that \textbf{must} produce an output for any valid input (i.e., an input that comes from $X$) that is provided to it, and it must produce the same output for the same input that is provided to it.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=2cm]{images/part-1/functions/function-as-machine.png}
+    \caption{Function as a Machine}
+\end{figure}
+
+Since there is only one output for any given input, we can denote it unambiguously.
+
+\begin{definition}[Image of an Element Under a Function]
+    Let $X$ and $Y$ be sets and $f: X \to Y$ be a function. Suppose $x \in X$. The unique element of $Y$ that is related to $x$ under $f$ is called the \term{image of $x$ under $f$}\index{image of an element}\index{function!image of an element} and is denoted $f(x)$.
+\end{definition}
+
+Let us look at some examples.
+
+\begin{example}[The Successor Function]
+    Let's look at a function that we already looked before, the successor function. Before, we defined it for sets. We can restrict it to the natural numbers. That is, the function $S: \N \to \N$ is defined by $S(n) = n \cup \{n\}$ (remember, we use the counter set for any natural number $n$).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=2cm]{images/part-1/functions/successor-as-machine.png}
+        \caption{Successor Function as a Machine}
+    \end{figure}
+\end{example}
+
+\begin{example}[The Identity Function]
+    Let $A$ be a set. The identity function $\id_A: A \to A$ is the function such that $\id_A(x) = x$ for all $x \in A$. That is, this function does not transform the input into it in any way.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=2cm]{images/part-1/functions/identity-as-machine.png}
+        \caption{Identity Function as a Machine}
+    \end{figure}
+    Let us look at some examples of images under the identity function. Suppose $A = \{1, 2, 3\}$. Then
+    \begin{itemize}
+        \item $\id_A(1) = 1$;
+        \item $\id_A(2) = 2$; and
+        \item $\id_A(3) = 3$.
+    \end{itemize}
+\end{example}
+
 % Introduce function equality
 % Define a function's domain/codomain/range
 
