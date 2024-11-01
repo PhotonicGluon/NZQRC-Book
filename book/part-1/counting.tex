@@ -8,8 +8,8 @@ TODO: Add
 \section{An Introduction to Cardinality}
 TODO: Add
 % Introduce Cantor and his three definitions:
-%   - Define that |A| <= |B| iff injection exists
-%   - Define that |A| >= |B| iff surjection exists
+%   - Define that |A| <= |B| iff injection exists (|A| < |B| iff injection exists and B has at least one element not in A)
+%   - Define that |A| >= |B| iff surjection exists (|A| > |B| iff surjection exists and A has at least one element not in B)
 %   - Define that |A| = |B| iff bijection exists
 
 \section{Finite Counting}
@@ -21,8 +21,25 @@ TODO: Add
 % Explain the definition of a finite set (\cite[p.~262]{boolos_1998})
 % Define infinite sets (i.e., non-finite sets)
 
-\section{Infinite Counting and Cantor's Theorem}
+\section{Infinite Counting}
 TODO: Add
 % Give the example of how \N and \Successor{\N} have the same cardinality
 % Explain that "sizes" don't work for infinite sets, and that cardinality is the better term for this
-% Exercise: |A| < |\Power{A}| for ANY set A, including infinite sets
+
+\section{Axiom of Power Set}
+TODO: Add
+
+% The power set is the set of all subsets of a set. This set is explicitly instantiated for all sets in \ZF~via the axiom of power set.
+
+% \begin{axiom}[Power Set]\label{axiom:power-set}\index{axiom!power set}\index{Zermelo-Frankel Set Theory!power set}
+%     \[
+%         \forall A \exists P \forall S (S \in P \iff \forall x (x \in S \implies x \in A))
+%     \]
+% \end{axiom}
+
+% In other words, for any set $A$ there is a set $P$ (the power set of $A$) such that for all sets $S$ in $P$, any element in $S$ is also in $A$. This clearly must mean that $S$ is a subset of $A$ and thus $P$, being the collection of all such subsets, is the power set $\Power{A}$.
+
+\section{Cantor's Theorem}
+TODO: Add
+% Give cantor's theorem, which is that |A| < |\Power{A}| for ANY set A, including infinite sets
+% Exercise: prove that |\N^2| = |\N|
