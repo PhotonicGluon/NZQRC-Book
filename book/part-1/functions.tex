@@ -111,7 +111,7 @@ There are three important sets related to a function.
     Some authors may call the range of a function the \term{image}\index{image}\index{image!of a function}\index{function!image}\index{function!image!of a function} of the function. However, this would likely lead to confusion with the image of an element under a function, so we will stick with ``range''.
 \end{remark}
 
-\begin{example}[The ``Character of'' Function]
+\begin{example}[The ``Character of'' Function]\label{example:character-of-function}
     Let $N$, a subset of the natural numbers, be $\{1,2,3\}$ and $C$, a subset of all characters, be $\{+, \text{a}, \text{b}, \text{c}, \text{d}, \text{e}\}$. We define a function $f: N \to C$ (called the ``character of'' function) that maps a natural number to a character. In particular, let
     \[
         f = \{(1, \text{a}), (2, \text{b}), (3, \text{c})\}.
@@ -160,8 +160,95 @@ There are three important sets related to a function.
     \end{partquestions}
 \end{exercise}
 
-\section{Axiom Schema of Replacement}  % aka Axiom of Replacement
-TODO: Add
+\section{Axiom Schema of Replacement}
+We now look at the axiom schema of replacement.
+
+\subsection{The Need for the Axiom Schema}
+We often define functions with a rule. For example, the successor function that is restricted to the natural numbers, i.e. $S: \N \to \N$, is defined by $S(n) = n \cup \{n\}$ for all $n \in \N$. Using relation notation, we can write this as
+\[
+    n \mathrel{S} m \iff m = n \cup \{n\}.
+\]
+Another example would be the "character of" function in \myref{example:character-of-function}, where we defined a function $f: N \to C$ (where $N = \{1, 2, 3\}$ and $C = \{+, \text{a}, \text{b}, \text{c}, \text{d}, \text{e}\}$) such that $f(1) = \text{a}$, $f(2) = \text{b}$, and $f(3) = \text{c}$. We can write this as
+\[
+    x \mathrel{f} y \iff (x = 1 \land y = \text{a}) \lor (x = 2 \land y = \text{b}) \lor (x = 3 \land y = \text{c}).
+\]
+What these two examples show is that a function $f: X \to Y$ can be defined as
+\[
+    x \mathrel{f} y \iff P(x, y)
+\]
+where $P(x,y)$ is a binary predicate.
+
+Essentially, what we want to ensure is that every function's image is indeed a set. Unfortunately, we are unable to quantify over definable functions in our language of axiomatic set theory. So, we are stuck with using an axiom schema that should achieve the same effect.
+
+\subsection{Forming the Axiom Schema}
+Let's start with our goal, expressed in a high-level manner: for every function, its range exists. As explained earlier, we are not able to quantify over functions, but we are able to quantify over \wffs~(which include predicates).
+
+Suppose we have a function $f: X \to Y$ such that
+\[
+    x \mathrel{f} y \iff \phi(x, y, X)
+\]
+where $\phi$ is a \wff. In essence, the \wff~$\phi$ is the \term{rule}\index{function!rule} of $f$ -- it defines which elements in $Y$ could be an image of an element from $X$. Note that $X$ needs to be a free variable in $\phi$ because the function $f$ may use it to determine which elements are within its range. Now recall that $f$ is a function if and only if
+\[
+    \forall x \in X, \exists! y \in Y \text{ s.t. } x \mathrel{f} y.
+\]
+Thus
+\[
+    \forall x \in X, \exists! y \in Y \text{ s.t. } \phi(x, y, X)
+\]
+is the condition that must be satisfied for $f$ to be a function. In other words, using semi-formal language, we can write that condition above as
+\[
+    \forall x (x \in X \implies \exists! y (y \in Y \land \phi(x, y, X))).
+\]
+Now, for our purposes, we actually want to make the condition a little weaker by removing the need for $y$ to come from a known set $Y$. This is because the axiom itself will bring into existence a set that contains the images of all the elements in $X$, so $y$ just needs to exist. Thus, the antecedent for our condition in the axiom schema of replacement is
+\[
+    \forall x (x \in X \implies \exists! y \phi(x, y, X)).
+\]
+
+We turn our attention to the consequent of the axiom schema of replacement -- that the range of the function $f$ exists. In other words, there must exist a set containing all the images of the elements in $X$, and that any image of an element in $X$ must be in that set. Note that if $y$ is an image of an element in $X$, that means that there exists an $x \in X$ such that $y = f(x)$ (i.e., $x \mathrel{f} y$, or $\phi(x, y, X)$ is true). We can express this idea as
+\[
+    \exists R \text{ s.t. } \forall y (y \in R \iff \exists x \in X \text{ s.t. } \phi(x, y, X))
+\]
+where one can interpret $R$ as the range of $f$. Formally, we can write this as
+\[
+    \exists R \forall y (y \in R \iff \exists x (x \in X \land \phi(x, y, X))).
+\]
+
+There are a few more tweaks needed before we can finally arrive at the axiom schema of replacement. First, let us allow $\phi$ to have other free variables other than just $x$, $y$ and $X$. In particular, let $w_1$, $w_2$, \dots, $w_n$ be free variables in $\phi$. So we can write the antecedent and consequent of the axiom schema of replacement semi-formally as
+\[
+    \forall x (x \in X \implies \exists! y \phi(x, y, w_1, \dots, w_n, X))
+\]
+and
+\[
+    \exists R \forall y (y \in R \iff \exists x (x \in X \land \phi(x, y, w_1, \dots, w_n, X)))
+\]
+for all $X$, $w_1$, $w_2$, \dots, $w_n$. We then combine them into one statement, resulting in the semi-formal statement
+\begin{align*}
+    &\forall X \forall w_1 \forall w_2 \cdots \forall w_n (\\
+    &\quad \forall x (x \in X \implies \exists! y \phi(x, y, w_1, w_2, \dots, w_n, X))\\
+    &\hquad\implies \exists R \forall y (y \in R \iff \exists x (x \in X \land \phi(x, y, w_1, w_2, \dots, w_n, X)))\\
+    &).
+\end{align*}
+Lastly, recalling that the uniqueness quantifier is defined such that
+\[
+    \exists! x \psi(x) \equiv \exists x (\psi(x) \land \forall y (\psi(y) \implies y = x)),
+\]
+we can finally write state the axiom schema of replacement formally.
+
+\begin{axiom}[Axiom Schema of Replacement]\label{axiom:schema-of-replacement}\index{axiom!schema of replacement}\index{Zermelo-Frankel Set Theory!schema of replacement}
+    Let $\phi$ be a \wff. Then
+    \begin{align*}
+        &\forall X \forall w_1 \forall w_2 \cdots \forall w_n (\\
+        &\quad \forall x (x \in X \implies \exists y (\\
+        &\quad\quad \phi(x, y, w_1, \dots, w_n, X)\\
+        &\quad\quad\land \forall z (\phi(x, z, w_1, \dots, w_n, X) \implies z = y)\\
+        &\quad\hquad)\\
+        &\quad)\implies \exists R \forall y (y \in R \iff \exists x (x \in X \land \phi(x, y, w_1, \dots, w_n, X)))\\
+        &)
+    \end{align*}
+    where $R$ is not free in $\phi$.
+\end{axiom}
+
+This is undoubtedly one of the most involved axiom schema within \ZF, but also one of the most powerful. As we will soon see, functions play a crucial part when working with numbers.
 
 \section{Well-Defined Functions}
 TODO: Add
