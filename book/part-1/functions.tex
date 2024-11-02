@@ -33,7 +33,7 @@ As mentioned, we may think of a function as a machine or process that takes in i
 
 Since there is only one output for any given input, we can denote it unambiguously.
 
-\begin{definition}[Image of an Element Under a Function]
+\begin{definition}[Image of an Element Under a Function]\label{definition:image-of-element-under-a-function}
     Let $X$ and $Y$ be sets and $f: X \to Y$ be a function. Suppose $x \in X$. The unique element of $Y$ that is related to $x$ under $f$ is called the \term{image of $x$ under $f$}\index{image of an element}\index{function!image of an element} and is denoted $f(x)$.
 \end{definition}
 
@@ -63,8 +63,40 @@ Let us look at some examples.
     \end{itemize}
 \end{example}
 
-% TODO: Continue
-% Introduce function equality
+\begin{exercise}[Empty Function?]
+    Suppose $A$ is a set. Consider the relation $f$ from $\emptyset$ to $A$ where $f = \emptyset$. Is $f$ a function?
+\end{exercise}
+
+Let's now turn our attention to determining the equality of two functions. Recall that two relations $R$ and $S$ from the set $A$ to the set $B$ and the set $C$ to the set $D$ respectively (i.e., $R \subseteq A \times B$ and $S \subseteq C \times D$) are equal if and only if $A = C$, $B = D$, and $R = S$ as sets (\myref{definition:equality-of-relations}). Since functions are also relations, this definition applies to functions.
+
+\begin{definition}[Equality of Functions]\index{function!equality}
+    Let $A$, $B$, $C$, and $D$ be sets. The functions $f: A \to B$ and $g: C \to D$ are equal, denoted $f = g$, if and only if $A = C$, $B = D$, and $f = g$ as sets.
+\end{definition}
+
+However, we have a more applicable result for functions.
+\begin{theorem}[Equality of Functions, More Easily]
+    Let $A$, $B$, $C$, and $D$ be sets. Let the functions $f: A \to B$ and $g: C \to D$. Then $f = g$ if and only if $A = C$, $B = D$, and $f(x) = g(x)$ for all $x \in A$.
+\end{theorem}
+\begin{proof}
+    For the forward direction, suppose $f = g$ (as functions). Thus $A = C$, $B = D$, and $f = g$ as sets. Suppose $x \in A$ and $y \in B$ are arbitrary. Note
+    \begin{align*}
+        & y = f(x)\\
+        \iff& (x, y) \in f & (\myref{definition:image-of-element-under-a-function})\\
+        \iff& (x, y) \in g & (\text{as } f = g \text{ as sets})\\
+        \iff& y = g(x) & (\myref{definition:image-of-element-under-a-function})
+    \end{align*}
+    which means $f(x) = g(x)$ for any $x \in A$.
+
+    For the reverse direction, suppose $A = C$, $B = D$, and $f(x) = g(x)$ for all $x \in A$. Then
+    \begin{align*}
+        & (x, y) \in f\\
+        \iff& y = f(x) & (\myref{definition:image-of-element-under-a-function})\\
+        \iff& y = g(x) & (\text{as } f(x) = g(x)\;\forall x \in A)\\
+        \iff& (x, y) \in g & (\myref{definition:image-of-element-under-a-function})
+    \end{align*}
+    which means that $f = g$ as sets. Thus $f = g$ by definition of equality of functions.
+\end{proof}
+
 % Define a function's domain/codomain/range (with arrow diagrams)
 
 \section{Axiom Schema of Replacement}  % aka Axiom of Replacement
