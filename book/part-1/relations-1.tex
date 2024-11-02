@@ -11,6 +11,9 @@ A high-level explanation of a relation is simply a way to `create a connection' 
 
     If there is no confusion of what relation we are talking about, we can just say that \term{$x$ is related to $y$}.
 \end{definition}
+\begin{remark}[$n$-ary Relations]
+    Strictly speaking, what we have defined above is a \term{binary relation}\index{relation!binary}, since it only involves the Cartesian product of two sets. A more general type of relation that could be studied is a \term{$n$-ary relation}\index{relation!$n$-ary}, which is a subset of a Cartesian product of $n$ sets. In particular, for sets $A_1$, $A_2$, \dots, $A_n$, an $n$-ary relation on those sets is a subset of $A_1 \times A_2 \times \cdots \times A_n$. However, we will solely be working with binary relations in this book, and thus the term ``relation'' shall only be used to describe binary relations.
+\end{remark}
 
 This is clearly way too abstract of a definition to see how this captures the idea of `creating connections' between set elements, so let's take a look at some concrete examples.
 
@@ -63,6 +66,9 @@ Relations may also be performed on the same set.
 \begin{definition}[Relation on a Set]
     A \term{relation $R$ on a set $A$}\index{relation!on a set} is a relation from $A$ to $A$. That is, $R$ is a subset of $A^2$.
 \end{definition}
+\begin{remark}[$n$-ary Relation on a Set]
+    Likewise, a $n$-ary relation on a set $A$ is a subset of $A^n$.
+\end{remark}
 
 \begin{example}[Relation on a Set]
     Let $A = \{3, 4, 5, 6, 7\}$ and define a relation $R$ on $A$ such that
@@ -105,6 +111,15 @@ Relations may also be performed on the same set.
         \item $R_7 = B^2$
     \end{partquestions}
 \end{exercise}
+
+We end this section by looking at the equality of relations.
+
+\begin{definition}[Equality of Relations]
+    Let $A$, $B$, $C$, and $D$ be sets. Let $R$ be a relation from $A$ to $B$ and $S$ a relation from $C$ to $D$. The two relations $R$ and $S$ are equal\index{relation!equal} if and only if $A = C$, $B = D$, and the set $R$ equals the set $S$.
+\end{definition}
+\begin{remark}[A Relation as an Ordered Triple]
+    In light of the above definition of relation equality, we could define a relation from the set $A$ to the set $B$ to be an ordered triple $(A, B, R)$, where $R \subseteq A \times B$. We stick to our definition of a relation as a subset of $A \times B$ instead.
+\end{remark}
 
 \section{Properties of Relations}
 Let us now look at some properties of relations.
@@ -191,8 +206,7 @@ Let us now look at the inverse of a relation.
     for all $x, y \in S$.
 
     \begin{partquestions}{\roman*}
-        \item List the elements in $D$.
-        \item Hence list the elements in $D^{-1}$.
+        \item List the elements in $D$. Hence list the elements in $D^{-1}$.
         \item List the elements in the
         \begin{partquestions}{\alph*}
             \item domain of $D$;
@@ -215,16 +229,16 @@ We may sometimes want to find the overall relationship between two sets after a 
 \begin{definition}[Composition of Relations]
     Let $A$, $B$, and $C$ be sets. Let $R$ and $S$ be relations from $A$ to $B$ and $B$ to $C$ respectively. The \term{composition of $R$ with $S$}\index{relation!composition}, written $S \circ R$, is a relation from $A$ to $C$ where
     \[
-        a (\mathrel{S \circ R}) c \iff \exists b \in B \text{ s.t. } a \mathrel{R} b \land b \mathrel{S} c
+        a (\mathrel{S \circ R}) c \iff \exists b \in B \text{ s.t. } ((a \mathrel{R} b) \land (b \mathrel{S} c))
     \]
     for all $a \in A$ and $c \in C$. In other words,
     \[
         S \circ R = \{(a, c) \in A \times C \vert \exists b \in B \text{ s.t. } ((a, b) \in R \land (b, c) \in S)\}.
     \]
 \end{definition}
-\begin{remark}[Order Matters]
-    $S \circ R$ and $R \circ S$ are different. The former means that we apply $R$ \textbf{before} $S$, while the latter means that we apply $S$ \textbf{before} $R$. The reason we write ``$S \circ R$'' to mean that $R$ comes before $S$ is to match the notation for function composition (which will be covered later).
-\end{remark}
+% \begin{remark}[Order Matters]
+%     $S \circ R$ and $R \circ S$ are different. The former means that we apply $R$ \textbf{before} $S$, while the latter means that we apply $S$ \textbf{before} $R$. The reason we write ``$S \circ R$'' to mean that $R$ comes before $S$ is to match the notation for function composition (which will be covered later).
+% \end{remark}
 
 \begin{example}[The ``lived in continent'' Relation]\label{example:lived-in-content-relation}
     In \myref{example:lived-in-relation}, we defined the sets
@@ -264,6 +278,8 @@ We may sometimes want to find the overall relationship between two sets after a 
         \caption{Arrow Diagram of $S \circ R$}
     \end{figure}
 \end{example}
+
+\pagebreak  % TODO: Can we remove this ugly (in terms of the code) page break?
 
 \begin{example}[Composition of a Relation on a Set]
     Let $A = \{0, 1, 2, 3, 4\}$. Define the relation $R$ on $A$ such that $x\mathrel{R}y \iff x < y$ for all $x, y \in A$. Thus
@@ -371,7 +387,7 @@ Let us now consider the inverse of a composed relation.
     \includegraphics[width=2.75cm]{images/part-1/relations-1/shoes-and-socks.jpg}
 \end{wrapfigure}
 
-This observation that $(S\circ R)^{-1} = R^{-1} \circ S^{-1}$ is a key property of the inverse of a relation, and is informally called the \term{shoes and socks theorem}. The intuition behind this property is similar to that of putting on socks and then shoes. To remove them both, you first have to take off your shoes (i.e., the second thing that you put on) and then take off your socks (i.e., the first thing that you put on).
+This observation that $(S\circ R)^{-1} = R^{-1} \circ S^{-1}$ is a key property of the inverse of a composition of two relations, informally called the \term{shoes and socks theorem}. The intuition behind this property is similar to that of putting on socks and then shoes. To remove them both, you first have to take off your shoes (i.e., the second thing that you put on) and then take off your socks (i.e., the first thing that you put on). Likewise, to undo the effect of two relations $R$ and then $S$, we first have to undo $S$ and then undo $R$.
 
 \begin{theorem}[Shoes and Socks (Relations)]\label{theorem:shoes-and-socks-relations}\index{shoes and socks}
     Let $A$, $B$, and $C$ be sets, and let $R$ and $S$ be relations from $A$ to $B$ and $B$ to $C$ respectively. Then
