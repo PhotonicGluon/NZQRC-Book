@@ -34,7 +34,7 @@ As mentioned, we may think of a function as a machine or process that takes in i
 Since there is only one output for any given input, we can denote it unambiguously.
 
 \begin{definition}[Image of an Element Under a Function]\label{definition:image-of-element-under-a-function}
-    Let $X$ and $Y$ be sets and $f: X \to Y$ be a function. Suppose $x \in X$. The unique element of $Y$ that is related to $x$ under $f$ is called the \term{image of $x$ under $f$}\index{image of an element}\index{function!image of an element} and is denoted $f(x)$.
+    Let $X$ and $Y$ be sets and $f: X \to Y$ be a function. Suppose $x \in X$. The unique element of $Y$ that is related to $x$ under $f$ is called the \term{image of $x$ under $f$}\index{image!of an element}\index{function!image!of an element} and is denoted $f(x)$.
 \end{definition}
 
 Let us look at some examples.
@@ -97,7 +97,57 @@ However, we have a more applicable result for functions.
     which means that $f = g$ as sets. Thus $f = g$ by definition of equality of functions.
 \end{proof}
 
-% Define a function's domain/codomain/range (with arrow diagrams)
+There are three important sets related to a function.
+
+\begin{definition}[Domain, Codomain, and Range (Functions)]
+    Let $X$ and $Y$ be sets and let $f: X \to Y$ be a function.
+    \begin{itemize}
+        \item The \term{domain}\index{domain}\index{relation!domain} of $f$ is the set $X$.
+        \item The \term{codomain}\index{codomain}\index{relation!codomain} of $f$ is the set $Y$.
+        \item The \term{range}\index{range}\index{relation!range} of $f$ is the set $\{y \in Y \vert \exists x \in X \text{ s.t. } y = f(x)\}$.
+    \end{itemize}
+\end{definition}
+\begin{remark}[Image of a Function]
+    Some authors may call the range of a function the \term{image}\index{image}\index{image!of a function}\index{function!image}\index{function!image!of a function} of the function. However, this would likely lead to confusion with the image of an element under a function, so we will stick with ``range''.
+\end{remark}
+
+\begin{example}[The ``Character of'' Function]
+    Let $N$, a subset of the natural numbers, be $\{1,2,3\}$ and $C$, a subset of all characters, be $\{+, \text{a}, \text{b}, \text{c}, \text{d}, \text{e}\}$. We define a function $f: N \to C$ (called the ``character of'' function) that maps a natural number to a character. In particular, let
+    \[
+        f = \{(1, \text{a}), (2, \text{b}), (3, \text{c})\}.
+    \]
+    We can draw an arrow diagram for this function.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3.5cm]{images/part-1/functions/character-of.png}
+        \caption{Arrow Diagram of $f$}
+    \end{figure}
+
+    For $f$, we see that
+    \begin{itemize}
+        \item its domain is $N$;
+        \item its codomain is $C$; and
+        \item its range is $\{\text{a}, \text{b}, \text{c}\}$.
+    \end{itemize}
+\end{example}
+
+\begin{example}[The Successor Function]
+    Let's look at the successor function restricted to the natural numbers again, i.e. the function $S: \N \to \N$. We can draw an arrow diagram for this function.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3.5cm]{images/part-1/functions/successor.png}
+        \caption{Arrow Diagram of $S$}
+    \end{figure}
+
+    We see that
+    \begin{itemize}
+        \item its domain is $\N$;
+        \item its codomain is also $\N$; and
+        \item its range is $\N \setminus \{0\}$.
+    \end{itemize}
+\end{example}
+
+% TODO: Add exercise for domain, codomain, and range
 
 \section{Axiom Schema of Replacement}  % aka Axiom of Replacement
 TODO: Add
