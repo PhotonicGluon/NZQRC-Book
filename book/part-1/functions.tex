@@ -2,7 +2,7 @@
 \Lettrine[loversize=0.1,nindent=0pt]{Picture} a machine that takes in inputs and produces outputs. It could, for instance, double every number put into it. It may return the sum of all of its inputs, the product of all its inputs, or the largest number among all the inputs. That is what a function is -- a relation that maps inputs to outputs. It is this kind of particular relation that we look at in this chapter.
 
 \section{What is a Function?}
-\begin{definition}[Function]
+\begin{definition}[Function]\label{definition:function}
     A \term{function}\index{function} $f$ from a set $X$ to a set $Y$ is a relation from $X$ to $Y$ satisfying two properties.
     \begin{enumerate}[label=\textbf{F\arabic*.},leftmargin=1.35\parindent]
         \item $\forall x \in X, \exists y \in Y \text{ s.t. } (x \mathrel{f} y)$
@@ -251,8 +251,66 @@ we can finally write state the axiom schema of replacement formally.
 This is undoubtedly one of the most involved axiom schema within \ZF, but also one of the most powerful. As we will soon see, functions play a crucial part when working with numbers.
 
 \section{Well-Defined Functions}
-TODO: Add
-% Introduce what happens when a function's rule is not OK
+\myref{axiom:schema-of-replacement} allows us to assert that the range of any function exists. However, care must be taken to ensure that the rule of the function indeed makes the function a function, and not just a relation. Specifically, referring to \myref{definition:function}, a `function' that fails to satisfy either \textbf{F1} or \textbf{F2} (or both) is called a \term{ill-defined} function, and functions that satisfy both \textbf{F1} and \textbf{F2} are called \term{well-defined} functions (which are actual functions).
+
+\begin{example}[A Possibly Ill-Defined Function]
+    Let $S_1$ and $S_2$ be non-empty sets, and let $S = S_1 \cup S_2$. Let $f$ be a relation from $S$ to $\{1,2\}$ such that
+    \[
+        f = \{(s, 1) \vert s \in S_1\} \cup \{(s, 2) \vert s \in S_2\}.
+    \]
+    In other words,
+    \[
+        x \mathrel{f} y \iff (x \in S_1 \land y = 1) \lor (x \in S_2 \land y = 2).
+    \]
+    Is this a (well-defined) function?
+
+    Suppose $S_1 \cap S_2 = \emptyset$. This means that any element in $S_1$ would have an image of 1, and any element in $S_2$ would have an image of 2. In particular, every element from $S$ will have one and only one image. Thus $f$ is indeed a function. In fact, we can write it using a \term{piecewise definition}\index{piecewise definition}\index{function!piecewise definition} as
+    \[
+        f(x) = \begin{cases}
+            1 & \text{if } x \in S_1\\
+            2 & \text{if } x \in S_2
+        \end{cases}
+    \]
+
+    However, what happens when $S_1 \cap S_2 \neq \emptyset$? Suppose $S_1 = \{1,2\}$ and $S_2=\{2, 3\}$. Then we see
+    \[
+        f = \{(1, 1), (2, 1), (2, 2), (3, 2)\}.
+    \]
+    In particular, we see that $2\mathrel{f}1$ and $2\mathrel{f}2$ simultaneously. If we were to abuse some notation, this means that $f(2) = 1$ and $f(2) = 2$ simultaneously. This clearly violates \textbf{F2} in \myref{definition:function}, and thus $f$ is not a (well-defined) function in this case (i.e., $f$ is ill-defined as a function).
+
+    In conclusion, for $f: S \to \{1,2\}$ to be a function such that
+    \[
+        f(x) = \begin{cases}
+            1 & \text{if } x \in S_1\\
+            2 & \text{if } x \in S_2
+        \end{cases}
+    \]
+    we must have $S_1 \cap S_2 = \emptyset$.
+\end{example}
+
+\begin{exercise}[Determining Function Validity]
+    \setlength{\parindent}{0pt}
+    (\textit{Assume the addition and multiplication of natural numbers is defined.})
+
+    For each of the following relations, determine if they are an ill-defined function or a well-defined function.
+    \begin{partquestions}{\alph*}
+        \item The relation $f$ from $\{1, 2, 3\}$ to $\{1, 8\}$ such that
+        \[
+            x \mathrel{f} y \iff y = x^3
+        \]
+        for all $x \in \{1,2,3\}$ and $y \in \{1,8\}$.
+        \item The relation $g$ from $\N^2$ to $\N$ such that
+        \[
+            x \mathrel{g} y \iff \exists m, n \in \N \text{ s.t. } ((x = (m,n)) \land (y = m + n))
+        \]
+        for all $x \in \N^2$ and $y \in \N$.
+        \item The relation $h$ from $\N$ to $\N^2$ such that
+        \[
+            x \mathrel{h} y \iff \exists m, n \in \N \text{ s.t. } ((x = m + n) \land (y = (m, n)))
+        \]
+        for all $x \in \N$ and $y \in \N^2$.
+    \end{partquestions}
+\end{exercise}
 
 \section{Injections, Surjections, Bijections}
 TODO: Add

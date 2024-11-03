@@ -9,4 +9,16 @@
         \item Domain is $A = \{1, 2, 3, 4, 5\}$, codomain is $B = \{u, v, w, x, y, z\}$, and range is $\{u, x, y\}$.
         \item $f = \{(1, x), (2, u), (3, x), (4, y), (5, x)\}$.
     \end{partquestions}
+
+    % Determining Function Validity
+    \item \begin{partquestions}{\alph*}
+        \item Ill-defined. 2 is not related to 1 or 8, so condition \textbf{F1} in \myref{definition:function} is not satisfied.
+        \item Well-defined. We address each of the conditions separately.
+        \begin{itemize}
+            \item \textbf{F1}: Obviously true. Suppose $x \in \N^2$. Thus we can write $x$ as $(m,n)$ where $m, n \in \N$. So their sum, $m + n$, must be a natural number and we can choose it to be $y$.
+            \item \textbf{F2}: $x \in \N^2$. Thus we can write $x$ as $(m,n)$ where $m, n \in \N$. Suppose we have $y_1, y_2 \in \N$ such that $x \mathrel{g} y_1$ and $x \mathrel{g} y_2$. So $y_1 = m + n$ and $y_2 = m + n$ by definition of $g$, which immediately means $y_1 = y_2$.
+        \end{itemize}
+        Since both conditions are true, the function is well-defined.
+        \item Ill-defined. Note that $1 \mathrel{h} (0,1)$ and $1 \mathrel{h} (1,0)$, so condition \textbf{F2} in \myref{definition:function} is not satisfied.
+    \end{partquestions}
 \end{questions}
