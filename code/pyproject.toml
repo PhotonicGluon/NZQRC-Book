@@ -22,9 +22,9 @@ optional = true
 [tool.poetry.group.imgen.dependencies]
 manim = "~0.18.1"
 manim-utils = { git = "https://github.com/PhotonicGluon/Manim-Utils.git" }
-jupyter = "~1.1.1"
 jupyterlab = "~4.3.0"
-notebook = ">=7.3.0b1,<7.4.0"
+jupyterlab-night = "^0.4.6"
+notebook = "^7.2.2"
 papermill = "~2.6.0"
 tqdm = "~4.66.5"
 
