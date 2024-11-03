@@ -313,9 +313,78 @@ This is undoubtedly one of the most involved axiom schema within \ZF, but also o
 \end{exercise}
 
 \section{Injections, Surjections, Bijections}
+We now look at two essential properties that functions could satisfy -- injectivity and surjectivity. Bijectivity is just the combination of both injectivity and surjectivity, and it results in the elements of the domain and codomain matching up exactly. Such a bijective function can result in a new function that undoes the original function, called the inverse function.
+
+\subsection{Injectivity}
+A function could send multiple elements in the domain to the same element in the codomain. The function's arrow diagram would have two arrows originating at different elements and terminating at the same element. Such a function is \term{non-injective}. It would be nice for a function to have no two distinct elements in the domain map to the same element in the codomain. Diagrammatically, this means that no two arrows originating at different elements terminate at the same element. For example, the ``character of'' function in \myref{example:character-of-function} satisfies this property. Such a function is \term{injective}.
+
+\begin{figure}[H]
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=3.5cm]{images/part-1/functions/a-functions-properties.png}
+        \caption{A Non-Injective Function}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=3.5cm]{images/part-1/functions/character-of.png}
+        \caption{An Injective Function}
+    \end{subfigure}
+    \caption{Injectivity and Non-injectivity}
+\end{figure}
+
+We can express the condition for a function to be injective formally.
+\begin{definition}[Injectivity]\index{function!injective}
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is \term{injective} if and only if
+    \[
+        f(x_1) = f(x_2) \implies x_1 = x_2
+    \]
+    for all $x_1, x_2 \in X$. Equivalently,
+    \[
+        x_1 \neq x_2 \implies f(x_1) \neq f(x_2)
+    \]
+    for all $x_1, x_2 \in X$.
+\end{definition}
+
+\begin{example}[An Example of Injectivity]
+    (\textit{Assume the addition and multiplication of natural numbers is defined.})
+
+    Consider the function $f: \N \to \N$ such that $f(x) = 4x + 1$ for all $x \in \N$. We show that this is injective.
+    \begin{proof}
+        Suppose $x_1, x_2 \in \N$ such that $f(x_1) = f(x_2)$. By definition of $f$, we have $4x_1 + 1 = 4x_2 + 1$. So $4x_1 = 4x_2$ and thus $x_1 = x_2$. So $f$ is indeed injective by definition.
+    \end{proof}
+\end{example}
+
+\begin{example}[An Example of Non-Injectivity]
+    Consider the function $f: \N \to \N$ such that $f(x) =(\text{last digit of } x)$. We show that this is not injective.
+    \begin{proof}
+        Note $1 \in \N$ and $11 \in \N$. We see $f(1) = f(11) = 1$, so $f$ is not injective.
+    \end{proof}
+\end{example}
+
+\begin{exercise}[Hash Functions]
+    Let $S$ be a set. Consider the function $H: S \to \N$ such that $H(x) = (\text{last two digits of } x)$. Suppose we have a table of 100 slots, each numbered 0 to 99, where we place the element $x \in S$ into the slot $H(x)$. A \textit{collision} occurs if two elements from $S$ map to the same slot in the table.
+
+    \begin{partquestions}{\roman*}
+        \item Describe the condition on $H$ for no collisions to occur.
+        \item Suppose all elements of $S$ are placed into the table. Which of the following possibilities of $S$ results in no collisions?
+        \begin{partquestions}{\alph*}
+            \item $S = \{12, 34, 56\}$
+            \item $S = \{12, 34, 56, 78, 910, 1112, 1314\}$
+            \item $S = \{18323, 389892, 92349589, 8942894281\}$
+            \item $S = \{128, 7327, 83279, 8934289, 842892, 824379490\}$
+        \end{partquestions}
+    \end{partquestions}
+\end{exercise}
+\begin{remark}
+    Such a function as described above can be considered a \term{hash function}\index{hash}\index{hash!function} and the table a \term{hash table}\index{hash!table}.
+\end{remark}
+
+\subsection{Surjectivity}
 TODO: Add
-% Introduce injectivity
-% Introduce surjectivity
+
+\subsection{Bijectivity}
+TODO: Add
 % Introduce bijectivity
 % Introduce inverse functions (for bijective functions)
 

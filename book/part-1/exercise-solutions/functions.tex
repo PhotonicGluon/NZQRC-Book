@@ -21,4 +21,15 @@
         Since both conditions are true, the function is well-defined.
         \item Ill-defined. Note that $1 \mathrel{h} (0,1)$ and $1 \mathrel{h} (1,0)$, so condition \textbf{F2} in \myref{definition:function} is not satisfied.
     \end{partquestions}
+
+    % Hash Functions
+    \item \begin{partquestions}{\roman*}
+        \item The function $H$ has to be injective.
+        \item \begin{partquestions}{\alph*}
+            \item No collisions. We see that $H(12) = 12$, $H(34) = 34$, and $H(56) = 56$.
+            \item Has collision. We see that $H(12) = H(1112) = 12$.
+            \item No collision. We see that $H(18323) = 23$, $H(389892) = 92$, $H(92349589) = 89$, and $H(8942894281) = 81$.
+            \item No collision. We see that $H(128) = 28$, $H(7327) = 27$, $H(83279) = 79$, $H(8934289) = 89$, $H(842892) = 92$, and $H(824379490) = 90$.
+        \end{partquestions}
+    \end{partquestions}
 \end{questions}
