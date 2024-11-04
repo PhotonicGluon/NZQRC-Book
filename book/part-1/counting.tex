@@ -1,8 +1,39 @@
+%=========== Custom Commands =============
+\makeatletter
+\NewDocumentEnvironment{dialogue}{O{Person 1}O{Person 2}}
+{
+    % Set up persons
+    \newcommand{\personA}{\textsc{#1}:~}
+    \newcommand{\personB}{\textsc{#2}:~}
+
+    % Create environment
+    \begin{itemize}[leftmargin=1em, label={}]  % Remove label
+}
+{
+    \end{itemize}
+}
+\makeatother
+
+%=========================================
 \Chapter{Counting and Cardinality}
 \Lettrine[loversize=0.1,nindent=2pt]{Ironically}, it is often the case that rigorously defining something intuitive turns out to be exceedingly tricky. Such is the case of counting. Counting the number of things in a collection seems obvious, but creating a watertight protocol for counting is more challenging than it appears at first glance.
 
 \section{The Problem With `Intuitive' Counting}
-TODO: Add
+Let us examine... TODO: Add
+
+\begin{dialogue}[Alfa][Bravo]  % TODO: Rename
+    \item \personA Hello
+    \item \personB Testing
+    \item \personA One two three
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=2cm]{images/part-1/functions/character-of.png}  % TODO: Replace
+    \end{figure}
+
+    \item \personB Testing
+\end{dialogue}
+
 % Give an example of how systems could "count" the number of items in a set differently
 
 \section{An Introduction to Cardinality}
