@@ -1,13 +1,13 @@
 %=========== Custom Commands =============
 \makeatletter
-\NewDocumentEnvironment{dialogue}{O{Person 1}O{Person 2}}
+\NewDocumentEnvironment{dialogue}{mmO{1em}O{1em}}
 {
     % Set up persons
-    \newcommand{\personA}{\textsc{#1}:~}
-    \newcommand{\personB}{\textsc{#2}:~}
+    \newcommand*{\personA}{\textsc{#1}:~}
+    \newcommand*{\personB}{\textsc{#2}:~}
 
     % Create environment
-    \begin{itemize}[leftmargin=1em, label={}]  % Remove label
+    \begin{itemize}[leftmargin=#3, rightmargin=#4, label={}]  % Remove label
 }
 {
     \end{itemize}
@@ -19,19 +19,27 @@
 \Lettrine[loversize=0.1,nindent=2pt]{Ironically}, it is often the case that rigorously defining something intuitive turns out to be exceedingly tricky. Such is the case of counting. Counting the number of things in a collection seems obvious, but creating a watertight protocol for counting is more challenging than it appears at first glance.
 
 \section{The Problem With `Intuitive' Counting}
-Let us examine... TODO: Add
+One would be hard-pressed to disagree that counting is such an obvious and trivial task that it is simply not worth dedicating an entire chapter to it. The very idea of saying how many things exist is, to us, deeply ingrained in our biology. Why do we need to define counting?
 
-\begin{dialogue}[Alfa][Bravo]  % TODO: Rename
-    \item \personA Hello
-    \item \personB Testing
-    \item \personA One two three
-    
+The core issue with counting is ensuring everyone agrees on how many items are there. Surely this task is trivial! Simply tally how many things there are! How hard can it be to make everyone agree on the number of items?
+
+In the spirit of Socratic dialogue, let us examine two characters attempting to agree on how many shapes were drawn on a field.
+
+\begin{dialogue}{Archilles}{Tortoise}[1.5em][1.5em]
+    \item \textit{Achilles, the mightiest of Greek warriors, waits on a barren field for his friend. While waiting, he draws several shapes in the dirt using his mighty sword.}
     \begin{figure}[H]
         \centering
-        \includegraphics[height=2cm]{images/part-1/functions/character-of.png}  % TODO: Replace
+        \includegraphics[width=5cm]{images/part-1/counting/five-count_items-only.png}
     \end{figure}
+    \textit{At this moment, his friend the Tortoise, who beat a hare in a race, arrives.}
 
-    \item \personB Testing
+    \item \personA Ah, Tortoise, my friend! Glad to see that you finally made it!
+    \item \personB I'm sorry I took so long. I had to win a race against a particularly smug hare.
+    \item \personA I'm glad that you did! Come, join me on this field.
+
+    \item \textit{And so Achilles and the Tortoise sat down. The Tortoise notices the shapes that Achilles drew on the ground.}
+    
+    \item \personB How curious; why have you drawn these shapes on the ground?
 \end{dialogue}
 
 % Give an example of how systems could "count" the number of items in a set differently
