@@ -381,7 +381,17 @@ We can express the condition for a function to be injective formally.
 \end{remark}
 
 \subsection{Surjectivity}
-TODO: Add
+Recall that a relation from the set $X$ to the set $Y$ may not have its domain being $X$, but a function has to have its domain to be the entire set $Y$. Likewise, a function's range may not be the whole set $Y$, but it would be nice to have such a function with its range as the codomain. This is the appeal of \term{surjective} functions.
+
+\begin{definition}[Surjectivity]\index{function!surjective}
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is surjective if and only if
+    \[
+        \forall y \in Y, \exists x \in X \text{ s.t. } y = f(x).
+    \]
+    In other words, every $y \in Y$ has a corresponding $x \in X$, called its \term{preimage}\index{preimage}\index{function!preimage}, such that $y = f(x)$.
+\end{definition}
+
+% TODO: Continue
 
 \subsection{Bijectivity}
 TODO: Add
