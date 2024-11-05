@@ -391,7 +391,70 @@ Recall that a relation from the set $X$ to the set $Y$ may not have its domain b
     In other words, every $y \in Y$ has a corresponding $x \in X$, called its \term{preimage}\index{preimage}\index{function!preimage}, such that $y = f(x)$.
 \end{definition}
 
-% TODO: Continue
+As mentioned, an important property of surjective functions is that their range is their codomain.
+
+\begin{proposition}[Surjective Functions' Range is their Codomain]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a surjective function. Then the range of $f$ is $Y$.
+\end{proposition}
+\begin{proof}
+    Recall that the range of $f$ is the set
+    \[
+        \{y \in Y \vert \exists x \in X \text{ s.t. } y = f(x)\}.
+    \]
+    Since $f$ is surjective, every $y \in Y$ has a corresponding preimage $x \in X$ such that $y = f(x)$. Thus the range of $f$ is exactly $Y$.
+\end{proof}
+
+\begin{example}[A Surjective Function]
+    Let's modify the "character of" function in \myref{example:character-of-function} to make it surjective. Let $N$, a subset of the natural numbers, be $\{1, 2, 3, 4, 5\}$ and $C$, a subset of all characters, be $\{\text{b}, \text{c}, \text{d}\}$. Define the function $f: N \to C$ such that
+    \[
+        f = \{(2, \text{b}), (3, \text{c}), (4, \text{d})\}.
+    \]
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/character-of_surjective.png}
+        \caption{Arrow Diagram of $f$}
+    \end{figure}
+    We clearly see that every element in the codomain $C$ has a corresponding preimage in $N$, and thus $f$ is surjective.
+\end{example}
+
+\begin{example}[A Non-Surjective Function]
+    Consider again the successor function restricted to the natural numbers again, i.e. the function $S: \N \to \N$.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/successor.png}
+        \caption{Arrow Diagram of $S$}
+    \end{figure}
+    We can see in the diagram that $0 \in \N$ has no preimage under $S$. Thus, this means that 0 is not in the range of $S$, which tells us that $S$ is not surjective.
+\end{example}
+
+\begin{exercise}[Surjective Detective]
+    For each function described by the arrow diagrams below, determine whether they are surjective or not.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_nonsurj_1.png}
+            \caption{}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_yessurj_1.png}
+            \caption{}
+        \end{subfigure}
+        \linebreak
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_yessurj_2.png}
+            \caption{}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_nonsurj_2.png}
+            \caption{}
+        \end{subfigure}
+    \end{figure}
+\end{exercise}
 
 \subsection{Bijectivity}
 TODO: Add
