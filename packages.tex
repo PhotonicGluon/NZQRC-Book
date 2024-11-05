@@ -16,6 +16,7 @@
 \usepackage{thmtools}
 
 %====== Formatting, Colour, Images =======
+% Main packages
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{wrapfig}
@@ -27,6 +28,9 @@
 \usepackage{imakeidx}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{float}
+
+% Optionally include `draftfigure` if all images are to be drafts
+\Ifstr{\usedraftimages}{true}{\usepackage[allfiguresdraft,content={Image Goes Here},position=center]{draftfigure}}{}
 
 %======= Hyperlinks and References =======
 \usepackage{aliascnt}
