@@ -334,8 +334,8 @@ A function could send multiple elements in the domain to the same element in the
 \end{figure}
 
 We can express the condition for a function to be injective formally.
-\begin{definition}[Injectivity]\index{function!injective}
-    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is \term{injective} if and only if
+\begin{definition}[Injectivity]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is \term{injective}\index{injective}\index{function!injective} (or \term{one-to-one}\index{function!one-to-one}) if and only if
     \[
         f(x_1) = f(x_2) \implies x_1 = x_2
     \]
@@ -389,6 +389,8 @@ We can express the condition for a function to be injective formally.
             \caption{}
         \end{subfigure}
     \end{figure}
+
+    \addtocounter{figure}{-1}  % To ensure that the figure numbering is correct after this exercise
 \end{exercise}
 
 \begin{exercise}[Hash Functions]
@@ -412,8 +414,8 @@ We can express the condition for a function to be injective formally.
 \subsection{Surjectivity}
 Recall that a relation from the set $X$ to the set $Y$ may not have its domain being $X$, but a function has to have its domain to be the entire set $Y$. Likewise, a function's range may not be the whole set $Y$, but it would be nice to have such a function with its range as the codomain. This is the appeal of \term{surjective} functions.
 
-\begin{definition}[Surjectivity]\index{function!surjective}
-    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is surjective if and only if
+\begin{definition}[Surjectivity]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is \term{surjective}\index{surjective}\index{function!surjective} (or \term{onto}\index{function!onto}) if and only if
     \[
         \forall y \in Y, \exists x \in X \text{ s.t. } y = f(x).
     \]
@@ -483,11 +485,58 @@ As mentioned, an important property of surjective functions is that their range 
             \caption{}
         \end{subfigure}
     \end{figure}
+    
+    \addtocounter{figure}{-1}  % To ensure that the figure numbering is correct after this exercise
 \end{exercise}
 
 \subsection{Bijectivity}
-TODO: Add
-% Introduce bijectivity
+Now, let us consider a function $f: X \to Y$ which is both injective and bijective. Such functions are so important that we have a name for them -- \term{bijections}.
+
+\begin{definition}[Bijectivity]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is \term{bijective}\index{bijective}\index{function!bijective} (or that $f$ is a \term{one-to-one correspondence}\index{function!one-to-one correspondence}) if and only if it is both injective and surjective.
+\end{definition}
+
+Why are they important? For a bijection $f: X \to Y$, any $x \in X$ has a unique corresponding element $y \in Y$ such that $y = f(x)$ (since $f$ is a function). Also, any $y \in Y$ has a corresponding preimage $x \in X$ such that $y = f(x)$ (since $f$ is surjective) and this $x$ is that only one that results in $y$ (since $f$ is injective). In essence, a bijection creates a pairing between the elements of $X$ and $Y$ that matches each element of $X$ exactly one element of $Y$ (and vice versa).
+
+\begin{example}[The ``Decimal to Binary'' Function]
+    A binary string consists of only ones and zeros. Let $N$, a subset of all natural numbers written in decimal (i.e., base 10), be $\{0, 1, 2, 3, 4, 5\}$. Let $B$, a subset of all binary strings, be $\{\texttt{000}, \texttt{001}, \texttt{010}, \texttt{011}, \texttt{100}, \texttt{101}\}$. We may define the function $f: N \to B$ such that, in effect, it converts the decimal number in $N$ into a binary string in $B$. That is,
+    \[
+        f = \{(0, \text{000}), (1, \text{001}), (2, \text{010}), (3, \text{011}), (4, \text{100}), (5, \text{101})\}.
+    \]
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/decimal-to-binary.png}
+        \caption{Arrow Diagram of $f$}
+    \end{figure}
+    We clearly see from the arrow diagram that
+    \begin{itemize}
+        \item each element of $B$ has no more than one arrow pointing to it, which means $f$ is injective; and
+        \item every element of $B$ has an arrow pointing to it, which means $f$ is surjective,
+    \end{itemize}
+    and thus $f$ is bijective (which means it is a bijection).
+\end{example}
+
+\begin{example}[The String Reversal Function]
+    Suppose $\Lang$ is a formal language with alphabet $\Alphabet$. Let $\Alphabet^\ast$ denote the set of all strings from using symbols from $\Alphabet$. Define the function $r: \Alphabet^\ast \to \Alphabet^\ast$ where, for any string $s \in \Alphabet^\ast$, $r(s)$ is the string obtained by reversing $s$. For example, for $\Alphabet = \{a,b,c\}$,
+    \begin{itemize}
+        \item $r(\emptystring) = \emptystring$ (since we do not have any symbols to reverse);
+        \item $r(a) = a$, and likewise $r(b) = b$ and $r(c) = c$;
+        \item $r(ab) = ba$, and likewise $r(ac) = ca$ and $r(bc) = cb$;
+        \item $r(abcaba) = abacba$; and
+        \item $r(cacab) = bacac$.
+    \end{itemize}
+
+    We show that $r$ is actually a bijection.
+    \begin{proof}
+        We are to show two things: $r$ is injective and $r$ is surjective.
+        \begin{itemize}
+            \item \textbf{Injective}: Suppose $s_1, s_2 \in \Alphabet^\ast$ such that $r(s_1) = r(s_2)$. What does this mean? This means that the string obtained when writing the symbols in $s_1$ in reverse order is the same as the string obtained when writing the symbols in $s_2$ in reverse order. But if $s_1$ and $s_2$ are the same when written in reverse, they have to be the same to start with. In other words, we must have $s_1 = s_2$ and thus $r$ is indeed injective.
+            \item \textbf{Surjective}: Suppose $s'$ is any string in $\Alphabet^\ast$. By definition of $r$, we know that $r(s')$ is the string obtained by reversing $s'$. Note that when a reversed string is reversed again, we obtain the original string, i.e. $r(r(s')) = s'$. So let $s = r(s')$, noting that $s \in \Alphabet^\ast$. Then $r(s) = r(r(s')) = s'$, and thus $r$ is indeed surjective.
+        \end{itemize}
+        Since $r$ is both injective and surjective, it is thus bijective.
+    \end{proof}
+\end{example}
+
 % Introduce inverse functions (for bijective functions)
 
 \section{Composition of Functions}
