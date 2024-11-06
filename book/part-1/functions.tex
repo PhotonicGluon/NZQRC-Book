@@ -498,10 +498,10 @@ Now, let us consider a function $f: X \to Y$ which is both injective and bijecti
 
 Why are they important? For a bijection $f: X \to Y$, any $x \in X$ has a unique corresponding element $y \in Y$ such that $y = f(x)$ (since $f$ is a function). Also, any $y \in Y$ has a corresponding preimage $x \in X$ such that $y = f(x)$ (since $f$ is surjective) and this $x$ is that only one that results in $y$ (since $f$ is injective). In essence, a bijection creates a pairing between the elements of $X$ and $Y$ that matches each element of $X$ exactly one element of $Y$ (and vice versa).
 
-\begin{example}[The ``Decimal to Binary'' Function]
-    A binary string consists of only ones and zeros. Let $N$, a subset of all natural numbers written in decimal (i.e., base 10), be $\{0, 1, 2, 3, 4, 5\}$. Let $B$, a subset of all binary strings, be $\{\texttt{000}, \texttt{001}, \texttt{010}, \texttt{011}, \texttt{100}, \texttt{101}\}$. We may define the function $f: N \to B$ such that, in effect, it converts the decimal number in $N$ into a binary string in $B$. That is,
+\begin{example}[The ``Decimal to Binary'' Function]\label{example:decimal-to-binary-function}
+    A binary string consists of only ones and zeros. Let $N$, a subset of all natural numbers written in decimal (i.e., base 10), be $\{0, 1, 2, 3, 4, 5\}$. Let $B$, a subset of all binary strings, be $\{\code{000}, \code{001}, \code{010}, \code{011}, \code{100}, \code{101}\}$. We may define the function $f: N \to B$ such that, in effect, it converts the decimal number in $N$ into a binary string in $B$. That is,
     \[
-        f = \{(0, \text{000}), (1, \text{001}), (2, \text{010}), (3, \text{011}), (4, \text{100}), (5, \text{101})\}.
+        f = \{(0, \code{000}), (1, \code{001}), (2, \code{010}), (3, \code{011}), (4, \code{100}), (5, \code{101})\}.
     \]
     \begin{figure}[H]
         \centering
@@ -516,7 +516,7 @@ Why are they important? For a bijection $f: X \to Y$, any $x \in X$ has a unique
     and thus $f$ is bijective (which means it is a bijection).
 \end{example}
 
-\begin{example}[The String Reversal Function]
+\begin{example}[The String Reversal Function]\label{example:string-reversal-function}
     Suppose $\Lang$ is a formal language with alphabet $\Alphabet$. Let $\Alphabet^\ast$ denote the set of all strings from using symbols from $\Alphabet$. Define the function $r: \Alphabet^\ast \to \Alphabet^\ast$ where, for any string $s \in \Alphabet^\ast$, $r(s)$ is the string obtained by reversing $s$. For example, for $\Alphabet = \{a,b,c\}$,
     \begin{itemize}
         \item $r(\emptystring) = \emptystring$ (since we do not have any symbols to reverse);
@@ -537,7 +537,71 @@ Why are they important? For a bijection $f: X \to Y$, any $x \in X$ has a unique
     \end{proof}
 \end{example}
 
-% Introduce inverse functions (for bijective functions)
+Bijections create a function that undoes the effect of the original function. This function is called the \term{inverse function}, and only bijections have them.
+
+\begin{definition}[Invertible Function and Inverse Function]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is an \term{invertible function}\index{function!invertible} if and only if there exists a function $g: Y \to X$ such that
+    \begin{align*}
+        g(f(x)) &= x \text{ for all } x \in X \text{ and}\\
+        f(g(y)) &= y \text{ for all } y \in Y.
+    \end{align*}
+    In this case $g$ is called the \term{inverse function of $f$}\index{function!inverse}, and is usually denoted $f^{-1}$.
+\end{definition}
+
+\begin{theorem}[Bijections Have an Inverse Function]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a bijection. Then $f$ is invertible.
+\end{theorem}
+\begin{proof}
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a bijection. Since a function is a relation, thus $f$ is a subset of $X \times Y$. Considering $f$ as a relation, let $g = f^{-1}$, i.e. $g$ is the inverse relation of $f$. We show that $g$ is the inverse function of $f$.
+
+    First, to prove that $g = f^{-1}$ is indeed a function. We need to prove \textbf{F1} and \textbf{F2} (see \myref{definition:function}). In the context of $g$, they can be written as follows.
+    \begin{enumerate}[label=\textbf{F\arabic*.}]
+        \item For all $y \in Y$, there exists $x \in X$ such that $y \mathrel{g} x$.
+        \item For all $y \in Y$, if $y \mathrel{g} x_1$ and $y \mathrel{g} x_2$ for some $x_1, x_2 \in X$, we must have $x_1 = x_2$.
+    \end{enumerate}
+    We prove them one by one, using the properties of $f$.
+    \begin{itemize}
+        \item To prove \textbf{F1}, suppose $y \in Y$. Since $f$ is surjective, we know that there exists a $x \in X$ such that $f(x) = y$ (i.e. $x \mathrel{f} y$). In particular we know $y \mathrel{f^{-1}} x$ by definition of inverse relation; since $g = f^{-1}$ we must have $y \mathrel{g} x$. So there is an $x \in X$ such that $y \mathrel{g} x$ (and in particular it is the $x \in X$ such that $f(x) = y$).
+        \item To prove \textbf{F2}, suppose $y \in Y$ and $x_1, x_2 \in X$ such that $y \mathrel{g} x_1$ and $y \mathrel{g} x_2$. By our working above, we know that $x_1 \mathrel{f} y$ and $x_2 \mathrel{f} y$, i.e. $f(x_1) = y$ and $f(x_2) = y$. Thus $f(x_1) = f(x_2)$. Since $f$ is injective, thus $x_1 = x_2$.
+    \end{itemize}
+    Thus $g = f^{-1}$ is a function.
+
+    Now we need to prove that $g(f(x)) = x$ for all $x \in X$. As above we know there exists a $y \in Y$ such that $x \mathrel{f} y$ and $y \mathrel{g} x$. Clearly this means $g(f(x)) = x$ for all $x \in X$.
+
+    Finally, we need to prove that $f(g(y)) = y$ for all $y \in Y$. As above we know there exists a $x \in X$ such that $y \mathrel{g} x$ and $x \mathrel{f} y$. Clearly this means $f(g(y)) = y$ for all $y \in Y$.
+
+    Hence we see $f$ is invertible with $g$ being the inverse function of $f$.
+\end{proof}
+
+What the above theorem states is that the inverse function of $f: X \to Y$ is exactly the function induced by the inverse relation of $f$.
+
+\begin{example}[The ``Binary to Decimal'' Function]
+    Let us consider the ``decimal to binary'' function defined in \myref{example:decimal-to-binary-function}, where
+    \[
+        f = \{(0, \code{000}), (1, \code{001}), (2, \code{010}), (3, \code{011}), (4, \code{100}), (5, \code{101})\}.
+    \]
+    So the inverse function of $f$ is
+    \[
+        f^{-1} = \{(\code{000}, 0), (\code{001}, 1), (\code{010}, 2), (\code{011}, 3), (\code{100}, 4), (\code{101}, 5)\}.
+    \]
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/binary-to-decimal.png}
+        \caption{Arrow Diagram of $f^{-1}$}
+    \end{figure}
+\end{example}
+
+\begin{example}[The String Reversal Function]
+    Consider the string reversal function $r: \Alphabet^\ast \to \Alphabet^\ast$ defined in \myref{example:string-reversal-function}. One notes that it is its own inverse, since for any string $s \in \Alphabet^\ast$,
+    \begin{align*}
+        r(r(s)) &= \text{the reversal of the reversal of } s\\
+        &= s.
+    \end{align*}
+\end{example}
+
+\begin{exercise}[Non-Trivial Bijection]
+    Let the set $A = \{1, 2, 3, 4\}$. Find a function $f: A \to A$ such that $f$ is a bijection but $f^{-1} \neq \id_A$.
+\end{exercise}
 
 \section{Composition of Functions}
 TODO: Add
