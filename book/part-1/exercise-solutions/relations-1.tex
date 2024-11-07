@@ -65,12 +65,12 @@
     % Shoes and Socks
     \item We work step by step.
     \begin{align*}
-        &(c, a) \in (S \circ R)^{-1}\\
-        \iff& (a, c) \in S \circ R & (\text{Definition of inverse relation})\\
-        \iff& \exists b \in B \text{ s.t. } (a \mathrel{R} b \land b \mathrel{S} c) & (\text{Definition of composition})\\
-        \iff& \exists b \in B \text{ s.t. } (b \mathrel{R^{-1}} a \land c \mathrel{S^{-1}} b) & (\text{Definition of inverse relation})\\
-        \iff& \exists b \in B \text{ s.t. } (c \mathrel{S^{-1}} b \land b \mathrel{R^{-1}} a) & (\text{Commutativity of } \land)\\
-        \iff& (c, a) \in R^{-1} \circ S^{-1} & (\text{Definition of composition})
+        &(d, a) \in (S \circ R)^{-1}\\
+        \iff& (a, d) \in S \circ R & (\text{Definition of inverse relation})\\
+        \iff& \exists x \in B \cap C \text{ s.t. } (a \mathrel{R} x \land x \mathrel{S} d) & (\text{Definition of composition})\\
+        \iff& \exists x \in B \cap C \text{ s.t. } (x \mathrel{R^{-1}} a \land d \mathrel{S^{-1}} x) & (\text{Definition of inverse relation})\\
+        \iff& \exists x \in B \cap C \text{ s.t. } (d \mathrel{S^{-1}} x \land x \mathrel{R^{-1}} a) & (\text{Commutativity of } \land)\\
+        \iff& (d, a) \in R^{-1} \circ S^{-1} & (\text{Definition of composition})
     \end{align*}
     Thus any element in $(S \circ R)^{-1}$ is also in $R^{-1} \circ S^{-1}$ and vice versa, thereby meaning that $(S \circ R)^{-1} = R^{-1} \circ S^{-1}$.
 
