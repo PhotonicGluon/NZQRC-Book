@@ -604,9 +604,30 @@ What the above theorem states is that the inverse function of $f: X \to Y$ is ex
 \end{exercise}
 
 \section{Composition of Functions}
-TODO: Add
-% Give an idea of what function composition process is like (e.g., as machines feeding into each other)
-% Define function composition
+We may think of function composition as machines feeding into each other -- the output of one machine is the input of the other.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=2cm]{images/part-1/functions/function-composition_machine.png}
+    \caption{Composition of Functions $f$ and $g$}
+\end{figure}
+In the above figure, we have two functions, namely $f$ and $g$. Any input $x$ that is fed into this machine will first pass through $f$, resulting in $f(x)$, and then pass through $g$, with the result being $g(f(x))$.
+
+\begin{definition}[Composition of Functions]
+    Let $A$, $B$, $C$, and $D$ be sets. Let $f: A \to B$ and $g: C \to D$ be functions. The \term{composition of $f$ and $g$}\index{function!composition}, denoted $g \circ f$, is the function $h: A \to D$ such that
+    \[
+        h(x) = g(f(x))
+    \]
+    for all $x \in A$, and is only defined if and only if $C$ is a subset of the range of $f$ (i.e., the domain of $g$ is a subset of the range of $f$).
+\end{definition}
+
+This definition can be displayed diagrammatically.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=4.5cm]{images/part-1/functions/function-composition_arrow-diagram.png}
+    \caption{Composition of Functions $f$ and $g$}
+\end{figure}
+In the diagram, any element in the domain of $g\circ f$ (i.e., any element in $A$) will first be mapped to the range of $f$ (denoted by the dotted circle within the intersection of $B$ and $C$), and then mapped to the final element in $D$ (which is the codomain of $g \circ f$).
+
 % Give result of composition with identity function
 % Give result of composition with inverse
 % Give result of composition with injections and surjections
