@@ -63,7 +63,7 @@ Let us look at some examples.
     \end{itemize}
 \end{example}
 
-\begin{exercise}[Empty Function?]
+\begin{exercise}[Empty Function?]\label{exercise:empty-function}
     Suppose $A$ is a set. Consider the relation $f$ from $\emptyset$ to $A$ where $f = \emptyset$. Is $f$ a function?
 \end{exercise}
 
@@ -628,6 +628,102 @@ This definition can be displayed diagrammatically.
 \end{figure}
 In the diagram, any element in the domain of $g\circ f$ (i.e., any element in $A$) will first be mapped to the range of $f$ (denoted by the dotted circle within the intersection of $B$ and $C$), and then mapped to the final element in $D$ (which is the codomain of $g \circ f$).
 
-% Give result of composition with identity function
-% Give result of composition with inverse
-% Give result of composition with injections and surjections
+One might wonder whether the order of taking the compositions matter. It turns out that it does not.
+
+\begin{theorem}[Associativity of Composition (Functions)]\index{function!composition!associativity}
+    Let $A$, $B$, $C$, $D$, $E$, and $F$ be sets. Let $f: A \to B$, $g: C \to D$, and $h: E \to F$ be functions such that $g \circ f$ and $h \circ g$ are defined. Then
+    \[
+        (h \circ g) \circ f = h \circ (g \circ f).   
+    \]
+\end{theorem}
+\begin{proof}
+    Note that if either $f$, $g$, or $h$ is the empty function (see \myref{exercise:empty-function}), then $(h \circ g) \circ f = h \circ (g \circ f) = \emptyset$. So we may assume that $f$, $g$, and $h$ are not empty functions.
+
+    Considering $f$ and $g$ as relations for a moment, the fact that $g \circ f$ is a function means that $C$ is a subset of the range of $f$ (which is a subset of $B$). Since $f$ and $g$ are not empty functions, thus we must have $B \cap C \neq \emptyset$. Likewise we see $D \cap E \neq \emptyset$ by using the same argument for $g$ and $h$.
+
+    Therefore the claim is readily proven by using \myref{theorem:associativity-of-composition-relations} on $f$, $g$, and $h$ when we consider them as relations.
+\end{proof}
+
+Similar to relations, since there is no distinction between $(h \circ g) \circ f$ and $h \circ (g \circ f$), we can write ``$h \circ g \circ f$'' without any ambiguity.
+
+The most trivial composition that we can consider is a composition with the identity function.
+
+\begin{proposition}[Composition with Identity Function]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then
+    \[
+        f\circ \id_X = f \text{ and } \id_Y \circ f = f.
+    \]
+\end{proposition}
+\begin{proof}
+    Recall that $\id_A(a) = a$ for all sets $A$ and $a \in A$. So for any $x \in X$ we have
+    \begin{align*}
+        (f \circ \id_X)(x) &= f(\id_X(x)) & (\text{Definition of composition})\\
+        &= f(x) & (\text{Definition of identity function})
+    \end{align*}
+    which means $f \circ \id_X = f$. Also, we have
+    \begin{align*}
+        (\id_Y \circ f)(x) &= \id_Y(f(x)) & (\text{Definition of composition})\\
+        &= f(x) & (\text{Definition of identity function})
+    \end{align*}
+    for any $x \in X$, meaning that $\id_Y \circ f = f$.
+\end{proof}
+
+A more interesting result can be found when we compose an invertible function with its inverse.
+
+\begin{example}[Composing an Invertible Function with Its Inverse]
+    Let $A = \{1, 2, 3\}$, $B = \{x, y, z\}$, and the function $f: A \to B$ such that
+    \[
+        f = \{(1, z), (2, x), (3, y)\}.
+    \]
+    Clearly $f$ is a bijection, which means it has an inverse. In particular, its inverse is
+    \[
+        f^{-1} = \{(x, 2), (y, 3), (z, 1)\}.
+    \]
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3.5cm]{images/part-1/functions/compose-function-with-inverse_f.png}
+            \caption{Arrow Diagram of $f$}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3.5cm]{images/part-1/functions/compose-function-with-inverse_f-inv.png}
+            \caption{Arrow Diagram of $f^{-1}$}
+        \end{subfigure}
+        \caption{Arrow Diagrams of $f$ and $f^{-1}$}
+    \end{figure}
+
+    Let us consider the composition $f^{-1} \circ f$. It can be found by following the arrows from $A$ to $B$ via $f$ and back to $A$ via $f^{-1}$. So we see that
+    \begin{align*}
+        (f^{-1} \circ f)(1) &= (f^{-1}(f(1))) = f^{-1}(z) = 1,\\
+        (f^{-1} \circ f)(2) &= (f^{-1}(f(2))) = f^{-1}(x) = 2, \text{ and}\\
+        (f^{-1} \circ f)(3) &= (f^{-1}(f(3))) = f^{-1}(y) = 3.
+    \end{align*}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-function-with-inverse_aba.png}
+        \caption{Arrow Diagram of $f^{-1} \circ f$}
+    \end{figure}
+
+    We can do the same for the composition $f \circ f^{-1}$. It can be found by following the arrows from $B$ to $A$ via $f^{-1}$ and back to $B$ via $f$. Thus
+    \begin{align*}
+        (f \circ f^{-1})(x) &= (f(f^{-1}(x))) = f(2) = x,\\
+        (f \circ f^{-1})(y) &= (f(f^{-1}(y))) = f(3) = y, \text{ and}\\
+        (f \circ f^{-1})(z) &= (f(f^{-1}(z))) = f(1) = z.
+    \end{align*}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-function-with-inverse_bab.png}
+        \caption{Arrow Diagram of $f \circ f^{-1}$}
+    \end{figure}
+
+    One sees from the above two computations that
+    \[
+        f^{-1} \circ f = \id_A \text{ and } f \circ f^{-1} = \id_B.
+    \]
+\end{example}
+
+% TODO: Give result of composition with inverse
+% TODO: Give result of composition with injections and surjections
