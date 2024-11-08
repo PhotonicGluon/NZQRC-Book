@@ -548,11 +548,18 @@ Bijections create a function that undoes the effect of the original function. Th
     In this case $g$ is called the \term{inverse function of $f$}\index{function!inverse}, and is usually denoted $f^{-1}$.
 \end{definition}
 
-\begin{theorem}[Bijections Have an Inverse Function]
-    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a bijection. Then $f$ is invertible.
+\begin{theorem}[Invertible If and Only If Bijective]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is invertible if and only if $f$ is a bijection.
 \end{theorem}
 \begin{proof}
-    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a bijection. Since a function is a relation, thus $f$ is a subset of $X \times Y$. Considering $f$ as a relation, let $g = f^{-1}$, i.e. $g$ is the inverse relation of $f$. We show that $g$ is the inverse function of $f$.
+    For the forward direction, suppose $f$ is invertible. This means there exists $g: Y \to X$ such that $g(f(x)) = x$ for all $x \in X$ and $f(g(y)) = y$ for all $y \in Y$. We are to prove that $f$ is both injective and surjective.
+    \begin{itemize}
+        \item \textbf{Injective}: Suppose $x_1, x_2 \in X$ such that $f(x_1) = f(x_2)$. Thus $g(f(x_1)) = g(f(x_2))$, which means $x_1 = x_2$ by definition of $g$.
+        \item \textbf{Surjective}: Suppose $y \in Y$. We know that $g(y) \in X$ by definition of $g$. Furthermore we know that $f(g(y)) = y$ by definition of $g$. So the preimage of $y$ under $f$ is $g(y)$, which shows that $f$ is surjective.
+    \end{itemize}
+    As $f$ is both injective and surjective, it is thus bijective.
+
+    For the reverse direction, let $f: X \to Y$ be a bijection. Since a function is a relation, thus $f$ is a subset of $X \times Y$. Considering $f$ as a relation, let $g = f^{-1}$, i.e. $g$ is the inverse relation of $f$. We show that $g$ is the inverse function of $f$.
 
     First, to prove that $g = f^{-1}$ is indeed a function. We need to prove \textbf{F1} and \textbf{F2} (see \myref{definition:function}). In the context of $g$, they can be written as follows.
     \begin{enumerate}[label=\textbf{F\arabic*.}]
