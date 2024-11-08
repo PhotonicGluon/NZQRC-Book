@@ -59,4 +59,30 @@
         f^{-1} = \{(2,1),(3,2),(4,3),(1,4)\},
     \]
     which is not $\id_A = \{(1,1),(2,2),(3,3),(4,4)\}$.
+
+    % Composition of an Injection and Non-Injection
+    \item \begin{partquestions}{\alph*}
+        \item True. Suppose $h \circ f = h \circ g$. Thus $h(f(x)) = h(g(x))$ for all $x \in X$. As $h$ is injective, this means $f(x) = g(x)$ for all $x \in X$. Thus $f = g$.
+        \item False. Let $X = \N$, and consider the functions
+        \begin{align*}
+            f &= \id_X,\\
+            g &= \{(n, n) \vert n \text{ is even}\} \cup \{(n, 0) \vert n \text{ is odd}\}, \text{ and}\\
+            h &= \{(n, 2n) \vert n \in \N\}.
+        \end{align*}
+        
+        We first show that $h$ is injective. Suppose $n_1, n_2 \in \N$ such that $h(n_1) = h(n_2)$. So $2n_1 = 2n_2$ which clearly means $n_1 = n_2$. Thus $h$ is injective.
+
+        Now we show $f \circ h = g \circ h$. We see that
+        \begin{align*}
+            (f \circ h)(n) &= f(h(n)) & (\text{Definition of composition})\\
+            &= f(2n) & (\text{Definition of } h)\\
+            &= 2n & (\text{Definition of } f)\\
+            &= g(2n) & (\text{Definition of } g, \text{ since } 2n \text{ is even})\\
+            &= g(h(n)) & (\text{Definition of } h)\\
+            &= (g \circ h)(n) & (\text{Definition of composition})
+        \end{align*}
+        for any $n \in \N$, which thus means $f \circ h = g \circ h$.
+
+        But one sees clearly that $(1, 1) \in f$ but $(1, 1) \notin g$, so $f \neq g$.
+    \end{partquestions}
 \end{questions}

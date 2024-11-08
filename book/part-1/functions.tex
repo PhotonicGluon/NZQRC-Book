@@ -762,4 +762,57 @@ The observation made above can be generalised.
     by definition of the inverse function. Now note that $f^{-1}$ clearly has an inverse of $f$, which thus means that $f^{-1}$ is bijective (\myref{theorem:invertible-if-and-only-if-bijective}). So we must have $z = y$, meaning $f(f^{-1}(y)) = y$ for all $y \in Y$. Hence $f \circ f^{-1} = \id_Y$.
 \end{proof}
 
-% TODO: Give result of composition with injections and surjections
+The composition of two injective functions is also interesting.
+
+\begin{example}[Composition of Injective Functions]
+    Let $A = \{a,b,c\}$, $B = \{\text{I}, \text{II}, \text{III}, \text{IV}\}$, and $C = \{1, 2, 3, 4, 5\}$. Define the functions $f: A \to B$ and $g: B \to C$ such that
+    \[
+        f = \{(a, \text{I}), (b, \text{II}), (c, \text{IV})\} \text{ and } g = \{(\text{I}, 1), (\text{II}, 3), (\text{III}, 4), (\text{IV}, 5)\}.
+    \]
+    We can draw their individual effects as follows.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-injections_abc.png}
+        \caption{Arrow Diagrams of $f$ and $g$, On The Same Diagram}
+    \end{figure}
+
+    The overall composition of $f$ and $g$ is
+    \[
+        g \circ f = \{(a, 1), (b, 3), (c, 5)\}
+    \]
+    which has an arrow diagram as follows.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-injections_ac.png}
+        \caption{Arrow Diagram of $g \circ f$}
+    \end{figure}
+    One easily verifies that $g \circ f$ is also injective.
+\end{example}
+
+It is not a coincidence that the composition of injective functions is also injective.
+
+\begin{proposition}[Composition of Injective Functions is Injective]
+    Let $A$, $B$, $C$, and $D$ be sets. Let $f: A \to B$ and $g: C \to D$ be injections such that $g \circ f$ is defined. Then $g \circ f$ is an injection.
+\end{proposition}
+\begin{proof}
+    Suppose $x_1, x_2 \in A$ such that $(g \circ f)(x_1) = (g \circ f)(x_2)$, i.e.
+    \[
+        g(f(x_1)) = g(f(x_2))
+    \]
+    by definition of composition of functions. Since $g$ is injective, thus
+    \[
+        f(x_1) = f(x_2).
+    \]
+    But as $f$ is also injective, thus $x_1 = x_2$. Therefore $g \circ f$ is an injection.
+\end{proof}
+
+\begin{exercise}[Composition of an Injection and Non-Injection]
+    Let $X$ be a non-empty set, and let $f: X \to X$, $g: X \to X$, and $h: X \to X$ be functions. Suppose $h$ is an injective function. Which of the following statements are always true?
+    \begin{partquestions}{\alph*}
+        \item If $h \circ f = h \circ g$ then $f = g$.
+        \item If $f \circ h = g \circ h$ then $f = g$.\newline
+        (\textit{Hint: think of infinite sets. You may use concepts that are not yet explicitly defined in this book, e.g. odd and even numbers, and multiplication of natural numbers.})
+    \end{partquestions}
+\end{exercise}
+
+% TODO: Give result of composition with surjections
