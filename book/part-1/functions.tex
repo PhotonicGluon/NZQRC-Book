@@ -548,7 +548,7 @@ Bijections create a function that undoes the effect of the original function. Th
     In this case $g$ is called the \term{inverse function of $f$}\index{function!inverse}, and is usually denoted $f^{-1}$.
 \end{definition}
 
-\begin{theorem}[Invertible If and Only If Bijective]
+\begin{theorem}[Invertible If and Only If Bijective]\label{theorem:invertible-if-and-only-if-bijective}
     Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is invertible if and only if $f$ is a bijection.
 \end{theorem}
 \begin{proof}
@@ -732,5 +732,34 @@ A more interesting result can be found when we compose an invertible function wi
     \]
 \end{example}
 
-% TODO: Give result of composition with inverse
+The observation made above can be generalised.
+
+\begin{proposition}[Composition of Function with Inverse]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be an invertible function with inverse $f^{-1}: Y \to X$. Then
+    \[
+        f^{-1} \circ f = \id_X \text{ and } f \circ f^{-1} = \id_Y.
+    \]
+\end{proposition}
+\begin{proof}
+    For the first, let $x \in X$. Then
+    \[
+        (f^{-1} \circ f)(x) = f^{-1}(f(x))
+    \]
+    by definition of composition of functions. Letting $z = f^{-1}(f(x))$, we see that
+    \[
+        f(z) = f(x)
+    \]
+    by definition of the inverse function. As $f$ is invertible, it is thus a bijection (\myref{theorem:invertible-if-and-only-if-bijective}), which means it is injective (by definition of bijection). Hence we see $z = x$, meaning $f^{-1}(f(x)) = x$. Since this holds for any $x \in X$, we must have $f^{-1} \circ f = \id_X$.
+
+    For the second, let $y \in Y$. Then we see
+    \[
+        (f \circ f^{-1})(y) = f(f^{-1}(y)).
+    \]
+    Let $z = f(f^{-1}(y))$, which means that
+    \[
+        f^{-1}(z) = f^{-1}(y)
+    \]
+    by definition of the inverse function. Now note that $f^{-1}$ clearly has an inverse of $f$, which thus means that $f^{-1}$ is bijective (\myref{theorem:invertible-if-and-only-if-bijective}). So we must have $z = y$, meaning $f(f^{-1}(y)) = y$ for all $y \in Y$. Hence $f \circ f^{-1} = \id_Y$.
+\end{proof}
+
 % TODO: Give result of composition with injections and surjections
