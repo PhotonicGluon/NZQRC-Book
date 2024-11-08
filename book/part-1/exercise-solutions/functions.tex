@@ -85,4 +85,13 @@
 
         But one sees clearly that $(1, 1) \in f$ but $(1, 1) \notin g$, so $f \neq g$.
     \end{partquestions}
+
+    % Composition of Surjective Functions is Surjective
+    \item \begin{proof}
+        Suppose $f: A \to B$ and $g: C \to D$ are surjective functions. Let $d \in D$. Since $g$ is surjective, there exists a $c \in C$ such that $g(c) = d$. In particular, since $g \circ f$ exists, we know that this $c$ is in the range of $f$, which means that $c \in B$. Since $f$ is surjective, we know that there exists an $a \in A$ such that $f(a) = c$ (remember, this $c$ is also in $B$). We note that this element $a \in A$ satisfies
+        \[
+            g(f(a)) = g(c) = d
+        \]
+        so a preimage of $d$ under $g \circ f$ is $a$. It follows that $g \circ f$ is surjective.
+    \end{proof}
 \end{questions}

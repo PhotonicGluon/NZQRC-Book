@@ -791,7 +791,7 @@ The composition of two injective functions is also interesting.
 
 It is not a coincidence that the composition of injective functions is also injective.
 
-\begin{proposition}[Composition of Injective Functions is Injective]
+\begin{proposition}[Injective Function Composition is Injective]\label{prop:composition-of-injective-functions-is-injective}
     Let $A$, $B$, $C$, and $D$ be sets. Let $f: A \to B$ and $g: C \to D$ be injections such that $g \circ f$ is defined. Then $g \circ f$ is an injection.
 \end{proposition}
 \begin{proof}
@@ -815,4 +815,55 @@ It is not a coincidence that the composition of injective functions is also inje
     \end{partquestions}
 \end{exercise}
 
-% TODO: Give result of composition with surjections
+One may notice a similar phenomenon occurring with the composition of surjective functions.
+
+\begin{example}[Composition of Surjective Functions]
+    Let $A = \{a,b,c,d,e\}$, $B = \{\text{I}, \text{II}, \text{III}, \text{IV}\}$, and $C = \{1, 2, 3\}$. Define the functions $f: A \to B$ and $g: B \to C$ such that
+    \[
+        f = \{(a, \text{II}), (b, \text{III}), (c, \text{I}), (d, \text{IV}), (e, \text{I})\}
+    \]
+    and
+    \[
+        g = \{(\text{I}, 2), (\text{II}, 1), (\text{III}, 1), (\text{IV}, 3)\}.
+    \]
+    We can draw their individual effects as follows.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-surjections_abc.png}
+        \caption{Arrow Diagrams of $f$ and $g$, On The Same Diagram}
+    \end{figure}
+
+    The overall composition of $f$ and $g$ is
+    \[
+        g \circ f = \{(a, 1), (b, 1), (c, 2), (d, 3), (e, 2)\}
+    \]
+    which has an arrow diagram as follows.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-surjections_ac.png}
+        \caption{Arrow Diagram of $g \circ f$}
+    \end{figure}
+    One easily verifies that $g \circ f$ is also surjective.
+\end{example}
+
+Again, this is not a coincidence.
+
+\begin{proposition}[Surjective Function Composition is Surjective]\label{prop:composition-of-surjective-functions-is-surjective}
+    Let $A$, $B$, $C$, and $D$ be sets. Let $f: A \to B$ and $g: C \to D$ be surjections such that $g \circ f$ is defined. Then $g \circ f$ is a surjection.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:composition-of-surjective-functions-is-surjective} (later).
+\end{proof}
+
+The overall effect of \myref{prop:composition-of-injective-functions-is-injective} and \myref{prop:composition-of-surjective-functions-is-surjective} is the following.
+
+\begin{proposition}[Bijective Function Composition is Bijective]
+    Let $A$, $B$, $C$, and $D$ be sets. Let $f: A \to B$ and $g: C \to D$ be bijections such that $g \circ f$ is defined. Then $g \circ f$ is a bijection.
+\end{proposition}
+\begin{proof}
+    Since $f$ and $g$ are bijections, they are both injective and surjective. \myref{prop:composition-of-injective-functions-is-injective} thus tells us that $g \circ f$ is injective and \myref{prop:composition-of-surjective-functions-is-surjective} tells us that $g \circ f$ is surjective, which means that $g \circ f$ is bijective.
+\end{proof}
+
+\begin{exercise}[Composition of Surjective Functions is Surjective]\label{exercise:composition-of-surjective-functions-is-surjective}
+    Prove \myref{prop:composition-of-surjective-functions-is-surjective}.
+\end{exercise}
