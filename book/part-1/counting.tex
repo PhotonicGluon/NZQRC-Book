@@ -1,8 +1,80 @@
+%=========== Custom Commands =============
+\makeatletter
+\NewDocumentEnvironment{dialogue}{mmO{1em}O{1em}}
+{
+    % Set up persons
+    \newcommand*{\personA}{\textsc{#1}:~}
+    \newcommand*{\personB}{\textsc{#2}:~}
+
+    % Create environment
+    \begin{itemize}[leftmargin=#3, rightmargin=#4, label={}]  % Remove label
+}
+{
+    \end{itemize}
+}
+\makeatother
+
+%=========================================
 \Chapter{Counting and Cardinality}
 \Lettrine[loversize=0.1,nindent=2pt]{Ironically}, it is often the case that rigorously defining something intuitive turns out to be exceedingly tricky. Such is the case of counting. Counting the number of things in a collection seems obvious, but creating a watertight protocol for counting is more challenging than it appears at first glance.
 
 \section{The Problem With `Intuitive' Counting}
-TODO: Add
+One would be hard-pressed to disagree that counting is such an obvious and trivial task that it is not worth dedicating an entire chapter to it. The very idea of saying how many things exist is, to us, deeply ingrained in our biology. Why do we need to define counting?
+
+The core issue with counting is ensuring everyone agrees on how many items are there. Surely this task is trivial! Simply tally how many things there are! How hard can it be to make everyone agree on the number of items?
+
+In the spirit of Socratic dialogue, let us examine two characters attempting to agree on how many shapes were drawn on a field.
+
+\begin{dialogue}{Archilles}{Tortoise}[1.5em][1.5em]
+    \item \textit{Achilles, the mightiest of Greek warriors, had been waiting on a barren field. With his mighty sword, he had been drawing shapes in the dirt to pass the time.}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=5cm]{images/part-1/counting/five-count_items-only.png}
+    \end{figure}
+    \textit{A certain Tortoise, fresh from his victory over a certain hare, came upon him thus engaged.}
+    \item \personB You seem deep in contemplation.
+    \item \personA Indeed I am. I find myself puzzling over the most elementary concept -- the nature of counting itself.
+    \item \personB Counting! That must be the simplest thing anyone could do! I can demonstrate it to you with the shapes you've drawn. There're six of them, you see.
+    \item \textit{Achilles was shaken out of his revere upon hearing that comment.}
+    \item \personA \textit{Six}? My dear friend, that's quite impossible! How do you arrive at such a count?
+    \item \personB Nothing simpler. I'll demonstrate by labelling them.
+    \item \textit{With great satisfaction, the Tortoise, upon producing a stick, proceeded to mark several of the shapes multiple times until he indeed reached the number six.}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=5cm]{images/part-1/counting/five-count_noninj-nonsurj.png}
+    \end{figure}
+    \item \personA Preposterous! You can't count the same shape more than once!
+    \item \personB Ah, my mistake. In that case, there are three shapes.
+    \item \textit{And he proceeds to label only some of the shapes, leaving others unmarked entirely.}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=5cm]{images/part-1/counting/five-count_yesinj-nonsurj.png}
+    \end{figure}
+    \textit{Achilles, who started to show signs of the same despair that would later plague him in matters of logic, protested.}
+    \item \personA No, no -- every shape must have at least one label!
+    \item \personB Oh, I didn't know that was a requirement. Well, then--    
+    \item \textit{He proceeded to label all shapes but the star, which he crossed out with particular vigour.}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=5cm]{images/part-1/counting/five-count_no-star.png}
+    \end{figure}
+    \item \personB That spiky thing hardly counts as a shape, so we have exactly four shapes.
+    \item \textit{Achilles, with what patience he could still muster, attempted to query the Tortoise again.}
+    \item \personA Let us suppose that 'spiky thing' -- which, I might add, is called a star -- is a shape. I hope you grant me at least this much.
+    \item \personB Of course.
+    \item \personA How many shapes would you count then?    
+    \item \textit{The Tortoise considered this for a moment, then brightened, and declared thus--}
+    \item \personB Seven!
+    \item \textit{--and proceeded to demonstrate this absurdity with yet another creative labelling system.}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=5cm]{images/part-1/counting/five-count_noninj-yessurj.png}
+    \end{figure}
+    \item \textit{At this point, Achilles -- who would later spend countless hours discussing the logistics of logical propositions with this same Tortoise -- decided that discretion was the better part of valour and walked away without another word.}
+\end{dialogue}
+
+% TODO: Continue
+
 % Give an example of how systems could "count" the number of items in a set differently
 
 \section{An Introduction to Cardinality}
