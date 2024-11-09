@@ -81,7 +81,7 @@ Of course, this is a contrived example, but it is important to ask where it went
 With this in mind, how do determine how many elements exist in a set?
 
 \section{An Introduction to Cardinality}
-\begin{definition}[Cardinality]
+\begin{definition}[Cardinality]\label{definition:cardinality}
     \term{Cardinality}\index{cardinality}\index{set!cardinality} describes a relationship between sets which compares their relative size. The cardinality of a set $A$ is denoted $|A|$.
 \end{definition}
 
@@ -121,7 +121,27 @@ This should be intuitive for finite sets -- if we can pair the elements of two s
 This way of defining equal cardinality addresses the two issues that we noted when trying to count the shapes earlier. Every element must be accounted for, and every element must be counted at most once.
 
 \subsection{Injections and Cardinality}
-% Define that |A| <= |B| iff injection exists (|A| < |B| iff injection exists and B has at least one element not in A)
+What happens when we try and measure the cardinality of two sets that do not have a bijection between them?
+
+\begin{example}[Non-Equinumerous Sets]
+    Consider the sets $A = \{a,b,c,d\}$ and $B = \{v,w,x,y,z\}$. No matter how hard we try, we cannot find a bijection between these two sets. There seems to always be at least one element left unmapped from $A$ to $B$.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/counting/non-equinumerous-sets.png}
+        \caption{Arrow Diagram by Some Function $f$}
+    \end{figure}
+\end{example}
+
+Okay, let us try weakening the condition for the function $f$ in \myref{definition:cardinality}. What happens if we don't require $f$ to be surjective (i.e., $f$ is injective only). Of course, if $f$ is surjective we can still conclude that $|A| = |B|$. What happens when we can only find injective functions from $A$ to $B$? Just like the previous example, we can see that the set $B$ is `larger' than the set $A$. This motivates the definition of smaller cardinality.
+
+\begin{definition}[Smaller (or Equal) Cardinality]\index{cardinality!smaller}
+    Let $A$ and $B$ be sets. Then $A$ has a cardinality smaller than or equal to $B$ (i.e., $|A| \leq |B|$) if and only if there exists an injection $f: A \to B$.
+    
+    We say that $A$ has a cardinality smaller than $B$ (i.e., $|A| < |B|$) if and only if $|A| \leq |B|$ and there does not exist a bijection from $A$ to $B$.
+\end{definition}
+
+% TODO: What about surjections?
+% TODO: Add more?
 
 \subsection{Cantor-Schr\"oder-Bernstein}
 % TODO: Add
