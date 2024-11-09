@@ -81,11 +81,50 @@ Of course, this is a contrived example, but it is important to ask where it went
 With this in mind, how do determine how many elements exist in a set?
 
 \section{An Introduction to Cardinality}
-TODO: Add
-% Introduce Cantor and his three definitions:
-%   - Define that |A| <= |B| iff injection exists (|A| < |B| iff injection exists and B has at least one element not in A)
-%   - Define that |A| >= |B| iff surjection exists (|A| > |B| iff surjection exists and A has at least one element not in B)
-%   - Define that |A| = |B| iff bijection exists
+\begin{definition}[Cardinality]
+    \term{Cardinality}\index{cardinality}\index{set!cardinality} describes a relationship between sets which compares their relative size. The cardinality of a set $A$ is denoted $|A|$.
+\end{definition}
+
+It turns out that the cardinality of a finite set is the number of elements inside the set. Of course, defining the notion of cardinality only for finite sets defeats the purpose of defining counting -- how do we know how many elements are inside the set in the first place? To that end, let us \textbf{not} define cardinality of a set directly; instead, let us define the relationships between cardinalities, an approach adopted by the originator of set theory, Georg Ferdinand Cantor, around 1880.
+
+\subsection{Bijections and Cardinality}
+\begin{definition}[Equal Cardinality]\index{cardinality!equality}
+    Let $A$ and $B$ be sets. Then $A$ and $B$ have equal cardinality (i.e., $|A| = |B|$) if and only if there exists a bijection $f: A \to B$. Such sets are called \term{equinumerous}\index{equinumerous}\index{cardinality!equinumerous}.
+\end{definition}
+
+This should be intuitive for finite sets -- if we can pair the elements of two sets up exactly, they should have the same number of elements (which is analogous to their cardinalities).
+
+\begin{example}[Equinumerous Sets]
+    Let $A = \{a,b,c,d\}$ and $B = \{w,x,y,z\}$. We can define a bijection $f: A \to B$ where
+    \[
+        f = \{(a, w), (b, x), (c, y), (d, z)\}.
+    \]
+    So $|A| = |B|$, i.e. $A$ and $B$ are equinumerous.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/counting/equinumerous-sets_f.png}
+        \caption{Arrow Diagram of the Bijection $f$}
+    \end{figure}
+    Of course, there are other possible bijections. For example, the function $g: A \to B$ where
+    \[
+        g = \{(a, z), (b, x), (c, w), (d, y)\}
+    \]
+    is also a bijection.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/counting/equinumerous-sets_g.png}
+        \caption{Arrow Diagram of the Bijection $g$}
+    \end{figure}
+    The key thing that we need to show is that there exists at least one bijection. As long as we can find one such bijection, we can conclude that two sets are equinumerous.
+\end{example}
+
+This way of defining equal cardinality addresses the two issues that we noted when trying to count the shapes earlier. Every element must be accounted for, and every element must be counted at most once.
+
+\subsection{Injections and Cardinality}
+% Define that |A| <= |B| iff injection exists (|A| < |B| iff injection exists and B has at least one element not in A)
+
+\subsection{Cantor-Schr\"oder-Bernstein}
+% TODO: Add
 
 \section{Finite Counting}
 TODO: Add
