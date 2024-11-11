@@ -1,0 +1,14 @@
+\section{Counting}
+\begin{questions}
+    % Complete the Proof!
+    \item \begin{proof}
+        Suppose there is an injection from $B$ to $A$, say $g$. Define a function $f: A \to B$ such that
+        \[
+            f(a) = \begin{cases}
+                b \text{ where } g(b) = a & \text{if } a \text{ in the range of } g\\
+                b_0 \text{ where } b_0 \text{ is a fixed element in } B & \text{otherwise}
+            \end{cases} 
+        \]
+        We show that $f$ is a surjection. Suppose $b \in B$. Note that $g(b)$ is the preimage of $b$ under $f$ since the first case in the definition of $f$ clearly reduces to $f(g(b)) = b$. Thus $f$ is a surjection, and therefore $|A| \geq |B|$ by \myref{definition:larger-or-equal-cardinality}.
+    \end{proof}
+\end{questions}

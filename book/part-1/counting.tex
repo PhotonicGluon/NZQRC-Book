@@ -89,7 +89,7 @@ It turns out that the cardinality of a finite set is the number of elements insi
 
 \subsection{Bijections and Cardinality}
 \begin{definition}[Equal Cardinality]\index{cardinality!equality}
-    Let $A$ and $B$ be sets. Then $A$ and $B$ have equal cardinality (i.e., $|A| = |B|$) if and only if there exists a bijection $f: A \to B$. Such sets are called \term{equinumerous}\index{equinumerous}\index{cardinality!equinumerous}.
+    Let $A$ and $B$ be sets. Then $A$ and $B$ have equal cardinality (denoted $|A| = |B|$) if and only if there exists a bijection $f: A \to B$. Such sets are called \term{equinumerous}\index{equinumerous}\index{cardinality!equinumerous}.
 \end{definition}
 
 This should be intuitive for finite sets -- if we can pair the elements of two sets up exactly, they should have the same number of elements (which is analogous to their cardinalities).
@@ -120,7 +120,7 @@ This should be intuitive for finite sets -- if we can pair the elements of two s
 
 This way of defining equal cardinality addresses the two issues that we noted when trying to count the shapes earlier. Every element must be accounted for, and every element must be counted at most once.
 
-\subsection{Injections and Cardinality}
+\subsection{Injections/Surjections and Cardinality}
 What happens when we try and measure the cardinality of two sets that do not have a bijection between them?
 
 \begin{example}[Non-Equinumerous Sets]
@@ -134,14 +134,38 @@ What happens when we try and measure the cardinality of two sets that do not hav
 
 Okay, let us try weakening the condition for the function $f$ in \myref{definition:cardinality}. What happens if we don't require $f$ to be surjective (i.e., $f$ is injective only). Of course, if $f$ is surjective we can still conclude that $|A| = |B|$. What happens when we can only find injective functions from $A$ to $B$? Just like the previous example, we can see that the set $B$ is `larger' than the set $A$. This motivates the definition of smaller cardinality.
 
-\begin{definition}[Smaller (or Equal) Cardinality]\index{cardinality!smaller}
-    Let $A$ and $B$ be sets. Then $A$ has a cardinality smaller than or equal to $B$ (i.e., $|A| \leq |B|$) if and only if there exists an injection $f: A \to B$.
+\begin{definition}[Smaller (or Equal) Cardinality]\index{cardinality!smaller}\label{definition:smaller-or-equal-cardinality}
+    Let $A$ and $B$ be sets. Then $A$ has a cardinality smaller than or equal to $B$ (denoted $|A| \leq |B|$) if and only if there exists an injection $f: A \to B$.
     
-    We say that $A$ has a cardinality smaller than $B$ (i.e., $|A| < |B|$) if and only if $|A| \leq |B|$ and there does not exist a bijection from $A$ to $B$.
+    We say that $A$ has a cardinality smaller than $B$ (denoted $|A| < |B|$) if and only if $|A| \leq |B|$ and there does not exist a bijection from $A$ to $B$.
 \end{definition}
 
-% TODO: What about surjections?
-% TODO: Add more?
+What if a surjection from $A$ to $B$ exists? What can we conclude?
+
+\begin{definition}[larger (or Equal) Cardinality]\index{cardinality!larger}\label{definition:larger-or-equal-cardinality}
+    Let $A$ and $B$ be sets. Then $A$ has a cardinality larger than or equal to $B$ (denoted $|A| \geq |B|$) if and only if there exists a surjection $f: A \to B$.
+    
+    We say that $A$ has a cardinality larger than $B$ (denoted $|A| > |B|$) if and only if $|A| \geq |B|$ and there does not exist a bijection from $A$ to $B$.
+\end{definition}
+
+Wait a minute, does \myref{definition:smaller-or-equal-cardinality} agree with \myref{definition:larger-or-equal-cardinality}? That is, if we have two sets $A$ and $B$, if $|A| \leq |B|$, do we also have $|B| \geq |A|$? It turns out that we do.
+
+\begin{theorem}[Agreement of \myref{definition:smaller-or-equal-cardinality} and \myref{definition:larger-or-equal-cardinality}]\label{theorem:agreement-of-cardinality-definitions}
+    Let $A$ and $B$ be sets. Then $|A| \geq |B|$ if and only if there exists an injection from $B$ to $A$.
+\end{theorem}
+\begin{proof}
+    We only prove the forward direction here and leave the reverse direction for \myref{exercise:agreement-of-cardinality-definitions} (later).
+
+    Suppose $|A| \geq |B|$. By \myref{definition:larger-or-equal-cardinality} this means that there exists a surjection from $A$ to $B$, say $f$. Our goal is to construct an injection, say $g$, from $B$ to $A$. 
+    
+    First, because $f$ is surjective, which means that for any $b \in B$ there exists at least one $a \in A$ such that $f(a) = b$. So define a function $g: B \to A$ such that $g(b) = a$ for one specific $a$ where $f(a) = b$ for all $b \in B$. Note that we specifically choose only one $a$ per $b$ for the definition of $g$, which makes it a valid function.
+
+    Now we need to prove that $g$ is injective. Suppose $g(b_1) = g(b_2)$ for some $b_1, b_2 \in B$. Let $g(b_1) = a$ (which also means $g(b_2) = a$ too). By definition of $g$, we must have $f(a) = b_1$ and $f(a) = b_2$, which means $b_1 = b_2$. Hence $g$ is injective, completing the forward direction.
+\end{proof}
+
+\begin{exercise}[Complete the Proof!]\label{exercise:agreement-of-cardinality-definitions}
+    Complete the proof of \myref{theorem:agreement-of-cardinality-definitions}.
+\end{exercise}
 
 \subsection{Cantor-Schr\"oder-Bernstein}
 % TODO: Add
