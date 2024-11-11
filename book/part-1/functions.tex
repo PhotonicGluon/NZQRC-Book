@@ -877,7 +877,7 @@ Unlike the other axioms, it is more enlightening to present its statement using 
 \begin{axiom}[Choice]\label{axiom:choice}\index{axiom!of choice}\index{Zermelo-Frankel Set Theory!choice}
     \vspace{-10px}
     \[
-        \forall X, \left((X \neq \emptyset) \implies \exists \left(f: X \to \bigcup_{A \in X} A\right) \text{ s.t. } \forall A \in X, f(A) \in A\right)
+        \forall X, \left((\emptyset \notin X) \implies \exists \left(f: X \to \bigcup_{A \in X} A\right) \text{ s.t. } \forall A \in X, f(A) \in A\right)
     \]
 \end{axiom}
 
@@ -902,6 +902,37 @@ In effect, what we are doing is choosing one element from each of the sets in $X
     \includegraphics[height=6cm]{images/part-1/functions/axiom-of-choice.png}
     \caption{Action of the Choice Function $f$}
 \end{figure}
+
+\subsection{The Necessity of the Axiom of Choice}
+% TODO: Vet this explanation
+One might wonder why we need to have the axiom of choice. Can't we always pick an element from each set within a collection of sets?
+
+Suppose we have a set. It could be finite, it could be infinite, but we can definitely pick an element from it and place it in a singleton set. What if we have a finite collection of (finite or infinite) sets? We can still pick elements from them and place them in a finite set. The trouble comes when we are picking elements from an infinite number of sets. Our process of picking an elements from (possibly infinite) sets only work if we have a finite number of sets. If we have an infinite number of sets, we can never truly finish picking elements from them if we pick them `manually'!
+
+For some infinite collections of infinite sets, we still have a chance to pick elements using a certain rule.
+
+\begin{example}
+    (\textit{Assume multiplication of natural numbers is defined, and that there is ordering within the natural numbers.}) 
+    
+    Let $N_k$ denote the set
+    \[
+        \{x \in \N \vert \exists m \in \N \text{ s.t. } x = km\}.
+    \]
+    Consider the set of sets
+    \[
+        X = \{N_k \vert k \in \N \setminus \{0\}\}.
+    \]
+    
+    How might we define a procedure that picks an element from each of the sets in $X$, without using the axiom of choice? We could say ``pick the smallest element from each of the sets''. This is okay -- the element that we pick from each $N_k$ is $k$ itself, so the final set of chosen elements is
+    \[
+        \{1, 2, 3, \dots, k, \dots\}
+    \]
+    which is exactly $\N$.
+\end{example}
+
+However, not every set has such a nice rule for us to use. For example, consider an infinite set of pairs of socks. The left socks and right socks are both functionally identical, so we can't actually distinguish them when we are choosing socks. Especially when we are picking socks from a collection of infinite pairs of socks, we can't distinguish between left and right.
+
+This is where the axiom of choice comes in. It states that we can define a function, no matter how complicated or how difficult it is, that picks an element from each of the sets in $X$. For the socks, it doesn't matter that we can't distinguish them, the function's existence will do the job for us.
 
 \subsection{Applications}
 TODO: Add
