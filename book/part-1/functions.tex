@@ -868,4 +868,42 @@ The overall effect of \myref{prop:composition-of-injective-functions-is-injectiv
     Prove \myref{prop:composition-of-surjective-functions-is-surjective}.
 \end{exercise}
 
-% TODO: Add axiom of choice?
+\section{Axiom of Choice}
+We end this chapter by looking at the penultimate axiom of \ZFC, and its namesake -- the axiom of choice.
+
+\subsection{The Axiom}
+Unlike the other axioms, it is more enlightening to present its statement using the language of functions, and not directly using the formal language of axiomatic set theory.
+
+\begin{axiom}[Choice]\label{axiom:choice}\index{axiom!of choice}\index{Zermelo-Frankel Set Theory!choice}
+    \vspace{-10px}
+    \[
+        \forall X, \left((X \neq \emptyset) \implies \exists \left(f: X \to \bigcup_{A \in X} A\right) \text{ s.t. } \forall A \in X, f(A) \in A\right)
+    \]
+\end{axiom}
+
+Let us unpack what this axiom says. For any non-empty set $X$, there exists a function $f$ from $X$ to the union of all the elements (which are sets) of $X$ such that for any such element (set) in $X$, say $A$, the function maps $A$ to an element in $A$. The function $f$ is called a \term{choice function}\index{choice function}\index{function!choice}.
+
+Let us illustrate the process that \myref{axiom:choice} performs. Suppose we have a set $X$, where
+\[
+    X = \left\{\{1, 2, 3\}, \{\text{I}, \text{II}, \text{III}, \text{IV}, \text{V}\}, \{a, b, c, d\}\right\}.
+\]
+Clearly $X$ is non-empty. So \myref{axiom:choice} tells us there is a function from $X$ to $\cup_{A\in X} A$ such that $f(A) \in A$ for all $A \in X$. Note that
+\[
+    \bigcup_{A \in X} A = \{1, 2, 3, \text{I}, \text{II}, \text{III}, \text{IV}, \text{V}, a, b, c, d\}.
+\]
+So a possible choice function $f$ is
+\[
+    f = \{(\{1, 2, 3\}, 2), (\{\text{I}, \text{II}, \text{III}, \text{IV}, \text{V}\}, \text{III}), (\{a,b,c,d\}, a)\}.
+\]
+In effect, what we are doing is choosing one element from each of the sets in $X$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=6cm]{images/part-1/functions/axiom-of-choice.png}
+    \caption{Action of the Choice Function $f$}
+\end{figure}
+
+\subsection{Applications}
+TODO: Add
+
+% Add applications of the axiom of choice
