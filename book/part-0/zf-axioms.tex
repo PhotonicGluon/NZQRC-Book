@@ -2,9 +2,9 @@
 \Lettrine[loversize=0.1,nindent=0pt]{Paradoxes} are the bane of creating a consistent system in mathematics. However, set theory, as we have introduced it, is full of paradoxes. For example, as stated so far, a set could contain itself. However, this leads to Russell's paradox of the set of all sets that are not members of themselves. To that end, we look at a more axiomatic definition of what sets are, inspired by the work of Ernst Zermelo and Abraham Fraenkel, to create a system that is (hopefully) devoid of paradoxes.
 
 \section{Zermelo-Fraenkel Set Theory}
-The modern study of set theory was initiated by Richard Dedekind and Georg Cantor in the 19th century. Unfortunately, these early systems are rife with paradoxes, prompting the creation of more robust axiomatic systems. Zermelo-Fraenkel set theory\index{Zermelo-Frankel Set Theory} (often abbreviated as \ZF\index{ZF}) is the most is still the best-known and most studied, and it will be what we use to define numbers from the ground up.
+The modern study of set theory was initiated by Richard Dedekind and Georg Cantor in the 19th century. Unfortunately, these early systems are rife with paradoxes, prompting the creation of more robust axiomatic systems. Zermelo-Fraenkel set theory\index{Zermelo-Frankel Set Theory} with the axiom of choice (often abbreviated as \ZFC\index{ZFC}) is the most is still the best-known and most studied, and it will be what we use to define numbers from the ground up.
 
-\ZF~has 9 main axioms.
+\ZFC~has 10 main axioms.
 
 \begin{enumerate}
     \item \textbf{Axiom of Extensionality}: Two sets are equal if they have the same elements.
@@ -13,26 +13,27 @@ The modern study of set theory was initiated by Richard Dedekind and Georg Canto
     \item \textbf{Axiom of Union}: The union of the elements in a set exists.
     \item \textbf{Axiom Schema of Specification}: An axiom describing how a set can be created using set-builder notation.
     \item \textbf{Axiom of Regularity}: Every non-empty set $A$ contains an element $B$ which is disjoint from $A$. This is used to prevent paradoxes about sets containing themselves.
-    \item \textbf{Axiom Schema of Replacement}: The image of any function exists.
     \item \textbf{Axiom of Infinity}: An infinite set exists.
+    \item \textbf{Axiom Schema of Replacement}: The image of any function exists.
+    \item \textbf{Axiom of Choice}: a Cartesian product of a collection of non-empty sets is non-empty.
     \item \textbf{Axiom of Power Set}: The power set of any set exists.
 \end{enumerate}
 \begin{remark}[Axiom of Choice]
-    There is a controversial tenth axiom, called the \textbf{Axiom of Choice}. Essentially, it states that a Cartesian product of a collection of non-empty sets is non-empty. This also includes sets that are infinite. \ZF~with the axiom of choice included is usually denoted \textsf{ZFC}\index{ZFC}. However, for our exploration of number here, we do not require the axiom of choice.    
+    The Axiom of Choice is a controversial axiom, and some authors may choose to omit it. \ZFC~without the axiom of choice included is usually denoted \textsf{ZF}\index{ZF}. However, for our exploration of numbers here, we require the axiom of choice.    
 \end{remark}
 \begin{remark}[Choice of Axioms]
-    Apart from the controversial axiom of choice, the names and statements of the axioms in \ZF~are, frustratingly, inconsistent.
+    The names and statements of the axioms in \ZFC~are, frustratingly, inconsistent.
     \begin{itemize}
         \item Some authors call the axiom schema of specification the axiom of subsets.
         \item Some call the axiom of foundation the axiom of regularity.
         \item Many authors will group the axiom of the empty set along with the axiom of infinity.
     \end{itemize}
-    The 9 axioms that we look here are what should be the most illuminating and essential ones.
+    The 10 axioms that we look here are what should be the most illuminating and essential ones.
 \end{remark}
 
-An important thing to note when we are working in \ZF~is that \textbf{everything is a set}. The foundational object that we are discussing is the set, and we are defining everything in terms of sets. We are simply specifying that the properties of these objects (sets) are. Thus awkward notation like $a \in b$ or $1 \cup 2$ is readily explained way when we remember that all objects are sets.
+An important thing to note when we are working in \ZFC~is that \textbf{everything is a set}. The foundational object that we are discussing is the set, and we are defining everything in terms of sets. We are simply specifying that the properties of these objects (sets) are. Thus awkward notation like $a \in b$ or $1 \cup 2$ is readily explained way when we remember that all objects are sets.
 
-To avoid overloading content at this juncture, we will only look at the first six of the nine axioms of \ZF. The rest will be introduced in later chapters as required.
+To avoid overloading content at this juncture, we will only look at the first six of the ten axioms of \ZFC. The rest will be introduced in later chapters as required.
 
 \section{Axiom of Extensionality}
 The first axiom that we will look at is the axiom of extensionality.
@@ -75,7 +76,7 @@ We now consider sets with one element.
     A \term{singleton}\index{singleton} is a set containing one element. We denote a singleton containing the element $x$ by $\{x\}$.
 \end{definition}
 
-\myref{axiom:pairing} allows us to definitively prove within \ZF~that singletons exist.
+\myref{axiom:pairing} allows us to definitively prove within \ZFC~that singletons exist.
 
 \begin{proposition}[Singletons Exist]\label{prop:singletons-exist}
     Singletons exist. Formally,
@@ -117,7 +118,7 @@ We now consider sets with one element.
 \end{proof}
 
 \section{Axiom of Union}
-Remember how we can take the union of sets? This next axiom explicitly gives us that operation within \ZF.
+Remember how we can take the union of sets? This next axiom explicitly gives us that operation within \ZFC.
 
 \begin{axiom}[Union]\label{axiom:union}\index{axiom!union}\index{Zermelo-Frankel Set Theory!union}
     \[
@@ -125,7 +126,7 @@ Remember how we can take the union of sets? This next axiom explicitly gives us 
     \]
 \end{axiom}
 
-We can interpret this in English as saying that given any set $A$, there exists a set $U$ (the union) such that any element $x$ in $U$ must be in some set $S$ in $A$ (recalling that everything is thought of as a set in \ZF).
+We can interpret this in English as saying that given any set $A$, there exists a set $U$ (the union) such that any element $x$ in $U$ must be in some set $S$ in $A$ (recalling that everything is thought of as a set in \ZFC).
 
 The combination of \myref{axiom:pairing} and \myref{axiom:union} allows us to create a set from an arbitrary list of items.
 
@@ -298,7 +299,7 @@ This is a paradox! If $R$ contains $R$ then $R$ does not contain $R$; if $R$ doe
 \subsection{The Axiom}
 To avoid issues of sets containing themselves (and paradoxes like those mentioned earlier), we introduce the axiom of regularity in an attempt to regulate what sets can contain.
 
-Essentially, the axiom states that any non-empty set must contain at least one element (which is a set in \ZF) that has no elements in common with the original set. More formally, we can write this axiom as
+Essentially, the axiom states that any non-empty set must contain at least one element (which is a set in \ZFC) that has no elements in common with the original set. More formally, we can write this axiom as
 \[
     \forall A \left(A \neq \emptyset \implies \exists x \left(x \in A  \land x \cap A = \emptyset\right)\right).
 \]
@@ -314,4 +315,4 @@ With this we can state the axiom of regularity in a more formal language.
     \]
 \end{axiom}
 
-With the axiom of regularity, our foundations for \ZF~are set. We are now ready to define numbers, starting with the naturals.
+With the axiom of regularity, our foundations for \ZFC~are set. We are now ready to define numbers, starting with the naturals.

@@ -1,5 +1,5 @@
 \Chapter{Defining Natural Numbers}
-\Lettrine[loversize=0.1,nindent=0pt]{To} define all the numbers, we have to start with the most basic of numbers -- the natural numbers. The natural numbers are the most basic of all numbers. They are considered our counting numbers, and understanding how they can be defined using the axioms of Zermelo-Frankel theory is essential for continuing to create the rest of the numbers.
+\Lettrine[loversize=0.1,nindent=0pt]{To} define all the numbers, we have to start with the most basic of numbers -- the natural numbers. The natural numbers are the most basic of all numbers. They are considered our counting numbers, and understanding how they can be defined using the axioms of \ZFC~is essential for continuing to create the rest of the numbers.
 
 \section{The Need for Abstraction}
 So why go through all this trouble to define the natural numbers? Surely everyone can agree what a natural number is?
@@ -14,7 +14,7 @@ What they all encapsulate is that there is a certain number of things. And \text
 
 Of course, when it comes to asking what 3 is, at a fundamental level, we need to have a representative for the concept of 3. This is just like how Physics moved away from defining the SI base units using physical objects and their properties, and instead defining them using fundamental physical constants of the Universe. Although they have shifted the burden away from a specific instance of the physical artefact, they still need one for practical use. Likewise, although we can abstract away the idea of 3, we still need a representative for 3.
 
-In this chapter, we will be focusing on defining the natural numbers using a set-theoretic approach. In particular, we will use \ZF~to construct representatives for \textbf{all} the natural numbers. That way, we will have no ambiguity when we discuss what 3, or 12, or 83, or 1289, or 89338, etc., really means at a fundamental level.
+In this chapter, we will be focusing on defining the natural numbers using a set-theoretic approach. In particular, we will use \ZFC~to construct representatives for \textbf{all} the natural numbers. That way, we will have no ambiguity when we discuss what 3, or 12, or 83, or 1289, or 89338, etc., really means at a fundamental level.
 
 \section{Defining Zero}
 The act of defining numbers has to start somewhere. The natural numbers all represent a certain quantity of things -- 3 things, 12 things, 83 things, 1289 things, 89338 things, etc. The problem with defining these other numbers without a good starting point is that there can be an argument of what these numbers really mean at a fundamental level. What is a ``thing''? How do we count these ``things''? How can we ensure that others count these ``things'' the same way? That is why we will start with zero -- the absence of anything.
@@ -27,7 +27,7 @@ The act of defining numbers has to start somewhere. The natural numbers all repr
 
 While other numbers (say 1) can have ambiguity of what they mean (e.g., 1 car, 1 square, 1 point, 1 circle, etc.), 0 necessarily means that there is nothing. It represents the absence of anything, and it does not matter what the type of ``thing'' is. We can agree that, whatever the ``thing'' is, they are not there, and the quantity of that number of items is 0.
 
-Let us appeal to the notion of sets to further elaborate on this. There are many sets that contain 3 items. For example, the sets $\{a, b, c\}$, $\{1, 2, 3\}$, $\{x, y, z\}$, $\{0, 1, 2\}$, $\{+, -, /\}$, and $\{\text{hi}, \text{hello}, \text{bye}\}$ all contain 3 items. But there is one set that contains zero items -- the empty set. Any other set containing zero items must necessarily be the equal to the empty set, since the items in a set uniquely define a set by the \ZF~axiom of extensionality (\myref{axiom:extensionality}).
+Let us appeal to the notion of sets to further elaborate on this. There are many sets that contain 3 items. For example, the sets $\{a, b, c\}$, $\{1, 2, 3\}$, $\{x, y, z\}$, $\{0, 1, 2\}$, $\{+, -, /\}$, and $\{\text{hi}, \text{hello}, \text{bye}\}$ all contain 3 items. But there is one set that contains zero items -- the empty set. Any other set containing zero items must necessarily be the equal to the empty set, since the items in a set uniquely define a set by the \ZFC~axiom of extensionality (\myref{axiom:extensionality}).
 
 As such, we may define the number zero to be the empty set.
 \begin{definition}[Zero]\index{zero}
@@ -36,7 +36,7 @@ As such, we may define the number zero to be the empty set.
         0 = \emptyset.
     \]
 \end{definition}
-This is definitely a little odd. Why are we defining a number to be a set? Recall that \textbf{everything is a set} under the axioms of \ZF. Thus every number must necessarily be a set. We might as well define 0, which represents the absence of anything, to be the empty set, the set devoid of everything. Surely any other choice of set that defines 0 would be absurd; why would we pick a non-empty set containing something to represent the lack of anything? Under this light, setting $0 = \emptyset$ is completely natural.
+This is definitely a little odd. Why are we defining a number to be a set? Recall that \textbf{everything is a set} under the axioms of \ZFC. Thus every number must necessarily be a set. We might as well define 0, which represents the absence of anything, to be the empty set, the set devoid of everything. Surely any other choice of set that defines 0 would be absurd; why would we pick a non-empty set containing something to represent the lack of anything? Under this light, setting $0 = \emptyset$ is completely natural.
 
 \section{Successor}
 Okay, we have defined zero. But what about the rest of the natural numbers?
@@ -121,10 +121,10 @@ What we observe is interesting. The counter set of 1 contains the empty set (the
 \end{exercise}
 
 \section{The Set of Natural Numbers}
-With the natural numbers defined, we are almost ready to define the set of natural numbers. However, we need to return back to \ZF~to include an important axiom.
+With the natural numbers defined, we are almost ready to define the set of natural numbers. However, we need to return back to \ZFC~to include an important axiom.
 
 \subsection{Axiom of Infinity}
-As defined so far, \ZF~does not explicitly state that a set of an infinite number of elements exists. Sure, we can create a set based of a list of items (\myref{theorem:set-of-any-list-of-items}), but this only works for a \textbf{finite} number of items. We can take the union of a list of sets (\myref{theorem:union-of-finite-number-of-sets-exists}), but this works only for a \textbf{finite} number of sets. Regardless of what operations we can do so far, we are limited to a finite number of items and finite sets. Repeatedly applying operations on finite sets will still make the resultant set finite.
+As defined so far, \ZFC~does not explicitly state that a set of an infinite number of elements exists. Sure, we can create a set based of a list of items (\myref{theorem:set-of-any-list-of-items}), but this only works for a \textbf{finite} number of items. We can take the union of a list of sets (\myref{theorem:union-of-finite-number-of-sets-exists}), but this works only for a \textbf{finite} number of sets. Regardless of what operations we can do so far, we are limited to a finite number of items and finite sets. Repeatedly applying operations on finite sets will still make the resultant set finite.
 
 Thus, we need to make a leap of faith and bring into existence \textbf{one} infinite set. That is the job of the axiom of infinity -- an infinite set exists.
 
@@ -132,7 +132,7 @@ Loosely, we can state the axiom as
 \[
     \exists I ((\emptyset \in I) \land \forall x (x \in I \implies \Successor{x} \in I)),
 \]
-that is, there exists a set $I$ (an infinite set) such that the empty set is an element of $I$, and, for any element (which is a set, according to \ZF) in $I$, its successor is also in $I$. One sees that this would mean that there is an infinite number of elements in $I$ -- we can just repeatedly take the successor of elements in $I$ to create something that was not present in $I$. However, this is not stated in our formal language for axiomatic set theory. Can we make it more formal?
+that is, there exists a set $I$ (an infinite set) such that the empty set is an element of $I$, and, for any element (which is a set, according to \ZFC) in $I$, its successor is also in $I$. One sees that this would mean that there is an infinite number of elements in $I$ -- we can just repeatedly take the successor of elements in $I$ to create something that was not present in $I$. However, this is not stated in our formal language for axiomatic set theory. Can we make it more formal?
 
 The axiom of infinity asserts that an infinite set $I$ exists satisfying the following conditions:
 \begin{enumerate}[label=\textbf{I\arabic*.}]
@@ -178,6 +178,6 @@ It should come as no surprise that the set $I$ that is asserted by \myref{axiom:
     \]
 \end{definition}
 
-One can imagine the size of $\N$ as the set with the `smallest' infinity. Indeed, we will explore other sets with a larger `size' than $\N$ in future parts. But $\N$ is special as it is the only infinite set asserted by an axiom; the rest are all consequences of the \ZF~axioms, and not an axiom itself.
+One can imagine the size of $\N$ as the set with the `smallest' infinity. Indeed, we will explore other sets with a larger `size' than $\N$ in future parts. But $\N$ is special as it is the only infinite set asserted by an axiom; the rest are all consequences of the \ZFC~axioms, and not an axiom itself.
 
 The rest of this part will be spent exploring the properties of $\N$. We will explore a rigorous definition of counting using natural numbers, comparing the sizes of sets, and defining the operations on $\N$.
