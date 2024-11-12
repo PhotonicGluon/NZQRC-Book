@@ -899,7 +899,7 @@ In effect, what we are doing is choosing one element from each of the sets in $X
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=6cm]{images/part-1/functions/axiom-of-choice.png}
+    \includegraphics[height=6cm]{images/part-1/functions/axiom-of-choice_choice-function.png}
     \caption{Action of the Choice Function $f$}
 \end{figure}
 
@@ -930,15 +930,31 @@ For some infinite collections of infinite sets, we still have a chance to pick e
     which is exactly $\N$.
 \end{example}
 
-However, not every set has such a nice rule for us to use. For example, consider an infinite set of pairs of socks. The left socks and right socks are both functionally identical, so we can't actually distinguish them when we are choosing socks. Especially when we are picking socks from a collection of infinite pairs of socks, we can't distinguish between left and right.
+\begin{example}
+    Here's another simple example. Imagine you have infinitely many pairs of shoes. The fact is that, among each pair, we are able to distinguish the left shoe from the right shoe. So, if we were to define a function to choose a shoe from each of the infinitely many pairs of shoes, we can just say ``pick the right shoe''.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=2.5cm]{images/part-1/functions/axiom-of-choice_shoes.png}
+        \caption{Choosing a Shoe from Each Pair of Infinite Shoes}
+    \end{figure}
+\end{example}
+
+However, not every set has such a nice rule for us to use.
+
+\begin{example}
+    Consider an infinite set of pairs of socks. Assuming that the left sock and right sock among each pair are identical, you cannot form an explicit rule for which sock to pick from each pair, and thus cannot create a function (without using the axiom of choice, that is) that picks a sock from each pair.
+\end{example}
+
+This is where the axiom of choice comes in. The axiom of choice asserts that such a selection is still possible, even without a specific rule. So it does not matter that the socks are indistinguishable from each other within each pair, the axiom of choice simply tells us that there exists a way to select the socks.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=3cm]{images/part-1/functions/socks-all-the-way.png}
+    \includegraphics[height=2.5cm]{images/part-1/functions/axiom-of-choice_socks.png}
     \caption{Choosing a Sock from Each Pair of Infinite Socks}
 \end{figure}
 
-This is where the axiom of choice comes in. It states that we can define a function, no matter how complicated or how difficult it is, that picks an element from each of the sets in $X$. For the socks, it doesn't matter that we can't distinguish them, the function's existence will do the job for us.
+Without the axiom of choice, many standard mathematical tools become unavailable or require much more complicated proofs. Whenever we invoke the idea of choosing, the axiom of choice comes to our aid.
 
 \subsection{Applications}
 TODO: Add
