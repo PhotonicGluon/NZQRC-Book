@@ -956,7 +956,37 @@ This is where the axiom of choice comes in. The axiom of choice asserts that suc
 
 Without the axiom of choice, many standard mathematical tools become unavailable or require much more complicated proofs. Whenever we invoke the idea of choosing, the axiom of choice comes to our aid.
 
-\subsection{Applications}
-TODO: Add
+\subsection{Links to the Cartesian Product}
+The axiom of choice has many applications, but we focus on one here, which was first highlighted in the introduction to the axiom of choice in \myref{chapter:zf-axioms}.
 
-% Add applications of the axiom of choice
+\begin{theorem}[Cartesian Product of Non-Empty Sets]\label{theorem:cartesian-product-of-nonempty-sets}
+    A Cartesian product of a collection of non-empty sets is non-empty if and only if \myref{axiom:choice} holds.
+\end{theorem}
+\begin{proof}
+    % TODO: Use proof from https://planetmath.org/productofnonemptysetofnonemptysetsisnonempty?
+
+    % We only prove the forward direction here and leave the reverse direction for \myref{exercise:cartesian-product-of-nonempty-sets} (later).
+
+    % % TODO: Vet this proof
+    % Suppose the Cartesian product of any collection of non-empty sets is non-empty. That is,
+    % \[
+    %     \forall X, \left((\emptyset \notin X) \implies \left(\prod_{A \in X} A\right) \neq \emptyset \right),
+    % \]
+    % where $\prod_{A \in X} A$ denotes the Cartesian product of all the sets in $X$. We want to show \myref{axiom:choice}, i.e.
+    % \[
+    %     \forall X, \left((\emptyset \notin X) \implies \exists \left(f: X \to \bigcup_{A \in X} A\right) \text{ s.t. } \forall A \in X, f(A) \in A\right).
+    % \]
+    % So let us suppose $X$ is a set such that $\emptyset \notin X$. We note that $\bigcup_{A \in X} A$ is non-empty since each set $A$ in $X$ is non-empty. Thus by the assumption we know that $X \times \left(\bigcup_{A \in X} A\right)$ is non-empty.
+
+    % Define the set $R$ such that
+    % \[
+    %     R = \{(A, a) \vert (A \in X) \land (a \in A)\}.
+    % \]
+    % One clearly sees that $R$ is a subset of $X \times \left(\bigcup_{A \in X} A\right)$. So $R$ is actually a relation from $X$ to $\left(\bigcup_{A \in X} A\right)$. Now certainly there must exist a subset of $R$, say $f$, such that each $A$ appears once among all the pairs. This $f$ is the function we are looking for in \myref{axiom:choice}.
+\end{proof}
+
+Thus, \myref{axiom:choice} is equivalent to the fact that a Cartesian product of a collection of non-empty sets is non-empty. Note that, although we proved this fact for a finite sets, the axiom of choice is needed for the Cartesian product of sets in general, finite or infinite.
+
+\begin{exercise}[Cartesian Product of Non-Empty Sets]\label{exercise:cartesian-product-of-nonempty-sets}
+    Prove the reverse direction of \myref{theorem:cartesian-product-of-nonempty-sets}.
+\end{exercise}
