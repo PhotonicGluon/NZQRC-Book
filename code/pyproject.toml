@@ -20,13 +20,14 @@ typer = "~0.12.5"
 optional = true
 
 [tool.poetry.group.imgen.dependencies]
+ipywidgets = "^8.1.5"
 manim = "~0.18.1"
 manim-utils = { git = "https://github.com/PhotonicGluon/Manim-Utils.git" }
 jupyterlab = "~4.3.0"
 jupyterlab-night = "^0.4.6"
 notebook = "^7.2.2"
 papermill = "~2.6.0"
-tqdm = "~4.66.5"
+tqdm = "~4.67.0"
 
 [tool.poetry.group.qr]
 optional = true
