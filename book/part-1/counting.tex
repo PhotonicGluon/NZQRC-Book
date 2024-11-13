@@ -158,7 +158,7 @@ Wait a minute, does \myref{definition:smaller-or-equal-cardinality} agree with \
 
     Suppose $|A| \geq |B|$. By \myref{definition:larger-or-equal-cardinality} this means that there exists a surjection from $A$ to $B$, say $f$. Our goal is to construct an injection, say $g$, from $B$ to $A$. 
     
-    First, because $f$ is surjective, which means that for any $b \in B$ there exists at least one $a \in A$ such that $f(a) = b$. So define a function $g: B \to A$ such that $g(b) = a$ for one specific $a$ where $f(a) = b$ for all $b \in B$. Note that we specifically choose only one $a$ per $b$ for the definition of $g$, which makes it a valid function.
+    First, because $f$ is surjective, which means that for any $b \in B$ there exists at least one $a \in A$ such that $f(a) = b$. So define a function $g: B \to A$ such that $g(b) = a$ for one specific $a$ where $f(a) = b$ for all $b \in B$. Note that we specifically choose only one $a$ per $b$ for the definition of $g$, which makes it a valid function. We are able to choose this $a$ due to the axiom of choice (\myref{axiom:choice}).
 
     Now we need to prove that $g$ is injective. Suppose $g(b_1) = g(b_2)$ for some $b_1, b_2 \in B$. Let $g(b_1) = a$ (which also means $g(b_2) = a$ too). By definition of $g$, we must have $f(a) = b_1$ and $f(a) = b_2$, which means $b_1 = b_2$. Hence $g$ is injective, completing the forward direction.
 \end{proof}
