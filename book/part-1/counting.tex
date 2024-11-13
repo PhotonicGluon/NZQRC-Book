@@ -171,8 +171,64 @@ Wait a minute, does \myref{definition:smaller-or-equal-cardinality} agree with \
 % TODO: Add
 
 \section{Finite Counting}
-TODO: Add
-% Explain how we can use cardinality to define the size of finite sets, by mapping a finite set's elements to one of the counter sets
+With an introduction of cardinality out of the way, we can finally define a way to count the number of items in a finite set.
+
+\begin{example}[A Set of 5]
+    Consider the set $A = \{a, b, c, d, e\}$. One clearly sees that the set $B = \{0, 1, 2, 3, 4\}$ is equinumerous with the set $A$ by using the bijection
+    \[
+        f = \{(a, 0), (b, 1), (c, 2), (d, 3), (e, 4)\}.
+    \]
+
+    But notice that the set $B$ is exactly the counter set for 5. So, in a sense, we can write
+    \[
+        |A| = |5|.
+    \]
+\end{example}
+
+\begin{example}[A Set of 7]
+    Consider the set $A = \{73, 75, 93, 103, 848, 3742, 3999\}$. One clearly sees that the set $B = \{0, 1, 2, 3, 4, 5, 6\}$ is equinumerous with the set $A$ by using the bijection
+    \[
+        f = \{(73, 0), (75, 1), (93, 2), (103, 3), (848, 4), (3742, 5), (3999, 6)\}.
+    \]
+
+    But notice that the set $B$ is exactly the counter set for 7. So, in a sense, we can write
+    \[
+        |A| = |7|.
+    \]
+\end{example}
+
+\begin{example}[A Set of 0]
+    Consider the empty set $\emptyset$. This is exactly the counter set for 0, and thus
+    \[
+        |\emptyset| = |0|.
+    \]
+\end{example}
+
+It is surely inconvenient (and unintuitive) to use the cardinality of the counter set of a natural number. Thus, we may abuse the notation for cardinality slightly.
+
+\begin{definition}[A Slight Abuse of Cardinality of Counter Sets]
+    Define $|n| = n$ for all $n \in \N$. That is, the cardinality of the counter set of $n$ is exactly $n$.
+\end{definition}
+
+With this definition we can write the cardinality of finite sets more intuitively.
+
+\begin{example}[Cardinalities of Finite Sets]
+    \begin{itemize}[leftmargin=*]
+        \item For $A = \{a, b, c, d, e\}$, since $|A| = |5|$, we can write $|A| = 5$. This is read as ``the cardinality of $A$ is 5''.
+        \item For $A = \{73, 75, 93, 103, 848, 3742, 3999\}$ we can write $|A| = 7$, which is read ``the cardinality of $A$ is 7''.
+        \item For the empty set we can write $|\emptyset| = 0$. This can be read as ``the empty set has cardinality 0''.
+    \end{itemize}
+\end{example}
+
+\begin{exercise}[Finite Cardinalities]
+    \begin{partquestions}{\alph*}
+        \item What is the cardinality of the counter set of 7125?
+        \item What is $|373267|$?
+        \item Write down a set of cardinality 1.
+        \item What is the cardinality of $13 \cup 14$?\newline
+        (\textit{Hint: think of them as counter sets.})
+    \end{partquestions}
+\end{exercise}
 
 \section{Infinite Sets}
 TODO: Add
