@@ -964,21 +964,8 @@ The axiom of choice can be stated in many equivalent ways. We look at one of the
 \end{definition}
 
 \begin{example}
-    Consider the set $S = \{a, b, c, d, e\}$. We can use the set $I = \{1, 2, 3, 4, 5\}$ to index $S$ to get $\mathcal{S} = \{S_1, S_2, S_3, S_4, S_5\}$ where $S_1 = a$, $S_2 = b$, $S_3 = c$, $S_4 = d$, and $S_5 = e$.
+    Consider the set $S = \{a, b, c, d, e\}$. To create an indexed family of sets, we can use the set $I = \{1, 2, 3, 4, 5\}$ to index $S$ to get $\mathcal{S} = \{S_1, S_2, S_3, S_4, S_5\}$ where $S_1 = a$, $S_2 = b$, $S_3 = c$, $S_4 = d$, and $S_5 = e$.
 \end{example}
-
-% \begin{definition}[Choice Function on Indexed Collection]
-%     Let $I$ be a set and $\mathcal{S} = \{S_i\}_{i \in I}$ be a collection indexed by $I$. A \term{choice function}\index{choice function}\index{function!choice} on $\mathcal{S}$ is a function $f: I \to \bigcup_{i \in I} S_i$ such that $f(i) \in S_i$ for all $i \in I$.
-% \end{definition}
-
-% \begin{theorem}[Equivalent Statement of the Axiom of Choice]\label{theorem:axiom-of-choice-equivalent}
-%     Any indexed collection of non-empty sets has a choice function if and only if \myref{axiom:choice} holds.
-% \end{theorem}
-% \begin{proof}
-%     For the forward direction we assume any indexed collection of non-empty sets has a choice function. Now suppose $X$ is some arbitrary non-empty set.
-
-%     For the reverse direction we assume \myref{axiom:choice} holds. Suppose we have a collection of non-empty sets $\mathcal{S} =\{S_i\}_{i\in I}$ indexed by $I$. If $I = \emptyset$ then $\mathcal{S} = \emptyset$; we can use the empty function on $I$ as our choice function. So assume $I$ is non-empty. TODO: Continue
-% \end{proof}
 
 \begin{theorem}[Equivalent Statement of the Axiom of Choice]\label{theorem:axiom-of-choice-equivalent}
     \myref{axiom:choice} holds if and only if any family of sets $\mathcal{S} = \{S_i\}_{i \in I}$ indexed by $I$ has a corresponding family of sets $\mathfrak{S} = \{s_i\}_{i\in I}$ such that $s_i \in S_i$ for all $i \in I$.
@@ -994,39 +981,3 @@ The axiom of choice can be stated in many equivalent ways. We look at one of the
 \begin{exercise}[Equivalent Statement of the Axiom of Choice]\label{exercise:axiom-of-choice-equivalent}
     Prove the forward direction of \myref{theorem:axiom-of-choice-equivalent}.
 \end{exercise}
-
-\subsection{Links to the Cartesian Product}
-
-% The axiom of choice has many applications, but we focus on one here, which was first highlighted in the introduction to the axiom of choice in \myref{chapter:zf-axioms}.
-
-% \begin{theorem}[Cartesian Product of Non-Empty Sets]\label{theorem:cartesian-product-of-nonempty-sets}
-%     A Cartesian product of a collection of non-empty sets is non-empty if and only if \myref{axiom:choice} holds.
-% \end{theorem}
-% \begin{proof}
-%     % TODO: Use proof from https://planetmath.org/productofnonemptysetofnonemptysetsisnonempty?
-
-%     % We only prove the forward direction here and leave the reverse direction for \myref{exercise:cartesian-product-of-nonempty-sets} (later).
-
-%     % % TODO: Vet this proof
-%     % Suppose the Cartesian product of any collection of non-empty sets is non-empty. That is,
-%     % \[
-%     %     \forall X, \left((\emptyset \notin X) \implies \left(\prod_{A \in X} A\right) \neq \emptyset \right),
-%     % \]
-%     % where $\prod_{A \in X} A$ denotes the Cartesian product of all the sets in $X$. We want to show \myref{axiom:choice}, i.e.
-%     % \[
-%     %     \forall X, \left((\emptyset \notin X) \implies \exists \left(f: X \to \bigcup_{A \in X} A\right) \text{ s.t. } \forall A \in X, f(A) \in A\right).
-%     % \]
-%     % So let us suppose $X$ is a set such that $\emptyset \notin X$. We note that $\bigcup_{A \in X} A$ is non-empty since each set $A$ in $X$ is non-empty. Thus by the assumption we know that $X \times \left(\bigcup_{A \in X} A\right)$ is non-empty.
-
-%     % Define the set $R$ such that
-%     % \[
-%     %     R = \{(A, a) \vert (A \in X) \land (a \in A)\}.
-%     % \]
-%     % One clearly sees that $R$ is a subset of $X \times \left(\bigcup_{A \in X} A\right)$. So $R$ is actually a relation from $X$ to $\left(\bigcup_{A \in X} A\right)$. Now certainly there must exist a subset of $R$, say $f$, such that each $A$ appears once among all the pairs. This $f$ is the function we are looking for in \myref{axiom:choice}.
-% \end{proof}
-
-% Thus, \myref{axiom:choice} is equivalent to the fact that a Cartesian product of a collection of non-empty sets is non-empty. Note that, although we proved this fact for a finite sets, the axiom of choice is needed for the Cartesian product of sets in general, finite or infinite.
-
-% \begin{exercise}[Cartesian Product of Non-Empty Sets]\label{exercise:cartesian-product-of-nonempty-sets}
-%     Prove the reverse direction of \myref{theorem:cartesian-product-of-nonempty-sets}.
-% \end{exercise}
