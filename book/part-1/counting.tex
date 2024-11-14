@@ -142,7 +142,7 @@ Okay, let us try weakening the condition for the function $f$ in \myref{definiti
 
 What if a surjection from $A$ to $B$ exists? What can we conclude?
 
-\begin{definition}[larger (or Equal) Cardinality]\index{cardinality!larger}\label{definition:larger-or-equal-cardinality}
+\begin{definition}[Larger (or Equal) Cardinality]\index{cardinality!larger}\label{definition:larger-or-equal-cardinality}
     Let $A$ and $B$ be sets. Then $A$ has a cardinality larger than or equal to $B$ (denoted $|A| \geq |B|$) if and only if there exists a surjection $f: A \to B$.
     
     We say that $A$ has a cardinality larger than $B$ (denoted $|A| > |B|$) if and only if $|A| \geq |B|$ and there does not exist a bijection from $A$ to $B$.
@@ -168,7 +168,32 @@ Wait a minute, does \myref{definition:smaller-or-equal-cardinality} agree with \
 \end{exercise}
 
 \subsection{Cantor-Schr\"oder-Bernstein}
-% TODO: Add
+The symbols ``$\leq$'' and ``$\geq$'' used for comparing cardinalities hint at an interesting idea: if $|A| \leq |B|$ and $|B| \leq |A|$, is $|A| = |B|$? In fact, this is a corollary of the Cantor-Schr\"oder-Bernstein Theorem. The proof of this theorem is complex, so we will leave it to the end of this chapter.
+
+\begin{theorem}[Cantor-Schr\"oder-Bernstein]\label{theorem:cantor-schroder-bernstein}
+    Let $A$ and $B$ be sets. If there are injections $f: A \to B$ and $g: B \to A$, then there exists a bijection $h: A \to B$.
+\end{theorem}
+
+\begin{corollary}\label{corollary:cantor-schroder-bernstein-corollary}
+    Let $A$ and $B$ be sets. If $|A| \leq |B|$ and $|B| \leq |A|$ then $|A| = |B|$.
+\end{corollary}
+\begin{proof}
+    By definition we know that $|A| \leq |B|$ means that there exists an injection from $A$ to $B$ and $|B| \leq |A|$ means that there exists an injection from $B$ to $A$. Thus \myref{theorem:cantor-schroder-bernstein} tells us that there is a bijection from $A$ to $B$, which hence means $|A| = |B|$.
+\end{proof}
+
+\begin{example}
+    \setlength{\parindent}{1.5em}
+    Let $A$ be a set and $B$ be a subset of $A$. We show that if there is an injection from $A$ to $B$ then $|A| = |B|$.
+    \begin{proof}
+        Our goal is to find injections from $A$ to $B$ and from $B$ to $A$ and then use Cantor-Schr\"oder-Bernstein (\myref{theorem:cantor-schroder-bernstein}) to finish the proof.
+
+        The injection $f: A \to B$ is assumed to exist by our antecedent. The injection $g: B \to A$ can be found simply by defining $f(x) = x$ for all $x \in B$. One clearly sees that if $g(x_1) = g(x_2)$ then $x_1 = x_2$ for all $x_1, x_2 \in B$.
+
+        Thus Cantor-Schr\"oder-Bernstein tells us that there exists a bijection from $A$ to $B$, which means $|A| = |B|$.
+    \end{proof}
+\end{example}
+
+There are more interesting examples of using the Cantor-Schr\"oder-Bernstein theorem, but we will cover them when the time comes.
 
 \section{Finite Counting}
 With an introduction of cardinality out of the way, we can finally define a way to count the number of items in a finite set.
@@ -257,3 +282,6 @@ TODO: Add
 TODO: Add
 % Give cantor's theorem, which is that |A| < |\Power{A}| for ANY set A, including infinite sets
 % Exercise: prove that |\N^2| = |\N|
+
+\section{Proof of Cantor-Schr\"oder-Bernstein}
+TODO: Add
