@@ -120,6 +120,23 @@ This should be intuitive for finite sets -- if we can pair the elements of two s
 
 This way of defining equal cardinality addresses the two issues that we noted when trying to count the shapes earlier. Every element must be accounted for, and every element must be counted at most once.
 
+We note one important equivalence of cardinalities here.
+
+\begin{proposition}[Cardinality of Image of Injection]\label{proposition:cardinality-of-image-of-injection}
+    Let $A$ and $B$ be sets and let $f: A \to B$ be an injective function. Then $|A| = |f(A)|$, where
+    \[
+        f(A) = \{f(a) \vert a \in A\}.
+    \]
+\end{proposition}
+\begin{proof}
+    Let $\bar{f}: A \to f(A)$ where $\bar{f}(a) = f(a)$. We show that $\bar{f}$ is a bijection.
+    \begin{itemize}
+        \item \textbf{Injective}: Suppose $\bar{f}(a_1) = \bar{f}(a_2)$ for some $a_1, a_2 \in A$. Thus $f(a_1) = f(a_2)$ by definition of $\bar{f}$. Since $f$ is assumed to be injective, thus $a_1 = a_2$, which means $\bar{f}$ is injective.
+        \item \textbf{Surjective}: Suppose $y \in f(A)$. Note $y = f(a)$ for some $a \in A$ by definition of $f(A)$. Thus $a$ is the preimage of $y$ because $\bar{f}(a) = f(a) = y$. Hence $\bar{f}$ is surjective.
+    \end{itemize}
+    Therefore $\bar{f}$ is a bijection, which means $|A| = |f(A)|$.
+\end{proof}
+
 \subsection{Injections/Surjections and Cardinality}
 What happens when we try and measure the cardinality of two sets that do not have a bijection between them?
 
@@ -254,6 +271,21 @@ With this definition we can write the cardinality of finite sets more intuitivel
         (\textit{Hint: think of them as counter sets.})
     \end{partquestions}
 \end{exercise}
+
+We have an interesting result regarding maps between finite sets with the same cardinality.
+
+\begin{theorem}[Map Between Finite Sets of Equal Cardinality]\label{theorem:map-between-finite-sets-of-equal-cardinality}
+    Let $A$ and $B$ be finite sets such that $|A| = |B|$. Suppose $f: A \to B$ is a function. Then $f$ is a bijection if and only if $f$ is an injection.
+\end{theorem}
+\begin{proof}
+    For the forward direction, if $f$ is a bijection then $f$ must be injective by definition of bijections.
+    
+    For the reverse direction, suppose $f$ is an injection. By \myref{proposition:cardinality-of-image-of-injection} we know that $|A| = |f(A)|$ where
+    \[
+        f(A) = \{f(a) \vert a \in A\}.
+    \]
+    As $|A| = |B|$, we have $|f(A)| = |B|$. Note that $f(A) \subseteq B$. Thus $f(A)$ is a subset of $B$ with the same number of elements as $B$, which means $f(A) = B$. But clearly this means that any element in $B$ can be expressed in the form $f(a)$ where $a \in A$, and thus under $f$ any $b = f(a)$ has a preimage of $a$. Hence $f$ is also surjective, which means $f$ is a bijection.
+\end{proof}
 
 \section{Infinite Sets and Infinite Counting}
 We have an intuition of what a finite set is -- there is a limit to the number of items in the set. With our language of cardinality we can formally state this, using the definition found in \cite[p.~262]{boolos_1998}.
