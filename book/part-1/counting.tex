@@ -255,13 +255,36 @@ With this definition we can write the cardinality of finite sets more intuitivel
     \end{partquestions}
 \end{exercise}
 
-\section{Infinite Sets}
-TODO: Add
-% Explain the definition of a finite set (\cite[p.~262]{boolos_1998})
-% Define infinite sets (i.e., non-finite sets)
+\section{Infinite Sets and Infinite Counting}
+We have an intuition of what a finite set is -- there is a limit to the number of items in the set. With our language of cardinality we can formally state this, using the definition found in \cite[p.~262]{boolos_1998}.
 
-\section{Infinite Counting}
-TODO: Add
+\begin{definition}[Finite Set]
+    A set $S$ is \term{finite}\index{finite}\index{set!finite} if and only if there exists a bijection $f: S \to n$ for some $n \in \N$ (here $n$ represents the counter set of $n$). In other words, $S$ is finite if and only if $|S| = n$ for some $n \in \N$.
+\end{definition}
+
+\begin{example}[Examples of Finite Sets]
+    \begin{itemize}[leftmargin=*]
+        \item The set $\{2, 3, 5\}$ is finite since $|\{2, 3, 5\}| = 3$.
+        \item The set $\{a, b, 1, 2, !\}$ is finite since $|\{a, b, 1, 2, !\}| = 5$.
+        \item The empty set is finite since $|\emptyset| = 0$.
+    \end{itemize}
+\end{example}
+
+Infinite sets can thus be defined as follows.
+
+\begin{definition}[Infinite Set]
+    A set $S$ is \term{infinite}\index{infinite}\index{set!infinite} if and only if $S$ is not finite. In other words, there does not exist a bijection $f: S \to n$ for all $n \in \N$.
+\end{definition}
+
+\begin{example}[$\N$]
+    Based on the definition above, it should be the case that $\N$ given by the axiom of infinity (\myref{axiom:infinity}) is an infinite set. In fact, it is.
+
+    % TODO: Add
+    % \begin{proof}
+    %     We consider a proof by contradiction. Suppose there exists a bijection from $\N$ to $n$ for some $n \in \N$. Note that, as a counter set, we have $n = \{0, 1, 2, \dots, n-1\}$. So one sees that $n \notin n$. However $n \in \N$.
+    % \end{proof}
+\end{example}
+
 % Give the example of how \N and \Successor{\N} have the same cardinality
 % Explain that "sizes" don't work for infinite sets, and that cardinality is the better term for this
 
