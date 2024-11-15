@@ -19,4 +19,22 @@
         \item Any singleton would work. For example, $\{0\}, \{a\}, \{1235\}$ etc. would all work.
         \item Note $13 = \{0, 1, 2, \dots, 12\}$ and $14 = \{0, 1, 2, \dots, 12, 13\}$, so $13 \cup 14 = \{0, 1, 2, \dots, 12, 13\} = 14$. Thus the cardinality of $13 \cup 14$ is 14.
     \end{partquestions}
+
+    % A Power Set
+    \item First we note that
+    \[
+        \Power{\{a,b\}} = \{\emptyset, \{a\}, \{b\}, \{a, b\}\}.
+    \]
+    Thus $\Power{\Power{\{a, b\}}}$ is
+    \begin{align*}
+        &\{\\
+        &\quad\emptyset,\\
+        &\quad\{\emptyset\}, \{\{a\}\}, \{\{b\}\}, \{\{a, b\}\},\\
+        &\quad\{\emptyset, \{a\}\}, \{\emptyset, \{b\}\}, \{\emptyset, \{a, b\}\},\\
+        &\quad\quad\{\{a\}, \{b\}\},\{\{a\}, \{a,b\}\}, \{\{b\}, \{a,b\}\},\\
+        &\quad\{\emptyset, \{a\}, \{b\}\},\{\emptyset, \{a\}, \{a,b\}\},\{\emptyset, \{b\}, \{a,b\}\},\{\{a\}, \{b\}, \{a,b\}\},\\
+        &\quad\{\emptyset, \{a\}, \{b\}, \{a, b\}\}\\
+        &\}
+    \end{align*}
+    which has a cardinality of 16.
 \end{questions}
