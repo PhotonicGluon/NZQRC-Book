@@ -398,11 +398,75 @@ In other words, for any set $A$ there is a set $P$ (the power set of $A$) such t
     Find $\Power{\Power{\{a, b\}}}$, and state its cardinality.
 \end{exercise}
 
-\section{Cantor's Theorem}
-TODO: Add
-% Give cantor's theorem, which is that |A| < |\Power{A}| for ANY set A, including infinite sets
-% State also the first few cardinals: \beth_0, \beth_1, etc.
-% Exercise: prove that |\N^2| = |\N|
+\section{Cantor's Theorem and Larger Infinities}
+So far, all the examples of infinite sets that we have seen so far seem to be of the same cardinality. For example, the set of natural numbers $\N$ has the same cardinality as $\Successor{\N}$. So is it that all infinite sets have the same cardinality? No. This surprising result is called Cantor's Theorem, and it involves the power set.
+
+\begin{theorem}[Cantor]\index{Cantor's Theorem}\label{theorem:cantor}
+    Let $A$ be a set. Then any function $f: A \to \Power{A}$ is not surjective. Consequently $|A| < |\Power{A}|$ for any set $A$.
+\end{theorem}
+
+Notice that this theorem does not just apply to finite sets -- this works for all sets, including infinite sets.
+
+\begin{proof}
+    Let $f: A \to \Power{A}$ be a function. Seeking a contradiction, suppose $f$ is surjective.
+    
+    Note that the set
+    \[
+        B = \{x \in A \vert x \notin f(x)\}
+    \]
+    exists by the axiom schema of specification (\myref{axiom:schema-of-specification}). Since $B \subseteq A$, thus $B \in \Power{A}$. As $f$ is (assumed to be) surjective, there must be a $\xi \in A$ such that $f(\xi) = B$.
+
+    Let us determine whether $\xi$ is in $B$ or not.
+    \begin{itemize}
+        \item Suppose $\xi \in B$. Then, by definition of $B$, we know $\xi \notin f(\xi)$. But $f(\xi) = B$, which means $\xi \notin B$, a clear contradiction to the assumption that $\xi \in B$.
+        \item However, if instead $\xi \notin B$, we see $\xi \notin f(\xi)$ since $B = f(\xi)$. But this must mean that $\xi \in B$ by definition of $B$, another contradiction.
+    \end{itemize}
+    So, in either case, we have a contradiction. What did we contradict? We contradicted the assumption that $f$ is surjective. Thus there is no surjective mapping from $A$ to $\Power{A}$, and hence no bijection from $A$ to $\Power{A}$.
+
+    To prove that $|A| < |\Power{A}|$ we simply need to find an injection from $A$ to $\Power{A}$. This is left for \myref{exercise:cantor-last-part} (later).
+\end{proof}
+
+This surprising result uses the set $B$, sometimes called the \term{Cantor diagonal set of $f$}\index{Cantor diagonal set} (see \cite[Theorem 1210, p.~362]{dasgupta_2014}). We will see the use of the set later in this book.
+
+\begin{exercise}[The Last Part of Cantor's Theorem]\label{exercise:cantor-last-part}
+    Find an injection from $A$ to $\Power{A}$ for any set $A$.
+\end{exercise}
+
+In light of \myref{theorem:cantor}, we can start defining larger infinities. The `smallest' infinity is the cardinality of the real numbers, which is implied by the definition of infinite sets. We give notation for the cardinality of infinite sets.
+
+\begin{definition}[Beth Numbers]\index{beth number}
+    Define $\beth_0$ (read ``beth zero''\index{beth number!beth zero} or ``beth null''\index{beth number!beth null}) to be the cardinality of $\N$, i.e. $\beth_0 = |\N|$. Subsequently (assuming addition of natural numbers is defined), for any $n \in \N$, define
+    \[
+        \beth_{n+1} = |\Power{A}|
+    \]
+    where $|A| = \beth_n$.
+\end{definition}
+
+With Cantor's theorem (\myref{theorem:cantor}) we know that
+\[
+    \beth_0 < \beth_1 < \beth_2 < \dots < \beth_n < \dots
+\]
+
+\begin{example}[The First Few Beth Numbers]
+    \begin{itemize}[leftmargin=*]
+        \item $\beth_0 = |\N|$.
+        \item $\beth_1 = |\Power{\N}|$.
+        \item $\beth_2 = |\Power{\Power{\N}}|$.
+        \item $\beth_3 = |\Power{\Power{\Power{\N}}}|$.
+    \end{itemize}
+\end{example}
+
+The more common notation used for denoting the cardinality of an infinite set are the aleph numbers.
+
+\begin{definition}[Aleph Numbers]\index{aleph number}
+    Define $\aleph_0$ (read as ``aleph zero``\index{aleph number!aleph zero} or ``aleph null''\index{aleph number!aleph null}) to be $\beth_0$. Subsequently (assuming addition of natural numbers is defined), for any $n \in \N$, define $\aleph_{n+1}$ as the next cardinality such that $\aleph_n < \aleph_{n+1}$ and there does not exist a cardinality $\kappa$ such that $\aleph_n < \kappa < \aleph_{n+1}$.
+\end{definition}
+
+Unfortunately, determining the exact `form' of $\aleph_1$ is tricky. A well known question in mathematics is the \term{Continuum hypothesis}\index{Continuum Hypothesis}, which, in essence, asks whether
+\[
+    \aleph_1 = \beth_1.
+\]
+The surprising thing about this question is that \textbf{this is not decidable using \ZFC} -- we can neither prove nor disprove this statement within \ZFC. To decide on the truth or falsity of this statement requires us to create a new axiom, which is not needed for this book. We shall just leave this as a mathematical curiosity.
 
 \section{Proof of Cantor-Schr\"oder-Bernstein}
 TODO: Add
