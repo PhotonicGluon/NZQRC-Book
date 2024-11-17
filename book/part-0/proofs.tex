@@ -277,10 +277,37 @@ Despite the power of proof by contradiction, it is best to use it only when the 
 
 \section{Basics of Mathematical Induction}
 TODO: Add
+% Do only the basics, no need to do strong induction
 
 \section{Proving Non-Conditional Statements}
-\subsection{Biconditional Statements}
-TODO: Add
+\subsection{Biconditional Statements}\index{proof!biconditional}
+Recall that a biconditional statement is a statement like ``$p \iff q$'', i.e., ``$p$ if and only if $q$''. We prove such a statement by proving that $p \implies q$ (which we will henceforth call the \term{forward direction}\index{proof!biconditional!forward direction}) and $q \implies p$ (which we henceforth call the \term{reverse direction}\index{proof!biconditional!reverse direction}). Each of these statements may be proved using any of the proof techniques that we covered.
+
+\begin{example}[Parity of $n$ Matches $n^2$]
+    \setlength{\parindent}{1.5em}
+
+    We will prove the biconditional statement ``the integer $n$ is even if and only if $n^2$ is even''.
+    \begin{proof}
+        We prove the forward direction ($n$ is even implies $n^2$ is even) first by using direct proof. Assume that $n$ is even. Then we may write $n = 2k$ where $k$ is an integer. Hence $n^2 = (2k)^2 = 4k^2 = 2(2k^2)$ which is even.
+
+        We now prove the reverse direction ($n^2$ is even implies $n$ is even) via a contrapositive proof. Suppose $n$ is not even, meaning $n$ is odd. Hence $n = 2k + 1$ where $k$ is an integer. Observe $n^2 = (2k+1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$ which is odd.
+    \end{proof}
+\end{example}
+
+\begin{example}[Multiple of 6 is Multiple of 2 and 3]
+    \setlength{\parindent}{1.5em}
+
+    Suppose $n$ is an integer. We will prove ``$n$ is a multiple of 6 if and only if $n$ is a multiple of 2 and 3''.
+    \begin{proof}
+        We prove the forward direction by using direct proof. Assume $n$ is a multiple of 6, meaning $n = 6k$ for some integer $k$. Clearly $6k = 2(3k)$ and $6k = 3(2k)$, so $n$ is a multiple of 2 and a multiple of 3.
+
+        We now prove the reverse direction, again using direct proof. Assume $n$ is a multiple of 2 and 3, so we may write $n = 2a$ and $n = 3b$ for some integers $a$ and $b$. Then $2a = 3b$. Hence $a = \frac 32 b$ and $b = \frac 23 a$. Since $a$ and $b$ are integers, hence we conclude $b$ is a multiple of 2 and $a$ is a multiple of 3. Write $a = 3p$ and $b = 2q$ where $p$ and $q$ are integers. Hence $n = 2(3p) = 6p$ and $n = 3(2q) = 6q$. In both cases we see $n$ is a multiple of 6.
+    \end{proof}
+\end{example}
+
+\begin{exercise}[Biconditional Proof]
+    Let $n$ be an integer. Prove that $n$ is one more than a multiple of 5 if and only if $n$ is of the form $5k - 4$ where $k$ is an integer.
+\end{exercise}
 
 \subsection{Existence Statements}
 TODO: Add
