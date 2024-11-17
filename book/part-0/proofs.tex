@@ -1,8 +1,53 @@
 \Chapter{Proofs}
 \Lettrine[loversize=0.1,nindent=0pt]{Proofs} compel belief. Without mathematical proofs, the statements we make are meaningless words without justification. To prove a claim, we must provide a series of logical steps to arrive at a logical conclusion. In this chapter, we explore the basics of writing proofs.
 
+For this chapter, we will assume that we have defined the natural numbers, the integers, the rationals, and the reals, as well as their respective operations. Otherwise, how can we give examples of proofs?
+
 \section{Direct Proof}
-TODO: Add
+In essence, a \term{direct proof}\index{proof!direct} for the statement ``if $p$ then $q$'' would begin by assuming $p$ is true and showing that this makes $q$ true. We don't need to worry about the case of $p$ being false, since $p \implies q$ is vacuously true in the case when $p$ is false.
+
+\begin{example}[Odd Integers and Odd Squares]
+    \setlength{\parindent}{1.5em}
+    We prove that ``if $n$ is an odd integer then $n^2$ is odd'' using direct proof. We first write out the proof step-by-step.
+    \begin{proof}
+        Suppose $n$ is an odd integer.
+
+        Then $n$ can be written in the form $n = 2k + 1$ where $k$ is an integer.
+
+        Hence we see
+        \begin{align*}
+            n^2 &= (2k+1)^2\\
+            &= 4k^2 + 4k + 1\\
+            &= 2(2k^2 + 2k) + 1.
+        \end{align*}
+
+        We see $n^2$ is one more than a multiple of 2.
+
+        Thus $n^2 = 2(2k^2 + 2k) + 1$ is odd.
+    \end{proof}
+
+    Of course, proofs are often not written this way; we often make it more succinct and remove unnecessary paragraph breaks. We produce a more `natural' proof below.
+    \begin{proof}
+        Suppose $n$ is an odd integer. Then $n$ can be written in the form $n = 2k + 1$ where $k$ is an integer. Hence
+        \begin{align*}
+            n^2 &= (2k+1)^2\\
+            &= 4k^2 + 4k + 1\\
+            &= 2(2k^2 + 2k) + 1,
+        \end{align*}
+        so $n^2$ is one more than a multiple of 2, meaning $n^2 = 2(2k^2 + 2k) + 1$ is odd.
+    \end{proof}
+\end{example}
+
+\begin{example}[Square Roots Maintain Inequality]
+    Let $x$ and $y$ be positive real numbers. We prove that ``if $x \leq y$ then $\sqrt x \leq \sqrt y$''.
+    \begin{proof}
+        Suppose $x \leq y$. This means $x - y \leq 0$. As $x$ and $y$ are positive real numbers, we may write that inequality as $(\sqrt x)^2 - (\sqrt y)^2 \leq 0$. We can factor the left hand side as $(\sqrt x + \sqrt y)(\sqrt x - \sqrt y) \leq 0$. Now $\sqrt x + \sqrt y$ is always positive, so if the entire inequality is less than or equal to 0 we must have $\sqrt x - \sqrt y \leq 0$. Therefore $\sqrt x \leq \sqrt y$.
+    \end{proof}
+\end{example}
+
+\begin{exercise}[Direct Proof]
+    Let $x$ be a positive real number. Prove that $x(1-x) > 0$ if $0 < x < 1$.
+\end{exercise}
 
 \section{Proof by Division Into Cases}
 TODO: Add
