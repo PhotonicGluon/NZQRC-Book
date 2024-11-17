@@ -518,11 +518,11 @@ We can trace how each of these mappings occurred and label each (nested) set acc
     \caption{Labelling the Nested Sets of $A$ and $B$}
 \end{figure}
 
-Let us focus on $A$. What is the form of the outermost region in $A$? That is, what is the region in $A$ that is not the image of any element in $B$? Well, it will be the entirety of $A$, minus the entirety of the mapped version of $B$ under $g$, i.e. it would be the set $A \setminus g(B)$. Now what is the form of the next nested square-ish region? That is, what is the region of $(g \circ f)(A)$ that is not the image of any element in $(f \circ g)(B)$? One sees that this would be the set $(g \circ f)(A) \setminus (g\circ f \circ g)(B)$. But one also sees that this is the same as the mapping of $A \setminus g(B)$ under $g \circ f$, i.e.
+Let us focus on $A$. What is the form of the outermost shaded region in $A$? Well, it will be the entirety of $A$, minus the entirety of the mapped version of $B$ under $g$, i.e. it would be the set $A \setminus g(B)$. Now what is the form of the next nested shaded region? Well, one sees that this would be the set $(g \circ f)(A) \setminus (g\circ f \circ g)(B)$. But one also sees that this is the same as the mapping of $A \setminus g(B)$ under $g \circ f$, i.e.
 \[
     (g \circ f)(A) \setminus (g\circ f \circ g)(B) = (g\circ f)(A \setminus g(B)).
 \]
-For brevity of notation, let the outermost region be denoted $S_0$, the next region $S_1$, etc. We see that
+For brevity of notation, let the outermost shaded region be denoted $S_0$, the next region $S_1$, etc. We see that
 \begin{align*}
     S_0 &= A \setminus g(B)\\
     S_1 &= (g \circ f)(A \setminus g(B))\\
@@ -530,18 +530,18 @@ For brevity of notation, let the outermost region be denoted $S_0$, the next reg
     S_3 &= (g \circ f)^3(A \setminus g(B))\\
     \vdots
 \end{align*}
-So all the elements in the square-ish regions in $A$ belong to a set of the form $(g \circ f)^k(A \setminus g(B))$ where $k \in \N$. The union of all the square-ish regions is thus the set
+So all the elements in the shaded regions in $A$ belong to a set of the form $(g \circ f)^k(A \setminus g(B))$ where $k \in \N$. The union of all the shaded regions is thus the set
 \begin{align*}
     \mathfrak{S} &= S_0 \cup S_1 \cup S_2 \cup S_3 \cup \cdots\\
     &= \bigcup_{n \in \N} S_n.
 \end{align*}
-One sees that the union of all the circle-ish regions is just the set $A$ minus the union of the square-ish regions, i.e. the union of the circle-ish regions is the set
+One sees that the union of all the unshaded regions is just the set $A$ minus the union of the shaded regions, i.e. the union of the unshaded regions is the set
 \[
-    \mathfrak{C} = A \setminus \mathfrak{S}.
+    \mathfrak{U} = A \setminus \mathfrak{S}.
 \]
-Note that the set $\mathfrak{S}$ does indeed exist by the axiom of union (\myref{axiom:union}), so the set $\mathfrak{C}$ also exists.
+Note that the set $\mathfrak{S}$ does indeed exist by the axiom of union (\myref{axiom:union}), so the set $\mathfrak{U}$ also exists.
 
-Now we can start defining a possible bijection. We know that any element in a square-ish region of $A$ can be mapped to a square-ish region in $B$ under $f$. But what about a circle-ish region in $B$? Well, since the circle-ish regions of $A$ are images of elements in the circle-ish regions in $B$ under $g$, we can just `invert' $g$ to get a mapping from $A$ to $B$ for the circle-ish regions in $A$.
+Now we can start defining a possible bijection. We know that any element in a shaded region of $A$ can be mapped to a shaded region in $B$ under $f$. But what about an unshaded region in $B$? Well, since the unshaded regions of $A$ are images of elements in the unshaded regions in $B$ under $g$, we can just `invert' $g$ to get a mapping from $A$ to $B$ for the unshaded regions in $A$.
 \begin{figure}[H]
     \centering
     \includegraphics[height=4cm]{images/part-1/counting/csb_3.png}
@@ -564,15 +564,15 @@ We are now ready to prove the Cantor-Schr\"oder-Bernstein theorem (\myref{theore
     \]
     for all $n \in \N$, and let the set
     \[
-        \mathfrak{C} = A \setminus \mathfrak{S}.
+        \mathfrak{U} = A \setminus \mathfrak{S}.
     \]
-    Notice that $A = \mathfrak{S} \cup \mathfrak{C}$ and that $\mathfrak{S} \cap \mathfrak{C} = \emptyset$. This means that any element in $A$ must be in either $\mathfrak{S}$ or $\mathfrak{C}$, but not both.
+    Notice that $A = \mathfrak{S} \cup \mathfrak{U}$ and that $\mathfrak{S} \cap \mathfrak{U} = \emptyset$. This means that any element in $A$ must be in either $\mathfrak{S}$ or $\mathfrak{U}$, but not both.
     
     Define the function $h: A \to B$ where
     \[
         h(x) = \begin{cases}
             f(x) & \text{if } x \in \mathfrak{S}\\
-            g^{-1}(x) & \text{if } x \in \mathfrak{C}
+            g^{-1}(x) & \text{if } x \in \mathfrak{U}
         \end{cases}
     \]
     for all $x \in A$. We show that $h$ is a bijection.
@@ -581,9 +581,9 @@ We are now ready to prove the Cantor-Schr\"oder-Bernstein theorem (\myref{theore
         \begin{enumerate}
             \item $x_1, x_2 \in \mathfrak{S}$. Thus, by definition of $h$, we have $f(x_1) = f(x_2)$. Since $f$ is injective, we must have $x_1 = x_2$.
             
-            \item $x_1, x_2 \in \mathfrak{C}$. This means $g^{-1}(x_1) = g^{-1}(x_2)$ by definition of $h$. Hence $x_1 = x_2$ by applying $g$ on both sides.
+            \item $x_1, x_2 \in \mathfrak{U}$. This means $g^{-1}(x_1) = g^{-1}(x_2)$ by definition of $h$. Hence $x_1 = x_2$ by applying $g$ on both sides.
             
-            \item $x_1 \in \mathfrak{S}$ and $x_2 \in \mathfrak{C}$. Since $x_1 \in \mathfrak{S}$, it must belong in a $S_k$, i.e. $x_1 = (g\circ f)^k(z)$ for some $k \in \N$ and $z \in A \setminus g(B)$. So, by definition of $h$, we must have
+            \item $x_1 \in \mathfrak{S}$ and $x_2 \in \mathfrak{U}$. Since $x_1 \in \mathfrak{S}$, it must belong in a $S_k$, i.e. $x_1 = (g\circ f)^k(z)$ for some $k \in \N$ and $z \in A \setminus g(B)$. So, by definition of $h$, we must have
             \[
                 f((g\circ f)^k(z)) = g^{-1}(x_2),
             \]
@@ -591,13 +591,13 @@ We are now ready to prove the Cantor-Schr\"oder-Bernstein theorem (\myref{theore
             \[
                 (g \circ f)^{k+1}(z) = x_2.
             \]
-            But, since $z \in A \setminus g(B)$, this shows that $x_2 \in S_{k+1}$ and thus $x_2 \in \mathfrak{S}$, which is a contradiction since no element is simultaneously in $\mathfrak{S}$ and $\mathfrak{C}$ at the same time.
+            But, since $z \in A \setminus g(B)$, this shows that $x_2 \in S_{k+1}$ and thus $x_2 \in \mathfrak{S}$, which is a contradiction since no element is simultaneously in $\mathfrak{S}$ and $\mathfrak{U}$ at the same time.
             
-            \item $x_1 \in \mathfrak{C}$ and $x_2 \in \mathfrak{S}$. Similar argument as case 3 shows that this is not possible.
+            \item $x_1 \in \mathfrak{U}$ and $x_2 \in \mathfrak{S}$. Similar argument as case 3 shows that this is not possible.
         \end{enumerate}
         Thus, in all (possible) cases, we have $x_1 = x_2$, meaning $h$ is injective.
         
-        \item \textbf{Surjective}: Suppose $y \in B$. Note $g(y) \in A$, which means $g(y) \in \mathfrak{S}$ or $g(y) \in \mathfrak{C}$.
+        \item \textbf{Surjective}: Suppose $y \in B$. Note $g(y) \in A$, which means $g(y) \in \mathfrak{S}$ or $g(y) \in \mathfrak{U}$.
         \begin{enumerate}
             \item $g(y) \in \mathfrak{S}$. Like we argued above, we see that $g(y) \in S_k$ for some $k \in \N$, i.e. $g(y) = (g\circ f)^k(z)$ for some $k \in \N$ and $z \in A \setminus g(B)$. Note that $k \neq 0$ because, otherwise, we will have
             \[
@@ -620,7 +620,7 @@ We are now ready to prove the Cantor-Schr\"oder-Bernstein theorem (\myref{theore
             \end{align*}
             which means a preimage of $y$ under $h$ is $x = f((g\circ f)^{k-1}(z))$.
             
-            \item $g(y) \in \mathfrak{C}$. Let $x = g(y)$, noting that $x \in \mathfrak{C} \subseteq A$. Then one sees
+            \item $g(y) \in \mathfrak{U}$. Let $x = g(y)$, noting that $x \in \mathfrak{U} \subseteq A$. Then one sees
             \begin{align*}
                 h(x) &= g^{-1}(x) & (\text{Definition of } h)\\
                 &= g^{-1}(g(y)) & (\text{Definition of } x)\\
