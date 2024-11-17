@@ -61,4 +61,26 @@
 
         We now prove the reverse direction using direct proof as well. Assume $n = 5k - 4$. Observe $5k - 4 = 5k - 5 + 1 = 5(k-1) + 1$, meaning $n$ is one more than a multiple of 5.
     \end{proof}
+
+    % Existence Proof
+    \item \begin{proof}
+        The number 7 satisfies this as $7 = 2^3 - 1$ and $7 = 3^2 - 2$.
+    \end{proof}
+
+    % A Constructive Proof
+    \item \begin{partquestions}{\roman*}
+        \item We use a proof by contradiction to prove this claim.
+        
+        \begin{proof}
+            Seeking a contradiction, assume $y$ is rational. Write $y = \frac pq$ where $p$ and $q$ are integers. Note $2^y = 2^{\frac pq}$ and $2^y = 2^{2\log_2{3}} = 9$. Hence $2^{\frac pq} = 9$ meaning $2^p = 9^q$. However $2^p$ is always even and $9^q$ is always odd, a contradiction.
+        \end{proof}
+
+        \item \begin{proof}
+            Note that
+            \[
+                x^y = (\sqrt2)^{2\log_2{3}} = \left(\sqrt{2}^2\right)^{\log_2{3}} = 2^{\log_2{3}} = 3
+            \]
+            which is rational.
+        \end{proof}
+    \end{partquestions}
 \end{questions}
