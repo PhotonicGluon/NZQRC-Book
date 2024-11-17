@@ -2,6 +2,7 @@ biblatex
 caption
 cleveref
 crossreftools
+draftfigure
 dvisvgm
 emptypage
 enumitem

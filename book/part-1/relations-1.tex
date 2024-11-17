@@ -227,13 +227,13 @@ Let us now look at the inverse of a relation.
 We may sometimes want to find the overall relationship between two sets after a sequence of relations. This motivates the concept of composing relations.
 
 \begin{definition}[Composition of Relations]
-    Let $A$, $B$, and $C$ be sets. Let $R$ and $S$ be relations from $A$ to $B$ and $B$ to $C$ respectively. The \term{composition of $R$ with $S$}\index{relation!composition}, written $S \circ R$, is a relation from $A$ to $C$ where
+    Let $A$, $B$, $C$, and $D$ be sets. Let $R$ and $S$ be relations from $A$ to $B$ and $C$ to $D$ respectively. The \term{composition of $R$ with $S$}\index{relation!composition}, written $S \circ R$, is a relation from $A$ to $D$ where
     \[
-        a (\mathrel{S \circ R}) c \iff \exists b \in B \text{ s.t. } ((a \mathrel{R} b) \land (b \mathrel{S} c))
+        a (\mathrel{S \circ R}) d \iff \exists x \in B \cap C \text{ s.t. } ((a \mathrel{R} x) \land (x \mathrel{S} d))
     \]
-    for all $a \in A$ and $c \in C$. In other words,
+    for all $a \in A$ and $d \in D$. In other words,
     \[
-        S \circ R = \{(a, c) \in A \times C \vert \exists b \in B \text{ s.t. } ((a, b) \in R \land (b, c) \in S)\}.
+        S \circ R = \{(a, d) \in A \times D \vert \exists x \in B \cap C \text{ s.t. } ((a, x) \in R \land (x, d) \in S)\}.
     \]
 \end{definition}
 % \begin{remark}[Order Matters]
@@ -390,7 +390,7 @@ Let us now consider the inverse of a composed relation.
 This observation that $(S\circ R)^{-1} = R^{-1} \circ S^{-1}$ is a key property of the inverse of a composition of two relations, informally called the \term{shoes and socks theorem}. The intuition behind this property is similar to that of putting on socks and then shoes. To remove them both, you first have to take off your shoes (i.e., the second thing that you put on) and then take off your socks (i.e., the first thing that you put on). Likewise, to undo the effect of two relations $R$ and then $S$, we first have to undo $S$ and then undo $R$.
 
 \begin{theorem}[Shoes and Socks (Relations)]\label{theorem:shoes-and-socks-relations}\index{shoes and socks}
-    Let $A$, $B$, and $C$ be sets, and let $R$ and $S$ be relations from $A$ to $B$ and $B$ to $C$ respectively. Then
+    Let $A$, $B$, $C$, and $D$ be sets, and let $R$ and $S$ be relations from $A$ to $B$ and $C$ to $D$ respectively. Then
     \[
         (S \circ R)^{-1} = R^{-1} \circ S^{-1}.
     \]
@@ -401,24 +401,26 @@ This observation that $(S\circ R)^{-1} = R^{-1} \circ S^{-1}$ is a key property 
 
 Another property that the composition enjoys is associativity.
 
-\begin{theorem}[Associativity of Composition (Relations)]\index{relation!composition!associativity}
-    Let $A$, $B$, $C$, and $D$ be sets. Let $R$, $S$, and $T$ be relations from $A$ to $B$, $B$ to $C$, and $C$ to $D$ respectively. Then
+\begin{theorem}[Associativity of Composition (Relations)]\index{relation!composition!associativity}\label{theorem:associativity-of-composition-relations}
+    Let $A$, $B$, $C$, $D$, $E$, and $F$ be sets. Let $R$, $S$, and $T$ be relations from $A$ to $B$, $C$ to $D$, and $E$ to $F$ respectively. Then
     \[
         (T \circ S) \circ R = T \circ (S \circ R).
     \]
 \end{theorem}
 \begin{proof}
-    We first note that $(T \circ S) \circ R \subseteq A \times D$ and $T \circ (S \circ R) \subseteq A \times D$. Now suppose $a \in A$ and $d \in D$. We see
+    First, note that if either $B \cap C$ or $D \cap E$ is empty, then $(T \circ S) \circ R = T \circ (S \circ R) = \emptyset$. So assume neither $B \cap C$ nor $D \cap E$ are empty.
+
+    We note that $(T \circ S) \circ R \subseteq A \times F$ and $T \circ (S \circ R) \subseteq A \times F$. Now suppose $a \in A$ and $f \in F$. We see
     \begin{align*}
-        &(a, d) \in (T \circ S) \circ R\\
-        \iff& a \mathrel{((T \circ S) \circ R)} d\\
-        \iff& \exists b \in B \text{ s.t. } (a \mathrel{R} b \land b \mathrel{(T\circ S)} d)\\
-        \iff& \exists b \in B \text{ s.t. } (a \mathrel{R} b \land (\exists c \in C \text{ s.t. } (b \mathrel{S} c \land c \mathrel{T} d)))\\
-        \iff& \exists b \in B, c \in C \text{ s.t. } (a \mathrel{R} b \land b \mathrel{S} c \land c \mathrel{T} d)\\
-        \iff& \exists c \in C \text{ s.t. } ((\exists b \in B \text{ s.t. } (a \mathrel{R} b \land b \mathrel{S} c)) \land c \mathrel{T} d)\\
-        \iff& \exists c \in C \text{ s.t. } (a \mathrel{(S \circ R)} c \land c \mathrel{T} d)\\
-        \iff& a \mathrel{(T \circ (S \circ R))} d\\
-        \iff& (a, d) \in T \circ (S \circ R).
+        &(a, f) \in (T \circ S) \circ R\\
+        \iff& a \mathrel{((T \circ S) \circ R)} f\\
+        \iff& \exists x \in B \cap C \text{ s.t. } (a \mathrel{R} x \land x \mathrel{(T\circ S)} f)\\
+        \iff& \exists x \in B \cap C \text{ s.t. } (a \mathrel{R} x \land (\exists y \in D \cap E \text{ s.t. } (x \mathrel{S} y \land y \mathrel{T} f)))\\
+        \iff& \exists x \in B \cap C, y \in D \cap E \text{ s.t. } (a \mathrel{R} x \land x \mathrel{S} y \land y \mathrel{T} f)\\
+        \iff& \exists y \in D \cap E \text{ s.t. } ((\exists x \in B \cap C \text{ s.t. } (a \mathrel{R} x \land x \mathrel{S} y)) \land y \mathrel{T} f)\\
+        \iff& \exists y \in D \cap E \text{ s.t. } (a \mathrel{(S \circ R)} y \land y \mathrel{T} f)\\
+        \iff& a \mathrel{(T \circ (S \circ R))} f\\
+        \iff& (a, f) \in T \circ (S \circ R).
     \end{align*}
     So any element in $(T \circ S) \circ R$ is also in $T \circ (S \circ R)$ and vice versa, thereby meaning that $(T \circ S) \circ R = T \circ (S \circ R)$.
 \end{proof}

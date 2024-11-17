@@ -493,6 +493,7 @@ cython_debug/
 # Directories
 out
 References
+temp
 venv
 
 .Trash-0

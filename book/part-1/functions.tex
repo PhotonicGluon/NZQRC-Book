@@ -63,7 +63,7 @@ Let us look at some examples.
     \end{itemize}
 \end{example}
 
-\begin{exercise}[Empty Function?]
+\begin{exercise}[Empty Function?]\label{exercise:empty-function}
     Suppose $A$ is a set. Consider the relation $f$ from $\emptyset$ to $A$ where $f = \emptyset$. Is $f$ a function?
 \end{exercise}
 
@@ -248,7 +248,7 @@ we can finally write state the axiom schema of replacement formally.
     where $R$ is not free in $\phi$.
 \end{axiom}
 
-This is undoubtedly one of the most involved axiom schema within \ZF, but also one of the most powerful. As we will soon see, functions play a crucial part when working with numbers.
+This is undoubtedly one of the most involved axiom schema within \ZFC, but also one of the most powerful. As we will soon see, functions play a crucial part when working with numbers.
 
 \section{Well-Defined Functions}
 \myref{axiom:schema-of-replacement} allows us to assert that the range of any function exists. However, care must be taken to ensure that the rule of the function indeed makes the function a function, and not just a relation. Specifically, referring to \myref{definition:function}, a `function' that fails to satisfy either \textbf{F1} or \textbf{F2} (or both) is called a \term{ill-defined} function, and functions that satisfy both \textbf{F1} and \textbf{F2} are called \term{well-defined} functions (which are actual functions).
@@ -313,16 +313,671 @@ This is undoubtedly one of the most involved axiom schema within \ZF, but also o
 \end{exercise}
 
 \section{Injections, Surjections, Bijections}
-TODO: Add
-% Introduce injectivity
-% Introduce surjectivity
-% Introduce bijectivity
-% Introduce inverse functions (for bijective functions)
+We now look at two essential properties that functions could satisfy -- injectivity and surjectivity. Bijectivity is just the combination of both injectivity and surjectivity, and it results in the elements of the domain and codomain matching up exactly. Such a bijective function can result in a new function that undoes the original function, called the inverse function.
+
+\subsection{Injectivity}
+A function could send multiple elements in the domain to the same element in the codomain. The function's arrow diagram would have two arrows originating at different elements and terminating at the same element. Such a function is \term{non-injective}. It would be nice for a function to have no two distinct elements in the domain map to the same element in the codomain. Diagrammatically, this means that no two arrows originating at different elements terminate at the same element. For example, the ``character of'' function in \myref{example:character-of-function} satisfies this property. Such a function is \term{injective}.
+
+\begin{figure}[H]
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=3.5cm]{images/part-1/functions/a-functions-properties.png}
+        \caption{A Non-Injective Function}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=3.5cm]{images/part-1/functions/character-of.png}
+        \caption{An Injective Function}
+    \end{subfigure}
+    \caption{Injectivity and Non-injectivity}
+\end{figure}
+
+We can express the condition for a function to be injective formally.
+\begin{definition}[Injectivity]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is \term{injective}\index{injective}\index{function!injective} (or \term{one-to-one}\index{function!one-to-one}) if and only if
+    \[
+        f(x_1) = f(x_2) \implies x_1 = x_2
+    \]
+    for all $x_1, x_2 \in X$. Equivalently,
+    \[
+        x_1 \neq x_2 \implies f(x_1) \neq f(x_2)
+    \]
+    for all $x_1, x_2 \in X$.
+\end{definition}
+
+\begin{example}[An Example of Injectivity]
+    (\textit{Assume the addition and multiplication of natural numbers is defined.})
+
+    Consider the function $f: \N \to \N$ such that $f(x) = 4x + 1$ for all $x \in \N$. We show that this is injective.
+    \begin{proof}
+        Suppose $x_1, x_2 \in \N$ such that $f(x_1) = f(x_2)$. By definition of $f$, we have $4x_1 + 1 = 4x_2 + 1$. So $4x_1 = 4x_2$ and thus $x_1 = x_2$. So $f$ is indeed injective by definition.
+    \end{proof}
+\end{example}
+
+\begin{example}[An Example of Non-Injectivity]
+    Consider the function $f: \N \to \N$ such that $f(x) =(\text{last digit of } x)$. We show that this is not injective.
+    \begin{proof}
+        Note $1 \in \N$ and $11 \in \N$. We see $f(1) = f(11) = 1$, so $f$ is not injective.
+    \end{proof}
+\end{example}
+
+\begin{exercise}[Injective Detective]
+    For each function described by the arrow diagrams below, determine whether they are injective or not.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_yesinj_1.png}
+            \caption{}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_noninj_1.png}
+            \caption{}
+        \end{subfigure}
+        \linebreak
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_yesinj_2.png}
+            \caption{}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_noninj_2.png}
+            \caption{}
+        \end{subfigure}
+    \end{figure}
+
+    \addtocounter{figure}{-1}  % To ensure that the figure numbering is correct after this exercise
+\end{exercise}
+
+\begin{exercise}[Hash Functions]
+    Let $S$ be a set. Consider the function $H: S \to \N$ such that $H(x) = (\text{last two digits of } x)$. Suppose we have a table of 100 slots, each numbered 0 to 99, where we place the element $x \in S$ into the slot $H(x)$. A \textit{collision} occurs if two elements from $S$ map to the same slot in the table.
+
+    \begin{partquestions}{\roman*}
+        \item Describe the condition on $H$ for no collisions to occur.
+        \item Suppose all elements of $S$ are placed into the table. Which of the following possibilities of $S$ results in no collisions?
+        \begin{partquestions}{\alph*}
+            \item $S = \{12, 34, 56\}$
+            \item $S = \{12, 34, 56, 78, 910, 1112, 1314\}$
+            \item $S = \{18323, 389892, 92349589, 8942894281\}$
+            \item $S = \{128, 7327, 83279, 8934289, 842892, 824379490\}$
+        \end{partquestions}
+    \end{partquestions}
+\end{exercise}
+\begin{remark}
+    Such a function as described above can be considered a \term{hash function}\index{hash}\index{hash!function} and the table a \term{hash table}\index{hash!table}.
+\end{remark}
+
+\subsection{Surjectivity}
+Recall that a relation from the set $X$ to the set $Y$ may not have its domain being $X$, but a function has to have its domain to be the entire set $Y$. Likewise, a function's range may not be the whole set $Y$, but it would be nice to have such a function with its range as the codomain. This is the appeal of \term{surjective} functions.
+
+\begin{definition}[Surjectivity]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is \term{surjective}\index{surjective}\index{function!surjective} (or \term{onto}\index{function!onto}) if and only if
+    \[
+        \forall y \in Y, \exists x \in X \text{ s.t. } y = f(x).
+    \]
+    In other words, every $y \in Y$ has a corresponding $x \in X$, called its \term{preimage}\index{preimage}\index{function!preimage}, such that $y = f(x)$.
+\end{definition}
+
+As mentioned, an important property of surjective functions is that their range is their codomain.
+
+\begin{proposition}[Surjective Functions' Range is their Codomain]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a surjective function. Then the range of $f$ is $Y$.
+\end{proposition}
+\begin{proof}
+    Recall that the range of $f$ is the set
+    \[
+        \{y \in Y \vert \exists x \in X \text{ s.t. } y = f(x)\}.
+    \]
+    Since $f$ is surjective, every $y \in Y$ has a corresponding preimage $x \in X$ such that $y = f(x)$. Thus the range of $f$ is exactly $Y$.
+\end{proof}
+
+\begin{example}[A Surjective Function]
+    Let's modify the "character of" function in \myref{example:character-of-function} to make it surjective. Let $N$, a subset of the natural numbers, be $\{1, 2, 3, 4, 5\}$ and $C$, a subset of all characters, be $\{\text{b}, \text{c}, \text{d}\}$. Define the function $f: N \to C$ such that
+    \[
+        f = \{(2, \text{b}), (3, \text{c}), (4, \text{d})\}.
+    \]
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/character-of_surjective.png}
+        \caption{Arrow Diagram of $f$}
+    \end{figure}
+    We clearly see that every element in the codomain $C$ has a corresponding preimage in $N$, and thus $f$ is surjective.
+\end{example}
+
+\begin{example}[A Non-Surjective Function]
+    Consider again the successor function restricted to the natural numbers again, i.e. the function $S: \N \to \N$.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/successor.png}
+        \caption{Arrow Diagram of $S$}
+    \end{figure}
+    We can see in the diagram that $0 \in \N$ has no preimage under $S$. Thus, this means that 0 is not in the range of $S$, which tells us that $S$ is not surjective.
+\end{example}
+
+\begin{exercise}[Surjective Detective]
+    For each function described by the arrow diagrams below, determine whether they are surjective or not.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_nonsurj_1.png}
+            \caption{}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_yessurj_1.png}
+            \caption{}
+        \end{subfigure}
+        \linebreak
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_yessurj_2.png}
+            \caption{}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3cm]{images/part-1/functions/surjective-detective_nonsurj_2.png}
+            \caption{}
+        \end{subfigure}
+    \end{figure}
+    
+    \addtocounter{figure}{-1}  % To ensure that the figure numbering is correct after this exercise
+\end{exercise}
+
+\subsection{Bijectivity}
+Now, let us consider a function $f: X \to Y$ which is both injective and bijective. Such functions are so important that we have a name for them -- \term{bijections}.
+
+\begin{definition}[Bijectivity]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is \term{bijective}\index{bijective}\index{function!bijective} (or that $f$ is a \term{one-to-one correspondence}\index{function!one-to-one correspondence}) if and only if it is both injective and surjective.
+\end{definition}
+
+Why are they important? For a bijection $f: X \to Y$, any $x \in X$ has a unique corresponding element $y \in Y$ such that $y = f(x)$ (since $f$ is a function). Also, any $y \in Y$ has a corresponding preimage $x \in X$ such that $y = f(x)$ (since $f$ is surjective) and this $x$ is that only one that results in $y$ (since $f$ is injective). In essence, a bijection creates a pairing between the elements of $X$ and $Y$ that matches each element of $X$ exactly one element of $Y$ (and vice versa).
+
+\begin{example}[The ``Decimal to Binary'' Function]\label{example:decimal-to-binary-function}
+    A binary string consists of only ones and zeros. Let $N$, a subset of all natural numbers written in decimal (i.e., base 10), be $\{0, 1, 2, 3, 4, 5\}$. Let $B$, a subset of all binary strings, be $\{\code{000}, \code{001}, \code{010}, \code{011}, \code{100}, \code{101}\}$. We may define the function $f: N \to B$ such that, in effect, it converts the decimal number in $N$ into a binary string in $B$. That is,
+    \[
+        f = \{(0, \code{000}), (1, \code{001}), (2, \code{010}), (3, \code{011}), (4, \code{100}), (5, \code{101})\}.
+    \]
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/decimal-to-binary.png}
+        \caption{Arrow Diagram of $f$}
+    \end{figure}
+    We clearly see from the arrow diagram that
+    \begin{itemize}
+        \item each element of $B$ has no more than one arrow pointing to it, which means $f$ is injective; and
+        \item every element of $B$ has an arrow pointing to it, which means $f$ is surjective,
+    \end{itemize}
+    and thus $f$ is bijective (which means it is a bijection).
+\end{example}
+
+\begin{example}[The String Reversal Function]\label{example:string-reversal-function}
+    Suppose $\Lang$ is a formal language with alphabet $\Alphabet$. Let $\Alphabet^\ast$ denote the set of all strings from using symbols from $\Alphabet$. Define the function $r: \Alphabet^\ast \to \Alphabet^\ast$ where, for any string $s \in \Alphabet^\ast$, $r(s)$ is the string obtained by reversing $s$. For example, for $\Alphabet = \{a,b,c\}$,
+    \begin{itemize}
+        \item $r(\emptystring) = \emptystring$ (since we do not have any symbols to reverse);
+        \item $r(a) = a$, and likewise $r(b) = b$ and $r(c) = c$;
+        \item $r(ab) = ba$, and likewise $r(ac) = ca$ and $r(bc) = cb$;
+        \item $r(abcaba) = abacba$; and
+        \item $r(cacab) = bacac$.
+    \end{itemize}
+
+    We show that $r$ is actually a bijection.
+    \begin{proof}
+        We are to show two things: $r$ is injective and $r$ is surjective.
+        \begin{itemize}
+            \item \textbf{Injective}: Suppose $s_1, s_2 \in \Alphabet^\ast$ such that $r(s_1) = r(s_2)$. What does this mean? This means that the string obtained when writing the symbols in $s_1$ in reverse order is the same as the string obtained when writing the symbols in $s_2$ in reverse order. But if $s_1$ and $s_2$ are the same when written in reverse, they have to be the same to start with. In other words, we must have $s_1 = s_2$ and thus $r$ is indeed injective.
+            \item \textbf{Surjective}: Suppose $s'$ is any string in $\Alphabet^\ast$. By definition of $r$, we know that $r(s')$ is the string obtained by reversing $s'$. Note that when a reversed string is reversed again, we obtain the original string, i.e. $r(r(s')) = s'$. So let $s = r(s')$, noting that $s \in \Alphabet^\ast$. Then $r(s) = r(r(s')) = s'$, and thus $r$ is indeed surjective.
+        \end{itemize}
+        Since $r$ is both injective and surjective, it is thus bijective.
+    \end{proof}
+\end{example}
+
+Bijections create a function that undoes the effect of the original function. This function is called the \term{inverse function}, and only bijections have them.
+
+\begin{definition}[Invertible Function and Inverse Function]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is an \term{invertible function}\index{function!invertible} if and only if there exists a function $g: Y \to X$ such that
+    \begin{align*}
+        g(f(x)) &= x \text{ for all } x \in X \text{ and}\\
+        f(g(y)) &= y \text{ for all } y \in Y.
+    \end{align*}
+    In this case $g$ is called the \term{inverse function of $f$}\index{function!inverse}, and is usually denoted $f^{-1}$.
+\end{definition}
+
+\begin{theorem}[Invertible If and Only If Bijective]\label{theorem:invertible-if-and-only-if-bijective}
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then $f$ is invertible if and only if $f$ is a bijection.
+\end{theorem}
+\begin{proof}
+    For the forward direction, suppose $f$ is invertible. This means there exists $g: Y \to X$ such that $g(f(x)) = x$ for all $x \in X$ and $f(g(y)) = y$ for all $y \in Y$. We are to prove that $f$ is both injective and surjective.
+    \begin{itemize}
+        \item \textbf{Injective}: Suppose $x_1, x_2 \in X$ such that $f(x_1) = f(x_2)$. Thus $g(f(x_1)) = g(f(x_2))$, which means $x_1 = x_2$ by definition of $g$.
+        \item \textbf{Surjective}: Suppose $y \in Y$. We know that $g(y) \in X$ by definition of $g$. Furthermore we know that $f(g(y)) = y$ by definition of $g$. So the preimage of $y$ under $f$ is $g(y)$, which shows that $f$ is surjective.
+    \end{itemize}
+    As $f$ is both injective and surjective, it is thus bijective.
+
+    For the reverse direction, let $f: X \to Y$ be a bijection. Since a function is a relation, thus $f$ is a subset of $X \times Y$. Considering $f$ as a relation, let $g = f^{-1}$, i.e. $g$ is the inverse relation of $f$. We show that $g$ is the inverse function of $f$.
+
+    First, to prove that $g = f^{-1}$ is indeed a function. We need to prove \textbf{F1} and \textbf{F2} (see \myref{definition:function}). In the context of $g$, they can be written as follows.
+    \begin{enumerate}[label=\textbf{F\arabic*.}]
+        \item For all $y \in Y$, there exists $x \in X$ such that $y \mathrel{g} x$.
+        \item For all $y \in Y$, if $y \mathrel{g} x_1$ and $y \mathrel{g} x_2$ for some $x_1, x_2 \in X$, we must have $x_1 = x_2$.
+    \end{enumerate}
+    We prove them one by one, using the properties of $f$.
+    \begin{itemize}
+        \item To prove \textbf{F1}, suppose $y \in Y$. Since $f$ is surjective, we know that there exists a $x \in X$ such that $f(x) = y$ (i.e. $x \mathrel{f} y$). In particular we know $y \mathrel{f^{-1}} x$ by definition of inverse relation; since $g = f^{-1}$ we must have $y \mathrel{g} x$. So there is an $x \in X$ such that $y \mathrel{g} x$ (and in particular it is the $x \in X$ such that $f(x) = y$).
+        \item To prove \textbf{F2}, suppose $y \in Y$ and $x_1, x_2 \in X$ such that $y \mathrel{g} x_1$ and $y \mathrel{g} x_2$. By our working above, we know that $x_1 \mathrel{f} y$ and $x_2 \mathrel{f} y$, i.e. $f(x_1) = y$ and $f(x_2) = y$. Thus $f(x_1) = f(x_2)$. Since $f$ is injective, thus $x_1 = x_2$.
+    \end{itemize}
+    Thus $g = f^{-1}$ is a function.
+
+    Now we need to prove that $g(f(x)) = x$ for all $x \in X$. As above we know there exists a $y \in Y$ such that $x \mathrel{f} y$ and $y \mathrel{g} x$. Clearly this means $g(f(x)) = x$ for all $x \in X$.
+
+    Finally, we need to prove that $f(g(y)) = y$ for all $y \in Y$. As above we know there exists a $x \in X$ such that $y \mathrel{g} x$ and $x \mathrel{f} y$. Clearly this means $f(g(y)) = y$ for all $y \in Y$.
+
+    Hence we see $f$ is invertible with $g$ being the inverse function of $f$.
+\end{proof}
+
+What the above theorem states is that the inverse function of $f: X \to Y$ is exactly the function induced by the inverse relation of $f$.
+
+\begin{example}[The ``Binary to Decimal'' Function]
+    Let us consider the ``decimal to binary'' function defined in \myref{example:decimal-to-binary-function}, where
+    \[
+        f = \{(0, \code{000}), (1, \code{001}), (2, \code{010}), (3, \code{011}), (4, \code{100}), (5, \code{101})\}.
+    \]
+    So the inverse function of $f$ is
+    \[
+        f^{-1} = \{(\code{000}, 0), (\code{001}, 1), (\code{010}, 2), (\code{011}, 3), (\code{100}, 4), (\code{101}, 5)\}.
+    \]
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/binary-to-decimal.png}
+        \caption{Arrow Diagram of $f^{-1}$}
+    \end{figure}
+\end{example}
+
+\begin{example}[The String Reversal Function]
+    Consider the string reversal function $r: \Alphabet^\ast \to \Alphabet^\ast$ defined in \myref{example:string-reversal-function}. One notes that it is its own inverse, since for any string $s \in \Alphabet^\ast$,
+    \begin{align*}
+        r(r(s)) &= \text{the reversal of the reversal of } s\\
+        &= s.
+    \end{align*}
+\end{example}
+
+\begin{exercise}[Non-Trivial Bijection]
+    Let the set $A = \{1, 2, 3, 4\}$. Find a function $f: A \to A$ such that $f$ is a bijection but $f^{-1} \neq \id_A$.
+\end{exercise}
 
 \section{Composition of Functions}
-TODO: Add
-% Give an idea of what function composition process is like (e.g., as machines feeding into each other)
-% Define function composition
-% Give result of composition with identity function
-% Give result of composition with inverse
-% Give result of composition with injections and surjections
+We may think of function composition as machines feeding into each other -- the output of one machine is the input of the other.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=2cm]{images/part-1/functions/function-composition_machine.png}
+    \caption{Composition of Functions $f$ and $g$}
+\end{figure}
+In the above figure, we have two functions, namely $f$ and $g$. Any input $x$ that is fed into this machine will first pass through $f$, resulting in $f(x)$, and then pass through $g$, with the result being $g(f(x))$.
+
+\begin{definition}[Composition of Functions]
+    Let $A$, $B$, $C$, and $D$ be sets. Let $f: A \to B$ and $g: C \to D$ be functions. The \term{composition of $f$ and $g$}\index{function!composition}, denoted $g \circ f$, is the function $h: A \to D$ such that
+    \[
+        h(x) = g(f(x))
+    \]
+    for all $x \in A$, and is only defined if and only if $C$ is a subset of the range of $f$ (i.e., the domain of $g$ is a subset of the range of $f$).
+\end{definition}
+
+This definition can be displayed diagrammatically.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=4.5cm]{images/part-1/functions/function-composition_arrow-diagram.png}
+    \caption{Composition of Functions $f$ and $g$}
+\end{figure}
+In the diagram, any element in the domain of $g\circ f$ (i.e., any element in $A$) will first be mapped to the range of $f$ (denoted by the dotted circle within the intersection of $B$ and $C$), and then mapped to the final element in $D$ (which is the codomain of $g \circ f$).
+
+One might wonder whether the order of taking the compositions matter. It turns out that it does not.
+
+\begin{theorem}[Associativity of Composition (Functions)]\index{function!composition!associativity}
+    Let $A$, $B$, $C$, $D$, $E$, and $F$ be sets. Let $f: A \to B$, $g: C \to D$, and $h: E \to F$ be functions such that $g \circ f$ and $h \circ g$ are defined. Then
+    \[
+        (h \circ g) \circ f = h \circ (g \circ f).   
+    \]
+\end{theorem}
+\begin{proof}
+    Note that if either $f$, $g$, or $h$ is the empty function (see \myref{exercise:empty-function}), then $(h \circ g) \circ f = h \circ (g \circ f) = \emptyset$. So we may assume that $f$, $g$, and $h$ are not empty functions.
+
+    Considering $f$ and $g$ as relations for a moment, the fact that $g \circ f$ is a function means that $C$ is a subset of the range of $f$ (which is a subset of $B$). Since $f$ and $g$ are not empty functions, thus we must have $B \cap C \neq \emptyset$. Likewise we see $D \cap E \neq \emptyset$ by using the same argument for $g$ and $h$.
+
+    Therefore the claim is readily proven by using \myref{theorem:associativity-of-composition-relations} on $f$, $g$, and $h$ when we consider them as relations.
+\end{proof}
+
+Similar to relations, since there is no distinction between $(h \circ g) \circ f$ and $h \circ (g \circ f$), we can write ``$h \circ g \circ f$'' without any ambiguity.
+
+The most trivial composition that we can consider is a composition with the identity function.
+
+\begin{proposition}[Composition with Identity Function]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be a function. Then
+    \[
+        f\circ \id_X = f \text{ and } \id_Y \circ f = f.
+    \]
+\end{proposition}
+\begin{proof}
+    Recall that $\id_A(a) = a$ for all sets $A$ and $a \in A$. So for any $x \in X$ we have
+    \begin{align*}
+        (f \circ \id_X)(x) &= f(\id_X(x)) & (\text{Definition of composition})\\
+        &= f(x) & (\text{Definition of identity function})
+    \end{align*}
+    which means $f \circ \id_X = f$. Also, we have
+    \begin{align*}
+        (\id_Y \circ f)(x) &= \id_Y(f(x)) & (\text{Definition of composition})\\
+        &= f(x) & (\text{Definition of identity function})
+    \end{align*}
+    for any $x \in X$, meaning that $\id_Y \circ f = f$.
+\end{proof}
+
+A more interesting result can be found when we compose an invertible function with its inverse.
+
+\begin{example}[Composing an Invertible Function with Its Inverse]
+    Let $A = \{1, 2, 3\}$, $B = \{x, y, z\}$, and the function $f: A \to B$ such that
+    \[
+        f = \{(1, z), (2, x), (3, y)\}.
+    \]
+    Clearly $f$ is a bijection, which means it has an inverse. In particular, its inverse is
+    \[
+        f^{-1} = \{(x, 2), (y, 3), (z, 1)\}.
+    \]
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3.5cm]{images/part-1/functions/compose-function-with-inverse_f.png}
+            \caption{Arrow Diagram of $f$}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=3.5cm]{images/part-1/functions/compose-function-with-inverse_f-inv.png}
+            \caption{Arrow Diagram of $f^{-1}$}
+        \end{subfigure}
+        \caption{Arrow Diagrams of $f$ and $f^{-1}$}
+    \end{figure}
+
+    Let us consider the composition $f^{-1} \circ f$. It can be found by following the arrows from $A$ to $B$ via $f$ and back to $A$ via $f^{-1}$. So we see that
+    \begin{align*}
+        (f^{-1} \circ f)(1) &= (f^{-1}(f(1))) = f^{-1}(z) = 1,\\
+        (f^{-1} \circ f)(2) &= (f^{-1}(f(2))) = f^{-1}(x) = 2, \text{ and}\\
+        (f^{-1} \circ f)(3) &= (f^{-1}(f(3))) = f^{-1}(y) = 3.
+    \end{align*}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-function-with-inverse_aba.png}
+        \caption{Arrow Diagram of $f^{-1} \circ f$}
+    \end{figure}
+
+    We can do the same for the composition $f \circ f^{-1}$. It can be found by following the arrows from $B$ to $A$ via $f^{-1}$ and back to $B$ via $f$. Thus
+    \begin{align*}
+        (f \circ f^{-1})(x) &= (f(f^{-1}(x))) = f(2) = x,\\
+        (f \circ f^{-1})(y) &= (f(f^{-1}(y))) = f(3) = y, \text{ and}\\
+        (f \circ f^{-1})(z) &= (f(f^{-1}(z))) = f(1) = z.
+    \end{align*}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-function-with-inverse_bab.png}
+        \caption{Arrow Diagram of $f \circ f^{-1}$}
+    \end{figure}
+
+    One sees from the above two computations that
+    \[
+        f^{-1} \circ f = \id_A \text{ and } f \circ f^{-1} = \id_B.
+    \]
+\end{example}
+
+The observation made above can be generalised.
+
+\begin{proposition}[Composition of Function with Inverse]
+    Let $X$ and $Y$ be sets, and let $f: X \to Y$ be an invertible function with inverse $f^{-1}: Y \to X$. Then
+    \[
+        f^{-1} \circ f = \id_X \text{ and } f \circ f^{-1} = \id_Y.
+    \]
+\end{proposition}
+\begin{proof}
+    For the first, let $x \in X$. Then
+    \[
+        (f^{-1} \circ f)(x) = f^{-1}(f(x))
+    \]
+    by definition of composition of functions. Letting $z = f^{-1}(f(x))$, we see that
+    \[
+        f(z) = f(x)
+    \]
+    by definition of the inverse function. As $f$ is invertible, it is thus a bijection (\myref{theorem:invertible-if-and-only-if-bijective}), which means it is injective (by definition of bijection). Hence we see $z = x$, meaning $f^{-1}(f(x)) = x$. Since this holds for any $x \in X$, we must have $f^{-1} \circ f = \id_X$.
+
+    For the second, let $y \in Y$. Then we see
+    \[
+        (f \circ f^{-1})(y) = f(f^{-1}(y)).
+    \]
+    Let $z = f(f^{-1}(y))$, which means that
+    \[
+        f^{-1}(z) = f^{-1}(y)
+    \]
+    by definition of the inverse function. Now note that $f^{-1}$ clearly has an inverse of $f$, which thus means that $f^{-1}$ is bijective (\myref{theorem:invertible-if-and-only-if-bijective}). So we must have $z = y$, meaning $f(f^{-1}(y)) = y$ for all $y \in Y$. Hence $f \circ f^{-1} = \id_Y$.
+\end{proof}
+
+The composition of two injective functions is also interesting.
+
+\begin{example}[Composition of Injective Functions]
+    Let $A = \{a,b,c\}$, $B = \{\text{I}, \text{II}, \text{III}, \text{IV}\}$, and $C = \{1, 2, 3, 4, 5\}$. Define the functions $f: A \to B$ and $g: B \to C$ such that
+    \[
+        f = \{(a, \text{I}), (b, \text{II}), (c, \text{IV})\} \text{ and } g = \{(\text{I}, 1), (\text{II}, 3), (\text{III}, 4), (\text{IV}, 5)\}.
+    \]
+    We can draw their individual effects as follows.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-injections_abc.png}
+        \caption{Arrow Diagrams of $f$ and $g$, On The Same Diagram}
+    \end{figure}
+
+    The overall composition of $f$ and $g$ is
+    \[
+        g \circ f = \{(a, 1), (b, 3), (c, 5)\}
+    \]
+    which has an arrow diagram as follows.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-injections_ac.png}
+        \caption{Arrow Diagram of $g \circ f$}
+    \end{figure}
+    One easily verifies that $g \circ f$ is also injective.
+\end{example}
+
+It is not a coincidence that the composition of injective functions is also injective.
+
+\begin{proposition}[Injective Function Composition is Injective]\label{prop:composition-of-injective-functions-is-injective}
+    Let $A$, $B$, $C$, and $D$ be sets. Let $f: A \to B$ and $g: C \to D$ be injections such that $g \circ f$ is defined. Then $g \circ f$ is an injection.
+\end{proposition}
+\begin{proof}
+    Suppose $x_1, x_2 \in A$ such that $(g \circ f)(x_1) = (g \circ f)(x_2)$, i.e.
+    \[
+        g(f(x_1)) = g(f(x_2))
+    \]
+    by definition of composition of functions. Since $g$ is injective, thus
+    \[
+        f(x_1) = f(x_2).
+    \]
+    But as $f$ is also injective, thus $x_1 = x_2$. Therefore $g \circ f$ is an injection.
+\end{proof}
+
+\begin{exercise}[Composition of an Injection and Non-Injection]
+    Let $X$ be a non-empty set, and let $f: X \to X$, $g: X \to X$, and $h: X \to X$ be functions. Suppose $h$ is an injective function. Which of the following statements are always true?
+    \begin{partquestions}{\alph*}
+        \item If $h \circ f = h \circ g$ then $f = g$.
+        \item If $f \circ h = g \circ h$ then $f = g$.\newline
+        (\textit{Hint: think of infinite sets. You may use concepts that are not yet explicitly defined in this book, e.g. odd and even numbers, and multiplication of natural numbers.})
+    \end{partquestions}
+\end{exercise}
+
+One may notice a similar phenomenon occurring with the composition of surjective functions.
+
+\begin{example}[Composition of Surjective Functions]
+    Let $A = \{a,b,c,d,e\}$, $B = \{\text{I}, \text{II}, \text{III}, \text{IV}\}$, and $C = \{1, 2, 3\}$. Define the functions $f: A \to B$ and $g: B \to C$ such that
+    \[
+        f = \{(a, \text{II}), (b, \text{III}), (c, \text{I}), (d, \text{IV}), (e, \text{I})\}
+    \]
+    and
+    \[
+        g = \{(\text{I}, 2), (\text{II}, 1), (\text{III}, 1), (\text{IV}, 3)\}.
+    \]
+    We can draw their individual effects as follows.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-surjections_abc.png}
+        \caption{Arrow Diagrams of $f$ and $g$, On The Same Diagram}
+    \end{figure}
+
+    The overall composition of $f$ and $g$ is
+    \[
+        g \circ f = \{(a, 1), (b, 1), (c, 2), (d, 3), (e, 2)\}
+    \]
+    which has an arrow diagram as follows.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-1/functions/compose-surjections_ac.png}
+        \caption{Arrow Diagram of $g \circ f$}
+    \end{figure}
+    One easily verifies that $g \circ f$ is also surjective.
+\end{example}
+
+Again, this is not a coincidence.
+
+\begin{proposition}[Surjective Function Composition is Surjective]\label{prop:composition-of-surjective-functions-is-surjective}
+    Let $A$, $B$, $C$, and $D$ be sets. Let $f: A \to B$ and $g: C \to D$ be surjections such that $g \circ f$ is defined. Then $g \circ f$ is a surjection.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:composition-of-surjective-functions-is-surjective} (later).
+\end{proof}
+
+The overall effect of \myref{prop:composition-of-injective-functions-is-injective} and \myref{prop:composition-of-surjective-functions-is-surjective} is the following.
+
+\begin{proposition}[Bijective Function Composition is Bijective]
+    Let $A$, $B$, $C$, and $D$ be sets. Let $f: A \to B$ and $g: C \to D$ be bijections such that $g \circ f$ is defined. Then $g \circ f$ is a bijection.
+\end{proposition}
+\begin{proof}
+    Since $f$ and $g$ are bijections, they are both injective and surjective. \myref{prop:composition-of-injective-functions-is-injective} thus tells us that $g \circ f$ is injective and \myref{prop:composition-of-surjective-functions-is-surjective} tells us that $g \circ f$ is surjective, which means that $g \circ f$ is bijective.
+\end{proof}
+
+\begin{exercise}[Composition of Surjective Functions is Surjective]\label{exercise:composition-of-surjective-functions-is-surjective}
+    Prove \myref{prop:composition-of-surjective-functions-is-surjective}.
+\end{exercise}
+
+\section{Axiom of Choice}
+We end this chapter by looking at the penultimate axiom of \ZFC, and its namesake -- the axiom of choice.
+
+\subsection{The Axiom}
+Unlike the other axioms, it is more enlightening to present its statement using the language of functions, and not directly using the formal language of axiomatic set theory.
+
+\begin{axiom}[Choice]\label{axiom:choice}\index{axiom!of choice}\index{Zermelo-Frankel Set Theory!choice}
+    \vspace{-10px}
+    \[
+        \forall X, \left((\emptyset \notin X) \implies \exists \left(f: X \to \bigcup_{A \in X} A\right) \text{ s.t. } \forall A \in X, f(A) \in A\right)
+    \]
+\end{axiom}
+
+Let us unpack what this axiom says. For any non-empty set $X$, there exists a function $f$ from $X$ to the union of all the elements (which are sets) of $X$ such that for any such element (set) in $X$, say $A$, the function maps $A$ to an element in $A$. The function $f$ is called a \term{choice function}\index{choice function}\index{function!choice}.
+
+Let us illustrate the process that \myref{axiom:choice} performs. Suppose we have a set $X$, where
+\[
+    X = \left\{\{1, 2, 3\}, \{\text{I}, \text{II}, \text{III}, \text{IV}, \text{V}\}, \{a, b, c, d\}\right\}.
+\]
+Clearly $X$ is non-empty. So \myref{axiom:choice} tells us there is a function from $X$ to $\cup_{A\in X} A$ such that $f(A) \in A$ for all $A \in X$. Note that
+\[
+    \bigcup_{A \in X} A = \{1, 2, 3, \text{I}, \text{II}, \text{III}, \text{IV}, \text{V}, a, b, c, d\}.
+\]
+So a possible choice function $f$ is
+\[
+    f = \{(\{1, 2, 3\}, 2), (\{\text{I}, \text{II}, \text{III}, \text{IV}, \text{V}\}, \text{III}), (\{a,b,c,d\}, a)\}.
+\]
+In effect, what we are doing is choosing one element from each of the sets in $X$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=6cm]{images/part-1/functions/axiom-of-choice_choice-function.png}
+    \caption{Action of the Choice Function $f$}
+\end{figure}
+
+\subsection{The Necessity of the Axiom of Choice}
+% TODO: Vet this explanation
+One might wonder why we need to have the axiom of choice. Can't we always pick an element from each set within a collection of sets?
+
+Suppose we have a set. It could be finite, it could be infinite, but we can definitely pick an element from it and place it in a singleton set. What if we have a finite collection of (finite or infinite) sets? We can still pick elements from them and place them in a finite set. The trouble comes when we are picking elements from an infinite number of sets. Our process of picking an elements from (possibly infinite) sets only work if we have a finite number of sets. If we have an infinite number of sets, we can never truly finish picking elements from them if we pick them `manually'!
+
+For some infinite collections of infinite sets, we still have a chance to pick elements using a certain rule.
+
+\begin{example}
+    (\textit{Assume multiplication of natural numbers is defined, and that there is ordering within the natural numbers.}) 
+    
+    Let $N_k$ denote the set
+    \[
+        \{x \in \N \vert \exists m \in \N \text{ s.t. } x = km\}.
+    \]
+    Consider the set of sets
+    \[
+        X = \{N_k \vert k \in \N \setminus \{0\}\}.
+    \]
+    
+    How might we define a procedure that picks an element from each of the sets in $X$, without using the axiom of choice? We could say ``pick the smallest element from each of the sets''. This is okay -- the element that we pick from each $N_k$ is $k$ itself, so the final set of chosen elements is
+    \[
+        \{1, 2, 3, \dots, k, \dots\}
+    \]
+    which is exactly $\N$.
+\end{example}
+
+\begin{example}
+    Here's another simple example. Imagine you have infinitely many pairs of shoes. The fact is that, among each pair, we are able to distinguish the left shoe from the right shoe. So, if we were to define a function to choose a shoe from each of the infinitely many pairs of shoes, we can just say ``pick the right shoe''.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=2.5cm]{images/part-1/functions/axiom-of-choice_shoes.png}
+        \caption{Choosing a Shoe from Each Pair of Infinite Shoes}
+    \end{figure}
+\end{example}
+
+However, not every set has such a nice rule for us to use.
+
+\begin{example}
+    Consider an infinite set of pairs of socks. Assuming that the left sock and right sock among each pair are identical, you cannot form an explicit rule for which sock to pick from each pair, and thus cannot create a function (without using the axiom of choice, that is) that picks a sock from each pair.
+\end{example}
+
+This is where the axiom of choice comes in. The axiom of choice asserts that such a selection is still possible, even without a specific rule. So it does not matter that the socks are indistinguishable from each other within each pair, the axiom of choice simply tells us that there exists a way to select the socks.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=2.5cm]{images/part-1/functions/axiom-of-choice_socks.png}
+    \caption{Choosing a Sock from Each Pair of Infinite Socks}
+\end{figure}
+
+Without the axiom of choice, many standard mathematical tools become unavailable or require much more complicated proofs. Whenever we invoke the idea of choosing, the axiom of choice comes to our aid.
+
+\subsection{An Alternate Formulation of the Axiom of Choice}
+The axiom of choice can be stated in many equivalent ways. We look at one of them here, relating to the idea of indexed family of sets.
+
+\begin{definition}[Indexed Family of Sets]
+    Let $I$ be a non-empty set. A \term{family of sets indexed by $I$}\index{indexed family of sets} is a set of sets $\mathcal{S} = \{S_i\}_{i \in I}$.
+\end{definition}
+
+\begin{example}
+    Consider the set $S = \{a, b, c, d, e\}$. To create an indexed family of sets, we can use the set $I = \{1, 2, 3, 4, 5\}$ to index $S$ to get $\mathcal{S} = \{S_1, S_2, S_3, S_4, S_5\}$ where $S_1 = a$, $S_2 = b$, $S_3 = c$, $S_4 = d$, and $S_5 = e$.
+\end{example}
+
+\begin{theorem}[Equivalent Statement of the Axiom of Choice]\label{theorem:axiom-of-choice-equivalent}
+    \myref{axiom:choice} holds if and only if any family of sets $\mathcal{S} = \{S_i\}_{i \in I}$ indexed by $I$ has a corresponding family of sets $\mathfrak{S} = \{s_i\}_{i\in I}$ such that $s_i \in S_i$ for all $i \in I$.
+\end{theorem}
+\begin{proof}
+    We only prove the reverse direction here and leave the forward direction for \myref{exercise:axiom-of-choice-equivalent} (later).
+
+    For the reverse direction, suppose any family of sets $\mathcal{S} = \{S_i\}_{i \in I}$ indexed by $I$ has a corresponding family of sets $\mathfrak{S} = \{s_i\}_{i\in I}$ such that $s_i \in S_i$ for all $i \in I$. Let $X$ be a non-empty set containing non-empty sets. We create a family of sets $\mathcal{X} = \{X_i\}_{i \in X}$ indexed by $X$ where $X_i = i$ for all $i \in X$. In fact one sees that $X = \mathcal{X}$. By assumption we know there exists a corresponding family of sets $\mathfrak{X} = \{x_i\}_{i \in X}$ such that $x_i \in X_i$ for all $i \in X$. 
+
+    One sees clearly that we have a bijection $f: \mathcal{X} \to \mathfrak{X}$ where $f(X_i) = x_i$ for all $i \in X$. Note $\mathfrak{X} \subseteq \bigcup_{S \in \mathcal{X}} S = \bigcup_{S \in X} S$. Thus the function $g: \mathcal{X} \to \bigcup_{S \in X} S$ where $g(X_i) = x_i$ for all $i \in X$ exists. Note also that $x_i \in X_i$ which means $g(X_i) \in X_i$ for all $i \in X$, and that $\mathcal{X} = X$. So the function $g$ is a function from $X$ to $\bigcup_{S \in X} S$ such that $g(X_i) \in X_i$ for all $i \in X$. Thus $g$ is the choice function we are after, showing that \myref{axiom:choice} holds.
+\end{proof}
+
+\begin{exercise}[Equivalent Statement of the Axiom of Choice]\label{exercise:axiom-of-choice-equivalent}
+    Prove the forward direction of \myref{theorem:axiom-of-choice-equivalent}.
+\end{exercise}

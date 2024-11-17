@@ -21,4 +21,82 @@
         Since both conditions are true, the function is well-defined.
         \item Ill-defined. Note that $1 \mathrel{h} (0,1)$ and $1 \mathrel{h} (1,0)$, so condition \textbf{F2} in \myref{definition:function} is not satisfied.
     \end{partquestions}
+
+    % Injective Detective
+    \item \begin{partquestions}{\alph*}
+        \item Is injective. Every element in $A$ is has a unique image in $B$.
+        \item Not injective. We see $f(0) = f(2) = 3$.
+        \item Is injective. Every element in $A$ is has a unique image in $B$.
+        \item Not injective. We see $f(1) = f(3) = 2$.
+    \end{partquestions}
+
+    % Hash Functions
+    \item \begin{partquestions}{\roman*}
+        \item The function $H$ has to be injective.
+        \item \begin{partquestions}{\alph*}
+            \item No collisions. We see that $H(12) = 12$, $H(34) = 34$, and $H(56) = 56$.
+            \item Has collision. We see that $H(12) = H(1112) = 12$.
+            \item No collision. We see that $H(18323) = 23$, $H(389892) = 92$, $H(92349589) = 89$, and $H(8942894281) = 81$.
+            \item No collision. We see that $H(128) = 28$, $H(7327) = 27$, $H(83279) = 79$, $H(8934289) = 89$, $H(842892) = 92$, and $H(824379490) = 90$.
+        \end{partquestions}
+    \end{partquestions}
+
+    % Surjective Detective
+    \item \begin{partquestions}{\alph*}
+        \item Not surjective. 1 has no preimage.
+        \item Is surjective. All elements in $B$ has a preimage in $A$.
+        \item Is surjective. All elements in $B$ has a preimage in $A$.
+        \item Not surjective. 2 has no preimage.
+    \end{partquestions}
+
+    % Non-Trivial Bijection
+    \item There are many solutions, one of which is
+    \[
+        f = \{(1,2),(2,3),(3,4),(4,1)\}.
+    \]
+    One sees that $f$ is a bijection with
+    \[
+        f^{-1} = \{(2,1),(3,2),(4,3),(1,4)\},
+    \]
+    which is not $\id_A = \{(1,1),(2,2),(3,3),(4,4)\}$.
+
+    % Composition of an Injection and Non-Injection
+    \item \begin{partquestions}{\alph*}
+        \item True. Suppose $h \circ f = h \circ g$. Thus $h(f(x)) = h(g(x))$ for all $x \in X$. As $h$ is injective, this means $f(x) = g(x)$ for all $x \in X$. Thus $f = g$.
+        \item False. Let $X = \N$, and consider the functions
+        \begin{align*}
+            f &= \id_X,\\
+            g &= \{(n, n) \vert n \text{ is even}\} \cup \{(n, 0) \vert n \text{ is odd}\}, \text{ and}\\
+            h &= \{(n, 2n) \vert n \in \N\}.
+        \end{align*}
+        
+        We first show that $h$ is injective. Suppose $n_1, n_2 \in \N$ such that $h(n_1) = h(n_2)$. So $2n_1 = 2n_2$ which clearly means $n_1 = n_2$. Thus $h$ is injective.
+
+        Now we show $f \circ h = g \circ h$. We see that
+        \begin{align*}
+            (f \circ h)(n) &= f(h(n)) & (\text{Definition of composition})\\
+            &= f(2n) & (\text{Definition of } h)\\
+            &= 2n & (\text{Definition of } f)\\
+            &= g(2n) & (\text{Definition of } g, \text{ since } 2n \text{ is even})\\
+            &= g(h(n)) & (\text{Definition of } h)\\
+            &= (g \circ h)(n) & (\text{Definition of composition})
+        \end{align*}
+        for any $n \in \N$, which thus means $f \circ h = g \circ h$.
+
+        But one sees clearly that $(1, 1) \in f$ but $(1, 1) \notin g$, so $f \neq g$.
+    \end{partquestions}
+
+    % Composition of Surjective Functions is Surjective
+    \item \begin{proof}
+        Suppose $f: A \to B$ and $g: C \to D$ are surjective functions. Let $d \in D$. Since $g$ is surjective, there exists a $c \in C$ such that $g(c) = d$. In particular, since $g \circ f$ exists, we know that this $c$ is in the range of $f$, which means that $c \in B$. Since $f$ is surjective, we know that there exists an $a \in A$ such that $f(a) = c$ (remember, this $c$ is also in $B$). We note that this element $a \in A$ satisfies
+        \[
+            g(f(a)) = g(c) = d
+        \]
+        so a preimage of $d$ under $g \circ f$ is $a$. It follows that $g \circ f$ is surjective.
+    \end{proof}
+
+    % Equivalent Statement of the Axiom of Choice
+    \item \begin{proof}
+        For the forward direction we assume \myref{axiom:choice} holds. Consider a family of sets $\mathcal{S} = \{S_i\}_{i \in I}$ indexed by $I$. Since $\mathcal{S}$ is non-empty, there exists a choice function $f: \mathcal{S} \to \bigcup_{S \in \mathcal{S}} S$ such that $f(S) \in S$ for all $S \in \mathcal{S}$. For each $i \in I$, let the set $s_i = f(S_i)$. We clearly see $s_i \in S_i$. Thus we have found a corresponding family of sets $\mathfrak{S} = \{s_i\}_{i\in I}$ such that $s_i \in S_i$ for all $i \in I$.
+    \end{proof}
 \end{questions}

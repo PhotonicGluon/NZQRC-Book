@@ -5,6 +5,7 @@ import shutil
 import tempfile
 from pathlib import Path
 from typing import Any, Dict, Optional
+import warnings
 
 from IPython.core.magic import Magics, cell_magic, magics_class
 
@@ -137,6 +138,9 @@ class GenerateImageMagic(Magics):
                 command.append("--hide-splash")
 
             if args.temp_dir:
+                msg = f"Using user-defined temporary directory '{args.temp_dir}'"
+                warnings.warn(msg)
+
                 os.makedirs(args.temp_dir, exist_ok=True)
                 tmpdir = args.temp_dir
             command.append(f"--media_dir={tmpdir}")

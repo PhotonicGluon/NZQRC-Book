@@ -1,0 +1,43 @@
+\section{Counting}
+\begin{questions}
+    % Complete the Proof!
+    \item \begin{proof}
+        Suppose there is an injection from $B$ to $A$, say $g$. Define a function $f: A \to B$ such that
+        \[
+            f(a) = \begin{cases}
+                b \text{ where } g(b) = a & \text{if } a \text{ in the range of } g\\
+                b_0 \text{ where } b_0 \text{ is a fixed element in } B & \text{otherwise}
+            \end{cases} 
+        \]
+        We show that $f$ is a surjection. Suppose $b \in B$. Note that $g(b)$ is the preimage of $b$ under $f$ since the first case in the definition of $f$ clearly reduces to $f(g(b)) = b$. Thus $f$ is a surjection, and therefore $|A| \geq |B|$ by \myref{definition:larger-or-equal-cardinality}.
+    \end{proof}
+
+    % Finite Cardinalities
+    \item \begin{partquestions}{\alph*}
+        \item 7125.
+        \item 373267.
+        \item Any singleton would work. For example, $\{0\}, \{a\}, \{1235\}$ etc. would all work.
+        \item Note $13 = \{0, 1, 2, \dots, 12\}$ and $14 = \{0, 1, 2, \dots, 12, 13\}$, so $13 \cup 14 = \{0, 1, 2, \dots, 12, 13\} = 14$. Thus the cardinality of $13 \cup 14$ is 14.
+    \end{partquestions}
+
+    % A Power Set
+    \item First we note that
+    \[
+        \Power{\{a,b\}} = \{\emptyset, \{a\}, \{b\}, \{a, b\}\}.
+    \]
+    Thus $\Power{\Power{\{a, b\}}}$ is
+    \begin{align*}
+        &\{\\
+        &\quad\emptyset,\\
+        &\quad\{\emptyset\}, \{\{a\}\}, \{\{b\}\}, \{\{a, b\}\},\\
+        &\quad\{\emptyset, \{a\}\}, \{\emptyset, \{b\}\}, \{\emptyset, \{a, b\}\},\\
+        &\quad\quad\{\{a\}, \{b\}\},\{\{a\}, \{a,b\}\}, \{\{b\}, \{a,b\}\},\\
+        &\quad\{\emptyset, \{a\}, \{b\}\},\{\emptyset, \{a\}, \{a,b\}\},\{\emptyset, \{b\}, \{a,b\}\},\{\{a\}, \{b\}, \{a,b\}\},\\
+        &\quad\{\emptyset, \{a\}, \{b\}, \{a, b\}\}\\
+        &\}
+    \end{align*}
+    which has a cardinality of 16.
+
+    % The Last Part of Cantor's Theorem
+    \item For any set $A$, we define the function $f: A \to \Power{A}$ by $f(x) = \{x\}$ for all $x \in A$. One sees that for any $x_1, x_2 \in A$, if $f(x_1) = f(x_2)$ we have $\{x_1\} = \{x_2\}$ which means $x_1 = x_2$ by equality of sets. Thus $f$ is injective as required.
+\end{questions}
