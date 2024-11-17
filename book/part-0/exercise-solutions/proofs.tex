@@ -1,5 +1,28 @@
 \section{Proofs}
 \begin{questions}
     % Direct Proof
-    \item Suppose $0 < x < 1$. Then $-1 < -x < 0$, meaning $0 < 1 - x < 1$. Therefore $x > 0$ and $1-x > 0$, so their product $x(1-x) > 0$.
+    \item \begin{proof}
+        Suppose $0 < x < 1$. Then $-1 < -x < 0$, meaning $0 < 1 - x < 1$. Therefore $x > 0$ and $1-x > 0$, so their product $x(1-x) > 0$.
+    \end{proof}
+    
+    % Splitting into Cases
+    \item \begin{proof}
+        Suppose that $m$ and $n$ have the same parity. We split into two cases.
+        \begin{itemize}
+            \item If both $m$ and $n$ are even, then we may write $m = 2a$ and $n = 2b$ where $a$ and $b$ are integers. Hence
+            \begin{align*}
+                m + n &= (2a) + (2b) \\
+                &= 2(a+b)
+            \end{align*}
+            which clearly means that $m + n$ is even.
+            \item If both $m$ and $n$ are odd, then we may write $m = 2a + 1$ and $n = 2b + 1$ where $a$ and $b$ are integers. Hence
+            \begin{align*}
+                m + n &= (2a + 1) + (2b + 1)\\
+                &= 2a + 2b + 2\\
+                &= 2(a + b + 1)
+            \end{align*}
+            which clearly means that $m+n$ is even.
+        \end{itemize}
+        Hence, in both cases, $m + n$ is even.
+    \end{proof}
 \end{questions}

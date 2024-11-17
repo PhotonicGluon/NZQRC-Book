@@ -50,7 +50,64 @@ In essence, a \term{direct proof}\index{proof!direct} for the statement ``if $p$
 \end{exercise}
 
 \section{Proof by Division Into Cases}
-TODO: Add
+\term{Division into cases}\index{proof!division into cases} is a variant of direct proof. We split a difficult statement into different cases which are individually easier to prove, and then join them together in order to prove the full statement.
+
+\begin{example}[An Expression That is a Multiple of 4]
+    We look at a proof of the statement ``$1 + (-1)^n(2n-1)$ is a multiple of 4 if $n$ is an integer''.
+    \begin{proof}
+        Suppose $n$ is an integer. Then, $n$ is either odd or even. We look at two cases.
+        \begin{itemize}
+            \item If $n$ is odd, then $(-1)^n = -1$ and $n = 2k+1$ for some integer $k$. Thus
+            \[
+                1 + (-1)^n(2n-1) = 1 - (2(2k+1)-1) = 4(-k)
+            \]
+            which is a multiple of 4.
+            \item If $n$ is even, then $(-1)^n = 1$ and $n = 2k$ for some integer $k$. Thus
+            \[
+                1 + (-1)^n(2n-1) = 1 + (2(2k)-1) = 4k
+            \]
+            which is a multiple of 4.
+        \end{itemize}
+        Hence, in both cases, $1 + (-1)^n(2n-1)$ is a multiple of 4.
+    \end{proof}
+\end{example}
+
+\begin{example}[Sum of Integers with Opposite Parity]
+    We look at a proof of the statement ``if two integers have opposite parity, then their sum is odd''. Note that ``opposite parity'' means that one integer is odd and one integer is even.
+    \begin{proof}
+        Suppose $m$ and $n$ are two integers with opposite parity.
+        \begin{itemize}
+            \item If $m$ is even and $n$ is odd, then we may write $m = 2a$ and $n = 2b + 1$ where $a$ and $b$ are some integers. Thus
+            \begin{align*}
+                m + n &= (2a) + (2b + 1)\\
+                &= 2(a+b) + 1
+            \end{align*}
+            which is one more than a multiple of 2, so $m + n$ is odd.
+            \item On the other hand, if $m$ is odd and $n$ is even, then we may write $m = 2a + 1$ and $n = 2b$ where $a$ and $b$ are some integers. Thus
+            \begin{align*}
+                m + n &= (2a + 1) + (2b)\\
+                &= 2(a+b) + 1
+            \end{align*}
+            which is one more than a multiple of 2, so $m + n$ is odd.
+        \end{itemize}
+        Hence, in either case, $m + n$ is odd.
+    \end{proof}
+\end{example}
+
+Now, the two cases in the above proof are almost the same, except for whether $m$ or $n$ is the even integer. It is more productive to just do one case and indicate that the other case is nearly (or exactly) identical to the current case. The phrase ``without loss of generality'' is a way to signpost to the reader that the proof is treating only one of several nearly identical cases. We produce a more succinct version of the above proof.
+
+\begin{proof}
+    Suppose $m$ and $n$ are two integers with opposite parity. Without loss of generality, suppose $m$ is even and $n$ is odd. Therefore $m = 2a$ and $n = 2b + 1$ for some integers $a$ and $b$. Hence
+    \begin{align*}
+        m + n &= (2a) + (2b + 1)\\
+        &= 2(a+b) + 1
+    \end{align*}
+    which is one more than a multiple of 2, so $m + n$ is odd.
+\end{proof}
+
+\begin{exercise}[Splitting into Cases]
+    Prove that $m + n$ is even if the integers $m$ and $n$ have the same parity (i.e., both odd or both even).
+\end{exercise}
 
 \section{Contrapositive Proof}
 TODO: Add
