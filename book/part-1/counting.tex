@@ -469,4 +469,166 @@ Unfortunately, determining the exact `form' of $\aleph_1$ is tricky. A well know
 The surprising thing about this question is that \textbf{this is not decidable using \ZFC} -- we can neither prove nor disprove this statement within \ZFC. To decide on the truth or falsity of this statement requires us to create a new axiom, which is not needed for this book. We shall just leave this as a mathematical curiosity.
 
 \section{Proof of Cantor-Schr\"oder-Bernstein}
-TODO: Add
+In this final section, we will prove \myref{theorem:cantor-schroder-bernstein}. However, to do so, we will need a few preliminaries.
+\begin{itemize}
+    \item Assume that addition and subtraction of natural numbers is defined.
+    \item Let the notation
+    \[
+        \bigcup_{n \in \N} A_n
+    \]
+    denote
+    \[
+        A_0 \cup A_1 \cup A_2 \cup A_3 \cup A_4 \cup \cdots
+    \]
+    where each $A_i$ is a set.
+    \item Suppose $f: A \to A$ is a function from the set $A$ to the set $A$. Then define $f^2 = f \circ f$, $f^3 = f \circ f \circ f$, $f^4 = f \circ f \circ f \circ f$, etc. More formally, define
+    \[
+        f^n = \begin{cases}
+            \id_A & \text{if } n = 0\\
+            f \circ f^{n-1} & \text{otherwise}
+        \end{cases}
+    \]
+    for all $n \in \N$.
+    \item Suppose $f: A \to B$ is a function from the set $A$ to the set $B$. Define
+    \[
+        f(A) = \{f(a) \vert a \in A\},
+    \]
+    i.e. $f(A)$ is the range of $f$.
+\end{itemize}
+
+Alright. Recall that \myref{theorem:cantor-schroder-bernstein} essentially states that, for any two sets $A$ and $B$, if there are injections $f: A \to B$ and $g: B \to A$, then there is a bijection $h: A \to B$. Before we present the proof of this theorem, let us use diagrams to see what needs to be proven.
+
+We are given two sets $A$ and $B$, with the injections $f: A \to B$ and $g: B \to A$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=5cm]{images/part-1/counting/csb_0.png}
+    \caption{Sets $A$ and $B$ with Injections $f$ and $g$}
+\end{figure}
+Let's suppose we map the entirety of $A$ to $B$ using the injection $f$. That would place a ``copy'' of $A$ in $B$ (in particular, this ``copy'' is $f(A)$). Likewise, let's map the entirety of $B$ to $A$ using the injection $g$, placing a ``copy'' of $B$ (i.e., $g(B)$) in $A$. But after mapping $A$ to $B$ (resulting in $f(A)$ in $B$), this second mapping from $B$ to $A$ creates a ``nested'' copy of $A$ inside $B$ inside $A$ (in fact, this is $(g \circ f)(A)$). We can do this again, creating a copy of $B$ inside $A$ inside $B$ (which is $(f \circ g)(B)$). So, repeating this process indefinitely we will get this nice fractal-like diagram.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=5cm]{images/part-1/counting/csb_1.png}
+    \caption{Infinite Nesting of $A$ and $B$ Within Themselves}
+\end{figure}
+
+We can trace how each of these mappings occurred and label each (nested) set accordingly. Of course, the figure can't show all the labels, but you get the point.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=5cm]{images/part-1/counting/csb_2.png}
+    \caption{Labelling the Nested Sets of $A$ and $B$}
+\end{figure}
+
+Let us focus on $A$. What is the form of the outermost region in $A$? That is, what is the region in $A$ that is not the image of any element in $B$? Well, it will be the entirety of $A$, minus the entirety of the mapped version of $B$ under $g$, i.e. it would be the set $A \setminus g(B)$. Now what is the form of the next nested square-ish region? That is, what is the region of $(g \circ f)(A)$ that is not the image of any element in $(f \circ g)(B)$? One sees that this would be the set $(g \circ f)(A) \setminus (g\circ f \circ g)(B)$. But one also sees that this is the same as the mapping of $A \setminus g(B)$ under $g \circ f$, i.e.
+\[
+    (g \circ f)(A) \setminus (g\circ f \circ g)(B) = (g\circ f)(A \setminus g(B)).
+\]
+For brevity of notation, let the outermost region be denoted $S_0$, the next region $S_1$, etc. We see that
+\begin{align*}
+    S_0 &= A \setminus g(B)\\
+    S_1 &= (g \circ f)(A \setminus g(B))\\
+    S_2 &= (g \circ f \circ g \circ f)(A \setminus g(B)) = (g \circ f)^2(A \setminus g(B))\\
+    S_3 &= (g \circ f)^3(A \setminus g(B))\\
+    \vdots
+\end{align*}
+So all the elements in the square-ish regions in $A$ belong to a set of the form $(g \circ f)^k(A \setminus g(B))$ where $k \in \N$. The union of all the square-ish regions is thus the set
+\begin{align*}
+    \mathfrak{S} &= S_0 \cup S_1 \cup S_2 \cup S_3 \cup \cdots\\
+    &= \bigcup_{n \in \N} S_n.
+\end{align*}
+One sees that the union of all the circle-ish regions is just the set $A$ minus the union of the square-ish regions, i.e. the union of the circle-ish regions is the set
+\[
+    \mathfrak{C} = A \setminus \mathfrak{S}.
+\]
+Note that the set $\mathfrak{S}$ does indeed exist by the axiom of union (\myref{axiom:union}), so the set $\mathfrak{C}$ also exists.
+
+Now we can start defining a possible bijection. We know that any element in a square-ish region of $A$ can be mapped to a square-ish region in $B$ under $f$. But what about a circle-ish region in $B$? Well, since the circle-ish regions of $A$ are images of elements in the circle-ish regions in $B$ under $g$, we can just `invert' $g$ to get a mapping from $A$ to $B$ for the circle-ish regions in $A$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=4cm]{images/part-1/counting/csb_3.png}
+    \caption{Bijective Mapping from $A$ to $B$}
+\end{figure}
+Let us be clear -- $g^{-1}$ does \text{not} exist since $g$ may not be bijective. However, restricting $g$ to map from $B$ to the entirety of the outermost circle of $A$ (i.e., the range of $g$) gives us a bijective map, and so $g^{-1}$ does exist for that part. In other words, if we define a new function $\bar{g}: B \to g(B)$ such that $\bar{g}(x) = g(x)$ for all $x \in B$, this is bijective.
+
+We are now ready to prove the Cantor-Schr\"oder-Bernstein theorem (\myref{theorem:cantor-schroder-bernstein}).
+
+\begin{proof}[Proof (see {\cite[Theorem 14.10, pp.~286--287]{hammack_2018}})]
+    Suppose $A$ and $B$ are sets with injections $f: A \to B$ and $g: B \to A$. Henceforth restrict $g$ to have a codomain of $g(B)$, making $g$ a bijection.
+
+    Consider the set
+    \[
+        \mathfrak{S} = \bigcup_{n \in \N} S_n
+    \]
+    where
+    \[
+        S_n = (g \circ f)^n(A \setminus g(B))
+    \]
+    for all $n \in \N$, and let the set
+    \[
+        \mathfrak{C} = A \setminus \mathfrak{S}.
+    \]
+    Notice that $A = \mathfrak{S} \cup \mathfrak{C}$ and that $\mathfrak{S} \cap \mathfrak{C} = \emptyset$. This means that any element in $A$ must be in either $\mathfrak{S}$ or $\mathfrak{C}$, but not both.
+    
+    Define the function $h: A \to B$ where
+    \[
+        h(x) = \begin{cases}
+            f(x) & \text{if } x \in \mathfrak{S}\\
+            g^{-1}(x) & \text{if } x \in \mathfrak{C}
+        \end{cases}
+    \]
+    for all $x \in A$. We show that $h$ is a bijection.
+    \begin{itemize}
+        \item \textbf{Injective}: Suppose $h(x_1) = h(x_2)$ for some $x_1, x_2 \in A$. There are four cases.
+        \begin{enumerate}
+            \item $x_1, x_2 \in \mathfrak{S}$. Thus, by definition of $h$, we have $f(x_1) = f(x_2)$. Since $f$ is injective, we must have $x_1 = x_2$.
+            
+            \item $x_1, x_2 \in \mathfrak{C}$. This means $g^{-1}(x_1) = g^{-1}(x_2)$ by definition of $h$. Hence $x_1 = x_2$ by applying $g$ on both sides.
+            
+            \item $x_1 \in \mathfrak{S}$ and $x_2 \in \mathfrak{C}$. Since $x_1 \in \mathfrak{S}$, it must belong in a $S_k$, i.e. $x_1 = (g\circ f)^k(z)$ for some $k \in \N$ and $z \in A \setminus g(B)$. So, by definition of $h$, we must have
+            \[
+                f((g\circ f)^k(z)) = g^{-1}(x_2),
+            \]
+            which means $g(f((g\circ f)^k(z))) = x_2$, i.e.
+            \[
+                (g \circ f)^{k+1}(z) = x_2.
+            \]
+            But, since $z \in A \setminus g(B)$, this shows that $x_2 \in S_{k+1}$ and thus $x_2 \in \mathfrak{S}$, which is a contradiction since no element is simultaneously in $\mathfrak{S}$ and $\mathfrak{C}$ at the same time.
+            
+            \item $x_1 \in \mathfrak{C}$ and $x_2 \in \mathfrak{S}$. Similar argument as case 3 shows that this is not possible.
+        \end{enumerate}
+        Thus, in all (possible) cases, we have $x_1 = x_2$, meaning $h$ is injective.
+        
+        \item \textbf{Surjective}: Suppose $y \in B$. Note $g(y) \in A$, which means $g(y) \in \mathfrak{S}$ or $g(y) \in \mathfrak{C}$.
+        \begin{enumerate}
+            \item $g(y) \in \mathfrak{S}$. Like we argued above, we see that $g(y) \in S_k$ for some $k \in \N$, i.e. $g(y) = (g\circ f)^k(z)$ for some $k \in \N$ and $z \in A \setminus g(B)$. Note that $k \neq 0$ because, otherwise, we will have
+            \[
+                g(y) = z \in A \setminus g(B),
+            \]
+            where $g(y) \in g(B)$ is equal to $z$ which is not in $g(B)$, a contradiction. So we may write
+            \begin{align*}
+                g(y) &= (g\circ f)^k(z)\\
+                &= ((g \circ f) \circ (g\circ f)^{k-1})(z)\\
+                &= g(f((g\circ f)^{k-1}(z))).
+            \end{align*}
+            Since $g$ is injective, we have
+            \[
+                y = f((g\circ f)^{k-1}(z)).
+            \]
+            Let $x = f((g\circ f)^{k-1}(z))$. By definition of $\mathfrak{S}$ we see that $x \in \mathfrak{S}$. So one sees
+            \begin{align*}
+                h(x) &= f(x) & (\text{Definition of } h)\\
+                &= y
+            \end{align*}
+            which means a preimage of $y$ under $h$ is $x = f((g\circ f)^{k-1}(z))$.
+            
+            \item $g(y) \in \mathfrak{C}$. Let $x = g(y)$, noting that $x \in \mathfrak{C} \subseteq A$. Then one sees
+            \begin{align*}
+                h(x) &= g^{-1}(x) & (\text{Definition of } h)\\
+                &= g^{-1}(g(y)) & (\text{Definition of } x)\\
+                &= y
+            \end{align*}
+            which means a preimage of $y$ under $h$ is $x = g(y)$.
+        \end{enumerate}
+        Thus, in either case, we have found a preimage of $y$ under $h$, which means that $h$ is surjective.
+    \end{itemize}
+    Thus $h$ is a bijection as required.
+\end{proof}
