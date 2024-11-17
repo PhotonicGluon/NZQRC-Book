@@ -163,7 +163,117 @@ Generally, we would want to prove in the direction from simple to complex. So if
 \end{exercise}
 
 \section{Proof by Contradiction}
-TODO: Add
+The third proof technique is called a \term{proof by contradiction}\index{proof!contradiction}. This method can be used to prove any kind of statement. The basic idea is to assume that the statement we want to prove is false, and then show that this assumption leads to a contradiction. A proof by contradiction for the statement ``$p$'' would start by assuming that $p$ is false, and then showing that this assumption would lead to a contradiction, which means that $p$ is \textbf{not} false, i.e. $p$ is true.
+
+\begin{remark}[Contradiction as an Implication]
+    In fact, what we are showing is that the statement ``$\lnot p \implies (c \land \lnot c)$'' is true.
+\end{remark}
+
+Usually, when writing a proof by contradiction, we would like to inform the reader that a proof by contradiction is being employed. Terms such as ``by way of contradiction'', ``towards a contradiction'', ``suppose for the sake of contradiction'' etc. may be used to signpost the use of a proof by contradiction.
+
+\begin{example}[The Irrationality of $\sqrt2$]\label{example:sqrt2-is-irrational}
+    \setlength{\parindent}{1.5em}
+
+    We present the classic proof by contradiction for the statement ``$\sqrt 2$ is irrational''.
+    \begin{proof}
+        By way of contradiction, assume that $\sqrt2 = \frac ab$ for some integers $a$ and $b \neq 0$. Furthermore let this fraction be fully reduced; in particular, this means that $a$ and $b$ are not both even. Squaring both sides yields $2 = \frac{a^2}{b^2}$, meaning  $a^2 = 2b^2$. Hence $a^2$ is even, so write $a = 2c$ where $c$ is an integer. This leads to $2b^2 = (2c)^2 = 4c^2$ which implies $b^2 = 2c^2$. Hence $b$ is even, which contradicts the fact that $a$ and $b$ are not both even.
+
+        Hence, $\sqrt 2$ is irrational.
+    \end{proof}
+\end{example}
+
+Note that it is not necessary to have the final statement that ``$\sqrt 2$ is irrational'' (or, more generally, ``$p$ is true'') as it is implied from the proof by contradiction. However, stating it makes it clear what we have proven using the proof by contradiction.
+
+\begin{example}[No Smallest Positive Rational Number]
+    \setlength{\parindent}{1.5em}
+
+    We prove the statement that ``for every positive rational number $x$, there exists a positive rational number $y$ such that $y < x$'' by way of contradiction.
+
+    We note that the negation of the above statement is ``there exists a rational number $x$ such that for every positive rational number $y$ we have $y \geq x$''.
+    \begin{proof}
+        Suppose for the sake of contradiction that there exists a rational number $x$ such that for every positive rational number $y$ we have $y \geq x$. Write $x = \frac pq$ where $p$ and $q$ are positive integers.
+
+        Now consider the rational number $\frac{p-1}{q}$. Clearly $\frac{p-1}{q} < \frac pq = x$. By assumption, every positive rational number $y$ satisfies $y \geq x$. Hence, $\frac{p-1}{q}$ is non-positive, meaning $\frac{p-1}{q} \leq 0$. Since $q$ is positive, hence $p - 1 \leq 0$ which means $p \leq 1$. But as $p$ is a positive integer, we conclude $p = 1$. Hence $x = \frac 1q$.
+
+        We now consider the rational number $\frac{1}{q+1}$. Clearly $\frac{1}{q+1} < \frac{1}{q} = x$. By assumption we must conclude that $\frac{1}{q+1}$ is non-positive. However, $1 > 0$ and $q + 1 > 0$, so $\frac{1}{q+1}$ is positive. Hence we have the fact that $\frac{1}{q+1}$ is positive and non-positive simultaneously, leading to a contradiction.
+    \end{proof}
+\end{example}
+\begin{remark}[A Direct Proof]
+    A direct proof would be easier. We provide a direct proof of the claim below.
+    \begin{proof}
+        Since $x$ is a positive rational number, we can write $x = \frac pq$ where $p$ and $q$ are positive integers. Then set $y = \frac{p}{q+1}$. Clearly $\frac{p}{q+1} < \frac{p}{q} = x$ and $\frac{p}{q+1}$ is positive, hence we have found a $y$ such that $y < x$.
+    \end{proof}
+\end{remark}
+
+\begin{exercise}[Proof by Contradiction]
+    Prove that no integers $a$ and $b$ exist such that $2a + 4b = 1$.
+\end{exercise}
+
+We now look at a proof by contradiction for conditional statements. Recall that $\lnot(p \implies q) \equiv p \land \lnot q$. Hence, to prove the statement ``if $p$ then $q$'' via contradiction, we would start by assuming that $p \land \lnot q$, and then showing that this assumption would lead to a contradiction, which means that $p \implies q$ is \textbf{not} false, i.e. $p \implies q$ is true.
+
+\begin{example}[Irrational Product Must Have Irrational Factor]
+    \setlength{\parindent}{1.5em}
+
+    Suppose $a$ and $b$ are real numbers. We prove the statement ``if $a$ is rational and $ab$ is irrational then $b$ is irrational'' using a proof by contradiction.
+
+    We note that the statement we want to contradict is ``($a$ is rational and $ab$ is irrational) \textbf{and} ($b$ is \textbf{not} irrational)'', i.e. ``$a$ is rational and $b$ is rational and $ab$ is irrational''.
+    \begin{proof}
+        By way of contradiction assume $a$ is rational, $b$ is rational, and $ab$ is irrational. We may then write
+        \[
+            a = \frac mn \text{ and } b = \frac pq
+        \]
+        where $m, n, p, q \in \Z$ where $n, q \neq 0$. Hence
+        \[
+            ab = \left(\frac mn\right)\left(\frac pq\right) = \frac{mp}{nq}
+        \]
+        which is clearly rational. Therefore we have that $ab$ is irrational (by assumption) and $ab$ is rational (by our working above), a clear contradiction.
+    \end{proof}
+\end{example}
+
+\begin{example}[A Property of Pythagorean Triples]
+    \setlength{\parindent}{1.5em}
+
+    Suppose $a$, $b$, and $c$ are integers. We prove the statement that ``if $a^2 + b^2 = c^2$ then at least one of $a$ or $b$ is even'' using a proof by contradiction.
+
+    We note that the statement we want to contradict is ``($a^2 + b^2 = c^2$) \textbf{and not} (at least one of $a$ or $b$ is even)'', i.e. ``$a^2 + b^2 = c^2$ \textbf{and} both $a$ and $b$ are odd''.
+    \begin{proof}
+        Seeking a contradiction, assume that $a^2 + b^2 = c^2$ and both $a$ and $b$ are odd. Thus we may write $a = 2m + 1$ and $b = 2n + 1$ where $m$ and $n$ are integers. Hence
+        \begin{align*}
+            a^2 + b^2 &= (2m+1)^2 + (2n+1)^2\\
+            &= (4m^2+4m+1) + (4n^2+4n+1)\\
+            &= 4m^2 + 4n^2 + 4m + 4n + 2\\
+            &= 2(2m^2 + 2n^2 + 2m + 2n +1)
+        \end{align*}
+        which means that $c^2 = a^2 + b^2$ is even. Hence $c$ is even, which means we may write $c = 2k$ where $k$ is an integer. This leads to
+        \[
+            c^2 = 4k^2 = 2(2m^2 + 2n^2 + 2m + 2n + 1) = a^2 + b^2.
+        \]
+        Clearly $4k^2$ is a multiple of 4, while $2(2m^2 + 2n^2 + 2m + 2n + 1)$ is not. Yet, they are equal to each other, a contradiction.
+    \end{proof}
+\end{example}
+
+\begin{exercise}[Proof by Contradiction for a Conditional Statement]
+    Prove that $\frac{a+b}{2} \geq \sqrt{ab}$ if $a$ and $b$ are positive real numbers by way of contradiction.
+\end{exercise}
+
+Despite the power of proof by contradiction, it is best to use it only when the direct and contrapositive approaches do not seem to work.
+
+\begin{example}[A Test for Odd Integers: Proof by Contradiction]
+    \setlength{\parindent}{1.5em}
+
+    Suppose $n$ is an integer. We prove the statement ``if $n^2 - 6n + 5$ is even then $n$ is odd'' using a proof by contradiction.
+    \begin{proof}
+        Working towards a contradiction, assume $n^2 - 6n + 5$ is even and $n$ is \textbf{not} odd, i.e. $n$ is even. Then $n = 2k$ for some integer $k$. Note that
+        \begin{align*}
+            n^2 - 6n + 5 &= (2k)^2 - 6(2k) + 5\\
+            &= 4k^2 - 12k + 5\\
+            &= (4k^2 - 12k + 4) + 1\\
+            &= 2(2k^2 - 5k + 2) + 1
+        \end{align*}
+        which means that $n^2 - 6n + 5$ is odd. Hence, $n^2 - 6n + 5$ is even (by assumption) and $n^2 - 6n + 5$ is odd (as above), a contradiction.
+    \end{proof}
+    While there is nothing wrong with this proof, notice that part of it assumes that $n$ is even and concludes that  $n^2 - 6n + 5$ is odd, which is the contrapositive approach done in \myref{example:if-(n-1)(n-5)-is-even-then-n-is-odd}.
+\end{example}
 
 \section{Basics of Mathematical Induction}
 TODO: Add

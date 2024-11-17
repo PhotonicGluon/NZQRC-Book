@@ -40,4 +40,18 @@
         \end{align*}
         which clearly means that $a(b^2+5)$ is odd.
     \end{proof}
+
+    % Proof by Contradiction
+    \item \begin{proof}
+        By way of contradiction assume there exist integers $a$ and $b$ such that $2a + 4b = 1$. Then dividing both sides by 2 leads to $a + 2b = \frac12$. Note the left hand side is clearly an integer, while the right hand side is not an integer, a contradiction.
+    \end{proof}
+
+    % Proof by Contradiction for a Conditional Statement
+    \item \begin{proof}
+        By way of contradiction assume that $a$ and $b$ are positive real numbers, and $\frac{a+b}{2} < \sqrt{ab}$. This means $a+b<2\sqrt ab$. Squaring both sides yields $(a+b)^2 < 4ab$. Note
+        \[
+            (a+b)^2 = a^2 + 2ab + b^2 < 4ab
+        \]
+        which implies $a^2 + b^2 < 2ab$, leading to $a^2 - 2ab + b^2 < 0$. However $a^2 - 2ab + b^2 = (a-b)^2 \geq 0$ for all positive real numbers $a$ and $b$. Hence we have $(a-b)^2 < 0$ and $(a-b)^2 \geq 0$, a contradiction.
+    \end{proof}
 \end{questions}
