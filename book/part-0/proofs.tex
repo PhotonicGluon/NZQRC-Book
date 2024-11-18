@@ -276,8 +276,79 @@ Despite the power of proof by contradiction, it is best to use it only when the 
 \end{example}
 
 \section{Basics of Mathematical Induction}
-TODO: Add
-% Do only the basics, no need to do strong induction
+Mathematical induction\index{proof!induction} is a method for proving that a predicate $P(n)$ is true for all integers $n \geq m$, where $m$ is an integer. That is, mathematical induction proves the infinitely many statements $P(m), P(m+1), P(m+2), \dots$, where $m$ is an integer.
+
+A proof by induction consists of two steps.
+\begin{itemize}
+    \item The first, the \term{base case}\index{proof!induction!base case}, proves the statement for $m$ without assuming any knowledge of other cases, where $m$ is an integer. In other words, the base case proves the statement $P(m)$.
+    \item The second, the \term{induction step}\index{proof!induction!induction step}, proves that if the statement holds for any given case $n = k$, then it must also hold for the next case $n = k + 1$. In other words, $\forall k \in \mathbb{N}, (P(k) \implies P(k+1))$. The assumption that $P(k)$ being true is called the \term{induction hypothesis}\index{proof`!induction!induction hypothesis}.
+\end{itemize}
+These two steps establish that the predicate $P(n)$ holds for all integers $n \geq m$.
+
+Let's look at some examples of mathematical induction.
+
+\begin{example}[Sum of the First $n$ Positive Integers]
+    \setlength{\parindent}{1.5em}
+
+    We prove the famous identity
+    \[
+        1 + 2 + 3 + \cdots + n = \frac{n(n+1)}2
+    \]
+    for all positive integers $n$ using mathematical induction.
+    \begin{proof}
+        When $n = 1$, the left hand side is 1 and the right hand side is also $\frac{1(1+1)}{2} = 1$. Thus the base case is true.
+
+        Now assume that the statement holds for some positive integer $k$, meaning
+        \[
+            1 + \cdots + k = \frac{k(k+1)}2.
+        \]
+        We need to show that the statement holds for $k+1$, meaning
+        \[
+            1 + \cdots + k + (k+1) = \frac{(k+1)(k+2)}2.
+        \]
+        We see that
+        \begin{align*}
+            &1 + \cdots + k + (k+1) \\
+            &= (1 + \cdots + k) + (k+1)\\
+            &= \frac{k(k+1)}{2} + (k+1) & (\text{induction hypothesis})\\
+            &= \frac{k(k+1)}2 + \frac{2(k+1)}{2}\\
+            &= \frac{k(k+1) + 2(k+1)}2\\
+            &= \frac{(k+1)(k+2)}2
+        \end{align*}
+        which proves the case for $k + 1$. Hence $1 + 2 + 3 + \cdots + n = \frac{n(n+1)}2$.
+    \end{proof}
+\end{example}
+
+\begin{example}[$n$th-Power of $1+x$ Is At Least $1 + nx$]
+    \setlength{\parindent}{1.5em}
+
+    Suppose $x > -1$. We will prove that $(1+x)^n \geq 1+nx$ if $n$ is a non-negative integer.
+    \begin{proof}
+        When $n = 0$, the left hand side is $(1+x)^0 = 1 = 1 + 0x$ which is exactly the right hand side. Thus the base case is true.
+
+        Assume that the statement holds for some non-negative integer $k$, i.e. $(1+x)^k \geq 1+kx$. We show that the statement holds for $k+1$, i.e. $(1+x)^{k+1} \geq 1+(k+1)x$.
+
+        We first note that since $x>-1$, thus $1+x > 0$. We start with the induction hypothesis.
+        \begin{align*}
+            (1+x)^k &\geq 1+kx\\
+            (1+x)^k(1+x) &\geq (1+kx)(1+x) & (\text{since }1+x > 0)\\
+            (1+x)^{k+1} &\geq 1 + x + kx + kx^2\\
+            &= 1+(k+1)x + kx^2\\
+            &> 1+(k+1)x. & (\text{since } kx^2 > 0)
+        \end{align*}
+        Hence we see $(1+x)^{k+1} \geq 1+(k+1)x$, meaning that the statement is true for $k+1$.
+
+        Therefore $(1+x)^n \geq 1+nx$ if $n$ is a non-negative integer.
+    \end{proof}
+\end{example}
+
+Observe that in the above example that the base case uses $n = 0$ instead of $n = 1$. This demonstrates that we don't necessarily have to start the proof at $n = 1$.
+
+\begin{exercise}[Mathematical Induction]
+    Prove using mathematical induction that $a^2 - 1$ is a multiple of 8 for all positive odd integers $a$.
+\end{exercise}
+
+There are, of course, more advanced methods of mathematical induction, such as strong induction and structural induction. However, we will cover them when the time comes. For now, the simplest form of mathematical induction would suffice.
 
 \section{Proving Non-Conditional Statements}
 \subsection{Biconditional Statements}\index{proof!biconditional}

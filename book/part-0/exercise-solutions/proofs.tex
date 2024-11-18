@@ -55,6 +55,26 @@
         which implies $a^2 + b^2 < 2ab$, leading to $a^2 - 2ab + b^2 < 0$. However $a^2 - 2ab + b^2 = (a-b)^2 \geq 0$ for all positive real numbers $a$ and $b$. Hence we have $(a-b)^2 < 0$ and $(a-b)^2 \geq 0$, a contradiction.
     \end{proof}
 
+    % Mathematical Induction
+    \item We note that a positive odd number is of the form $2n - 1$ where $n$ is a positive integer.
+    \begin{proof}
+        Set $a = 2n - 1$; we induct on $n$.
+
+        When $n = 1$, we have $a^2 - 1 = (2(1) - 1)^2 - 1 = 1 - 1 = 0$ which is clearly a multiple of 8.
+
+        Assume that the statement holds for some positive integer $k$, i.e. $(2k-1)^2 - 1 = 8m$ for some integer $m$. We show that the statement holds for $k + 1$.
+
+        We note that $(2k-1)^2 - 1 = 4k^2 - 4k$. Observe
+        \begin{align*}
+            (2(k+1)-1)^2 - 1 &= (2k+1)^2 - 1\\
+            &= 4k^2 + 4k + 1 - 1\\
+            &= (4k^2 - 4k) + 8k\\
+            &= 8m + 8k & (\text{by hypothesis})\\
+            &= 8(m+k)
+        \end{align*}
+        which means that $(2(k+1)-1)^2 - 1$ is a multiple of 8, proving that the statement holds for $k+1$. By mathematical induction, $a^2 - 1$ is a multiple of 8 for all positive odd integers $a$.
+    \end{proof}
+
     % Biconditional Proof
     \item \begin{proof}
         We prove the forward direction using direct proof. Assume $n$ is one more than a multiple of 5. Then we may write $n = 5a + 1$ where $a$ is an integer. Note $5a + 1 = 5a + (5 - 4) = (5a + 5) - 4 = 5(a+1) - 4$. Setting $k = a+1$ yields required result.
