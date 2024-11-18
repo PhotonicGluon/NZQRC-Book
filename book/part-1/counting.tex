@@ -352,47 +352,49 @@ To create sets with a larger cardinality than $\N$, we need the power set -- the
 In other words, for any set $A$ there is a set $P$ (the power set of $A$) such that for all sets $S$ in $P$, any element in $S$ is also in $A$. This clearly must mean that $S$ is a subset of $A$ and thus $P$, being the collection of all such subsets, is the power set $\Power{A}$.
 
 \begin{example}[Examples of Power Sets]
-    % (\textit{Assume exponentiation is defined for the natural numbers.})
-    % \begin{itemize}[leftmargin=*]
-    %     \item $\Power{\emptyset} = \{\emptyset\}$, since the empty set is always a subset of any set, including itself. We see that $|\Power{\emptyset}| = 1 = 2^0$.
-    %     \item $\Power{\{1\}} = \{\emptyset, \{1\}\}$. We see that $|\Power{\{1\}}| = 2 = 2^1$.
-    %     \item $\Power{\{1, 2\}} = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\}$. We see that $|\Power{\{1, 2\}}| = 4 = 2^2$.
-    %     \item $\Power{\{1, 2, 3\}} = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\}$. We see that $|\Power{\{1, 2, 3\}}| = 8 = 2^3$.
-    % \end{itemize}
-
+    (\textit{Assume exponentiation is defined for the natural numbers.})
     \begin{itemize}[leftmargin=*]
-        \item $\Power{\emptyset} = \{\emptyset\}$, since the empty set is always a subset of any set, including itself.
-        \item $\Power{\{1\}} = \{\emptyset, \{1\}\}$.
-        \item $\Power{\{1, 2\}} = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\}$.
-        \item $\Power{\{1, 2, 3\}} = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\}$.
+        \item $\Power{\emptyset} = \{\emptyset\}$, since the empty set is always a subset of any set, including itself. We see that $|\Power{\emptyset}| = 1 = 2^0$.
+        \item $\Power{\{1\}} = \{\emptyset, \{1\}\}$. We see that $|\Power{\{1\}}| = 2 = 2^1$.
+        \item $\Power{\{1, 2\}} = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\}$. We see that $|\Power{\{1, 2\}}| = 4 = 2^2$.
+        \item $\Power{\{1, 2, 3\}} = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\}$. So $|\Power{\{1, 2, 3\}}| = 8 = 2^3$.
     \end{itemize}
 \end{example}
 
-% From the above example we can come up with the following claim.
+From the above example we can come up with the following claim.
 
-% \begin{proposition}[Cardinality of Power Set For Finite Sets]
-%     Let $A$ be a finite set with cardinality $n$. Then $|\Power{A}| = 2^n$.
-% \end{proposition}
+\begin{proposition}[Cardinality of Power Set For Finite Sets]
+    Let $A$ be a finite set with cardinality $n$. Then $|\Power{A}| = 2^n$.
+\end{proposition}
 
-% For the proof, we will assume that exponentiation is defined for the natural numbers.
+For the proof, we will assume that addition and exponentiation is defined for the natural numbers.
 
-% \begin{proof}
-%     Suppose $A$ is a finite set where $|A| = n$. So we may explicitly write
-%     \[
-%         A = \{a_0, a_1, a_2, \dots, a_{n-1}\}.
-%     \]
-%     Define the function $\mathrm{Contains}_i: \Power{A} \to \{0,1\}$ where
-%     \[
-%         \mathrm{Contains}_i(S) = \begin{cases}
-%             1 & \text{if } a_i \in S\\
-%             0 & \text{if } a_i \notin S
-%         \end{cases}
-%     \]
-%     Consider the function $f: \Power{A} \to 2^n$ where
-%     \[
-%         f(S) = \sum_{i=0}^{n-1} \mathrm{Contains}_i(S)2^i
-%     \]
-% \end{proof}
+\begin{proof}
+    We induct on $n$.
+
+    For the base case, assume $n = 0$. So $|A| = 0$ which means that $A = \emptyset$. Thus $\Power{A} = \Power{\emptyset} = \{\emptyset\}$. So $|\Power{A}| = 1 = 2^0$, proving the base case.
+
+    Now let's suppose that $|\Power{A}| = 2^k$ for some finite set $A$ with cardinality $k$. We are to show that the power set of a set with cardinality $k+1$ has cardinality $2^{k+1}$.
+
+    Let $B$ be a set of cardinality of $k+1$. By the axiom of choice (\myref{axiom:choice}), pick an element $x \in B$. Let $A = B \setminus \{x\}$; notice $|A| = k$. Now, there are two kinds of subsets of $B$.
+    \begin{itemize}
+        \item The first kind are subsets that do not include $x$. These subsets are exactly the subsets of $A$, i.e. they come from $\Power{A}$.
+        \item The second kind are the subsets that include $x$. In particular, a subset of this kind takes the form $S \cup \{x\}$ where $S \in \Power{A}$.
+    \end{itemize}
+    All in all, we see that
+    \[
+        \Power{B} = \{S \vert S \in \Power{A}\} \cup \{S \cup \{x\} \vert S \in \Power{A}\}.
+    \]
+    Notice that each of the two sets that we are are unioning together have the same cardinality as $\Power{A}$. By the induction hypothesis we know that $|\Power{A}| = 2^k$. Thus,
+    \[
+        |\Power{B}| = |\Power{A}| + |\Power{A}| = 2^k + 2^k = 2^{k+1}
+    \]
+    which proves the case for $k+1$.
+
+    Thus, by mathematical induction, we see that $|\Power{A}| = 2^n$ for any finite set $A$ with cardinality $n$.
+\end{proof}
+
+This fact about the power set is useful when we want to define larger infinities.
 
 \begin{exercise}[A Power Set]
     Find $\Power{\Power{\{a, b\}}}$, and state its cardinality.
