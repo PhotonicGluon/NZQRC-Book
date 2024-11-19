@@ -346,20 +346,17 @@ We can express the condition for a function to be injective formally.
     for all $x_1, x_2 \in X$.
 \end{definition}
 
-\begin{example}[An Example of Injectivity]
-    (\textit{Assume the addition and multiplication of natural numbers is defined.})
+Let us look at some examples.
 
-    Consider the function $f: \N \to \N$ such that $f(x) = 4x + 1$ for all $x \in \N$. We show that this is injective.
+\begin{example}[Injectivity of Successor Function on Naturals]\label{example:successor-is-injective}
+    Consider the successor function restricted to the natural numbers $S: \N \to \N$ given by $S(n) = n \cup \{n\}$. We show that $S$ is injective using the contrapositive definition of injectivity.
     \begin{proof}
-        Suppose $x_1, x_2 \in \N$ such that $f(x_1) = f(x_2)$. By definition of $f$, we have $4x_1 + 1 = 4x_2 + 1$. So $4x_1 = 4x_2$ and thus $x_1 = x_2$. So $f$ is indeed injective by definition.
+        Suppose $n_1, n_2 \in \N$ such that $n_1 \neq n_2$. So the counter sets of $n_1$ and $n_2$ have differing number of elements, and hence $n_1 \cup \{n_1\} \neq n_2 \cup \{n_2\}$ because $n_1 \cup \{n_1\}$ and $n_2 \cup \{n_2\}$ have different numbers of elements.
     \end{proof}
 \end{example}
 
 \begin{example}[An Example of Non-Injectivity]
-    Consider the function $f: \N \to \N$ such that $f(x) =(\text{last digit of } x)$. We show that this is not injective.
-    \begin{proof}
-        Note $1 \in \N$ and $11 \in \N$. We see $f(1) = f(11) = 1$, so $f$ is not injective.
-    \end{proof}
+    Consider the function $f: \N \to \N$ such that $f(x) =(\text{last digit of } x)$. One clearly sees that $f$ is not injective since $f(1) = f(11) = 1$.
 \end{example}
 
 \begin{exercise}[Injective Detective]
