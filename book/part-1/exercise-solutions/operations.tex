@@ -6,4 +6,37 @@
         f(S, T) = \{x \in A \vert x \in S \land x \notin T\}
     \]
     for all $S, T \in \Power{A}$.
+
+    % Successor of $n$
+    \item \begin{proof}
+        Note $\Successor{n} = \Successor{n + 0}$ by \textbf{A1}, which is the same as $n + \Successor{0}$ by \textbf{A2}. But since $\Successor{0} = 1$, we see that $\Successor{n} = n + 1$ as needed.
+    \end{proof}
+
+    % Sum of $\Successor{d}$ and $n$
+    \item \begin{proof}
+        We induct on $n$.
+
+        When $n = 0$, the left-hand side is $\Successor{d} + 0 = \Successor{d}$ by \textbf{A1}. The right-hand side similarly simplifies to $\Successor{d + 0} = \Successor{d}$ by \textbf{A1} too. Thus the base case is proven.
+
+        Suppose $\Successor{d} + k = \Successor{d + k}$ for some $k \in \N$. We are to prove that $\Successor{d} + \Successor{k} = \Successor{d + \Successor{k}}$.
+
+        One sees that
+        \begin{align*}
+            \Successor{d} + \Successor{k} &= \Successor{\Successor{d} + k} & (\text{by \textbf{A2}})\\
+            &= \Successor{\Successor{d + k}} & (\text{induction hypothesis})\\
+            &= \Successor{d + \Successor{k}} & (\text{by \textbf{A2}})
+        \end{align*}
+        which proves the case for $\Successor{k}$.
+    \end{proof}
+
+    % A Commutative Result
+    \item \begin{proof}
+        We see that
+        \begin{align*}
+            (a + b) + c &= a + (b + c) & (\text{by \myref{theorem:addition-associative-naturals}})\\
+            &= a + (c + b) &  (\text{by \myref{theorem:addition-commutative-naturals}})\\
+            &= (a + c) + b & (\text{by \myref{theorem:addition-associative-naturals}})
+        \end{align*}
+        which proves the corollary.
+    \end{proof}
 \end{questions}

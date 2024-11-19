@@ -74,7 +74,7 @@ But clearly mathematical induction (as stated above) clearly works! It is a very
 
 The \term{axiom of induction} is \textbf{not} an axiom of \ZFC. Rather, it can be seen as an axiom of logic when working with the natural numbers. However, to state it, we will appeal to the notation used in \ZFC, although it would not be in the formal language of axiomatic set theory.
 
-\begin{axiom}[Induction]\index{axiom!of induction}
+\begin{axiom}[Induction]\index{axiom!of induction}\label{axiom:induction}
     \vspace{-10px}
     \[
         \forall A, \left((0 \in A) \land (\forall k \in \N, (k \in A \implies \Successor{k} \in A)) \implies \N \subseteq A\right)
@@ -104,21 +104,123 @@ With these two properties, we can create a definition for addition.
 
 \begin{definition}[Addition]
     The \term{addition operation}\index{addition} is the function $+: \N^2 \to \N$ such that
-    \begin{itemize}
+    \begin{enumerate}[label=\textbf{A\arabic*.}]
         \item for all $n\in \N$ we have $n + 0 = n$; and
         \item for all $n, d \in \N$ we have $n + \Successor{d} = \Successor{n + d}$.
-    \end{itemize}
+    \end{enumerate}
 \end{definition}
 
 Surprisingly, these two conditions on the addition operation are all we need to define the rest of the properties of addition.
 
-\subsection{Commutativity}
-TODO: Add
-% Add proof on commutativity of addition
+\subsection{Basic Properties of Addition}
+The first result should be very obvious.
 
-\subsection{Associativity}
+\begin{proposition}[Successor of $n$]\label{prop:successor-of-n}
+    $\Successor{n} = n + 1$ for all $n \in \N$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:successor-of-n} (later).
+\end{proof}
+
+\begin{exercise}[Successor of $n$]\label{exercise:successor-of-n}
+    Prove \myref{prop:successor-of-n}.\newline
+    (\textit{Note: recall that we define $\Successor{0} = 1$.})
+\end{exercise}
+
+The next result should also be obvious, but its proof is more involved.
+\begin{lemma}[Sum of 0 and $n$]\label{lemma:sum-of-0-and-n}
+    $0 + n = n$ for all $n \in \N$.
+\end{lemma}
+Notice that \textbf{A1} only works for $n + 0$, not $0 + n$. That is why we need to prove this as a separate lemma.
+\begin{proof}
+    We induct on $n$.
+
+    For the base case $n = 0$, one clearly sees that $0 + 0 = 0$ by \textbf{A1}.
+
+    Now suppose the statement holds for some natural number $k$, i.e. $0 + k = k$. We are to prove that the statement holds for the successor of $k$, i.e. $0 + \Successor{k} = \Successor{k}$.
+
+    Let's start with $0 + \Successor{k}$. By \textbf{A2}, we know that it is the same as $\Successor{0 + k}$. Using the induction hypothesis we can immediately rewrite this as $\Successor{k}$, which is what we wanted to show. Thus the statement also holds for $\Successor{k}$
+
+    By induction (via the axiom of induction (\myref{axiom:induction})), we have proven this proposition.
+\end{proof}
+
+The following result is the `reversed' version of \textbf{A2}.
+
+\begin{lemma}[Sum of $\Successor{d}$ and $n$]\label{lemma:sum-of-successor-and-n}
+    $\Successor{d} + n = \Successor{d + n}$ for all $n, d \in \N$.
+\end{lemma}
+\begin{proof}
+    See \myref{exercise:sum-of-successor-and-n} (later).
+\end{proof}
+
+We are now ready to prove the commutativity of addition.
+
+\begin{theorem}[Commutativity of Addition (Natural Numbers)]\index{addition!commutativity}\label{theorem:addition-commutative-naturals}
+    $m + n = n + m$ for all $m, n \in \N$.
+\end{theorem}
+\begin{proof}
+    Take $m$ as an arbitrary natural number. We will induct on $n$.
+
+    For the base case, the left-hand side is $m + 0$ which is $m$ by \textbf{A1}. The right-hand side is $0 + m$ which is also $m$ by \myref{lemma:sum-of-0-and-n}. Thus the two sides are equal, proving the base case.
+
+    Suppose that $m + k = k + m$ for some $k \in \N$. We will prove that $m + \Successor{k} = \Successor{k} + m$.
+
+    One sees that
+    \begin{align*}
+        m + \Successor{k} &= \Successor{m + k} & (\text{by \textbf{A2}})\\
+        &= \Successor{k + m} & (\text{induction hypothesis})\\
+        &= \Successor{k} + m & (\text{by \myref{lemma:sum-of-successor-and-n}})
+    \end{align*}
+    which proves the case for $\Successor{k}$.
+\end{proof}
+
+\begin{exercise}[Sum of $\Successor{d}$ and $n$]\label{exercise:sum-of-successor-and-n}
+    Prove \myref{lemma:sum-of-successor-and-n}.
+\end{exercise}
+
+We can now also prove the associativity of addition.
+
+\begin{theorem}[Associativity of Addition (Natural Numbers)]\index{addition!associativity}\label{theorem:addition-associative-naturals}
+    $(a + b) + c = a + (b + c)$ for all $a,b,c \in \N$.
+\end{theorem}
+\begin{proof}
+    Let $a$ and $b$ be arbitrary natural numbers. We induct on $c$.
+
+    For the base case $c = 0$, the left-hand side is $(a + b) + 0$. \textbf{A1} allows us to rewrite this as $a+b$. On the other hand, the right-hand side is $a + (b + 0)$ which \textbf{A1} again allows us to rewrite as $a + b$. Thus the base case is proven.
+
+    Suppose that $(a + b) + k = a + (b + k)$ for some $k \in \N$. We show that $(a + b) + \Successor{k} = a + (b + \Successor{k})$.
+
+    One sees clearly that
+    \begin{align*}
+        (a + b) + \Successor{k} &= \Successor{(a + b) + k} & (\text{by \textbf{A2}})\\
+        &= \Successor{a + (b + k)} & (\text{induction hypothesis})\\
+        &= a + \Successor{b + k} & (\text{by \textbf{A2}})\\
+        &= a + (b + \Successor{k}) & (\text{by \textbf{A2}})
+    \end{align*}
+    which proves the case for $\Successor{k}$.
+\end{proof}
+
+There is a useful corollary from these two theorems.
+
+\begin{corollary}\label{corollary:right-commutativity-of-addition}
+    $(a + b) + c = (a + c) + b$ for all $a, b, c \in \N$.
+\end{corollary}
+\begin{proof}
+    See \myref{exercise:right-commutativity-of-addition} (later).
+\end{proof}
+
+\begin{exercise}[A Commutative Result]\label{exercise:right-commutativity-of-addition}
+    Prove \myref{corollary:right-commutativity-of-addition}.\newline
+    (\textit{Hint: you do not need induction.})
+\end{exercise}
+
+\subsection{Implications of Addition}
 TODO: Add
-% Add proof on associativity of addition
+
+% Add 0 != 1 and 1 != 0
+% Add a + n = b + n ==> a = b and n + a = n + b ==> a = b
+% Add a + b = b ==> a = 0 and a + b = a ==> b = 0
+% Add a + b = 0 ==> a = b = 0
 
 \section{Multiplication}
 TODO: Add
