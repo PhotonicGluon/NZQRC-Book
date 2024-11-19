@@ -314,15 +314,7 @@ We have already seen some examples of infinite sets.
     \setlength{\parindent}{1.5em}
     Based on the definition above, it should be the case that $\N$ given by the axiom of infinity (\myref{axiom:infinity}) is an infinite set. In fact, it is.
     \begin{proof}
-        We consider a proof by contradiction. Suppose $\N$ is finite. Consider the successor function $S: \N \to \N$ where $S(n) = n \cup \{n\}$ for all $n \in \N$. We show that $S$ is injective.
-
-        Suppose $n_1, n_2 \in \N$ such that $S(n_1) = S(n_2)$. Thus $n_1 \cup \{n_1\} = n_2 \cup \{n_2\}$. This means that
-        \[
-            \{0, 1, \dots, n_1\} = \{0, 1, \dots, n_2\}
-        \]
-        which thus means that $n_1 = n_2$. Hence $S$ is injective.
-        
-        As $\N$ is (assumed to be) finite, we know by \myref{theorem:map-between-finite-sets-of-equal-cardinality} this means that $S$ is bijective, which means $S$ is surjective. But one sees that 0 has no preimage under $S$, which thus means $S$ cannot be surjective. This is a contradiction. Hence $\N$ is not finite.
+        We consider a proof by contradiction. Suppose $\N$ is finite. Consider the successor function $S: \N \to \N$ where $S(n) = n \cup \{n\}$ for all $n \in \N$. By \myref{example:successor-is-injective} we know that $S$ is injective. As $\N$ is (assumed to be) finite, we know by \myref{theorem:map-between-finite-sets-of-equal-cardinality} this means that $S$ is bijective, which means $S$ is surjective. But one sees that 0 has no preimage under $S$, which thus means $S$ cannot be surjective. This is a contradiction. Hence $\N$ is not finite.
     \end{proof}
 \end{example}
 
@@ -330,9 +322,9 @@ We have already seen some examples of infinite sets.
     \setlength{\parindent}{1.5em}
     We show that $\Successor{\N} = \N \cup \{\N\}$ is also not a finite set by showing that $|\Successor{\N}| = |\N|$.
     \begin{proof}
-        First consider the function $S: \N \to \Successor{\N}$ where $S(n) = n \cup \{n\}$ for all $n \in \N$. Using a similar argument as the previous example we can show that $S$ is injective.
+        First consider the function $S: \N \to \Successor{\N}$ where $S(n) = n \cup \{n\}$ for all $n \in \N$. Using a similar argument as \myref{example:successor-is-injective} we can show that $S$ is injective.
 
-        Now consider the function $S': \Successor{\N} \to \N$ where $S'(n) = n \cup \{n\}$ for all $n \in \Successor{\N}$. Again using a similar argument we can show that $S'$ is injective.
+        Now consider the function $S': \Successor{\N} \to \N$ where $S'(n) = n \cup \{n\}$ for all $n \in \Successor{\N}$. Again using a similar argument as \myref{example:successor-is-injective} we can show that $S'$ is injective.
 
         So Cantor-Schr\"oder-Bernstein (\myref{theorem:cantor-schroder-bernstein}) tells us that there is a bijection from $\N$ to $\Successor{\N}$, i.e. $|\N| = |\Successor{\N}|$.
     \end{proof}
