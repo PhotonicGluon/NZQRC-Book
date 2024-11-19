@@ -64,8 +64,31 @@ It should be noted that we usually use infix notation to write binary operations
 \end{exercise}
 
 \section{Axiom of Induction}
-TODO: Add
-% Add the axiom of induction for the natural numbers
+Earlier, in \myref{section:basics-of-induction}, we covered the basics of mathematical induction. However, so far, there has not been an explicit axiom proving that mathematical induction works as a proof technique.
+
+Why does this matter?
+
+Let $P(n)$ be a predicate that is defined for all natural numbers. Suppose $P(0)$ is true, and that if $P(k)$ is true then $P(k+1)$ (which really should be written as $P(\Successor{k})$ for now) is true for all $k \in \N$. One clearly sees that $P(0)$ being true implies $P(1)$ being true, which thus means $P(2)$ is true, which thus means $P(3)$ is true, and so on. But at no point can we assert that $P(n)$ is true for all $n \in \N$! Each $P(n)$ can be proven using a finite number of steps, but to prove all of them requires an infinite number of steps, which we cannot perform.
+
+But clearly mathematical induction (as stated above) clearly works! It is a very useful (and clever) proof technique that allows us to evade proving each case of $P(n)$ manually. And yet we cannot prove it using the tools that we have so far. Thus, we need an additional axiom.
+
+The \term{axiom of induction} is \textbf{not} an axiom of \ZFC. Rather, it can be seen as an axiom of logic when working with the natural numbers. However, to state it, we will appeal to the notation used in \ZFC, although it would not be in the formal language of axiomatic set theory.
+
+\begin{axiom}[Induction]\index{axiom!of induction}
+    \vspace{-10px}
+    \[
+        \forall A, \left((0 \in A) \land (\forall k \in \N, (k \in A \implies \Successor{k} \in A)) \implies \N \subseteq A\right)
+    \]
+\end{axiom}
+
+Essentially, this axiom is the same as what we have covered in \myref{section:basics-of-induction}. In the axiom, the set $A$ can be thought of as the set containing elements satisfying our desired predicate $P(n)$. For the consequent of the axiom to hold, it requires two conditions.
+\begin{itemize}
+    \item \textbf{Base Case}: $0 \in A$, i.e. the statement $P(0)$ must be true.
+    \item \textbf{Induction Step}: For all natural numbers $k$, if $k \in A$ then $\Successor{k} \in A$, i.e. if $P(k)$ is true for some $k$ then $P(\Successor{k})$ (which is the same as $P(k+1)$) is also true.
+\end{itemize}
+If both these conditions hold, then we know that all of the natural numbers belong in $A$ (i.e., $P(n)$ is true for all $n \in \N$).
+
+The axiom of induction is needed to prove the properties of the operations on the natural numbers.
 
 \section{Addition}
 TODO: Add
