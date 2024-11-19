@@ -200,6 +200,8 @@ We can now also prove the associativity of addition.
     which proves the case for $\Successor{k}$.
 \end{proof}
 
+Since addition is associative, we can just write expressions like $a + b + c$ without any ambiguity.
+
 There is a useful corollary from these two theorems.
 
 \begin{corollary}\label{corollary:right-commutativity-of-addition}
@@ -215,12 +217,55 @@ There is a useful corollary from these two theorems.
 \end{exercise}
 
 \subsection{Implications of Addition}
-TODO: Add
+With these basic properties of addition defined, we can look at some consequences with regards to addition.
 
-% Add 0 != 1 and 1 != 0
-% Add a + n = b + n ==> a = b and n + a = n + b ==> a = b
-% Add a + b = b ==> a = 0 and a + b = a ==> b = 0
-% Add a + b = 0 ==> a = b = 0
+\begin{proposition}[Cancellation Property of Addition]\index{addition!cancellation property}\label{prop:addition-cancellation-property}
+    Let $a, b, n \in \N$. If $a + n = b + n$ then $a = b$. Likewise if $n + a = n + b$ then $a = b$.
+\end{proposition}
+\begin{proof}
+    We will only prove that if $a + n = b + n$ then $a = b$ since the other case is clearly taken care of by commutativity of addition (\myref{theorem:addition-commutative-naturals}). We will do this by inducting on $n$.
+
+    When $n = 0$, the left-hand side is $a + 0 = b + 0$ which clearly simplifies to $a = b$ by \textbf{A1}. Thus the base case holds.
+
+    Suppose $a + k = b + k$ means $a = b$ for some $k \in \N$. We will show that $a + \Successor{k} = b + \Successor{k}$ means $a = b$.
+
+    We see that
+    \begin{align*}
+        &a + \Successor{k} = b + \Successor{k}\\
+        \iff& \Successor{a + k} = \Successor{b + k} & (\text{by \textbf{A2}})\\
+        \iff& a + k = b + k & (\text{by \myref{example:successor-is-injective}})\\
+        \iff& a = b &(\text{induction hypothesis})
+    \end{align*}
+    so the case for $\Successor{k}$ is also true.
+\end{proof}
+
+\begin{proposition}[Addition that Equals Self]\label{prop:addition-that-equals-self}
+    Let $a, b \in \N$. If $a + b = b$ then $a = 0$. Likewise if $a + b = a$ then $b = 0$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:addition-that-equals-self} (later).
+\end{proof}
+
+\begin{proposition}[Addition that Equals Zero]
+    Let $a, b \in \N$. If $a + b = 0$ then $a = 0$ and $b = 0$.
+\end{proposition}
+\begin{proof}
+    We only prove the case that if $a + b = 0$ then $a = 0$, since the other is easily implied by commutativity of addition (\myref{theorem:addition-commutative-naturals}).
+
+    There are two cases to consider. The first is if $b = 0$. Then one clearly sees that the left-hand side is $a + 0$ which is $a$ by \textbf{A1}, and the right-hand side is 0. Thus $a = 0$ as required.
+
+    The other case is that $b \neq 0$. So $b$ is a successor of some other natural number, say $d \in \N$. Thus we have $a + \Successor{d} = 0$, which by \textbf{A2} is the same as $\Successor{a + d} = 0$. So
+    \[
+        \Successor{\underbrace{a + d}_{\text{In } \N}} = 0
+    \]
+    which is a contradiction since 0 is not the successor of any natural number.
+
+    Thus we have $a = 0$ (and $b = 0$).
+\end{proof}
+
+\begin{exercise}[Addition that Equals Self]\label{exercise:addition-that-equals-self}
+    Prove \myref{prop:addition-that-equals-self}.
+\end{exercise}
 
 \section{Multiplication}
 TODO: Add
