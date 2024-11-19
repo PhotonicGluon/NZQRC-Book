@@ -2,8 +2,66 @@
 \Lettrine[loversize=0.1,nindent=0pt]{What} is the point of having numbers but with no way to interact with them? Numbers without any relationships defined between them are useless to us; we need operations between them to create relationships between them. This chapter will introduce two well-defined operations: addition and multiplication.
 
 \section{Binary Operations}
-TODO: Add
-% Include binary operators as functions, and give some examples (e.g., union, intersection)
+To define the operations on the natural numbers, we first need to understand what ``operation'' means. In particular, we are only looking at binary operations.
+
+\begin{definition}[Binary Operation]
+    A \term{binary operation on a set $S$}\index{operation}\index{operation!binary}\index{binary operation} is a function $f: S \times S \to S$ (i.e., $f: S^2 \to S$).
+\end{definition}
+\begin{remark}[$n$-ary Operation]
+    We can generalize the definition of an operation to be an \term{$n$-ary operation on a set $S$}\index{operation!$n$-ary}, which is a function $f: S^n \to S$ where $n \in \N$. We will stick to the case when $n = 2$ for this chapter.
+\end{remark}
+
+It should be noted that we usually use infix notation to write binary operations.
+
+\begin{example}[Union Operation]
+    \setlength{\parindent}{1.5em}
+    
+    Let $A$ be a set. We can define the set union operation on the set $A$ by the function $u: \Power{A} \times \Power{A} \to \Power{A}$ where
+    \[
+        u(S, T) = \{x \in A \vert x \in S \lor x \in T\}
+    \]
+    for all $S, T \in \Power{A}$. Note that $u(S, T)$ would be written as $S\mathrel{u}T$ using infix notation.
+
+    For example, for the set $A = \{1, 2, 3, 4, 5\}$, $S = \{1, 2\}$ and $T = \{2, 3\}$, we see that
+    \[
+        u(S, T) = S\mathrel{u}T = \{1, 2, 3\}.
+    \]
+    If instead $S = \{1, 4, 5\}$ and $T = \{2, 3, 5\}$ one notes that
+    \[
+        S\mathrel{u}T = \{1, 2, 3, 4, 5\} = A.
+    \]
+\end{example}
+
+\begin{example}[Intersection Operation]
+    \setlength{\parindent}{1.5em}
+
+    Likewise, we can define the set intersection operation on a set $A$ by the function $n: \Power{A} \times \Power{A} \to \Power{A}$ where
+    \[
+        S \mathrel{n} T = \{x \in A \vert x \in S \land x \in T\}
+    \]
+    for all $S, T \in \Power{A}$.
+
+    For example, for the set $A = \{1, 2, 3, 4, 5\}$, we see that
+    \[
+        \{1,2\}\mathrel{n}\{2,3\} = \{2\}.
+    \]
+    and
+    \[
+        \{1, 3, 5\}\mathrel{n}\{2, 4\} = \emptyset.
+    \]
+\end{example}
+
+\begin{example}[Function Composition Operation]
+    Let $S$ be a set, and let $\mathcal{F}$ denote the set of all functions $f$ from $S$ to $S$. We can then define an operation $o: \mathcal{F}^2 \to \mathcal{F}$ such that
+    \[
+        o(f, g) = f \circ g
+    \]
+    for all $f, g \in \mathcal{F}$, i.e. $o$ acts like function composition.
+\end{example}
+
+\begin{exercise}[Set Difference]
+    Let $A$ be a set. Write down a definition for the set difference operation on the set $A$.
+\end{exercise}
 
 \section{Axiom of Induction}
 TODO: Add
