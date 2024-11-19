@@ -91,11 +91,26 @@ If both these conditions hold, then we know that all of the natural numbers belo
 The axiom of induction is needed to prove the properties of the operations on the natural numbers.
 
 \section{Addition}
-TODO: Add
+Intuitively, addition is the simplest operation on the natural numbers. How hard can it be to add two numbers together? However, as we will see, creating a proper definition of addition will take some work.
 
 \subsection{Basic Definitions}
-TODO: Add
-% Add the core definition for addition
+Let us first define what addition is. We know that addition can be thought of as a binary operation on $\N$, but that isn't that helpful. What we want to do is to find properties that this operation must satisfy.
+
+We can probably all agree that adding zero to any natural number should just return the number. It should be the case that $3 + 0 = 3$, just like how $42 + 0 = 0$, $101 + 0 = 101$, and $7125 + 0 = 7125$. So that should be the first property that addition must satisfy: adding zero to any natural number is just that natural number.
+
+A less obvious property that addition has to satisfy is adding with successors. Consider $3 + \Successor{4}$. Intuitively, we know that $\Successor{4} = 4 + 1 = 5$, and so $3 + \Successor{4} = 3 + 5 = 8$. Notice, however, that we can also write $3 + \Successor{4}$ as $\Successor{3 + 4} = (3 + 4) + 1 = 8$. This is the second thing that addition has to satisfy: adding a successor of a number to another number is the successor of the sum of the two numbers.
+
+With these two properties, we can create a definition for addition.
+
+\begin{definition}[Addition]
+    The \term{addition operation}\index{addition} is the function $+: \N^2 \to \N$ such that
+    \begin{itemize}
+        \item for all $n\in \N$ we have $n + 0 = n$; and
+        \item for all $n, d \in \N$ we have $n + \Successor{d} = \Successor{n + d}$.
+    \end{itemize}
+\end{definition}
+
+Surprisingly, these two conditions on the addition operation are all we need to define the rest of the properties of addition.
 
 \subsection{Commutativity}
 TODO: Add
