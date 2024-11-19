@@ -1567,7 +1567,7 @@ jupyterlab = ["jupyterlab (>=3.0.0)", "notebook (>=6.0.0)"]
 
 [[package]]
 name = "manim-utils"
-version = "0.1.0.dev2"
+version = "0.1.0.dev3"
 description = "Utilities for Manim."
 optional = false
 python-versions = ">=3.9,<3.13"
@@ -1583,7 +1583,7 @@ ordered-set = "^4.1.0"
 type = "git"
 url = "https://github.com/PhotonicGluon/Manim-Utils.git"
 reference = "HEAD"
-resolved_reference = "190ea190d50be111d9b06ad9759f8626a546c7a1"
+resolved_reference = "524f9643a29de7297fe1333ef619cacd2e606535"
 
 [[package]]
 name = "manimpango"
