@@ -285,6 +285,8 @@ What happens when we multiply a number by zero? That is easy -- the answer is ju
 
 Like with addition, these two conditions will be all we need to prove the most essential properties of multiplication.
 
+For the ease of notation, we may choose to omit the ``$\times$'' when writing the multiplication of two algebraic symbols, i.e. $ab$ is the same as $a\times b$ for $a,b \in \N$. However, if it serves to improve readability, we will write the ``$\times$'' in between the symbols.
+
 \subsection{Commutativity}
 First, an easy warm-up property.
 
@@ -364,27 +366,27 @@ With the commutativity of multiplication proven, we can prove some intuitive res
     One can use \myref{theorem:multiplication-commutative-naturals} to see that $1 \times n = n \times 1$, which clearly equals $n$ by \myref{prop:multiplication-by-1-right}.
 \end{proof}
 
-\begin{corollary}[Multiplication by Two]\label{corollary:multiplication-by-2}
-    $n \times 2 = 2 \times n = n + n$ for all $n \in \N$.
-\end{corollary}
-\begin{proof}
-    One clearly sees $n \times 2 = 2 \times n$ by \myref{theorem:multiplication-commutative-naturals}, so we just prove $n \times 2 = n + n$.
+% \begin{corollary}[Multiplication by Two]\label{corollary:multiplication-by-2}
+%     $n \times 2 = 2 \times n = n + n$ for all $n \in \N$.
+% \end{corollary}
+% \begin{proof}
+%     One clearly sees $n \times 2 = 2 \times n$ by \myref{theorem:multiplication-commutative-naturals}, so we just prove $n \times 2 = n + n$.
 
-    We note
-    \begin{align*}
-        n \times 2 &= n \times \Successor{1}\\
-        &= (n \times 1) + n & (\text{by \textbf{M2}})\\
-        &= n + n & (\text{by \myref{corollary:multiplication-by-1}})
-    \end{align*}
-    so this is
-\end{proof}
+%     We note
+%     \begin{align*}
+%         n \times 2 &= n \times \Successor{1}\\
+%         &= (n \times 1) + n & (\text{by \textbf{M2}})\\
+%         &= n + n & (\text{by \myref{corollary:multiplication-by-1}})
+%     \end{align*}
+%     so this is
+% \end{proof}
 
 \subsection{Distributivity}
 Recall that one of the core interactions of multiplication with addition is distributivity. For example, we can evaluate $3 \times (4 + 5)$ in two ways. The first is to first calculate $4 + 5 = 9$, and then calculate $3 \times 9 = 27$. The second is to `expand' the expression to become $3 \times 4 + 3 \times 5$, and then evaluating $3 \times 4 = 12$ and $3 \times 5 = 15$, and finally summing them both to get $12 + 15 = 27$.
 
 This is summarised in the following theorem.
 
-\begin{theorem}[Distributivity of $\times$ over $+$ (Naturals)]\index{multiplication!distributivity}
+\begin{theorem}[Distributivity of $\times$ over $+$ (Naturals)]\index{multiplication!distributivity}\label{theorem:multiplication-distributivity-naturals}
     For all $a, b, c \in \N$ we have
     \begin{align*}
         a\times(b+c) &= (a\times b) + (a\times c) \text{ and}\\
@@ -420,10 +422,40 @@ This is summarised in the following theorem.
 \end{proof}
 
 \subsection{Associativity}
+With distributivity proven, we are ready to prove the associativity of multiplication.
+
+\begin{theorem}[Associativity of Multiplication (Naturals)]\index{multiplication!associativity}\label{theorem:multiplication-associative-naturals}
+    $(a \times b) \times c = a \times (b \times c)$ for all $a, b, c \in \N$.
+\end{theorem}
+\begin{proof}
+    We induct on $c$.
+
+    When $c = 0$, the left-hand side is $(a \times b) \times 0$ which is 0 by \textbf{M1}. The right-hand side is
+    \begin{align*}
+        a \times (b \times 0) &= a \times 0 & (\text{by \textbf{M1}})\\
+        &= 0  & (\text{by \textbf{M1} again})
+    \end{align*}
+    so the left-hand side and the right-hand side are the same, proving the base case.
+
+    Suppose that $(a \times b) \times k = a \times (b \times k)$ for some $k \in \N$. We will demonstrate that $(a \times b) \times \Successor{k} = a \times (b \times \Successor{k})$.
+
+    One can see that
+    \begin{align*}
+        &(a \times b) \times \Successor{k}\\
+        &= (a \times b) \times (k + 1) & (\text{by \myref{prop:successor-of-n}})\\
+        &= ((a \times b) \times k) + ((a \times b) \times 1) & (\text{by \myref{theorem:multiplication-distributivity-naturals}})\\
+        &= ((a \times b) \times k) + (a \times b) & (\text{by \myref{corollary:multiplication-by-1}})\\
+        &= (a \times(b \times k)) + (a \times b) & (\text{induction hypothesis})\\
+        &= a \times ((b \times k) + b) & (\text{by \myref{theorem:multiplication-distributivity-naturals}})\\
+        &= a \times ((b \times k) + (b \times 1)) & (\text{by \myref{corollary:multiplication-by-1}})\\
+        &= a \times (b \times (k + 1)) & (\text{by \myref{theorem:multiplication-distributivity-naturals}})\\
+        &= a \times (b \times \Successor{k}) & (\text{by \myref{prop:successor-of-n}})
+    \end{align*}
+    which proves the case for $\Successor{k}$.
+\end{proof}
+
+\section{Exponentiation}
 TODO: Add
-% Add proof on associativity of multiplication
 
 \section{And So On...}
 TODO: Add
-
-% Add small remark on how exponentiation is defined
