@@ -463,7 +463,7 @@ As before, we investigate the interactions of exponentiation with 0 and the succ
 When we raise any non-zero number to the power of 0, what do we get? Before that, what does it mean to raise a number to the power of 0? Well, that means that we do not multiply anything at all. But what should this value be? Just like how multiplying by 1 does not change the product of a sequence of numbers, if we don't multiply by anything at all we should just get 1.
 
 \begin{remark}[$0^0$]
-    The elephant in the room is, of course, the value of $0^0$. Some authors define this to be 1, some say 0, and others say that this is undefined. To make our lives easier for proving the properties of exponentiation later, let us just say that $0^0 = 1$.
+    The elephant in the room is, of course, the value of $0^0$. Some authors define this to be 1, some say 0, and others say that this is undefined. To make our lives easier for proving the properties of exponentiation later, let us just say that $0^0 = 1$. We will see this proved later.
 \end{remark}
 
 Now what about if we raise any number to a successor of another number? Well, if that other number is $a$, then we know by \myref{prop:successor-of-n} that its successor is $a+1$. Logically this should mean that we multiply one more copy of the base number.
@@ -487,3 +487,71 @@ Of course, we do not usually write ``$\wedge$'' for exponentiation; we just use 
         \item For all $a, b, c \in \N$ we have $(a \wedge b) \wedge c = a \wedge (b \wedge c)$.
     \end{partquestions}
 \end{exercise}
+
+\subsection{Basic Properties}
+Let us look at some basic properties of exponentiation.
+
+\begin{proposition}[Zero to the Power of a Natural Number]
+    \[
+        0^n = \begin{cases}
+            1 & \text{if } n = 0\\
+            0 & \text{otherwise}
+        \end{cases}
+    \]
+    for all $n \in \N$.
+\end{proposition}
+\begin{proof}
+    The case when $n = 0$ is obvious by using \textbf{E1}. Otherwise, we know that $n$ is the successor of some other natural number, say $m$. Thus
+    \begin{align*}
+        0^n &= 0^\Successor{m}\\
+        &= 0^m \times 0 & (\text{by \textbf{E2}})\\
+        &= 0, & (\text{by \textbf{M1}})
+    \end{align*}
+    proving the second case.
+\end{proof}
+
+\begin{proposition}[Natural Number to the Power of One]\label{prop:power-of-1}
+    $n^1 = n$ for all $n \in \N$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:power-of-1} (later).
+\end{proof}
+
+\begin{proposition}[One to the Power of a Natural Number]
+    $1^n = 1$ for all $n \in \N$.
+\end{proposition}
+\begin{proof}
+    We induct on $n$.
+
+    The base case of $n = 0$ is easily proven by using \textbf{E1}.
+
+    Suppose $1^k = 1$ for some $k \in \N$. We show $1^\Successor{k} = 1$.
+
+    Note
+    \begin{align*}
+        1^\Successor{k} &= (1^k) \times 1 & (\text{by \textbf{E2}})\\
+        &= 1 \times 1 & (\text{induction hypothesis})\\
+        &= 1 & (\text{by \myref{corollary:multiplication-by-1}})
+    \end{align*}
+    which proves the case for $\Successor{k}$.
+\end{proof}
+
+\begin{proposition}[Square]
+    $n^2 = n \times n$ for all $n \in \N$.
+\end{proposition}
+\begin{proof}
+    We see that
+    \begin{align*}
+        n^2 &= n^\Successor{1}\\
+        &= n^1 \times n & (\text{by \textbf{E2}})\\
+        &= n \times n & (\text{by \myref{prop:power-of-1}})
+    \end{align*}
+    which proves the proposition.
+\end{proof}
+
+\begin{exercise}[Power of One]\label{exercise:power-of-1}
+    Prove \myref{prop:power-of-1}.
+\end{exercise}
+
+\subsection{Laws of Exponents}
+TODO: Add

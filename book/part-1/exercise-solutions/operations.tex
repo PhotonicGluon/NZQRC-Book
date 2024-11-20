@@ -97,4 +97,16 @@
         but $1 \wedge 0 = 1^0 = 1$ by \textbf{E1}.
         \item False. One sees $(2\wedge 3)\wedge2 = \left(2^3\right)^2 = 64$ but $2\wedge (3\wedge 2) = 2^{\left(3^2\right)} = 512$.
     \end{partquestions}
+
+    % Power of One
+    \item \begin{proof}
+        We see that
+        \begin{align*}
+            n^1 &= n^\Successor{0}\\
+            &= n^0 \times n & (\text{by \textbf{E2}})\\
+            &= 1 \times n & (\text{by \textbf{E1}})\\
+            &= n, & (\text{by \myref{corollary:multiplication-by-1}})
+        \end{align*}
+        proving this proposition.
+    \end{proof}
 \end{questions}
