@@ -2,9 +2,88 @@
 \Lettrine[loversize=0.1,nindent=0pt]{Earlier}, we looked at the basics of relations. We looked at their definition, some basic properties of relations, and their composition. In this chapter, we will continue exploring relations, particularly relations related to equality and relations that create an ordering of elements in a set.
 
 \section{Equivalence Relations}
-TODO: Add
+Before we can define what an equivalence relation is, we define three properties that a relation could possess.
 
-% Introduce Reflexivity, Symmetry, Transitivity, equivalence relations and equivalence classes
+\begin{definition}[Reflexivity]
+    A relation $R$ on a set $A$ is \term{reflexive}\index{relation!reflexive} if and only if
+        \[
+            \forall x \in A, x\mathrel{R}x.
+        \]
+\end{definition}
+
+\begin{definition}[Symmetry]
+    A relation $R$ on a set $A$ is \term{transitive}\index{relation!transitive} if and only if
+    \[
+        \forall x,y,z \in A, (x\mathrel{R}y \land y\mathrel{R}z \implies x\mathrel{R}z).
+    \]
+\end{definition}
+
+\begin{definition}[Transitivity]
+    A relation $R$ on a set $A$ is \term{transitive}\index{relation!transitive} if and only if
+    \[
+        \forall x,y,z \in A, (x\mathrel{R}y \land y\mathrel{R}z \implies x\mathrel{R}z).
+    \]
+\end{definition}
+
+That was certainly a lot. Let us look at some examples to hammer in these definitions.
+
+\begin{example}
+    Let the set $A = \{0,1,2,3\}$. Define the relation
+    \[
+        R = \{(0,0),(0,1),(0,3),(1,0),(1,1),(2,2),(3,0),(3,3)\}. 
+    \]
+    It has the following directed graph.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=2.75cm]{images/part-2/relations-2/rst_1.png}
+        \caption{Directed Graph of $R$}
+    \end{figure}
+
+    We note the following.
+    \begin{itemize}
+        \item $R$ is reflexive since $0\mathrel{R}0$, $1\mathrel{R}1$, and $2\mathrel{R}2$. This can be seen in the figure by the loops from each element to itself.
+        \item $R$ is symmetric, since
+        \begin{itemize}
+            \item given $0\mathrel{R}1$ we also see $1\mathrel{R}0$; and
+            \item given $0\mathrel{R}3$ we also see $3\mathrel{R}0$.
+        \end{itemize}
+        These are shown by the double arrows in the figure. For example, there is an arrow from 0 to 1 and an arrow from 1 to 0. There is also an arrow from 0 to 3 and an arrow from 3 to 0.
+        \item $R$ is not transitive, since $1\mathrel{R}0$ and $0\mathrel{R}3$ but $1\not\mathrel{R}3$. This can be seen by the absence of an arrow from 1 to 3.
+    \end{itemize}
+\end{example}
+
+\begin{example}
+    Let the set $A = \{0,1,2,3\}$. Define the relation
+    \[
+        S = \{(0,0),(0,2),(0,3),(2,3)\}
+    \]
+    on $A$, which has the following directed graph.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=2.75cm]{images/part-2/relations-2/rst_2.png}
+        \caption{Directed Graph of $S$}
+    \end{figure}
+
+    We note the following.
+    \begin{itemize}
+        \item $S$ is not reflexive since $1\not\mathrel{S}1$. This can be seen by the absence of a loop from 1 to 1.
+        \item $S$ is not symmetric since, while $0\mathrel{S}2$, we see $2\not\mathrel{S}0$. This can be seen in the diagram by an arrow from 0 to 2 but the absence of an arrow from 2 to 0.
+        \item $S$ is transitive since $0\mathrel{S}2$ and $2\mathrel{S}3$ means $0\mathrel{S}3$. This is shown in the diagram by an arrow from 0 to 3 after there were arrows from 0 to 2 and 2 to 3.
+    \end{itemize}
+\end{example}
+
+\begin{exercise}[A Relation on a Set]
+    Let the set $A = \{0, 1, 2, 3\}$. Is the relation $T = \{(0, 1), (2, 3)\}$ on $A$
+    \begin{partquestions}{\alph*}[3]
+        \item reflexive?
+        \item symmetric?
+        \item transitive?
+    \end{partquestions}
+\end{exercise}
+
+% Introduce equivalence relations and equivalence classes
 
 \section{Partial Orders}  % Do we introduce this only when necessary?
 TODO: Add

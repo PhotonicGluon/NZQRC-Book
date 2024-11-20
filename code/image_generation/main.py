@@ -16,7 +16,16 @@ GENERATED_IMAGES_FOLDER = f"{MEDIA_FOLDER}/images"
 BOOK_IMAGES_FOLDER = "../../book/images"
 
 NOTEBOOKS_FOLDER = "notebooks"
-ALL_NOTEBOOKS = ["part-1/constructing-numbers.ipynb", "part-1/relations-1.ipynb"]
+ALL_NOTEBOOKS = [
+    # Part 1
+    "part-1/constructing-numbers.ipynb",
+    "part-1/relations-1.ipynb",
+    "part-1/functions.ipynb",
+    "part-1/counting.ipynb",
+
+    # Part 2
+    "part-2/relations-2.ipynb",
+]
 
 app = typer.Typer(no_args_is_help=True)
 
