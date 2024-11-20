@@ -85,4 +85,16 @@
             which proves the case for $\Successor{k}$.
         \end{proof}
     \end{partquestions}
+
+    % Exponentiation is Unlike the Rest
+    \item \begin{partquestions}{\alph*}
+        \item False. One sees
+        \begin{align*}
+            0 \wedge 1 &= 0^1\\
+            &= (0^0) \times 0 & (\text{by \textbf{E2}})\\
+            &= 0 & (\text{by \textbf{M1}})
+        \end{align*}
+        but $1 \wedge 0 = 1^0 = 1$ by \textbf{E1}.
+        \item False. One sees $(2\wedge 3)\wedge2 = \left(2^3\right)^2 = 64$ but $2\wedge (3\wedge 2) = 2^{\left(3^2\right)} = 512$.
+    \end{partquestions}
 \end{questions}

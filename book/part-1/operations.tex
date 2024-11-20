@@ -455,7 +455,35 @@ With distributivity proven, we are ready to prove the associativity of multiplic
 \end{proof}
 
 \section{Exponentiation}
-TODO: Add
+This last section will introduce exponentiation in the natural numbers. Just like how multiplication can be thought of as repeated addition, exponentiation can be thought of as repeated multiplication.
 
-\section{And So On...}
-TODO: Add
+\subsection{Basic Definitions}
+As before, we investigate the interactions of exponentiation with 0 and the successor of a number.
+
+When we raise any non-zero number to the power of 0, what do we get? Before that, what does it mean to raise a number to the power of 0? Well, that means that we do not multiply anything at all. But what should this value be? Just like how multiplying by 1 does not change the product of a sequence of numbers, if we don't multiply by anything at all we should just get 1.
+
+\begin{remark}[$0^0$]
+    The elephant in the room is, of course, the value of $0^0$. Some authors define this to be 1, some say 0, and others say that this is undefined. To make our lives easier for proving the properties of exponentiation later, let us just say that $0^0 = 1$.
+\end{remark}
+
+Now what about if we raise any number to a successor of another number? Well, if that other number is $a$, then we know by \myref{prop:successor-of-n} that its successor is $a+1$. Logically this should mean that we multiply one more copy of the base number.
+
+We can thus define exponentiation as follows.
+
+\begin{definition}[Exponentiation]
+    The \term{exponentiation operation}\index{exponentiation} is the function $\wedge: \N^2 \to \N$ such that
+    \begin{enumerate}[label=\textbf{E\arabic*.}]
+        \item for all $n \in \N$ we have $n \wedge 0 = 1$; and
+        \item for all $n, d \in \N$ we have $n \wedge \Successor{d} = (n \wedge d) \times n$.
+    \end{enumerate}
+\end{definition}
+
+Of course, we do not usually write ``$\wedge$'' for exponentiation; we just use a superscript. Thus $(2 \wedge 3) \wedge 4 = \left(2^3\right)^4$. However, if it serves to improve readability, we will write the ``$\wedge$''.
+
+\begin{exercise}[Exponentiation is Unlike the Rest]
+    Which of the following statement(s) are true?
+    \begin{partquestions}{\alph*}
+        \item For all $a, b \in \N$ we have $a \wedge b = b \wedge a$.
+        \item For all $a, b, c \in \N$ we have $(a \wedge b) \wedge c = a \wedge (b \wedge c)$.
+    \end{partquestions}
+\end{exercise}
