@@ -109,4 +109,28 @@
         \end{align*}
         proving this proposition.
     \end{proof}
+
+    % Product to a Power
+    \item \begin{proof}
+        We induct on $n$.
+
+        When $n = 0$ we have
+        \begin{align*}
+            a^0 \times b^0 &= 1 \times 1 & (\text{by \textbf{E1}})\\
+            &= 1 & (\text{by \myref{corollary:multiplication-by-1}})\\
+            &= (a\times b)^0 & (\text{by \textbf{E1}})
+        \end{align*}
+        so the base case is proven.
+
+        Suppose $a^k \times b^k = (a\times b)^k$ for some $k \in \N$. We show that $a^\Successor{k} \times b^\Successor{k} = (a\times b)^\Successor{k}$.
+
+        Note that
+        \begin{align*}
+            a^\Successor{k} \times b^\Successor{k} &= \left(a^k \times a\right) \times \left(b^k \times b\right) & (\text{by \textbf{E2}})\\
+            &= \left(a^k \times b^k\right) \times (a \times b) & (\text{properties of multiplication})\\
+            &= (a\times b)^k \times (a \times b) & (\text{induction hypothesis})\\
+            &= (a\times b)^\Successor{k} & (\text{by \textbf{E2}})
+        \end{align*}
+        which proves the case for $\Successor{k}$.
+    \end{proof}
 \end{questions}

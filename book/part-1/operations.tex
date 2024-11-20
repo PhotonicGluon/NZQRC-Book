@@ -554,4 +554,68 @@ Let us look at some basic properties of exponentiation.
 \end{exercise}
 
 \subsection{Laws of Exponents}
-TODO: Add
+We end this chapter by looking at the laws of exponents.
+
+\begin{theorem}[Product With Same Base]\label{theorem:exponents-product-with-same-base}
+    $a^m \times a^n = a^{m+n}$ for all $a, m, n \in \N$.
+\end{theorem}
+\begin{proof}
+    We induct on $n$.
+
+    For the base case $n = 0$, we see that
+    \begin{align*}
+        a^m \times a^0 &= a^m \times 1 & (\text{by \textbf{E1}})\\
+        &= a^m & (\text{by \myref{prop:multiplication-by-1-right}})\\
+        &= a^{m+0} & (\text{by \textbf{A1}})
+    \end{align*}
+    so the base case is true.
+
+    Suppose $a^m \times a^k = a^{m+k}$ for some $k \in \N$. We will demonstrate that $a^m \times a^\Successor{k} = a^{m+\Successor{k}}$.
+
+    One sees that
+    \begin{align*}
+        a^m \times a^\Successor{k} &= a^m \times \left(a^k \times a\right) & (\text{by \textbf{E2}})\\
+        &= \left(a^m \times a^k\right) \times a & (\text{by \myref{theorem:multiplication-associative-naturals}})\\
+        &= a^{m+k} \times a & (\text{induction hypothesis})\\
+        &= a^{\Successor{m+k}} & (\text{by \textbf{E1}})\\
+        &= a^{m+\Successor{k}} & (\text{by \textbf{A2}})
+    \end{align*}
+    which proves the case for $\Successor{k}$.
+\end{proof}
+
+\begin{theorem}[Product to a Power]\label{theorem:exponents-product-to-a-power}
+    $a^n \times b^n = (a\times b)^n$ for all $a, b, n \in \N$.
+\end{theorem}
+\begin{proof}
+    See \myref{exercise:exponents-product-to-a-power} (later).
+\end{proof}
+
+\begin{theorem}[Power Raised to a Power]\label{theorem:exponents-power-raised-to-a-power}
+    $\left(a^m\right)^n = a^{m\times n}$ for all $a, m, n \in \N$.
+\end{theorem}
+\begin{proof}
+    We induct on $n$.
+
+    For the base case $n = 0$, one sees clearly that
+    \begin{align*}
+        \left(a^m\right)^0 &= 1 & (\text{by \textbf{E1}})\\
+        &= a^0 & (\text{by \textbf{E1} again})\\
+        &= a^{m\times 0} & (\text{by \textbf{M1}})
+    \end{align*}
+    which proves the base case.
+
+    Assume $\left(a^m\right)^k = a^{m\times k}$ for some $k \in \N$; we are to show that $\left(a^m\right)^\Successor{k} = a^{m\times \Successor{k}}$.
+
+    We observe that
+    \begin{align*}
+        \left(a^m\right)^\Successor{k} &= \left(a^m\right)^k \times a^m & (\text{by \textbf{E2}})\\
+        &= a^{m\times k} \times a^m & (\text{induction hypothesis})\\
+        &= a^{m\times k + m} & (\text{by \myref{theorem:exponents-product-with-same-base}})\\
+        &= a^{m \times \Successor{k}} & (\text{by \textbf{M2}})
+    \end{align*}
+    which proves the case for $\Successor{k}$.
+\end{proof}
+
+\begin{exercise}[Product to a Power]\label{exercise:exponents-product-to-a-power}
+    Prove \myref{theorem:exponents-product-to-a-power}.
+\end{exercise}
