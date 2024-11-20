@@ -380,8 +380,44 @@ With the commutativity of multiplication proven, we can prove some intuitive res
 \end{proof}
 
 \subsection{Distributivity}
-TODO: Add
-% Add proof of distributivity of multiplication over addition
+Recall that one of the core interactions of multiplication with addition is distributivity. For example, we can evaluate $3 \times (4 + 5)$ in two ways. The first is to first calculate $4 + 5 = 9$, and then calculate $3 \times 9 = 27$. The second is to `expand' the expression to become $3 \times 4 + 3 \times 5$, and then evaluating $3 \times 4 = 12$ and $3 \times 5 = 15$, and finally summing them both to get $12 + 15 = 27$.
+
+This is summarised in the following theorem.
+
+\begin{theorem}[Distributivity of $\times$ over $+$ (Naturals)]\index{multiplication!distributivity}
+    For all $a, b, c \in \N$ we have
+    \begin{align*}
+        a\times(b+c) &= (a\times b) + (a\times c) \text{ and}\\
+        (a+b)\times c &= (a\times c) + (b\times c).
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    We prove the first statement via induction on $a$.
+
+    When $a = 0$, the left-hand side is $0\times(b+c) = 0$ by \myref{lemma:product-of-0-and-n}. The right-hand side is $0\times b + 0\times c = 0 + 0$ by \myref{lemma:product-of-0-and-n} again, which clearly equals 0 by \textbf{A1}. So the left-hand side equals the right-hand side, proving the base case.
+
+    Suppose $k\times(b+c) = (k\times b) + (k\times c)$ for some $k \in \N$. We show that $\Successor{k}\times(b+c) = (\Successor{k}\times b) + (\Successor{k} \times c)$.
+
+    Observe that
+    \begin{align*}
+        &\Successor{k}\times(b+c)\\
+        &= (k \times (b+c)) + (b+c) & (\text{by \myref{lemma:product-of-successor-and-n}})\\
+        &= ((k\times b) + (k\times c)) + (b+c) & (\text{induction hypothesis})\\
+        &= ((k\times b) + b) + ((k\times c) + c) & (\text{by properties of addition})\\
+        &= (\Successor{k}\times b) + (\Successor{k} \times c) & (\text{by \myref{lemma:product-of-successor-and-n}})
+    \end{align*}
+    which proves the case for $\Successor{k}$.
+
+    The second statement is readily proven by using \myref{theorem:multiplication-commutative-naturals} on the first statement to get
+    \[
+        (b+c)\times a = (a\times b) + (a\times c)
+    \]
+    Then by `renaming' $b$ to $a$, $c$ to $b$, and $a$ to $c$, we will get that
+    \[
+        (a+b)\times c = (c\times a) + (c\times b).
+    \]
+    Using \myref{theorem:multiplication-commutative-naturals} on the two products on the right-hand side readily proves the second theorem.
+\end{proof}
 
 \subsection{Associativity}
 TODO: Add
