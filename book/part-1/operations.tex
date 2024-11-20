@@ -155,7 +155,7 @@ The following result is the `reversed' version of \textbf{A2}.
 
 We are now ready to prove the commutativity of addition.
 
-\begin{theorem}[Commutativity of Addition (Natural Numbers)]\index{addition!commutativity}\label{theorem:addition-commutative-naturals}
+\begin{theorem}[Commutativity of Addition (Naturals)]\index{addition!commutativity}\label{theorem:addition-commutative-naturals}
     $m + n = n + m$ for all $m, n \in \N$.
 \end{theorem}
 \begin{proof}
@@ -180,7 +180,7 @@ We are now ready to prove the commutativity of addition.
 
 We can now also prove the associativity of addition.
 
-\begin{theorem}[Associativity of Addition (Natural Numbers)]\index{addition!associativity}\label{theorem:addition-associative-naturals}
+\begin{theorem}[Associativity of Addition (Naturals)]\index{addition!associativity}\label{theorem:addition-associative-naturals}
     $(a + b) + c = a + (b + c)$ for all $a,b,c \in \N$.
 \end{theorem}
 \begin{proof}
@@ -285,9 +285,106 @@ What happens when we multiply a number by zero? That is easy -- the answer is ju
 
 Like with addition, these two conditions will be all we need to prove the most essential properties of multiplication.
 
-\subsection{Basic Properties of Multiplication}
+\subsection{Commutativity}
+First, an easy warm-up property.
+
+\begin{proposition}[Multiplication by One]\label{prop:multiplication-by-1-right}
+    $n \times 1 = n$ for all $n \in \N$.
+\end{proposition}
+\begin{proof}
+    One sees
+    \begin{align*}
+        n \times 1 &= n \times \Successor{0} & (\text{by definition of 1})\\
+        &= n \times 0 + n & (\text{by \textbf{M2}})\\
+        &= 0 + n & (\text{by \textbf{M1}})\\
+        &= n & (\text{by \myref{lemma:sum-of-0-and-n}})
+    \end{align*}
+    so $n \times 1 = n$ as required.
+\end{proof}
+
+The next few results are analogous to those covered in the earlier section on addition. Again, note that \textbf{M1} works for $n \times 0$, not $0 \times n$, so we need this lemma.
+
+\begin{lemma}[Product of 0 and $n$]\label{lemma:product-of-0-and-n}
+    $0 \times n = 0$ for all $n \in \N$.
+\end{lemma}
+
+\begin{proof}
+    See \myref{exercise:proof-of-commutativity} (later).
+\end{proof}
+
+\begin{lemma}[Product of $\Successor{d}$ and $n$]\label{lemma:product-of-successor-and-n}
+    $\Successor{d} \times n = (d \times n) + n$ for all $n, d \in \N$.
+\end{lemma}
+\begin{proof}
+    We consider induction on $n$.
+
+    When $n = 0$, we have $\Successor{d} \times 0$ on the left-hand side, which easily simplifies to 0 by \textbf{M1}. The right-hand side, upon substituting $n = 0$, becomes $d \times 0 + 0$ which is $0 + 0$ by \textbf{M1} and becomes 0 upon using \textbf{A1}. Since the left-hand side and right-hand side both equal 0, thus the base case is proven.
+
+    Suppose that $\Successor{d} \times k = (d \times k) + k$ for some $k \in \N$. We show that $\Successor{d} \times \Successor{k} = \left(d \times \Successor{k}\right) + \Successor{k}$.
+
+    One sees that
+    \begin{align*}
+        &\Successor{d} \times \Successor{k}\\
+        &= \left(\Successor{d} \times k\right) + \Successor{d} & (\text{by \textbf{M2}})\\
+        &= \left((d \times k) + k\right) + \Successor{d} & (\text{induction hypothesis})\\
+        &= (d \times k) + \left(k + \Successor{d}\right) & (\text{by associativity of addition})\\
+        &= (d \times k) + \left(k + (d + 1)\right) & (\text{by \myref{prop:successor-of-n}})\\
+        &= (d \times k) + \left((k + d) + 1\right) & (\text{by associativity of addition})\\
+        &= (d \times k) + \left((k + 1) + d\right) & (\text{by \myref{corollary:right-commutativity-of-addition}})\\
+        &= (d \times k) + \left(\Successor{k} + d\right) & (\text{by \myref{prop:successor-of-n}})\\
+        &= (d \times k) + \left(d + \Successor{k}\right) & (\text{by commutativity of addition})\\
+        &= \left((d \times k) + d\right) + \Successor{k} & (\text{by associativity of addition})\\
+        &= \left(d \times \Successor{k}\right) + \Successor{k} & (\text{by \textbf{M2}})
+    \end{align*}
+    which proves the case for $\Successor{k}$.
+\end{proof}
+
+We are now ready to prove the commutativity of multiplication.
+
+\begin{theorem}[Commutativity of Multiplication (Naturals)]\label{theorem:multiplication-commutative-naturals}
+    $m \times n = n \times m$ for all $m, n \in \N$.
+\end{theorem}
+\begin{proof}
+    See \myref{exercise:proof-of-commutativity} (later).
+\end{proof}
+
+\begin{exercise}[Proof of Commutativity]\label{exercise:proof-of-commutativity}
+    \begin{partquestions}{\roman*}
+        \item Prove \myref{lemma:product-of-0-and-n}.
+        \item Prove \myref{theorem:multiplication-commutative-naturals}.
+    \end{partquestions}
+\end{exercise}
+
+With the commutativity of multiplication proven, we can prove some intuitive results.
+
+\begin{corollary}[Multiplication by One (on the Left)]\label{corollary:multiplication-by-1}
+    $1 \times n = n$ for all $n \in \N$.
+\end{corollary}
+\begin{proof}
+    One can use \myref{theorem:multiplication-commutative-naturals} to see that $1 \times n = n \times 1$, which clearly equals $n$ by \myref{prop:multiplication-by-1-right}.
+\end{proof}
+
+\begin{corollary}[Multiplication by Two]\label{corollary:multiplication-by-2}
+    $n \times 2 = 2 \times n = n + n$ for all $n \in \N$.
+\end{corollary}
+\begin{proof}
+    One clearly sees $n \times 2 = 2 \times n$ by \myref{theorem:multiplication-commutative-naturals}, so we just prove $n \times 2 = n + n$.
+
+    We note
+    \begin{align*}
+        n \times 2 &= n \times \Successor{1}\\
+        &= (n \times 1) + n & (\text{by \textbf{M2}})\\
+        &= n + n & (\text{by \myref{corollary:multiplication-by-1}})
+    \end{align*}
+    so this is
+\end{proof}
+
+\subsection{Distributivity}
 TODO: Add
-% Add proof on commutativity of multiplication
+% Add proof of distributivity of multiplication over addition
+
+\subsection{Associativity}
+TODO: Add
 % Add proof on associativity of multiplication
 
 \section{And So On...}

@@ -50,4 +50,39 @@
         \]
         Thus, using \myref{prop:addition-cancellation-property} we get $a = 0$ as required.
     \end{proof}
+
+    % Proof of Commutativity
+    \item \begin{partquestions}{\roman*}
+        \item \begin{proof}
+            We consider induction on $n$.
+
+            The base case of $n = 0$ is easily proven since the left-hand side, being $0 \times 0$, simplifies to 0 using \textbf{M1}.
+
+            Suppose that $0 \times k = 0$ for some $k \in \N$. We show that $0 \times \Successor{k} = 0$.
+
+            Note that
+            \begin{align*}
+                0 \times \Successor{k} &= (0 \times k) + 0 & (\text{by \textbf{M2}})\\
+                &= 0 \times k & (\text{by \myref{lemma:sum-of-0-and-n}})\\
+                &= 0 & (\text{induction hypothesis})
+            \end{align*}
+            which proves the case for $\Successor{k}$.
+        \end{proof}
+
+        \item \begin{proof}
+            We induct on $n$.
+
+            When $n = 0$, the left-hand side is $m \times 0$ which is 0 by \textbf{M1}, and the right-hand side is $0 \times m$ which is 0 by \myref{lemma:product-of-0-and-n}. So the base case is proven.
+
+            Suppose $m \times k = k \times m$ for some $k \in \N$. We show $m \times \Successor{k} = \Successor{k} \times m$.
+
+            Note
+            \begin{align*}
+                m \times \Successor{k} &= (m \times k) + m & (\text{by \text{M2}})\\
+                &= (k \times m) + m & (\text{induction hypothesis})\\
+                &= \Successor{k} \times m & (\text{by \myref{lemma:product-of-successor-and-n}})
+            \end{align*}
+            which proves the case for $\Successor{k}$.
+        \end{proof}
+    \end{partquestions}
 \end{questions}
