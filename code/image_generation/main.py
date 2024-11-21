@@ -1,5 +1,6 @@
 import os
 import shutil
+import tempfile
 from pathlib import Path
 from typing import List, Optional
 
@@ -22,7 +23,6 @@ ALL_NOTEBOOKS = [
     "part-1/relations-1.ipynb",
     "part-1/functions.ipynb",
     "part-1/counting.ipynb",
-
     # Part 2
     "part-2/relations-2.ipynb",
 ]
@@ -51,7 +51,13 @@ def transfer_images_cmd(
     Transfers images from the media folder into the actual book's folder.
     """
 
-    transfer_images(generated_images_folder, book_images_folder, copy_images, dry_run, silent)
+    transfer_images(
+        generated_images_folder,
+        book_images_folder,
+        copy_images=copy_images,
+        dry_run=dry_run,
+        silent=silent,
+    )
 
 
 @app.command(name="trim")
@@ -88,6 +94,63 @@ def trim_images_cmd(
         add_excess_of=add_excess_of,
         silent=silent,
     )
+
+
+@app.command("tat")
+def trim_and_transfer_images_cmd(
+    generated_images_folder: Annotated[
+        Path,
+        typer.Option(help="Folder containing the images to transfer.", exists=True, file_okay=False, dir_okay=True),
+    ] = GENERATED_IMAGES_FOLDER,
+    book_images_folder: Annotated[
+        Path,
+        typer.Option(help="Folder containing subfolders for the images.", exists=True, file_okay=False, dir_okay=True),
+    ] = BOOK_IMAGES_FOLDER,
+    temp_dir: Annotated[
+        Optional[Path],
+        typer.Option(
+            help="Temporary directory to store the trimmed images. If `None` will generate a temporary directory automatically.",
+            exists=True,
+            file_okay=False,
+            dir_okay=True,
+        ),
+    ] = None,
+    throw_if_cannot_trim: Annotated[
+        bool, typer.Option("--throw", help="Whether to throw an error if we cannot trim image.")
+    ] = False,
+    add_excess_of: Annotated[int, typer.Option(help="Number of pixels to surround the main content.")] = 0,
+    copy_images: Annotated[
+        bool,
+        typer.Option(help="Whether to copy the images. Otherwise will move the images instead."),
+    ] = True,
+    dry_run: Annotated[bool, typer.Option(help="Whether to dry run the moving of images.")] = False,
+    silent: Annotated[bool, typer.Option(help="Whether to silence info.")] = False,
+):
+    """
+    Performs trimming of the images, and then moves them to the book's image folder.
+    """
+    
+    with tempfile.TemporaryDirectory() as tmpdir:
+        if temp_dir:
+            tmpdir = temp_dir
+
+        # First trim the images using the temporary directory
+        trim_images(
+            generated_images_folder,
+            tmpdir,
+            throw_if_cannot_trim=throw_if_cannot_trim,
+            add_excess_of=add_excess_of,
+            silent=silent,
+        )
+
+        # Then transfer the images
+        transfer_images(
+            tmpdir,
+            book_images_folder,
+            copy_images=copy_images,
+            dry_run=dry_run,
+            silent=silent,
+        )
 
 
 @app.command("do-all")

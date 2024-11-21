@@ -62,7 +62,7 @@ poetry run python main.py transfer --generated-images-folder media/trimmed
 Run:
 
 ```bash
-python main.py trim -o media/trimmed; python main.py transfer --generated-images-folder media/trimmed
+python main.py tat
 ```
 
 ### Do-All
