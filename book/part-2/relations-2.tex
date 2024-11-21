@@ -144,6 +144,46 @@ With these three definitions, we can now define equivalence relations.
     Therefore $R$ is an equivalence relation.
 \end{example}
 
+\begin{example}[An Equivalence Relation on a Formal Language]
+    \setlength{\parindent}{1.5em}
+
+    Let $\Alphabet$ be the set of English letters, i.e. $\Alphabet = \{\text{a}, \text{b}, \text{c}, \dots, \text{x}, \text{y}, \text{z}\}$. Let $\Lang$ be the formal language using the alphabet $\Alphabet$ such that it contains strings formed from $\Alphabet$.
+
+    Define a function $\mathrm{Start}_n: \Lang \to \Lang$, where $n \in \N \setminus \{0\}$, such that
+    \[
+        \mathrm{Start}_n(s) = \begin{cases}
+            s & \text{if length of } s \text{ is less than } n\\
+            \text{the first } n \text{ characters of } s & \text{otherwise}
+        \end{cases}
+    \]
+    for all $s \in \Lang$. For example, $\mathrm{Start}_1(\text{abc}) = \text{a}$, $\mathrm{Start}_2(\text{abc}) = \text{ab}$, $\mathrm{Start}_3(\text{abc}) = \text{abc}$, and $\mathrm{Start}_4(\text{abc}) = \text{abc}$.
+
+    We can now define a relation $R$ on $\Lang$ by
+    \[
+        s\mathrel{R}t \iff \mathrm{Start}_3(s) = \mathrm{Start}_3(t)
+    \]
+    for all $s, t \in \Lang$. We show that $R$ is an equivalence relation.
+    \begin{proof}
+        We need to show that $R$ is reflexive, symmetric, and transitive.
+        \begin{itemize}
+            \item \textbf{Reflexive}: Let $s \in \Lang$. Clearly $s$ has the same first 3 letters as itself, i.e. $\mathrm{Start}_3(s) = \mathrm{Start}_3(s)$. Thus $s \mathrel{R} s$, proving that $s$ is reflexive.
+            \item \textbf{Symmetric}: Let $s, t \in \Lang$ such that $s \mathrel{R} t$. This means that $\mathrm{Start}_3(s) = \mathrm{Start}_3(t)$. But clearly this means that $\mathrm{Start}_3(t) = \mathrm{Start}_3(s)$, i.e. $t \mathrel{R} s$, proving that $R$ is symmetric.
+            \item \textbf{Transitive}: Let $s, t, u \in \Lang$ such that $s \mathrel{R} t$ and $t \mathrel{R} u$. So we have $\mathrm{Start}_3(s) = \mathrm{Start}_3(t)$ and $\mathrm{Start}_3(t) = \mathrm{Start}_3(u)$. But clearly this means that $\mathrm{Start}_3(s) = \mathrm{Start}_3(u)$, i.e. $s \mathrel{R} u$, proving that $R$ is transitive.
+        \end{itemize}
+        Thus we see that $R$ is an equivalence relation.
+    \end{proof}
+\end{example}
+
+\begin{exercise}[Equivalence Relation Detective]
+    Let $S = \{1, 2, 3\}$. Which of the following relations are equivalence relations on $S$?
+    \begin{partquestions}{\alph*}
+        \item $A = \emptyset$
+        \item $B = \{(1, 1), (2, 2), (3, 3)\}$
+        \item $C = \{(1, 1), (1, 2), (2, 2), (3, 3)\}$
+        \item $D = \{(1, 1), (1, 2), (2, 1), (2, 2), (2, 3), (3, 2), (3, 3)\}$
+    \end{partquestions}
+\end{exercise}
+
 % Introduce equivalence classes
 
 \section{Partial Orders}  % Do we introduce this only when necessary?

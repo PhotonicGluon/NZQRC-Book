@@ -6,4 +6,31 @@
         \item Not symmetric since $0\mathrel{T}1$ but $1\not\mathrel{T}0$.
         \item Is transitive. The condition for transitivity is vacuously satisfied.
     \end{partquestions}
+
+    % Equivalence Relation Detective
+    \item \begin{partquestions}{\alph*}
+        \item Not an equivalence relation since $A$ is not reflexive (e.g., $1 \not\mathrel{A} 1$).
+        
+        \item Is an equivalence relation.
+        \begin{itemize}
+            \item \textbf{Reflexive}: We have $1 \mathrel{B} 1$, $2 \mathrel{B} 2$, and $3 \mathrel{B} 3$. Thus $B$ is reflexive.
+            \item \textbf{Symmetric}: Suppose $x, y \in S$ where $x \mathrel{B} y$. We split into two cases.
+            \begin{itemize}
+                \item If $x = y$, reflexivity immediately implies $y \mathrel{B} x$.
+                \item Otherwise symmetry is vacuously satisfied.
+            \end{itemize}
+            Thus $B$ is symmetric.
+            \item \textbf{Transitive}: Suppose $x, y, z \in S$ where $x \mathrel{B} y$ and $y \mathrel{B} z$. We split into two cases.
+            \begin{itemize}
+                \item If $x = y = z$, we clearly have $x \mathrel{B} z$ by reflexivity.
+                \item Otherwise transitivity is vacuously satisfied.
+            \end{itemize}
+            Thus $B$ is transitive.
+        \end{itemize}
+        Since $B$ is reflexive, symmetric, and transitive, it is an equivalence relation.
+
+        \item Not an equivalence relation since it is not symmetric. In particular we have $1 \mathrel{C} 2$ but $2 \not\mathrel{C} 1$.
+        
+        \item Not an equivalence relation since it is not transitive. For example we have $1 \mathrel{D} 2$ and $2 \mathrel{D} 3$ but $1 \not\mathrel{D} 3$.
+    \end{partquestions}
 \end{questions}
