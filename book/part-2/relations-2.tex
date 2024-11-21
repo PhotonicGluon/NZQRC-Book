@@ -83,7 +83,68 @@ That was certainly a lot. Let us look at some examples to hammer in these defini
     \end{partquestions}
 \end{exercise}
 
-% Introduce equivalence relations and equivalence classes
+With these three definitions, we can now define equivalence relations.
+
+\begin{definition}[Equivalence Relation]
+    An \term{equivalence relation on a set $A$}\index{equivalence relation} is a relation on $A$ that is reflexive, symmetric, and transitive.
+\end{definition}
+
+\begin{example}[An Equivalence Relation]
+    Consider $A = \{0, 1, 2, 3\}$ and define a relation $R$ on $A$ by
+    \[
+        R = \{(0,0), (1,1), (2,2), (3,3)\}
+    \]
+    which has the following arrow diagram.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=2.75cm]{images/part-2/relations-2/equiv-rel_1.png}
+        \caption{Directed Graph of $R$}
+    \end{figure}
+
+    We note that $R$ is
+    \begin{itemize}
+        \item reflexive since $0\mathrel{R}0$, $1\mathrel{R}1$, $2\mathrel{R}2$, and $3\mathrel{R}3$;
+        \item symmetric since the symmetric requirements are implied by reflexivity; and
+        \item transitive by vacuous definition of transitivity.
+    \end{itemize}
+    Therefore $R$ is an equivalence relation.
+\end{example}
+
+\begin{example}[Another Equivalence Relation]
+    Consider $A = \{0, 1, 2, 3\}$ and define a relation $R$ on $A$ by
+    \begin{align*}
+        R &= \{(0, 0), (0, 1), (0, 2), (1, 0), (1, 1),\\
+        &\quad\quad(1, 2), (2, 0), (2, 1), (2, 2), (3, 3)\}
+    \end{align*}
+    which has the following arrow diagram.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=2.75cm]{images/part-2/relations-2/equiv-rel_2.png}
+        \caption{Directed Graph of $R$}
+    \end{figure}
+
+    We note that $R$ is
+    \begin{itemize}
+        \item reflexive since $0\mathrel{R}0$, $1\mathrel{R}1$, $2\mathrel{R}2$, and $3\mathrel{R}3$;
+        \item symmetric since
+        \begin{itemize}
+            \item given $0\mathrel{R}1$ we have $1\mathrel{R}0$;
+            \item given $0\mathrel{R}2$ we have $2\mathrel{R}0$; and
+            \item given $1\mathrel{R}2$ we have $2\mathrel{R}1$.
+        \end{itemize}
+        All other symmetric requirements are implied by reflexivity; and
+        \item transitive since
+        \begin{itemize}
+            \item given $0\mathrel{R}1$ and $1\mathrel{R}2$ we have $0\mathrel{R}2$;
+            \item given $1\mathrel{R}2$ and $2\mathrel{R}0$ we have $1\mathrel{R}0$; and
+            \item given $2\mathrel{R}0$ and $0\mathrel{R}1$ we have $2\mathrel{R}1$.
+        \end{itemize}
+        All other transitive requirements are implied by prior properties.
+    \end{itemize}
+    Therefore $R$ is an equivalence relation.
+\end{example}
+
+% Introduce equivalence classes
 
 \section{Partial Orders}  % Do we introduce this only when necessary?
 TODO: Add
