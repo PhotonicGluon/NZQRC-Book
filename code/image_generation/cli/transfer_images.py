@@ -1,10 +1,8 @@
 import os
-import re
 import shutil
+from pathlib import Path
 
 from rich import print
-
-IMAGE_REGEX = r"(?P<part>\d)_(?P<chapter>[a-z0-9\-]+)_(?P<name>[\w\-]+\.png)"
 
 
 def transfer_images(
@@ -25,16 +23,16 @@ def transfer_images(
         print("[yellow]Dry run mode.[/yellow]")
 
     # Get all images
-    images = os.listdir(media_folder)
+    images = Path(media_folder).glob("**/*.png")
 
     for image in images:
-        match = re.match(IMAGE_REGEX, image)
-        if not match:
-            continue
-        part, chapter, name = match.groups()
+        # Get components of the image
+        part = image.parent.parent.name
+        chapter = image.parent.name
+        name = image.name
 
         # Create appropriate folder
-        folder = os.path.join(book_image_folder, f"part-{part}", chapter)
+        folder = os.path.join(book_image_folder, part, chapter)
 
         if not dry_run and not os.path.exists(folder):
             os.makedirs(folder, exist_ok=True)
@@ -42,17 +40,16 @@ def transfer_images(
                 print(f"Created folder [cyan]'{folder}'[/cyan]")
 
         # Transfer image
-        src = os.path.join(media_folder, image)
         dst = os.path.join(folder, name)
         if copy_images:
             if not dry_run:
-                shutil.copy(src, dst)
+                shutil.copy(image, dst)
             if not silent:
-                print(f"Copied [cyan]'{src}'[/cyan] to [cyan]'{dst}'[/cyan]")
+                print(f"Copied [cyan]'{image}'[/cyan] to [cyan]'{dst}'[/cyan]")
         else:
             if not dry_run:
-                shutil.move(src, dst)
+                shutil.move(image, dst)
             if not silent:
-                print(f"Moved [cyan]'{src}'[/cyan] to [cyan]'{dst}'[/cyan]")
+                print(f"Moved [cyan]'{image}'[/cyan] to [cyan]'{dst}'[/cyan]")
 
     print("[green]Done![/green]")

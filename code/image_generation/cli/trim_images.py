@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from typing import Optional
 
 from PIL import Image, ImageChops
@@ -65,17 +66,18 @@ def trim_images(
         add_excess_of: number of pixels to surround the main content. Defaults to 0.
         silent: whether extra output should be made. Defaults to False.
     """
-    if not os.path.isdir(output_folder):
-        os.makedirs(output_folder, exist_ok=True)
 
-    images = os.listdir(media_folder)
+
+    images = Path(media_folder).glob("**/*.png")
 
     for image in images:
-        im = Image.open(os.path.join(media_folder, image))
+        im = Image.open(image)
         trimmed_im = trim(im, throw_if_cannot_trim=throw_if_cannot_trim, add_excess_of=add_excess_of)
 
         if trimmed_im:
-            trimmed_im.save(os.path.join(output_folder, image))
+            dest_dir = os.path.join(output_folder, image.parent.parent.name, image.parent.name)
+            os.makedirs(dest_dir, exist_ok=True)
+            trimmed_im.save(os.path.join(dest_dir, image.name))
             if not silent:
                 print(f"Trimmed [cyan]'{image}'[/cyan].")
         else:

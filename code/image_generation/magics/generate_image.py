@@ -125,8 +125,9 @@ class GenerateImageMagic(Magics):
             # Error message already printed out, so no need to do anything else
             return
 
-        # Format the given arguments into the image name
-        image_name = f"{part}_{chapter}_{args.name}.png"
+        # Format the given arguments into the image path
+        output_dir = f"{args.output_dir}/part-{part}/{chapter}"
+        image_name = f"{args.name}.png"
 
         with tempfile.TemporaryDirectory(dir=os.getcwd()) as tmpdir:
             # Form the manim command
@@ -153,5 +154,5 @@ class GenerateImageMagic(Magics):
             exec_result.raise_error()
 
             # Copy the image to the desired location
-            os.makedirs(args.output_dir, exist_ok=True)
-            shutil.copy(f"{tmpdir}/images/{notebook_parent_folder}/{image_name}", f"{args.output_dir}/{image_name}")
+            os.makedirs(output_dir, exist_ok=True)
+            shutil.copy(f"{tmpdir}/images/{notebook_parent_folder}/{image_name}", f"{output_dir}/{image_name}")
