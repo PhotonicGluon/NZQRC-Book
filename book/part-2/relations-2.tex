@@ -86,62 +86,62 @@ That was certainly a lot. Let us look at some examples to hammer in these defini
 With these three definitions, we can now define equivalence relations.
 
 \begin{definition}[Equivalence Relation]
-    An \term{equivalence relation on a set $A$}\index{equivalence relation}, usually denoted $\eqrel$, is a relation on $A$ that is reflexive, symmetric, and transitive.
+    An \term{equivalence relation on a set $A$}\index{equivalence relation}, usually denoted $\EqRel$, is a relation on $A$ that is reflexive, symmetric, and transitive.
 \end{definition}
 
 \begin{example}[An Equivalence Relation]
-    Consider $A = \{0, 1, 2, 3\}$ and define a relation $\eqrel$ on $A$ by
+    Consider $A = \{0, 1, 2, 3\}$ and define a relation $\EqRel$ on $A$ by
     \[
-        \eqrel\;= \{(0,0), (1,1), (2,2), (3,3)\}
+        \EqRel\;= \{(0,0), (1,1), (2,2), (3,3)\}
     \]
-    which has the following arrow diagram.
+    which has the following directed graph.
     \begin{figure}[H]
         \centering
         \includegraphics[height=2.75cm]{images/part-2/relations-2/equiv-rel_1.png}
-        \caption{Directed Graph of $\eqrel$}
+        \caption{Directed Graph of $\EqRel$}
     \end{figure}
 
-    We note that $\eqrel$ is
+    We note that $\EqRel$ is
     \begin{itemize}
-        \item reflexive since $0\mathrel{\eqrel}0$, $1\mathrel{\eqrel}1$, $2\mathrel{\eqrel}2$, and $3\mathrel{\eqrel}3$;
+        \item reflexive since $0\mathrel{\EqRel}0$, $1\mathrel{\EqRel}1$, $2\mathrel{\EqRel}2$, and $3\mathrel{\EqRel}3$;
         \item symmetric since the symmetric requirements are implied by reflexivity; and
         \item transitive by vacuous definition of transitivity.
     \end{itemize}
-    Therefore $\eqrel$ is an equivalence relation.
+    Therefore $\EqRel$ is an equivalence relation.
 \end{example}
 
 \begin{example}[Another Equivalence Relation]
-    Consider $A = \{0, 1, 2, 3\}$ and define a relation $\eqrel$ on $A$ by
+    Consider $A = \{0, 1, 2, 3\}$ and define a relation $\EqRel$ on $A$ by
     \begin{align*}
-        \eqrel &= \{(0, 0), (0, 1), (0, 2), (1, 0), (1, 1),\\
+        \EqRel &= \{(0, 0), (0, 1), (0, 2), (1, 0), (1, 1),\\
         &\quad\quad(1, 2), (2, 0), (2, 1), (2, 2), (3, 3)\}
     \end{align*}
-    which has the following arrow diagram.
+    which has the following directed graph.
     \begin{figure}[H]
         \centering
         \includegraphics[height=2.75cm]{images/part-2/relations-2/equiv-rel_2.png}
-        \caption{Directed Graph of $\eqrel$}
+        \caption{Directed Graph of $\EqRel$}
     \end{figure}
 
-    We note that $\eqrel$ is
+    We note that $\EqRel$ is
     \begin{itemize}
-        \item reflexive since $0\mathrel{\eqrel}0$, $1\mathrel{\eqrel}1$, $2\mathrel{\eqrel}2$, and $3\mathrel{\eqrel}3$;
+        \item reflexive since $0\mathrel{\EqRel}0$, $1\mathrel{\EqRel}1$, $2\mathrel{\EqRel}2$, and $3\mathrel{\EqRel}3$;
         \item symmetric since
         \begin{itemize}
-            \item given $0\mathrel{\eqrel}1$ we have $1\mathrel{\eqrel}0$;
-            \item given $0\mathrel{\eqrel}2$ we have $2\mathrel{\eqrel}0$; and
-            \item given $1\mathrel{\eqrel}2$ we have $2\mathrel{\eqrel}1$.
+            \item given $0\mathrel{\EqRel}1$ we have $1\mathrel{\EqRel}0$;
+            \item given $0\mathrel{\EqRel}2$ we have $2\mathrel{\EqRel}0$; and
+            \item given $1\mathrel{\EqRel}2$ we have $2\mathrel{\EqRel}1$.
         \end{itemize}
         All other symmetric requirements are implied by reflexivity; and
         \item transitive since
         \begin{itemize}
-            \item given $0\mathrel{\eqrel}1$ and $1\mathrel{\eqrel}2$ we have $0\mathrel{\eqrel}2$;
-            \item given $1\mathrel{\eqrel}2$ and $2\mathrel{\eqrel}0$ we have $1\mathrel{\eqrel}0$; and
-            \item given $2\mathrel{\eqrel}0$ and $0\mathrel{\eqrel}1$ we have $2\mathrel{\eqrel}1$.
+            \item given $0\mathrel{\EqRel}1$ and $1\mathrel{\EqRel}2$ we have $0\mathrel{\EqRel}2$;
+            \item given $1\mathrel{\EqRel}2$ and $2\mathrel{\EqRel}0$ we have $1\mathrel{\EqRel}0$; and
+            \item given $2\mathrel{\EqRel}0$ and $0\mathrel{\EqRel}1$ we have $2\mathrel{\EqRel}1$.
         \end{itemize}
         All other transitive requirements are implied by prior properties.
     \end{itemize}
-    Therefore $\eqrel$ is an equivalence relation.
+    Therefore $\EqRel$ is an equivalence relation.
 \end{example}
 
 \begin{example}[An Equivalence Relation on a Formal Language]
@@ -158,19 +158,19 @@ With these three definitions, we can now define equivalence relations.
     \]
     for all $s \in \Lang$. For example, $\mathrm{Start}_1(\text{abc}) = \text{a}$, $\mathrm{Start}_2(\text{abc}) = \text{ab}$, $\mathrm{Start}_3(\text{abc}) = \text{abc}$, and $\mathrm{Start}_4(\text{abc}) = \text{abc}$.
 
-    We can now define a relation $\eqrel$ on $\Lang$ by
+    We can now define a relation $\EqRel$ on $\Lang$ by
     \[
-        s\mathrel{\eqrel}t \iff \mathrm{Start}_3(s) = \mathrm{Start}_3(t)
+        s\mathrel{\EqRel}t \iff \mathrm{Start}_3(s) = \mathrm{Start}_3(t)
     \]
-    for all $s, t \in \Lang$. We show that $\eqrel$ is an equivalence relation.
+    for all $s, t \in \Lang$. We show that $\EqRel$ is an equivalence relation.
     \begin{proof}
-        We need to show that $\eqrel$ is reflexive, symmetric, and transitive.
+        We need to show that $\EqRel$ is reflexive, symmetric, and transitive.
         \begin{itemize}
-            \item \textbf{Reflexive}: Let $s \in \Lang$. Clearly $s$ has the same first 3 letters as itself, i.e. $\mathrm{Start}_3(s) = \mathrm{Start}_3(s)$. Thus $s \mathrel{\eqrel} s$, proving that $s$ is reflexive.
-            \item \textbf{Symmetric}: Let $s, t \in \Lang$ such that $s \mathrel{\eqrel} t$. This means that $\mathrm{Start}_3(s) = \mathrm{Start}_3(t)$. But clearly this means that $\mathrm{Start}_3(t) = \mathrm{Start}_3(s)$, i.e. $t \mathrel{\eqrel} s$, proving that $\eqrel$ is symmetric.
-            \item \textbf{Transitive}: Let $s, t, u \in \Lang$ such that $s \mathrel{\eqrel} t$ and $t \mathrel{\eqrel} u$. So we have $\mathrm{Start}_3(s) = \mathrm{Start}_3(t)$ and $\mathrm{Start}_3(t) = \mathrm{Start}_3(u)$. But clearly this means that $\mathrm{Start}_3(s) = \mathrm{Start}_3(u)$, i.e. $s \mathrel{\eqrel} u$, proving that $\eqrel$ is transitive.
+            \item \textbf{Reflexive}: Let $s \in \Lang$. Clearly $s$ has the same first 3 letters as itself, i.e. $\mathrm{Start}_3(s) = \mathrm{Start}_3(s)$. Thus $s \mathrel{\EqRel} s$, proving that $s$ is reflexive.
+            \item \textbf{Symmetric}: Let $s, t \in \Lang$ such that $s \mathrel{\EqRel} t$. This means that $\mathrm{Start}_3(s) = \mathrm{Start}_3(t)$. But clearly this means that $\mathrm{Start}_3(t) = \mathrm{Start}_3(s)$, i.e. $t \mathrel{\EqRel} s$, proving that $\EqRel$ is symmetric.
+            \item \textbf{Transitive}: Let $s, t, u \in \Lang$ such that $s \mathrel{\EqRel} t$ and $t \mathrel{\EqRel} u$. So we have $\mathrm{Start}_3(s) = \mathrm{Start}_3(t)$ and $\mathrm{Start}_3(t) = \mathrm{Start}_3(u)$. But clearly this means that $\mathrm{Start}_3(s) = \mathrm{Start}_3(u)$, i.e. $s \mathrel{\EqRel} u$, proving that $\EqRel$ is transitive.
         \end{itemize}
-        Thus we see that $\eqrel$ is an equivalence relation.
+        Thus we see that $\EqRel$ is an equivalence relation.
     \end{proof}
 \end{example}
 
@@ -184,7 +184,83 @@ With these three definitions, we can now define equivalence relations.
     \end{partquestions}
 \end{exercise}
 
-% Introduce equivalence classes
+With an equivalence relation $\EqRel$ on a set $A$, one might want to find the set of all elements that is related to a fixed element in $a$. This motivates the definition of equivalence classes.
+
+\begin{definition}[Equivalence Class]
+    Let $\EqRel$ be an equivalence relation on a set $A$, and suppose $a \in A$. The \term{equivalence class}\index{equivalence class}\index{equivalence relation!equivalence class} of $a$ under $\EqRel$ is
+    \[
+        \EqClass[\EqRel]{a} = \{x \in A \vert x \EqRel a\}.
+    \]
+    If the equivalence relation involved in the equivalence class is clear, we may just write $\EqClass{a}$ for the equivalence class of $a$.
+\end{definition}
+In other words,
+\[
+    x \in \EqClass[\EqRel]{a} \iff x \EqRel a.
+\]
+
+One clearly sees that $\EqClass{x}$ is non-empty. This is because $x \EqRel x$ by reflexivity, which hence means $x \in \EqClass{x}$.
+
+\begin{example}[Equivalence Classes of an Equivalence Relation]
+    Consider the equivalence relation
+    \begin{align*}
+        \EqRel\; &= \{(0,0), (0,4), (1,1), (1,3), (2,2),\\
+        &\quad\quad(3,1), (3,3), (4,0), (4,4), (5,5)\}
+    \end{align*}
+    defined on the set $A = \{0,1,2,3,4,5\}$, which has the following directed graph.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=4cm]{images/part-2/relations-2/equiv-class.png}
+        \caption{Directed Graph of $\EqRel$}
+    \end{figure}
+    Let us look at the equivalence class of each element in $A$.
+    \begin{itemize}
+        \item $\EqClass{0} = \{x \in A \vert x \EqRel 0\} = \{0, 4\}$.
+        \item $\EqClass{1} = \{x \in A \vert x \EqRel 1\} = \{1, 3\}$.
+        \item $\EqClass{2} = \{x \in A \vert x \EqRel 2\} = \{2\}$.
+        \item $\EqClass{3} = \{x \in A \vert x \EqRel 3\} = \{3, 1\}$.
+        \item $\EqClass{4} = \{x \in A \vert x \EqRel 4\} = \{4, 0\}$.
+        \item $\EqClass{5} = \{x \in A \vert x \EqRel 5\} = \{5\}$.
+    \end{itemize}
+    Note that $\EqClass{0} = \EqClass{4}$ and $\EqClass{1} = \EqClass{3}$. Thus the distinct equivalence classes of $\EqRel$ are $\{0, 4\}$, $\{1, 3\}$, $\{2\}$, and $\{5\}$.
+\end{example}
+
+Notice in the above example that $0 \EqRel 4$ and $\EqClass{0} = \EqClass{4}$. Similarly we have $1 \EqRel 3$ and $\EqClass{1} = \EqClass{3}$. This observation forms part of a more important result regarding equivalence relations and equivalence classes.
+
+\begin{theorem}[Equivalence Class Equivalence]\label{theorem:equivalence-class-equivalence}
+    Let $\EqRel$ be an equivalence relation on a set $A$, and let $x, y \in A$. Then the following statements are equivalent.
+    \begin{enumerate}
+        \item $x \EqRel y$
+        \item $\EqClass{x} = \EqClass{y}$
+        \item $\EqClass{x} \cap \EqClass{y} \neq \emptyset$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    We will prove $(1) \implies (2) \implies (3) \implies (1)$.
+    \begin{itemize}
+        \item $\boxed{(1) \implies (2)}$ We are given $x \EqRel y$. Suppose $a \in \EqClass{x}$. By definition of equivalence classes, this means $a \EqRel x$. But since $x \EqRel y$, thus $a \EqRel y$ by transitivity. So we see $a \in \EqClass{y}$. Repeating this argument with $x$ and $y$ swapped means that everything in $\EqClass{x}$ is in $\EqClass{y}$ and vice versa, i.e. $\EqClass{x} = \EqClass{y}$.
+        
+        \item $\boxed{(2) \implies (3)}$ We are given that $\EqClass{x} = \EqClass{y}$. Pick any $a \in \EqClass{x}$. Clearly $a \in \EqClass{y}$. Thus $a \in \EqClass{x} \cap \EqClass{y}$, which means $\EqClass{x} \cap \EqClass{y} \neq \emptyset$.
+
+        \item $\boxed{(3) \implies (1)}$ See \myref{exercise:equivalence-class-equivalence} (later).
+    \end{itemize}
+    This proves the theorem.
+\end{proof}
+
+\begin{exercise}[Equal Cardinality Relation]
+    Let $X$ be a set. Define a relation $\EqRel$ on $\Power{X}$ such that
+    \[
+        A \mathrel{\EqRel} B \iff |A| = |B|
+    \]
+    for all $A, B \in \Power{X}$.
+    \begin{partquestions}{\alph*}
+        \item Prove that $\EqRel$ is an equivalence relation.
+        \item Suppose $X = \{1, 2, 3\}$. Find the distinct equivalence classes of $\EqRel$.
+    \end{partquestions}
+\end{exercise}
+
+\begin{exercise}[Complete the Proof!]\label{exercise:equivalence-class-equivalence}
+    Let $\EqRel$ be an equivalence relation on a set $A$, and let $x, y \in A$. Prove that if $\EqClass{x} \cap \EqClass{y}$ is non-empty, then $x \EqRel y$.
+\end{exercise}
 
 \section{Partial Orders}  % Do we introduce this only when necessary?
 TODO: Add

@@ -33,4 +33,32 @@
         
         \item Not an equivalence relation since it is not transitive. For example we have $1 \mathrel{D} 2$ and $2 \mathrel{D} 3$ but $1 \not\mathrel{D} 3$.
     \end{partquestions}
+
+    % Equal Cardinality Relation
+    \item \begin{partquestions}{\alph*}
+        \item \begin{proof}
+            We need to show that $\EqRel$ is reflexive, symmetric, and transitive.
+            \begin{itemize}
+                \item \textbf{Reflexive}: Let $A \in \Power{X}$. Clearly $|A| = |A|$ by using the identity function on $A$ (i.e., $\id_A$), so $A \EqRel A$, proving that $A$ is reflexive.
+                
+                \item \textbf{Symmetric}: Let $A, B \in \Power{X}$ such that $A \EqRel B$. This means $|A| = |B|$, which tells us that there exists a bijection $f: A \to B$. But $f^{-1}: B \to A$ is also a bijection, so $|B| = |A|$, i.e. $B \EqRel A$, proving that $\EqRel$ is symmetric.
+                
+                \item \textbf{Transitive}: Suppose $A, B, C \in \Power{X}$ such that $A \EqRel B$ and $B \EqRel C$. This means that $|A| = |B|$ and $|B| = |C|$, i.e. there exist bijections $f: A \to B$ and $g: B \to C$. But $g \circ f: A \to C$ is also a bijection by \myref{prop:composition-of-bijective-functions-is-bijective}, so $|A| = |C|$, i.e. $A \EqRel C$, proving that $\EqRel$ is transitive.
+            \end{itemize}
+            Thus we see that $\EqRel$ is an equivalence relation.
+        \end{proof}
+
+        \item Note that two sets have are in the same equivalence class if and only if they have the same cardinality. So the distinct equivalence classes of $\EqRel$ are
+        \begin{itemize}
+            \item $\{\emptyset\}$ (each set has cardinality 0);
+            \item $\{\{1\}, \{2\}, \{3\}\}$ (each set has cardinality 1);
+            \item $\{\{1, 2\}, \{1, 3\}, \{2, 3\}\}$ (each set has cardinality 2); and
+            \item $\{\{1, 2, 3\}\}$ (each set has cardinality 3).
+        \end{itemize}
+    \end{partquestions}
+
+    % Complete the Proof!
+    \item \begin{proof}
+        Suppose $\EqClass{x} \cap \EqClass{y} \neq \emptyset$. This means that there is an $a \in \EqClass{x} \cap \EqClass{y}$, i.e. $a \in \EqClass{x}$ and $a \in \EqClass{y}$. By definition of equivalence classes, this tells us that $a \EqRel x$ and $a \EqRel y$. We hence know that $x \EqRel a$ (by symmetry) and thus $x \EqRel y$ (by transitivity).
+    \end{proof}
 \end{questions}
