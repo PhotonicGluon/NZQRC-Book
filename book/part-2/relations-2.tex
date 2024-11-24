@@ -86,62 +86,62 @@ That was certainly a lot. Let us look at some examples to hammer in these defini
 With these three definitions, we can now define equivalence relations.
 
 \begin{definition}[Equivalence Relation]
-    An \term{equivalence relation on a set $A$}\index{equivalence relation} is a relation on $A$ that is reflexive, symmetric, and transitive.
+    An \term{equivalence relation on a set $A$}\index{equivalence relation}, usually denoted $\eqrel$, is a relation on $A$ that is reflexive, symmetric, and transitive.
 \end{definition}
 
 \begin{example}[An Equivalence Relation]
-    Consider $A = \{0, 1, 2, 3\}$ and define a relation $R$ on $A$ by
+    Consider $A = \{0, 1, 2, 3\}$ and define a relation $\eqrel$ on $A$ by
     \[
-        R = \{(0,0), (1,1), (2,2), (3,3)\}
+        \eqrel\;= \{(0,0), (1,1), (2,2), (3,3)\}
     \]
     which has the following arrow diagram.
     \begin{figure}[H]
         \centering
         \includegraphics[height=2.75cm]{images/part-2/relations-2/equiv-rel_1.png}
-        \caption{Directed Graph of $R$}
+        \caption{Directed Graph of $\eqrel$}
     \end{figure}
 
-    We note that $R$ is
+    We note that $\eqrel$ is
     \begin{itemize}
-        \item reflexive since $0\mathrel{R}0$, $1\mathrel{R}1$, $2\mathrel{R}2$, and $3\mathrel{R}3$;
+        \item reflexive since $0\mathrel{\eqrel}0$, $1\mathrel{\eqrel}1$, $2\mathrel{\eqrel}2$, and $3\mathrel{\eqrel}3$;
         \item symmetric since the symmetric requirements are implied by reflexivity; and
         \item transitive by vacuous definition of transitivity.
     \end{itemize}
-    Therefore $R$ is an equivalence relation.
+    Therefore $\eqrel$ is an equivalence relation.
 \end{example}
 
 \begin{example}[Another Equivalence Relation]
-    Consider $A = \{0, 1, 2, 3\}$ and define a relation $R$ on $A$ by
+    Consider $A = \{0, 1, 2, 3\}$ and define a relation $\eqrel$ on $A$ by
     \begin{align*}
-        R &= \{(0, 0), (0, 1), (0, 2), (1, 0), (1, 1),\\
+        \eqrel &= \{(0, 0), (0, 1), (0, 2), (1, 0), (1, 1),\\
         &\quad\quad(1, 2), (2, 0), (2, 1), (2, 2), (3, 3)\}
     \end{align*}
     which has the following arrow diagram.
     \begin{figure}[H]
         \centering
         \includegraphics[height=2.75cm]{images/part-2/relations-2/equiv-rel_2.png}
-        \caption{Directed Graph of $R$}
+        \caption{Directed Graph of $\eqrel$}
     \end{figure}
 
-    We note that $R$ is
+    We note that $\eqrel$ is
     \begin{itemize}
-        \item reflexive since $0\mathrel{R}0$, $1\mathrel{R}1$, $2\mathrel{R}2$, and $3\mathrel{R}3$;
+        \item reflexive since $0\mathrel{\eqrel}0$, $1\mathrel{\eqrel}1$, $2\mathrel{\eqrel}2$, and $3\mathrel{\eqrel}3$;
         \item symmetric since
         \begin{itemize}
-            \item given $0\mathrel{R}1$ we have $1\mathrel{R}0$;
-            \item given $0\mathrel{R}2$ we have $2\mathrel{R}0$; and
-            \item given $1\mathrel{R}2$ we have $2\mathrel{R}1$.
+            \item given $0\mathrel{\eqrel}1$ we have $1\mathrel{\eqrel}0$;
+            \item given $0\mathrel{\eqrel}2$ we have $2\mathrel{\eqrel}0$; and
+            \item given $1\mathrel{\eqrel}2$ we have $2\mathrel{\eqrel}1$.
         \end{itemize}
         All other symmetric requirements are implied by reflexivity; and
         \item transitive since
         \begin{itemize}
-            \item given $0\mathrel{R}1$ and $1\mathrel{R}2$ we have $0\mathrel{R}2$;
-            \item given $1\mathrel{R}2$ and $2\mathrel{R}0$ we have $1\mathrel{R}0$; and
-            \item given $2\mathrel{R}0$ and $0\mathrel{R}1$ we have $2\mathrel{R}1$.
+            \item given $0\mathrel{\eqrel}1$ and $1\mathrel{\eqrel}2$ we have $0\mathrel{\eqrel}2$;
+            \item given $1\mathrel{\eqrel}2$ and $2\mathrel{\eqrel}0$ we have $1\mathrel{\eqrel}0$; and
+            \item given $2\mathrel{\eqrel}0$ and $0\mathrel{\eqrel}1$ we have $2\mathrel{\eqrel}1$.
         \end{itemize}
         All other transitive requirements are implied by prior properties.
     \end{itemize}
-    Therefore $R$ is an equivalence relation.
+    Therefore $\eqrel$ is an equivalence relation.
 \end{example}
 
 \begin{example}[An Equivalence Relation on a Formal Language]
@@ -158,19 +158,19 @@ With these three definitions, we can now define equivalence relations.
     \]
     for all $s \in \Lang$. For example, $\mathrm{Start}_1(\text{abc}) = \text{a}$, $\mathrm{Start}_2(\text{abc}) = \text{ab}$, $\mathrm{Start}_3(\text{abc}) = \text{abc}$, and $\mathrm{Start}_4(\text{abc}) = \text{abc}$.
 
-    We can now define a relation $R$ on $\Lang$ by
+    We can now define a relation $\eqrel$ on $\Lang$ by
     \[
-        s\mathrel{R}t \iff \mathrm{Start}_3(s) = \mathrm{Start}_3(t)
+        s\mathrel{\eqrel}t \iff \mathrm{Start}_3(s) = \mathrm{Start}_3(t)
     \]
-    for all $s, t \in \Lang$. We show that $R$ is an equivalence relation.
+    for all $s, t \in \Lang$. We show that $\eqrel$ is an equivalence relation.
     \begin{proof}
-        We need to show that $R$ is reflexive, symmetric, and transitive.
+        We need to show that $\eqrel$ is reflexive, symmetric, and transitive.
         \begin{itemize}
-            \item \textbf{Reflexive}: Let $s \in \Lang$. Clearly $s$ has the same first 3 letters as itself, i.e. $\mathrm{Start}_3(s) = \mathrm{Start}_3(s)$. Thus $s \mathrel{R} s$, proving that $s$ is reflexive.
-            \item \textbf{Symmetric}: Let $s, t \in \Lang$ such that $s \mathrel{R} t$. This means that $\mathrm{Start}_3(s) = \mathrm{Start}_3(t)$. But clearly this means that $\mathrm{Start}_3(t) = \mathrm{Start}_3(s)$, i.e. $t \mathrel{R} s$, proving that $R$ is symmetric.
-            \item \textbf{Transitive}: Let $s, t, u \in \Lang$ such that $s \mathrel{R} t$ and $t \mathrel{R} u$. So we have $\mathrm{Start}_3(s) = \mathrm{Start}_3(t)$ and $\mathrm{Start}_3(t) = \mathrm{Start}_3(u)$. But clearly this means that $\mathrm{Start}_3(s) = \mathrm{Start}_3(u)$, i.e. $s \mathrel{R} u$, proving that $R$ is transitive.
+            \item \textbf{Reflexive}: Let $s \in \Lang$. Clearly $s$ has the same first 3 letters as itself, i.e. $\mathrm{Start}_3(s) = \mathrm{Start}_3(s)$. Thus $s \mathrel{\eqrel} s$, proving that $s$ is reflexive.
+            \item \textbf{Symmetric}: Let $s, t \in \Lang$ such that $s \mathrel{\eqrel} t$. This means that $\mathrm{Start}_3(s) = \mathrm{Start}_3(t)$. But clearly this means that $\mathrm{Start}_3(t) = \mathrm{Start}_3(s)$, i.e. $t \mathrel{\eqrel} s$, proving that $\eqrel$ is symmetric.
+            \item \textbf{Transitive}: Let $s, t, u \in \Lang$ such that $s \mathrel{\eqrel} t$ and $t \mathrel{\eqrel} u$. So we have $\mathrm{Start}_3(s) = \mathrm{Start}_3(t)$ and $\mathrm{Start}_3(t) = \mathrm{Start}_3(u)$. But clearly this means that $\mathrm{Start}_3(s) = \mathrm{Start}_3(u)$, i.e. $s \mathrel{\eqrel} u$, proving that $\eqrel$ is transitive.
         \end{itemize}
-        Thus we see that $R$ is an equivalence relation.
+        Thus we see that $\eqrel$ is an equivalence relation.
     \end{proof}
 \end{example}
 
