@@ -262,11 +262,44 @@ Notice in the above example that $0 \EqRel 4$ and $\EqClass{0} = \EqClass{4}$. S
     Let $\EqRel$ be an equivalence relation on a set $A$, and let $x, y \in A$. Prove that if $\EqClass{x} \cap \EqClass{y}$ is non-empty, then $x \EqRel y$.
 \end{exercise}
 
-\section{Partial Orders}  % Do we introduce this only when necessary?
-TODO: Add
+\section{Partial Orders}
+Partial orders give us a way to compare elements of a set. However, not all pairs of elements need to be comparable -- hence the term ``partial''. Before we can properly look at them, we need to define a few more properties of relations.
 
-% Introduce antisymmetry, partial order (relations) and partially ordered sets (i.e., posets), comparability & element order
-% Do we include Hasse diagrams?
+\subsection{More Properties of Relations}
+Earlier, we looked at reflexivity, symmetry, and transitivity. Let us introduce more of these properties, starting with antisymmetry.
+
+\begin{definition}[Antisymmetry]
+    A relation $R$ on a set $A$ is \term{antisymmetric}\index{antisymmetric}\index{symmetric!anti} if and only if
+    \[
+        \forall x, y \in A, (x\mathrel{R}y \land y\mathrel{R}x \implies x = y).
+    \]
+\end{definition}
+\begin{remark}[Antisymmetry Verus Not Symmetric]
+    It is very important to realise that antisymmetry is \textbf{not} the opposite of symmetry. The negation of the symmetric condition is
+    \[
+        \exists x, y \in A \text{ s.t } x\mathrel{R}y \land y\not\mathrel{R}x,
+    \]
+    which is distinct from antisymmetry. We will look at this in more detail later.
+\end{remark}
+
+\begin{example}[The Subset Relation]
+    Let $X$ be the power set of any set. Define a relation $R$ on $X$ such that
+    \[
+        A \mathrel{R} B \iff A \subseteq B
+    \]
+    for all $A, B \in X$. We see that $R$ is antisymmetric -- if $A \subseteq B$ and $B \subseteq A$, then $A = B$.
+\end{example}
+
+\begin{exercise}[Symmetric and Antisymmetric?]
+    Does there exist a relation $R$ on a set $A$ that is both symmetric and antisymmetric?
+\end{exercise}
+
+% Introduce asymmetry, irreflexivity
+%   "A transitive relation is asymmetric if and only if it is irreflexive.[3] So the definition is the same if it omits either irreflexivity or asymmetry (but not both)." ???
+
+% Introduce partial order (relations) and partially ordered sets (i.e., posets)
+% Add Hasse diagrams
+% Introduce comparability & element order
 
 \section{Total Orders}  % Do we include this?
 TODO: Add
