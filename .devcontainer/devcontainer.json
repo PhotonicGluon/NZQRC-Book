@@ -14,6 +14,11 @@
         "-c",
         "/bin/bash ./.devcontainer/postCreateCommand.sh"
     ],
+    "postStartCommand": [
+        "/bin/sh",
+        "-c",
+        "/bin/bash ./.devcontainer/postStartCommand.sh"
+    ],
     "customizations": {
         "vscode": {
             "extensions": [
