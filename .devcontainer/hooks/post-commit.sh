@@ -3,8 +3,11 @@
 # Check if a commit is being processed
 if [ -e .commit ]
     then
+
+    # Mark that the commit is done
     rm .commit
-    # git add committest.txt
-    # git commit --amend -C HEAD --no-verify
+
+    # Update the commit hash
+    python code/commit/update_commit_hash.py
 fi
 exit
