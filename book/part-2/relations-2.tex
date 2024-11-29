@@ -405,13 +405,60 @@ Let's unpack why this definition makes sense. Consider the natural number 4. We 
     Use \myref{example:subset-partial-order}.
 \end{proof}
 
-% Introduce partial order (relations) and partially ordered sets (i.e., posets)
+Another relation that can be defined is the ``divides'' relation.
+
+\begin{definition}[Divides Relation]
+    The \term{divides relation}\index{divides relation}\index{natural number!divides} on the natural numbers is the relation $\divides$ on $\N$ where
+    \[
+        d \divides n \iff \exists q \in \N \setminus \{0\} \text{ s.t. } n = dq
+    \]
+    for all $n \in \N$.
+
+    For a fixed $n \in \N$, any $d \in \N$ where $d \divides n$ is called a \term{divisor of $n$}\index{divisor} (or a \term{factor of $n$}\index{factor}), and the set of all such $d$ are called the \term{divisors of $n$} (or \term{factors of $n$}).
+\end{definition}
+
+Notice that we did not need to define division in order to define divisibility -- the only thing needed to define divisibility is multiplication.
+
+\begin{proposition}[$\divides$ is a Partial Order]\label{prop:divides-is-partial-order}
+    The divides relation, $\divides$, is a partial order on $\N$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:divides-is-partial-order} (later).
+\end{proof}
+
+\begin{example}[$\divides$ on a Subset of $\N$]
+    Consider $S = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. One sees that
+    \begin{itemize}
+        \item 0 divides only itself since $0 = 1 \times 0$;
+        \item 1 divides everybody since $n = 1 \times n$ for all $n \in S$ (\myref{corollary:multiplication-by-1});
+        \item 2 divides 0, 2, 4, 6, and 8 (where the $q$-values are 0, 1, 2, 3, and 4 respectively);
+        \item 3 divides 0, 3, 6, 9 (where the $q$-values are 0, 1, 2, and 3 respectively);
+        \item 4 divides 0, 4, 8 (where the $q$-values are 0, 1, and 2 respectively);
+        \item 5 divides 0, 5 (where the $q$-values are 0 and 1 respectively); and
+        \item 6, 7, 8, and 9 divides only themselves in $S$.
+    \end{itemize}
+\end{example}
+
+\begin{exercise}[Divides Relation]\label{exercise:divides-is-partial-order}
+    Prove \myref{prop:divides-is-partial-order}.
+\end{exercise}
+
 \subsection{Strict Partial Order Relations}
 TODO: Add
 
 \section{Hasse Diagrams}
 TODO: Add
 % Add Hasse diagrams
+
+% One can think of partial orders as an ordering of things in a set.
+
+% \begin{example}[The ``Course Dependency'' Relation]
+%     Suppose a university offers a set of courses, each of which has a 4-digit course code (e.g., 1001, 1231, 2001, 7125). Some courses must be completed before others; in particular, level 1000 courses must be completed before level 2000 courses, and level 2000 courses must be completed before level 3000 courses, and so on. Suppose $S$ is a subset of all of these courses (for example, a set of courses that a mathematics major has to take). We can define a relation $\poreq$ on $S$ (a sort-of ``course dependency'' relation) such that
+%     \[
+%         c_1 \poreq c_2 \iff \text{First Digit of } c_1 \leq \text{First Digit of } c_2
+%     \]
+%     for all $c_1, c_2 \in S$.
+% \end{example}
 
 \section{Comparability and Element Order}
 TODO: Add

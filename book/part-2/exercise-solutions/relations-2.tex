@@ -74,4 +74,29 @@
             Suppose $R$ is irreflexive. Seeking a contradiction, suppose there exists $x, y \in A$ such that $x \mathrel{R} y$ and $y \mathrel{R} x$. However, transitivity tells us that $x \mathrel{R} x$, contradicting the assumption that $R$ is irreflexive. Therefore, for all $x, y \in A$, if $x \mathrel{R} y$ then $y \not\mathrel{R} x$, i.e. $R$ is antisymmetric.
         \end{proof}
     \end{partquestions}
+
+    % Divides Relation
+    \item \begin{proof}
+        We need to show $\divides$ is reflexive, antisymmetric, and transitive.
+        \begin{itemize}
+            \item \textbf{Reflexive}: Suppose $n \in \N$. Choose $q = 1$ and we see that $n = 1n$, i.e. $n \divides n$. This shows that $\divides$ is reflexive.
+            
+            \item \textbf{Antisymmetric}: Suppose $m, n \in \N$ such that $m \divides n$ and $n \divides m$. This means that there exists $q_1, q_2 \in \N \setminus \{0\}$ such that $n = q_1m$ and $m = q_2n$. This thus means that
+            \begin{align*}
+                n &= q_1m\\
+                &= q_1(q_2n)\\
+                &= q_1q_2n
+            \end{align*}
+            which means $q_1q_2 = 1$ which hence means $q_1 = 1$ and $q_2 = 1$ by \myref{prop:product-that-equals-1}, i.e. $m = n$.
+            
+            \item \textbf{Transitive}: Suppose $l, m, n \in \N$ such that $l \divides m$ and $m \divides n$. This means that there exists $q_1, q_2 \in \N \setminus \{0\}$ such that $m = q_1l$ and $n = q_2m$. One clearly sees that
+            \begin{align*}
+                n &= q_2m \\
+                &= q_2(q_1l)\\
+                &= (q_2q_1)l
+            \end{align*}
+            and, since $q_1 \neq 0$ and $q_2 \neq 0$, thus $q_2q_1 \in \N\setminus\{0\}$. Thus $l \divides n$, proving that $\divides$ is transitive.
+        \end{itemize}
+        Therefore $\divides$ is a partial order relation.
+    \end{proof}
 \end{questions}
