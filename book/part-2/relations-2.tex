@@ -360,6 +360,51 @@ There is a stronger result for transitive relations.
     \end{partquestions}
 \end{exercise}
 
+\subsection{Partial Order Relations}
+We are now in a position to introduce partial order relations.
+
+\begin{definition}[Partial Order Relation]
+    A relation $\poreq$ on a set $A$ is a \term{partial order relation}\index{relation!partial order} (also known as a \term{partial order}\index{partial order}) if and only if $\poreq$ is reflexive, antisymmetric, and transitive.
+\end{definition}
+
+\begin{example}[The Subset Relation]\label{example:subset-partial-order}
+    Let $\mathcal{A}$ be a collection of sets. Define the relation $\poreq$ on $\mathcal{A}$ such that
+    \[
+        A \mathrel{\poreq} B \iff A \subseteq B
+    \]
+    for all $A,B \in \mathcal{A}$. We show that $\poreq$ is a partial order relation.
+    \begin{proof}
+        We need to show $\poreq$ is reflexive, antisymmetric, and transitive.
+        \begin{itemize}
+            \item \textbf{Reflexive}: Clearly $A \subseteq A$ for any $A \in \mathcal{A}$, so $A \mathrel{\poreq} A$ for all $A \in \mathcal{A}$.
+            
+            \item \textbf{Antisymmetric}: Suppose $A, B \in \mathcal{A}$ such that $A \mathrel{\poreq} B$ and $B \mathrel{\poreq} A$. This means that $A \subseteq B$ and $B \subseteq A$, which means we must have $A = B$.
+            
+            \item \textbf{Transitive}: Suppose $A, B, C \in \mathcal{A}$ such that $A \mathrel{\poreq} B$ and $B \mathrel{\poreq} C$. This means that $A \subseteq B$ and $B \subseteq C$. But clearly this means that $A \subseteq C$, so $A \mathrel{\poreq} C$.
+        \end{itemize}
+        Therefore $\poreq$ is a partial order relation.
+    \end{proof}
+\end{example}
+
+We can now define the ``less than or equal to'' relation for the natural numbers.
+
+\begin{definition}[Less Than or Equal To]
+    The \term{less than or equal to relation}\index{natural number!less than or equal to} on the natural numbers is the relation $\leq$ on $\N$ where
+    \[
+        a \leq b \iff a \subseteq b
+    \]
+    for any $a, b \in \N$.
+\end{definition}
+
+Let's unpack why this definition makes sense. Consider the natural number 4. We see that the counter set of 4, which is $\{0, 1, 2, 3\}$. Any number that is smaller than 4, say 2 (which has a counter set of $\{0, 1\}$), necessarily has to have a counter set that is a subset of $\{0, 1, 2, 3\}$. Extending this logic, any natural number whose counter set is a subset of the counter set of a natural number $n$ is smaller than $n$.
+
+\begin{proposition}[Less Than or Equal to is a Partial Order]\label{prop:leq-is-partial-order}
+    The less than or equal to relation is a partial order relation on $\N$.
+\end{proposition}
+\begin{proof}
+    Use \myref{example:subset-partial-order}.
+\end{proof}
+
 % Introduce partial order (relations) and partially ordered sets (i.e., posets)
 % Add Hasse diagrams
 % Introduce comparability & element order
