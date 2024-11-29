@@ -316,4 +316,20 @@ With this we can state the axiom of regularity in a more formal language.
     \]
 \end{axiom}
 
+The axiom of regularity leads to this important observation.
+
+\begin{proposition}[No Recursive Inclusions]\label{prop:regularity-no-recursive-inclusions}
+    Let $A$ and $B$ be sets. Then either $A \notin B$ or $B \notin A$.
+\end{proposition}
+\begin{proof}
+    Seeking a contradiction, suppose that $A \in B$ and $B \in A$. So $A \in B \cap \{A, B\}$ and $B \in A \cap \{A, B\}$. Thus one sees that both $A \cap \{A, B\}$ and $B \cap \{A, B\}$ are non-empty.
+
+    Now, by \myref{axiom:regularity}, we must have a $X \in \{A, B\}$ such that $X \cap \{A, B\} = \emptyset$.
+    \begin{itemize}
+        \item If $X = A$, this means $A \cap \{A, B\} = \emptyset$, contradicting that $A \cap \{A, B\}$ is non-empty.
+        \item If instead $X = B$, this means $B \cap \{A, B\} = \emptyset$, contradicting that $B \cap \{A, B\}$ is non-empty.
+    \end{itemize}
+    In either case, a contradiction arises. Thus, we cannot have $A \in B$ and $B \in A$, meaning that either $A \notin B$ or $B \notin A$ as required.
+\end{proof}
+
 With the axiom of regularity, our foundations for \ZFC~are set. We are now ready to define numbers, starting with the naturals.
