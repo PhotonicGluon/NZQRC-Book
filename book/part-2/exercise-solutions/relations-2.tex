@@ -64,4 +64,14 @@
 
     % Symmetric and Antisymmetric?
     \item Yes. Consider $A = \{0\}$ and $R = \{(0, 0)\}$. Note that $R$ is symmetric since, for all $x$ (which must only be 0) and $y$ (which must also be 0), we see $x \mathrel{R} y$ means $y \mathrel{R} x$ (which is obvious as $0 \mathrel{R} 0$). We also see that $R$ is antisymmetric -- for all $x$ and $y$ (which are both 0), if $x\mathrel{R} y$ and $x \mathrel{R} y$ then $x = y$.
+    
+    % Asymmetry and Irreflexivity
+    \item \begin{partquestions}{\alph*}
+        \item \begin{proof}
+            Suppose $R$ is asymmetric. Seeking a contradiction, suppose there is an $x \in A$ such that $x \mathrel{R} x$. But asymmetry tells us that $x \not\mathrel{R} x$, which is a clear contradiction. Thus $x \not\mathrel{R} x$ for all $x \in A$, i.e. $R$ is irreflexive.
+        \end{proof}
+        \item \begin{proof}
+            Suppose $R$ is irreflexive. Seeking a contradiction, suppose there exists $x, y \in A$ such that $x \mathrel{R} y$ and $y \mathrel{R} x$. However, transitivity tells us that $x \mathrel{R} x$, contradicting the assumption that $R$ is irreflexive. Therefore, for all $x, y \in A$, if $x \mathrel{R} y$ then $y \not\mathrel{R} x$, i.e. $R$ is antisymmetric.
+        \end{proof}
+    \end{partquestions}
 \end{questions}

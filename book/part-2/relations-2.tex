@@ -269,7 +269,7 @@ Partial orders give us a way to compare elements of a set. However, not all pair
 Earlier, we looked at reflexivity, symmetry, and transitivity. Let us introduce more of these properties, starting with antisymmetry.
 
 \begin{definition}[Antisymmetry]
-    A relation $R$ on a set $A$ is \term{antisymmetric}\index{antisymmetric}\index{symmetric!anti} if and only if
+    A relation $R$ on a set $A$ is \term{antisymmetric}\index{antisymmetric}\index{symmetric!anti}\index{relation!antisymmetric} if and only if
     \[
         \forall x, y \in A, (x\mathrel{R}y \land y\mathrel{R}x \implies x = y).
     \]
@@ -279,7 +279,7 @@ Earlier, we looked at reflexivity, symmetry, and transitivity. Let us introduce 
     \[
         \exists x, y \in A \text{ s.t } x\mathrel{R}y \land y\not\mathrel{R}x,
     \]
-    which is distinct from antisymmetry. We will look at this in more detail later.
+    which is distinct from antisymmetry.
 \end{remark}
 
 \begin{example}[The Subset Relation]
@@ -294,8 +294,71 @@ Earlier, we looked at reflexivity, symmetry, and transitivity. Let us introduce 
     Does there exist a relation $R$ on a set $A$ that is both symmetric and antisymmetric?
 \end{exercise}
 
-% Introduce asymmetry, irreflexivity
-%   "A transitive relation is asymmetric if and only if it is irreflexive.[3] So the definition is the same if it omits either irreflexivity or asymmetry (but not both)." ???
+Related to antisymmetry is the idea of asymmetry.
+
+\begin{definition}[Asymmetry]
+    A relation $R$ on a set $A$ is \term{asymmetric}\index{asymmetric}\index{relation!asymmetric} if and only if
+    \[
+        \forall x,y \in A,\; x \mathrel{R} y \implies y \not\mathrel{R} x.
+    \]
+\end{definition}
+\begin{remark}[Asymmetry Verus Not Symmetric]
+    Notice that asymmetry is also \textbf{not} the opposite of symmetry.
+\end{remark}
+
+\begin{example}[The Strict Subset Relation]
+    Let $X$ be the power set of any set. Define a relation $R$ on $X$ such that
+    \[
+        A \mathrel{R} B \iff A \subset B
+    \]
+    for all $A, B \in X$. We see that $R$ is asymmetric -- if $A \subset B$, then $B \not\subset A$.
+\end{example}
+
+The last new property that we will look is irreflexivity.
+
+\begin{definition}[Irreflexive]
+    A relation $R$ on a set $A$ is \term{irreflexive}\index{relation!irreflexive} if and only if
+    \[
+        \forall x \in A,\; x\not\mathrel{R}x.
+    \]
+\end{definition}
+\begin{remark}[Irreflexive Versus Not Reflexive]
+    Like with the other properties explored in this section, irreflexivity is \textbf{not} the negation of reflexivity.
+\end{remark}
+
+\begin{example}[The ``Element of'' Relation]
+    Let $S$ be a set. Define a relation $R$ on $S$ such that
+    \[
+        a \mathrel{R} b \iff a \in b
+    \]
+    for all $a, b \in S$. By the axiom of regularity (\myref{axiom:regularity}), we know that $x \notin x$ for all $x \in S$, so $R$ is irreflexive.
+\end{example}
+
+There is an interesting relationship between asymmetry and irreflexivity.
+
+\begin{proposition}[Asymmetry Implies Irreflexivity]
+    Any asymmetric relation is irreflexive.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:asymmetric-iff-irreflexive-for-transitive} (later).
+\end{proof}
+
+There is a stronger result for transitive relations.
+
+\begin{proposition}[Asymmetric $\iff$ Irreflexive]\label{prop:asymmetric-iff-irreflexive-for-transitive}
+    A transitive relation is asymmetric if and only if it is irreflexive.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:asymmetric-iff-irreflexive-for-transitive} (later).
+\end{proof}
+
+\begin{exercise}[Asymmetry and Irreflexivity]\label{exercise:asymmetric-iff-irreflexive-for-transitive}
+    Let $R$ be a relation on a set $A$.
+    \begin{partquestions}{\alph*}
+        \item Prove that if $R$ is asymmetric, then $R$ is irreflexive.
+        \item Prove that if $R$ is transitive and irreflexive, then $R$ is asymmetric.
+    \end{partquestions}
+\end{exercise}
 
 % Introduce partial order (relations) and partially ordered sets (i.e., posets)
 % Add Hasse diagrams
