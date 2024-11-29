@@ -388,25 +388,33 @@ We are now in a position to introduce partial order relations.
 
 We can now define the ``less than or equal to'' relation for the natural numbers.
 
-\begin{definition}[Less Than or Equal To]
+\begin{definition}[Less Than or Equal To Relation]
     The \term{less than or equal to relation}\index{natural number!less than or equal to} on the natural numbers is the relation $\leq$ on $\N$ where
     \[
-        a \leq b \iff a \subseteq b
+        m \leq n \iff m \subseteq n
     \]
-    for any $a, b \in \N$.
+    for any $m, n \in \N$.
 \end{definition}
 
 Let's unpack why this definition makes sense. Consider the natural number 4. We see that the counter set of 4, which is $\{0, 1, 2, 3\}$. Any number that is smaller than 4, say 2 (which has a counter set of $\{0, 1\}$), necessarily has to have a counter set that is a subset of $\{0, 1, 2, 3\}$. Extending this logic, any natural number whose counter set is a subset of the counter set of a natural number $n$ is smaller than $n$.
 
-\begin{proposition}[Less Than or Equal to is a Partial Order]\label{prop:leq-is-partial-order}
-    The less than or equal to relation is a partial order relation on $\N$.
+\begin{proposition}[$\leq$ is a Partial Order]\label{prop:leq-is-partial-order}
+    The less than or equal to relation, $\leq$, is a partial order on $\N$.
 \end{proposition}
 \begin{proof}
     Use \myref{example:subset-partial-order}.
 \end{proof}
 
 % Introduce partial order (relations) and partially ordered sets (i.e., posets)
+\subsection{Strict Partial Order Relations}
+TODO: Add
+
+\section{Hasse Diagrams}
+TODO: Add
 % Add Hasse diagrams
+
+\section{Comparability and Element Order}
+TODO: Add
 % Introduce comparability & element order
 
 \section{Total Orders}  % Do we include this?
