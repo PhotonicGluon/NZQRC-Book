@@ -86,6 +86,13 @@
         \end{proof}
     \end{partquestions}
 
+    % Product that Equals Self
+    \item \begin{proof}
+        We only prove the case that if $b \neq 0$ and $a \times b = b$ then $a = 1$, since the other is easily implied by commutativity of multiplication (\myref{theorem:multiplication-commutative-naturals}).
+    
+        Note $a \neq 0$ since, otherwise, the left-hand side will be 0 (by \myref{lemma:product-of-0-and-n}) and the right-hand side is $b \neq 0$, a contradiction. So we can write $a \times b = b$ as $a \times b = 1 \times b$ by \myref{corollary:multiplication-by-1}. Thus, using \myref{prop:multiplication-cancellation-property} we get $a = 1$ as required.
+    \end{proof}
+
     % Exponentiation is Unlike the Rest
     \item \begin{partquestions}{\alph*}
         \item False. One sees

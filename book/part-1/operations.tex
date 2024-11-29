@@ -246,7 +246,7 @@ With these basic properties of addition defined, we can look at some consequence
     See \myref{exercise:addition-that-equals-self} (later).
 \end{proof}
 
-\begin{proposition}[Addition that Equals Zero]
+\begin{proposition}[Addition that Equals Zero]\label{prop:addition-that-equals-zero}
     Let $a, b \in \N$. If $a + b = 0$ then $a = 0$ and $b = 0$.
 \end{proposition}
 \begin{proof}
@@ -454,6 +454,84 @@ With distributivity proven, we are ready to prove the associativity of multiplic
     which proves the case for $\Successor{k}$.
 \end{proof}
 
+\subsection{Implications of Multiplication}
+Let us now look at some consequences with regards to multiplication.
+
+\begin{proposition}[Product that Equals Zero]\label{prop:product-that-equals-zero}
+    Let $a, b \in \N$. If $a \times b = 0$ then $a = 0$ or $b = 0$.
+\end{proposition}
+\begin{proof}
+    Seeking a contradiction, suppose $a \times b = 0$ and $a \neq 0$ and $b \neq 0$. Since $b \neq 0$, we can write $b = \Successor{p}$ for some $p \in \N$. So we see
+    \begin{align*}
+        0 &= a \times \Successor{p}\\
+        &= (a \times p) + a
+    \end{align*}
+    which must mean $a \times p = 0$ and $a = 0$ by \myref{prop:addition-that-equals-zero}, a contradiction to the assumption that $a \neq 0$.
+\end{proof}
+
+\begin{proposition}[Cancellation Property of Multiplication]\label{prop:multiplication-cancellation-property}
+    Let $a, b, n \in \N \setminus \{0\}$. If $a \times n = b \times n$ then $a = b$. Likewise if $n \times a = n \times b$ then $a = b$.
+\end{proposition}
+\begin{proof}
+    Like with \myref{prop:addition-cancellation-property} we will prove $a \times n = b \times n$ means $a = b$ only. Unlike that proposition, however, we will induct on $a$.
+
+    Suppose $a = 1$. Seeking a contradiction, suppose $b \neq 1$. Since $b \neq 0$ also, we can write $b = \Successor{p}$ for some $p \in \N$. So we see
+    \begin{align*}
+        1 \times n &= \Successor{p} \times n\\
+        &= (p \times n) + n & (\text{by \myref{lemma:product-of-successor-and-n}})\\
+        &= (p \times n) + 1 \times n. & (\text{by \myref{corollary:multiplication-by-1}})
+    \end{align*}
+    Adding 1 on both sides, we get
+    \[
+        1 + (1 \times n) = 1 + (p \times n) + (1 \times n)
+    \]
+    which means that
+    \[
+        1 = 1 + p \times n
+    \]
+    by cancellation property of addition (\myref{prop:addition-cancellation-property}). But note that $1 + p \times n = (p \times n) + 1 = \Successor{p \times n}$, which means $1 = \Successor{p \times n} = \Successor{0}$. So $p \times n = 0$ since the successor function is injective, which thus means $p = 0$ or $n = 0$ by \myref{prop:product-that-equals-zero}. If $p = 0$ then $b = 1$, contradicting that $b \neq 1$; if $n = 0$ this contradicts $n \neq 0$. Thus we must have $b = 1$, i.e. $a = b = 1$. This proves the base case.
+
+    Now suppose $k \times n = b \times n$ means $k = b$ for some $k \in \N \setminus \{0\}$ and for all $b \in \N \setminus \{0\}$. We show that if $\Successor{k} \times n = b \times n$ then $\Successor{k} = b$.
+
+    Since $k \neq 0$, thus $\Successor{k} \neq 1$, which clearly means $b \neq 1$. So write $b = \Successor{m}$ for some $m \in \N \setminus \{0\}$; we get
+    \[
+        \Successor{k} \times n = \Successor{m} \times n
+    \]
+    which is equivalent to
+    \[
+        (k \times n) + n = (m \times n) + n
+    \]
+    by \myref{lemma:product-of-successor-and-n}. Thus $k \times n = m \times n$ by cancellation property of addition; using the induction hypothesis here means $k = m$, and thus $\Successor{k} = \Successor{m} = b$. This proves the case for $\Successor{k}$.
+\end{proof}
+
+\begin{proposition}[Product that Equals Self]\label{prop:product-that-equals-self}
+    Let $a, b \in \N$. If $b \neq 0$ and $a \times b = b$ then $a = 1$. Likewise if $a \neq 0$ and $a \times b = a$ then $b = 1$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise:product-that-equals-self} (later).
+\end{proof}
+
+\begin{proposition}[Product that Equals 1]\label{prop:product-that-equals-1}
+    Let $a, b \in \N$. If $a \times b = 1$ then $a = 1$ and $b = 1$.
+\end{proposition}
+\begin{proof}
+    First, observe that $a \neq 0$ and $b \neq 0$; otherwise, the left-hand side will be 0 (by either \myref{corollary:multiplication-by-1} or \myref{prop:multiplication-by-1-right}) while the right-hand side is 1. So we can write $a = \Successor{p}$ and $b = \Successor{q}$ for some $p, q \in \N$. Thus we have
+    \begin{align*}
+        &\Successor{p} \times \Successor{q} = 1\\
+        \implies& \Successor{p} \times q + \Successor{p} = 1 & (\text{by \textbf{M2}})\\
+        \implies& (p\times q + q) + \Successor{p} = 1 & (\text{by \myref{lemma:product-of-successor-and-n}})\\
+        \implies& (p \times q + q) + (p + 1) = 1 & (\text{by \myref{prop:successor-of-n}})\\
+        \implies& (p \times q) + p + q + 1 = 1 & (\text{by properties of addition})\\
+        \implies& p \times q + p + q = 0 & (\text{by \myref{prop:addition-cancellation-property}})\\
+        \implies& (p \times q) + (p + q) = 0. & (\text{by associativity of addition})
+    \end{align*}
+    Hence we have $p \times q = 0$ and $p + q = 0$ by \myref{prop:addition-that-equals-zero}; applying it again on $p + q = 0$ means $p = 0$ and $q = 0$, thus showing that $a = \Successor{p} = \Successor{0} = 1$ and $b = \Successor{q} = \Successor{0} = 1$.
+\end{proof}
+
+\begin{exercise}[Product that Equals Self]\label{exercise:product-that-equals-self}
+    Prove \myref{prop:product-that-equals-self}.
+\end{exercise}
+
 \section{Exponentiation}
 This last section will introduce exponentiation in the natural numbers. Just like how multiplication can be thought of as repeated addition, exponentiation can be thought of as repeated multiplication.
 
@@ -529,7 +607,7 @@ Let us look at some basic properties of exponentiation.
 
     Note
     \begin{align*}
-        1^\Successor{k} &= (1^k) \times 1 & (\text{by \textbf{E2}})\\
+        1^\Successor{k} &= \left(1^k\right) \times 1 & (\text{by \textbf{E2}})\\
         &= 1 \times 1 & (\text{induction hypothesis})\\
         &= 1 & (\text{by \myref{corollary:multiplication-by-1}})
     \end{align*}
