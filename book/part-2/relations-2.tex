@@ -444,7 +444,50 @@ Notice that we did not need to define division in order to define divisibility -
 \end{exercise}
 
 \subsection{Strict Partial Order Relations}
-TODO: Add
+Like how we can remove the ``or equal to'' condition for the ``less than or equal to relation'', we can remove the requirement that any element must be related to itself to obtain a strict partial order.
+
+\begin{definition}[Strict Partial Order Relation]
+    A relation $\por$ on a set $A$ is a \term{strict partial order relation}\index{relation!partial order!strict} (also known as a \term{strict partial order}\index{partial order!strict}) if and only if $\por$ is irreflexive, asymmetric, and transitive.
+\end{definition}
+\begin{remark}[Redundancy in the Definition]
+    Note that we only require $\por$ to be either
+    \begin{itemize}
+        \item irreflexive and transitive; or
+        \item asymmetric and transitive
+    \end{itemize}
+    due to \myref{prop:asymmetric-iff-irreflexive-for-transitive}. However, we explicitly state the three conditions in the definition for clarity.
+\end{remark}
+
+\begin{example}[The Strict Subset Relation]\label{example:strict-subset-strict-partial-order}
+    Let $\mathcal{A}$ be a collection of sets. Define the relation $\por$ on $\mathcal{A}$ such that
+    \[
+        A \por B \iff A \subset B
+    \]
+    for all $A, B \in \mathcal{A}$. We show that $\por$ is a strict partial order relation. We do this by proving irreflexivity and transitivity, as asymmetry would be implied by \myref{prop:asymmetric-iff-irreflexive-for-transitive}.
+    \begin{itemize}
+        \item \textbf{Irreflexive}: Clearly $A \not\subset A$ since $A$ does not contain an element that is not an element of $A$; thus $A \not\mathrel{\por} A$ for all $A \in \mathcal{A}$.
+        
+        \item \textbf{Transitive}: Suppose $A \por B$ and $B \por C$. This means that $A \subset B$ and $B \subset C$. But clearly this means that $A \subset C$, so $A \mathrel{\por} C$.
+    \end{itemize}
+    Thus $\por$ is a strict partial order relation.
+\end{example}
+
+Like how we defined the ``less than or equal to'' relation, we define the ``less than'' relation for the natural numbers.
+
+\begin{definition}[Less Than Relation]
+    The \term{less than relation}\index{natural number!less than} on the natural numbers is the relation $<$ on $\N$ where
+    \[
+        m < n \iff m \subset n
+    \]
+    for any $m, n \in \N$.
+\end{definition}
+
+\begin{proposition}[$<$ is a Strict Partial Order]
+    The less than relation, $<$, is a strict partial order on $\N$.
+\end{proposition}
+\begin{proof}
+    Use \myref{example:strict-subset-strict-partial-order}.
+\end{proof}
 
 \section{Hasse Diagrams}
 TODO: Add
