@@ -318,19 +318,19 @@ We have already seen some examples of infinite sets.
     \end{proof}
 \end{example}
 
-\begin{example}[$\Successor{\N}$]
+\begin{example}[$\N \setminus \{0\}$]
     \setlength{\parindent}{1.5em}
-    We show that $\Successor{\N} = \N \cup \{\N\}$ is also not a finite set by showing that $|\Successor{\N}| = |\N|$.
+    We show that $\N \setminus \{0\}$ is also not a finite set by showing that $|\N \setminus \{0\}| = |\N|$.
     \begin{proof}
-        First consider the function $S: \N \to \Successor{\N}$ where $S(n) = n \cup \{n\}$ for all $n \in \N$. Using a similar argument as \myref{example:successor-is-injective} we can show that $S$ is injective.
+        First consider the function $S: \N \to \N \setminus \{0\}$ where $S(n) = n \cup \{n\}$ for all $n \in \N$. Using a similar argument as \myref{example:successor-is-injective} we can show that $S$ is injective.
 
-        Now consider the function $S': \Successor{\N} \to \N$ where $S'(n) = n \cup \{n\}$ for all $n \in \Successor{\N}$. Again using a similar argument as \myref{example:successor-is-injective} we can show that $S'$ is injective.
+        Now consider the function $S': \N \setminus \{0\} \to \N$ where $S'(n) = n \cup \{n\}$ for all $n \in \Successor{\N}$. Again using a similar argument as \myref{example:successor-is-injective} we can show that $S'$ is injective.
 
-        So Cantor-Schr\"oder-Bernstein (\myref{theorem:cantor-schroder-bernstein}) tells us that there is a bijection from $\N$ to $\Successor{\N}$, i.e. $|\N| = |\Successor{\N}|$.
+        So Cantor-Schr\"oder-Bernstein (\myref{theorem:cantor-schroder-bernstein}) tells us that there is a bijection from $\N \setminus \{0\}$ to $\N$, i.e. $|\N \setminus \{0\}| = |\N|$.
     \end{proof}
 \end{example}
 
-But this is weird. Clearly $\Successor{\N}$ contains one more element than $\N$ (which is $\N$), and yet they have the same cardinality! This is the trap when we think of cardinalities as `sizes' of sets -- an infinite set with `more' elements can have the same `size' as an infinite set with `less' elements. Thus, cardinalities for infinite sets should be considered its own beast, and not the same as the `sizes' for finite sets.
+But this is weird. Clearly $\N \setminus \{0\}$ contains one fewer element than $\N$, and yet they have the same cardinality! This is the trap when we think of cardinalities as `sizes' of sets -- an infinite set with `more' elements can have the same `size' as an infinite set with `less' elements. Thus, cardinalities for infinite sets should be considered its own beast, and not the same as the `sizes' for finite sets.
 
 \section{Axiom of Power Set}
 To create sets with a larger cardinality than $\N$, we need the power set -- the set of all subsets of a set. This set is explicitly instantiated for all sets in \ZFC~via the axiom of power set, the last axiom in \ZFC.
