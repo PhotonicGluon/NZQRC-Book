@@ -310,8 +310,9 @@ One way is to notice that ``$x \cap A = \emptyset$'' precisely means that the in
 With this we can state the axiom of regularity in a more formal language.
 
 \begin{axiom}[Regularity]\label{axiom:regularity}\index{axiom!regularity}\index{Zermelo-Frankel Set Theory!regularity}
+    \vspace{-10px}
     \[
-        \forall A (\exists x (x \in A) \implies \exists x (x \in A) \land (\lnot\exists y (y \in x \land y \in A)))
+        \forall A (\exists x (x \in A) \implies \exists x ((x \in A) \land \lnot(\exists y (y \in x \land y \in A))))
     \]
 \end{axiom}
 
