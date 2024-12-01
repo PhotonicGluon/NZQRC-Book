@@ -426,16 +426,14 @@ Notice that we did not need to define division in order to define divisibility -
     See \myref{exercise:divides-is-partial-order} (later).
 \end{proof}
 
-\begin{example}[$\divides$ on a Subset of $\N$]
-    Consider $S = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$. One sees that
+\begin{example}[$\divides$ on a Subset of $\N$]\label{example:divides-on-a-subset-of-N}
+    Consider $S = \{1, 2, 3, 4, 5, 6, 7, 8, 9\}$. One sees that
     \begin{itemize}
-        \item 0 divides only itself since $0 = 1 \times 0$;
         \item 1 divides everybody since $n = 1 \times n$ for all $n \in S$ (\myref{corollary:multiplication-by-1});
-        \item 2 divides 0, 2, 4, 6, and 8 (where the $q$-values are 0, 1, 2, 3, and 4 respectively);
-        \item 3 divides 0, 3, 6, 9 (where the $q$-values are 0, 1, 2, and 3 respectively);
-        \item 4 divides 0, 4, 8 (where the $q$-values are 0, 1, and 2 respectively);
-        \item 5 divides 0, 5 (where the $q$-values are 0 and 1 respectively); and
-        \item 6, 7, 8, and 9 divides only themselves in $S$.
+        \item 2 divides 2, 4, 6, and 8 (where the $q$-values are 1, 2, 3, and 4 respectively);
+        \item 3 divides 3, 6, and 9 (where the $q$-values are 1, 2, and 3 respectively);
+        \item 4 divides 4 and 8 (where the $q$-values are 1 and 2 respectively); and
+        \item 5, 6, 7, 8, and 9 divides only themselves in $S$.
     \end{itemize}
 \end{example}
 
@@ -490,8 +488,64 @@ Like how we defined the ``less than or equal to'' relation, we define the ``less
 \end{proof}
 
 \section{Hasse Diagrams}
-TODO: Add
-% Add Hasse diagrams
+To motivate Hasse diagrams, consider the divides relation on the set $A = \{1, 2, 3, 9, 18\}$ (call it $\poreq$). One sees that
+\begin{align*}
+    R &= \{(1, 1), (1, 2), (1, 3), (1, 9), (1, 18), (2, 2), (2, 18),\\
+    &\quad\quad(3, 3), (3, 9), (3, 18), (9, 9), (9, 18), (18, 18)\}
+\end{align*}
+and has the following directed graph.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=3.5cm]{images/part-2/relations-2/divides_directed-graph.png}
+    \caption{Directed Graph of $\poreq$}    
+\end{figure}
+
+We have a couple of redundancies for partial orders: we know that every element is related to itself, and transitivity holds. We can draw the directed graph of of any partial order $\poreq$ in a simpler way, called a Hasse diagram, which are named after Helmut Hasse.
+
+\begin{definition}[Hasse Diagram]
+    Let $\poreq$ be a partial order on a set $A$. The \term{Hasse diagram}\index{Hasse Diagram} of $\poreq$ is obtained from the directed graph of $\poreq$ by performing the following steps.
+    \begin{enumerate}
+        \item Draw the directed graph of $\poreq$ such that all arrows (except self-loops) point upwards.
+        \item Remove any self-loops.
+        \item Remove all arrows that are implied by transitivity.
+        \item Remove the direction indicators on the arrows.
+    \end{enumerate}
+\end{definition}
+
+For the relation $\poreq$ above, the Hasse diagram is as follows (after some shifting of the elements).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=3cm]{images/part-2/relations-2/divides_hasse.png}
+    \caption{Hasse Diagram of $\poreq$}    
+\end{figure}
+
+\begin{example}[The Subset Relation]
+    Let $X = \Power{\{0,1,2\}}$. Consider the partial order relation $\poreq$ where
+    \[
+        A \poreq B \iff A \subseteq B
+    \]
+    for all $A, B \in X$. The Hasse diagram is as follows.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=4cm]{images/part-2/relations-2/subset-as-hasse.png}
+        \caption{Hasse Diagram of $\poreq$}    
+    \end{figure}
+    It is arguably easier to see the structure of the partial order from the Hasse diagram than from a directed graph.
+\end{example}
+
+\begin{example}[$\divides$ on a Subset of $\N$]
+    Consider the divides relation on the set $S = \{1, 2, 3, 4, 5, 6, 7, 8, 9\}$ as in \myref{example:divides-on-a-subset-of-N}. The Hasse diagram is as follows.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3.5cm]{images/part-2/relations-2/divides-as-hasse.png}
+        \caption{Hasse Diagram of $\divides$ on $S$}    
+    \end{figure}
+\end{example}
+\begin{remark}[Primes in the Hasse Diagram]
+    One might notice that the second level of the Hasse diagram (i.e., 2, 3, 5, and 7) are prime numbers. In fact, the lowest level are the numbers with no prime factors, the second highest level are the numbers with two prime factors, and so on.
+\end{remark}
 
 % One can think of partial orders as an ordering of things in a set.
 
