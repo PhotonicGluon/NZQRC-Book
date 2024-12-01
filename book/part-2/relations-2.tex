@@ -501,7 +501,7 @@ and has the following directed graph.
     \caption{Directed Graph of $\poreq$}    
 \end{figure}
 
-We have a couple of redundancies for partial orders: we know that every element is related to itself, and transitivity holds. We can draw the directed graph of of any partial order $\poreq$ in a simpler way, called a Hasse diagram, which are named after Helmut Hasse.
+The directed graph exhibits a couple of redundancies for partial orders: we know that every element is related to itself, and transitivity holds. We can draw the directed graph of of any partial order $\poreq$ in a simpler way, called a Hasse diagram, which are named after Helmut Hasse.
 
 \begin{definition}[Hasse Diagram]
     Let $\poreq$ be a partial order on a set $A$. The \term{Hasse diagram}\index{Hasse Diagram} of $\poreq$ is obtained from the directed graph of $\poreq$ by performing the following steps.
@@ -517,7 +517,7 @@ For the relation $\poreq$ above, the Hasse diagram is as follows (after some shi
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=3cm]{images/part-2/relations-2/divides_hasse.png}
+    \includegraphics[height=3.5cm]{images/part-2/relations-2/divides_hasse.png}
     \caption{Hasse Diagram of $\poreq$}    
 \end{figure}
 
@@ -539,7 +539,7 @@ For the relation $\poreq$ above, the Hasse diagram is as follows (after some shi
     Consider the divides relation on the set $S = \{1, 2, 3, 4, 5, 6, 7, 8, 9\}$ as in \myref{example:divides-on-a-subset-of-N}. The Hasse diagram is as follows.
     \begin{figure}[H]
         \centering
-        \includegraphics[height=3.5cm]{images/part-2/relations-2/divides-as-hasse.png}
+        \includegraphics[height=3.5cm]{images/part-2/relations-2/divides-as-hasse_contig.png}
         \caption{Hasse Diagram of $\divides$ on $S$}    
     \end{figure}
 \end{example}
@@ -547,15 +547,17 @@ For the relation $\poreq$ above, the Hasse diagram is as follows (after some shi
     One might notice that the second level of the Hasse diagram (i.e., 2, 3, 5, and 7) are prime numbers. In fact, the lowest level are the numbers with no prime factors, the second highest level are the numbers with two prime factors, and so on.
 \end{remark}
 
-% One can think of partial orders as an ordering of things in a set.
+The Hasse diagram does not necessarily need to have one ``root'' element.
 
-% \begin{example}[The ``Course Dependency'' Relation]
-%     Suppose a university offers a set of courses, each of which has a 4-digit course code (e.g., 1001, 1231, 2001, 7125). Some courses must be completed before others; in particular, level 1000 courses must be completed before level 2000 courses, and level 2000 courses must be completed before level 3000 courses, and so on. Suppose $S$ is a subset of all of these courses (for example, a set of courses that a mathematics major has to take). We can define a relation $\poreq$ on $S$ (a sort-of ``course dependency'' relation) such that
-%     \[
-%         c_1 \poreq c_2 \iff \text{First Digit of } c_1 \leq \text{First Digit of } c_2
-%     \]
-%     for all $c_1, c_2 \in S$.
-% \end{example}
+\begin{example}[$\divides$ on Another Subset of $\N$]
+    The divides relation on the set $S = \{2,3,4,5,7,8,9,10,16,20,21,27\}$ has the following Hasse diagram.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3.5cm]{images/part-2/relations-2/divides-as-hasse_non-contig.png}
+        \caption{Hasse Diagram of $\divides$ on $S$}    
+    \end{figure}
+    Notice now that there are 4 ``root'' elements (namely the primes 2, 3, 5, and 7). There are also two distinct ``parts'' to the Hasse diagram -- the part with the ``roots'' of 2 and 5 and the part with the ``roots'' of 3 and 7.
+\end{example}
 
 \section{Comparability and Element Order}
 TODO: Add
