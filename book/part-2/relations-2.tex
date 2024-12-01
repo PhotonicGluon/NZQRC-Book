@@ -549,7 +549,7 @@ For the relation $\poreq$ above, the Hasse diagram is as follows (after some shi
 
 The Hasse diagram does not necessarily need to have one ``root'' element.
 
-\begin{example}[$\divides$ on Another Subset of $\N$]
+\begin{example}[$\divides$ on Another Subset of $\N$]\label{example:divides-on-another-subset-of-N}
     The divides relation on the set $S = \{2,3,4,5,7,8,9,10,16,20,21,27\}$ has the following Hasse diagram.
     \begin{figure}[H]
         \centering
@@ -570,11 +570,61 @@ The Hasse diagram does not necessarily need to have one ``root'' element.
     List the elements in $\poreq$.
 \end{exercise}
 
-\section{Comparability and Element Order}
-TODO: Add
-% Introduce comparability & element order
+\section{Partially and Totally Ordered Sets}
+Recall in \myref{example:divides-on-another-subset-of-N} that the Hasse diagram has two distinct parts. Elements in one part does no divide any element in the other part, and vice versa. This motivates the idea of comparability.
 
-\section{Total Orders}  % Do we include this?
-TODO: Add
+\begin{definition}[Comparability]
+    Let $\poreq$ be a partial order relation on a set $A$. Then $a, b \in A$ are said to be \term{comparable}\index{comparable}\index{partial order!comparable} if and only if either $a \poreq b$ or $b \poreq a$. Otherwise they are said to be \term{noncomparable}.
+\end{definition}
 
-% Introduce total orders and linearization
+\begin{example}
+    Consider the divides relation in \myref{example:divides-on-a-subset-of-N}, which has the following Hasse diagram.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3.5cm]{images/part-2/relations-2/divides-as-hasse_contig.png}  
+    \end{figure}
+    From the Hasse diagram, we can see that $2 \divides 4$, so 2 and 4 are comparable. On the other hand, notice that $5 \ndivides 8$ and $8 \ndivides 5$, so 5 and 8 are noncomparable.
+\end{example}
+
+With the idea of comparability, we can define the idea of maximal and minimal elements.
+
+\begin{definition}[Maximal and Minimal Elements]
+    Let $\poreq$ be a partial order relation on a set $A$.
+    \begin{itemize}
+        \item An element $m \in A$ is called a \term{maximal element of $A$}\index{partial order!maximal element} if and only if, for all $x \in A$, if $m \poreq x$ then $x = m$.
+        \item An element $m \in A$ is called a \term{minimal element of $A$}\index{partial order!minimal element} if and only if, for all $x \in A$, if $x \poreq m$ then $x = m$.
+    \end{itemize}
+\end{definition}
+
+What does this mean diagrammatically? In a Hasse diagram, maximal elements are the ``top'' elements and minimal elements are the ``bottom'' elements.
+
+A related construct is the idea of greatest and least elements.
+
+\begin{definition}[Greatest and Least Elements]
+    Let $\poreq$ be a partial order relation on a set $A$.
+    \begin{itemize}
+        \item An element $m \in A$ is called a \term{greatest element of $A$}\index{partial order!greatest element} if and only if, for all $x \in A$ we have $x \poreq m$.
+        \item An element $m \in A$ is called a \term{least element of $A$}\index{partial order!least element} if and only if, for all $x \in A$ we have $m \poreq x$.
+    \end{itemize}
+\end{definition}
+
+Note the difference between maximal and greatest elements. Greatest elements require that \textbf{all} elements be related to the greatest element, whereas maximal elements have the antecedent that $x$ is related to $m$, so not all elements need to be related to $m$. Similarly, least elements require that \textbf{all} elements be related to the least element, whereas minimal elements have the antecedent that $x$ is related to $m$.
+
+\begin{example}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3.5cm]{images/part-2/relations-2/divides-as-hasse_contig.png}  
+    \end{figure}
+    For the above Hasse diagram, the minimal (and least) element is 1. The maximal elements are 5, 7, 8, and 9, and there is no greatest element.
+\end{example}
+
+% TODO: Add more examples
+
+% Introduce element order
+
+% \begin{definition}[Total Order]
+%     Let $\poreq$ be a partial order relation on a set $A$. Then $\poreq$ is a \term{total order relation}\index{relation!total order} (or a \term{total order}\index{total order}) if and only if $a \poreq b$ or $b \poreq a$ for all $a, b \in A$.
+% \end{definition}
+
+% Introduce linearization
+
