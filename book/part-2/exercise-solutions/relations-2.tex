@@ -113,4 +113,16 @@
             (6, 6)
         \}
     \end{align*}
+
+    % Properties of Comparability
+    \item We will prove all the statements.
+    \begin{partquestions}{\alph*}
+        \item Suppose $m_1, m_2 \in A$ are greatest elements. That means that, for all $x \in A$, we have $x \poreq m_1$ and $x \poreq m_2$. For the first relation, we can choose $x = m_2$ and see $m_2 \poreq m_1$. For the second relation, we can choose $x = m_1$ and get $m_1 \poreq m_2$. Thus, by antisymmetry, we have $m_1 = m_2$. Therefore the greatest element is unique.
+        
+        \item Similar argument as \textbf{(a)}.
+        
+        \item Suppose $m_1, m_2 \in A$ are distinct maximal elements. Seeking a contradiction, suppose $M \in A$ is the greatest element (which we know is unique by \textbf{(a)}). By definition of greatest element we must have $m_1 \poreq M$ and $m_2 \poreq M$. But, by definition of maximal elements, this must mean that $M = m_1$ and $M = m_2$, a clear contradiction since $m_1 \neq m_2$. Therefore, if there is more than one maximal element, there is no greatest element.
+        
+        \item Similar argument as \textbf{(c)}.
+    \end{partquestions}
 \end{questions}
