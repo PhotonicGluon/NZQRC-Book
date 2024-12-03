@@ -594,10 +594,19 @@ A related construct is the idea of greatest and least elements.
 Note the difference between maximal and greatest elements. Greatest elements require that \textbf{all} elements be related to the greatest element, whereas maximal elements have the antecedent that $x$ is related to $m$, so not all elements need to be related to $m$. Similarly, least elements require that \textbf{all} elements be related to the least element, whereas minimal elements have the antecedent that $x$ is related to $m$.
 
 \begin{example}
+    Let $\poreq$ be the partial order on $A = \{0, 1, 2, 3\}$ with the following Hasse diagram.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=2.75cm]{images/part-2/relations-2/mmgl-elements_1.png}
+    \end{figure}
+    One sees that $\poreq$ has minimal (and least) element 0, and has a maximal (and greatest) element 3.
+\end{example}
+
+\begin{example}
     Let $\poreq$ be the partial order on $A = \{0, 1, 2, 3, 4, 5, 6, 7, 8\}$ with the following Hasse diagram.
     \begin{figure}[H]
         \centering
-        \includegraphics[height=3.5cm]{images/part-2/relations-2/mmgl-elements_1.png}
+        \includegraphics[height=3.5cm]{images/part-2/relations-2/mmgl-elements_2.png}
     \end{figure}
     It has minimal elements 0, 1, and 2 (and no least element), and has a maximal (and greatest) element of 8.
 \end{example}
@@ -606,7 +615,7 @@ Note the difference between maximal and greatest elements. Greatest elements req
     Let $\poreq$ be the partial order on $A = \{0, 1, 2, 3, 4, 5, 6\}$ with the following Hasse diagram.
     \begin{figure}[H]
         \centering
-        \includegraphics[height=3.5cm]{images/part-2/relations-2/mmgl-elements_2.png}
+        \includegraphics[height=3.5cm]{images/part-2/relations-2/mmgl-elements_3.png}
     \end{figure}
     That partial order has minimal (and least) element 0, and has a maximal elements 4, 5, and 6 (and no greatest element).
 \end{example}
@@ -615,12 +624,12 @@ Note the difference between maximal and greatest elements. Greatest elements req
     Let $\poreq$ be the partial order on $A = \{0, 1, 2, 3, 4, 5, 6, 7\}$ with the following Hasse diagram.
     \begin{figure}[H]
         \centering
-        \includegraphics[height=3.5cm]{images/part-2/relations-2/mmgl-elements_3.png}  
+        \includegraphics[height=3.5cm]{images/part-2/relations-2/mmgl-elements_4.png}  
     \end{figure}
     This partial order has minimal elements 0 and 1 (and thus no least element), and has maximal elements 6 and 7 (and thus no greatest element).
 \end{example}
 
-\begin{exercise}[Properties of Comparability]
+\begin{exercise}[Element Order Properties]
     Let $\poreq$ be a partial order relation on a set $A$. Prove or disprove the following statements.
     \begin{partquestions}{\alph*}
         \item If there is a greatest element, it is unique.
