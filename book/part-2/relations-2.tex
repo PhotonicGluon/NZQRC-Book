@@ -521,7 +521,7 @@ For the relation $\poreq$ above, the Hasse diagram is as follows (after some shi
     \caption{Hasse Diagram of $\poreq$}    
 \end{figure}
 
-\begin{example}[The Subset Relation]
+\begin{example}[The Subset Relation]\label{example:the-subset-relation}
     Let $X = \Power{\{0,1,2\}}$. Consider the partial order relation $\poreq$ where
     \[
         A \poreq B \iff A \subseteq B
@@ -639,7 +639,7 @@ Note the difference between maximal and greatest elements. Greatest elements req
     \end{partquestions}
 \end{exercise}
 
-\section{Partial and Total Orders}
+\section{Total Orders}
 Recall in \myref{example:divides-on-another-subset-of-N} that the Hasse diagram has two distinct parts. Elements in one part does no divide any element in the other part, and vice versa. This motivates the idea of comparability.
 
 \begin{definition}[Comparability]
@@ -655,11 +655,48 @@ Recall in \myref{example:divides-on-another-subset-of-N} that the Hasse diagram 
     From the Hasse diagram, we can see that $2 \divides 4$, so 2 and 4 are comparable. On the other hand, notice that $5 \ndivides 8$ and $8 \ndivides 5$, so 5 and 8 are noncomparable.
 \end{example}
 
-TODO: Add
+What happens when all elements in a set are comparable by a partial order relation? That results in a total order.
 
-% \begin{definition}[Total Order]
-%     Let $\poreq$ be a partial order relation on a set $A$. Then $\poreq$ is a \term{total order relation}\index{relation!total order} (or a \term{total order}\index{total order}) if and only if $a \poreq b$ or $b \poreq a$ for all $a, b \in A$.
-% \end{definition}
+\begin{definition}[Total Order]
+    A partial order $\poreq$ on a set $A$ is a \term{total order relation}\index{relation!total order} (or a \term{total order}\index{total order}) if and only if $a$ and $b$ are comparable for all $a, b \in A$.
+\end{definition}
 
-% Introduce linearization
+What does it mean for a partial order to be a total order? In terms of the Hasse diagram, this means that all the elements are in a straight line, from the bottom to the top. This is why some authors call total orders \term{linear orders}\index{linear order}.
 
+\begin{example}[$\divides$ on Yet Another Subset of $\N$]
+    Consider the divides relation on the subset $A = \{1, 2, 4, 8\}$ of $\N$. One sees that, for any $a, b \in A$, they are comparable. Thus the divides relation on $A$ is a total order. One can see this by looking at its Hasse diagram.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3cm]{images/part-2/relations-2/total-order_1.png}
+        \caption{$\divides$ is a Total Order on $A$}  
+    \end{figure}
+    The Hasse diagram is a straight line -- a clear sign that $\divides$ is a total order on $A$. We can also see that, under $\divides$, the minimal (and least) element of $A$ is 1, and the maximal (and greatest) element of $A$ is 8.
+\end{example}
+
+\begin{example}[The Subset Relation]
+    In general, the subset relation is \textbf{not} a total order. One can look at \myref{example:the-subset-relation} to see why.
+\end{example}
+
+There is one essential total order that we will look at -- the ``less than or equal to'' relation on that natural numbers.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=4cm]{images/part-2/relations-2/total-order_2.png}
+    \caption{$\leq$ is a Total Order on $\N$}  
+\end{figure}
+
+One observes from the Hasse diagram that ``vertical'' property indicative of a total order. We note that the minimal (and least) element of $\N$ under $\leq$ is 0, and there is no maximal (and greatest) element.
+
+\begin{proposition}[$\leq$ is a Total Order on $\N$]
+    $\leq$ is a total order on $\N$.
+\end{proposition}
+\begin{proof}
+    % TODO: Vet proof
+    We are to show that, for any $m, n \in \N$, either $m \leq n$ or $n \leq m$.
+
+    Suppose otherwise, i.e. there is $m, n \in \N$ such that neither $m \leq n$ nor $n \leq m$. This means that neither $m \subseteq n$ nor $n \subseteq m$, i.e. $m \not\subseteq n$ and $n \not\subseteq m$.
+
+    However, note how $\N$ is constructed. If $m \not\subseteq n$, then it has to be the case that $m$ has at least one more element than $n$. In particular, by the way that $\N$ is defined, we know that $m$ must contain the elements of $n$ and $n$ itself, i.e. $\Successor{n} \subseteq m$. But note $n \subseteq \Successor{n}$, and thus $n \subseteq m$, contradicting that $n \not\subseteq m$.
+
+    Thus we see that $\leq$ is a total order on $\N$.
+\end{proof}
