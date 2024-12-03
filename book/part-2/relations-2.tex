@@ -571,22 +571,7 @@ The Hasse diagram does not necessarily need to have one ``root'' element.
 \end{exercise}
 
 \section{Maximal, Minimal, Greatest, and Least Elements}
-Recall in \myref{example:divides-on-another-subset-of-N} that the Hasse diagram has two distinct parts. Elements in one part does no divide any element in the other part, and vice versa. This motivates the idea of comparability.
-
-\begin{definition}[Comparability]
-    Let $\poreq$ be a partial order relation on a set $A$. Then $a, b \in A$ are said to be \term{comparable}\index{comparable}\index{partial order!comparable} if and only if either $a \poreq b$ or $b \poreq a$. Otherwise they are said to be \term{noncomparable}.
-\end{definition}
-
-\begin{example}
-    Consider the divides relation in \myref{example:divides-on-a-subset-of-N}, which has the following Hasse diagram.
-    \begin{figure}[H]
-        \centering
-        \includegraphics[height=3.5cm]{images/part-2/relations-2/divides-as-hasse_contig.png}  
-    \end{figure}
-    From the Hasse diagram, we can see that $2 \divides 4$, so 2 and 4 are comparable. On the other hand, notice that $5 \ndivides 8$ and $8 \ndivides 5$, so 5 and 8 are noncomparable.
-\end{example}
-
-With the idea of comparability, we can define the idea of maximal and minimal elements.
+One might notice that, in a Hasse diagram, some elements are at the ``bottom'' of the diagram with no edge pointing into them. There could also be some elements at the ``top'' of the diagram with no edge coming out of them. The way that the elements are positioned from bottom to top creates a sort-of `ordering' of the elements; these ``bottom'' and ``top'' elements have special names.
 
 \begin{definition}[Maximal and Minimal Elements]
     Let $\poreq$ be a partial order relation on a set $A$.
@@ -595,8 +580,6 @@ With the idea of comparability, we can define the idea of maximal and minimal el
         \item An element $m \in A$ is called a \term{minimal element of $A$}\index{partial order!minimal element} if and only if, for all $x \in A$, if $x \poreq m$ then $x = m$.
     \end{itemize}
 \end{definition}
-
-What does this mean diagrammatically? In a Hasse diagram, maximal elements are the ``top'' elements and minimal elements are the ``bottom'' elements.
 
 A related construct is the idea of greatest and least elements.
 
@@ -648,6 +631,21 @@ Note the difference between maximal and greatest elements. Greatest elements req
 \end{exercise}
 
 \section{Partial and Total Orders}
+Recall in \myref{example:divides-on-another-subset-of-N} that the Hasse diagram has two distinct parts. Elements in one part does no divide any element in the other part, and vice versa. This motivates the idea of comparability.
+
+\begin{definition}[Comparability]
+    Let $\poreq$ be a partial order relation on a set $A$. Then $a, b \in A$ are said to be \term{comparable}\index{comparable}\index{partial order!comparable} if and only if either $a \poreq b$ or $b \poreq a$. Otherwise they are said to be \term{noncomparable}.
+\end{definition}
+
+\begin{example}
+    Consider the divides relation in \myref{example:divides-on-a-subset-of-N}, which has the following Hasse diagram.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=3.5cm]{images/part-2/relations-2/divides-as-hasse_contig.png}  
+    \end{figure}
+    From the Hasse diagram, we can see that $2 \divides 4$, so 2 and 4 are comparable. On the other hand, notice that $5 \ndivides 8$ and $8 \ndivides 5$, so 5 and 8 are noncomparable.
+\end{example}
+
 TODO: Add
 
 % \begin{definition}[Total Order]
