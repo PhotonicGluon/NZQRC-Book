@@ -19,7 +19,7 @@ BOOK_IMAGES_FOLDER = "../../book/images"
 NOTEBOOKS_FOLDER = "notebooks"
 ALL_NOTEBOOKS = [
     # Part 1
-    "part-1/constructing-numbers.ipynb",
+    "part-1/constructing-naturals.ipynb",
     "part-1/relations-1.ipynb",
     "part-1/functions.ipynb",
     "part-1/counting.ipynb",
