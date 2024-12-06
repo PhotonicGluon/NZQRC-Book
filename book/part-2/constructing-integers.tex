@@ -2,9 +2,42 @@
 \Lettrine{Constructing} more general numbers requires the numbers we defined before; we will use natural numbers and equivalence relations to create a definition for the integers. We will also define relationships between integers, just like we did with the natural numbers.
 
 \section{The Insufficiency of the Natural Numbers}
-TODO: Add
+Consider the action of adding two natural numbers, say 2 and 3. We know that $3 + 4 = 7$ by definition, but how do we express this diagrammatically?
 
-% Explain how natural numbers are missing an 'inverse' for addition
+Let us consider a \term{number line}\index{number line}. We place the natural numbers on the number line, and draw a line between each pair of adjacent numbers.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{images/part-2/constructing-integers/number-line_raw.png}
+    \caption{The Number Line}
+\end{figure}
+When we add 4 to 3, we first move right by 3 (see the first arrow below) and then move along by 4 afterwards (see the second arrow below).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{images/part-2/constructing-integers/number-line_add-3-then-4.png}
+    \caption{Adding 4 to 3}
+\end{figure}
+Of course, the result is the same if we first move right by 4 and then move along by 3, due to commutativity of addition (\myref{theorem:addition-commutative-naturals}).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{images/part-2/constructing-integers/number-line_add-4-then-3.png}
+    \caption{Adding 3 to 4}
+\end{figure}
+
+What if there was a way to ``undo'' addition? Suppose we have the result of 7, and we knew that one of the numbers is 3. What is the other number? Diagrammatically, this looks like moving left by 3 from 7.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{images/part-2/constructing-integers/number-line_sub-3-from-7.png}
+    \caption{Undoing Adding 3 From 7}
+\end{figure}
+
+For some numbers, we are above to find a natural number if we perform this ``undo'' operation. For others, we can't. For example, what if we move left by 4 from 1? There simply is no natural number that is there.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=6cm]{images/part-2/constructing-integers/number-line_sub-3-from-1.png}
+    \caption{Undoing Adding 3 From 1}
+\end{figure}
+
+This is the insufficiency of the natural numbers that we wish to address by defining the integers -- a way to move an arbitrary number of units left or right on the number line.
 
 \section{Leftward and Rightward ``Shifts'' of Natural Numbers}
 TODO: Add
@@ -17,6 +50,8 @@ TODO: Add
 TODO: Add
 
 % Define integers as equivalence classes under this "shift" relation
+% Define negation operation
+% Also state the absolute value definition
 
 \section{Ordering of Integers}
 TODO: Add
@@ -29,5 +64,5 @@ TODO: Add
 TODO: Add
 
 % Prove that the integers are equinumerous with the natural numbers
-%   - But we cant divide by 2...
-%   - So we have to use some inverse function magic stuff I guess
+%   - First prove that the naturals are partitioned into the odd and even numbers
+%   - Then use CSB to prove equinumerosity -- N to Z using identity, Z to N by using a mix of odd and even numbers
