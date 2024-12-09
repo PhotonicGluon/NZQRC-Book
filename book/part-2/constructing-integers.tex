@@ -40,11 +40,39 @@ For some numbers, we are above to find a natural number if we perform this ``und
 This is the insufficiency of the natural numbers that we wish to address by defining the integers -- a way to move an arbitrary number of units left or right on the number line.
 
 \section{Leftward and Rightward ``Shifts'' of Natural Numbers}
-TODO: Add
+Let us use these shifts to define numbers. The natural numbers can easily be defined this way -- for example, the natural number 4 can be thought of as the number obtained by performing a rightward shift of 7 followed by a leftward shift of 3.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{images/part-2/constructing-integers/lr-shifts_4-shifts-1.png}
+    \caption{Creating 7 By Using Leftward and Rightward ``Shifts''}
+\end{figure}
+We may denote this pair of shifts by $(7, 3)$, signifying that we shift rightward by 7 and then shift leftward by 3. Of course, this is not the only combination of shifts that result in 4. We could have, for instance, shifted rightward by 5 and then leftward by 1, or shifted rightward by 6 and then leftward by 2, or shifted rightward by 8 and then leftward by 4, and so on.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{images/part-2/constructing-integers/lr-shifts_4-shifts-2.png}
+    \caption{Other Ways to Create 7}
+\end{figure}
+But clearly all these shifts just result in 4! We want a way to say that these different combinations of shifts are the same. To put it more concretely, we want an equivalence relation $\EqRel$ on the set $\N^2$ such that $(a,b) \EqRel (c,d)$ if and only if a rightward shift of $a$ followed by a leftward shift of $b$ is the same as a rightward shift of $c$ followed by a leftward shift of $d$, for all $a,b,c,d \in \N$. That way, we can say that $(5, 1) \EqRel (6, 2)$, $(6, 2) \EqRel (7, 3)$, $(7, 3) \EqRel (8, 4)$, and so on.
 
-% Explain how we can picture an integer as a combination of leftward and rightward "shifts" of natural numbers
-% Explain how we can have numbers that are to the "left" of 0
-% Explain how two numbers are "related" if they result in the same number when we do leftward and rightward "shifts"
+\begin{exercise}[Defining the ``Shift Equivalence'' Relation]
+    Create a definition for $\EqRel$ as mentioned above, proving that it is an equivalence relation.\newline
+    (\textit{Note: you are restricted to using the operations defined in \myref{chapter:operations-on-naturals}}.)
+\end{exercise}
+
+Of course, there's nothing stopping us from creating a resultant shift that is not within the natural numbers. Consider the shift defined by $(2, 5)$. This means that we first shift rightward by 2, and then shift leftwards by 5. But clearly the result (marked by the question mark) is not a natural number, and yet it does not matter.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{images/part-2/constructing-integers/lr-shifts_-3-shifts-1.png}
+    \caption{A Non-Natural Number Combination of ``Shifts''}
+\end{figure}
+Again, there are other combinations of shifts that result in `$?$', and they are all equivalent via $\EqRel$. For example, one sees $(1, 4) \EqRel (2, 5)$, $(2, 5) \EqRel (3, 6)$, $(3, 6) \EqRel (4, 7)$, and so on.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{images/part-2/constructing-integers/lr-shifts_-3-shifts-2.png}
+    \caption{Other Ways to Create `$?$'}
+\end{figure}
+
+With the equivalence relation $\EqRel$, we are ready to define the integers.
 
 \section{Integers}
 TODO: Add

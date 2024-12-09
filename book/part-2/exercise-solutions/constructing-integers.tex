@@ -1,2 +1,25 @@
 \section{Defining the Integers}
-No exercises.
+\begin{questions}
+    % Defining the ``Shift Equivalence'' Relation
+    \item Let $\EqRel$ be the relation on $\N^2$ where
+    \[
+        (a, b) \EqRel (c, d) \iff a + d = b + c
+    \]
+    for all $(a, b), (c, d) \in \N^2$. We show that $\EqRel$ is indeed an equivalence relation.
+    \begin{itemize}
+        \item \textbf{Reflexive}: Clearly $a + b = b + a$ for any $a, b \in \N$ (commutativity of addition, \myref{theorem:addition-commutative-naturals}), so $(a, b) \EqRel (a, b)$ by definition of $\EqRel$, proving reflexivity.
+        
+        \item \textbf{Symmetric}: Suppose $(a, b), (c, d) \in \N^2$ are such that $(a, b) \EqRel (c, d)$. This means $a + d = b + c$ by definition of $\EqRel$. Hence $c + b = d + a$ (commutativity of addition), so $(c, d) \EqRel (a, b)$, proving symmetry.
+        
+        \item \textbf{Transitive}: Suppose $(a, b), (c, d), (e, f) \in \N^2$ such that $(a, b) \EqRel (c, d)$ and $(c, d) \EqRel (e, f)$. This means
+        \[
+            a + d = b + c \;\text{ and }\; c + f = d + e.
+        \]
+        Adding $f$ to both sides of the first equation we get $a + d + f = b + c + f$. Note $b + c + f = b + d + e$ by the second equation, so we have
+        \[
+            a + d + f = b + d + e.
+        \]
+        Therefore $a + f = b + e$ by the cancellation property of addition (\myref{prop:addition-cancellation-property}), which means $(a, b) \EqRel (e, f)$, thus proving transitivity.
+    \end{itemize}
+    Thus $\EqRel$ is an equivalence relation.
+\end{questions}
