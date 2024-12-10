@@ -44,13 +44,13 @@ Let us use these shifts to define numbers. The natural numbers can easily be def
 \begin{figure}[H]
     \centering
     \includegraphics[width=8cm]{images/part-2/constructing-integers/lr-shifts_4-shifts-1.png}
-    \caption{Creating 7 By Using Leftward and Rightward ``Shifts''}
+    \caption{Creating 4 By Using Leftward and Rightward ``Shifts''}
 \end{figure}
 We may denote this pair of shifts by $(7, 3)$, signifying that we shift rightward by 7 and then shift leftward by 3. Of course, this is not the only combination of shifts that result in 4. We could have, for instance, shifted rightward by 5 and then leftward by 1, or shifted rightward by 6 and then leftward by 2, or shifted rightward by 8 and then leftward by 4, and so on.
 \begin{figure}[H]
     \centering
     \includegraphics[width=8cm]{images/part-2/constructing-integers/lr-shifts_4-shifts-2.png}
-    \caption{Other Ways to Create 7}
+    \caption{Other Ways to Create 4}
 \end{figure}
 But clearly all these shifts just result in 4! We want a way to say that these different combinations of shifts are the same. To put it more concretely, we want an equivalence relation $\EqRel$ on the set $\N^2$ such that $(a,b) \EqRel (c,d)$ if and only if a rightward shift of $a$ followed by a leftward shift of $b$ is the same as a rightward shift of $c$ followed by a leftward shift of $d$, for all $a,b,c,d \in \N$. That way, we can say that $(5, 1) \EqRel (6, 2)$, $(6, 2) \EqRel (7, 3)$, $(7, 3) \EqRel (8, 4)$, and so on.
 
@@ -75,9 +75,25 @@ Again, there are other combinations of shifts that result in `$?$', and they are
 With the equivalence relation $\EqRel$, we are ready to define the integers.
 
 \section{Integers}
-TODO: Add
+Notice that the shifts of $(5, 1)$, $(6, 2)$, $(7, 3)$, and $(8, 4)$ all represent the natural number 4. We can thus think of all these shifts as the same thing by considering their equivalence class under $\EqRel$. Since they are all related to each other, thus $[(5, 1)] = [(6, 2)] = [(7, 3)] = [(8, 4)] = \cdots$ (\myref{theorem:equivalence-class-equivalence}). One notices that $[(4, 0)] = [(5, 1)]$, and it is precisely the natural number 4 that the shifts in the equivalence class $[(4, 0)]$ represent. Thus, we can define the integer 4 to be $[(4, 0)]$. We can do this for the rest of the natural numbers.
 
-% Define integers as equivalence classes under this "shift" relation
+\begin{definition}
+    Let $n$ be a natural number. The integer $n$ is the equivalence class $[(n, 0)]$.
+\end{definition}
+
+What about the shifts $(1,4)$, $(2,5)$, $(3,6)$, $(4,7)$, and so on? These are not equivalent to any natural number, but are numbers found on the `left' of 0. In particular, these shifts all result in an overall leftward shift of 3, so they all belong in the equivalence class $[(0, 3)]$. We can define an integer to represent this equivalence class.
+
+\begin{definition}
+    Let $n$ be a non-zero natural number. The integer $-n$ is the equivalence class $[(0, n)]$.
+\end{definition}
+
+We can visualize these equivalence classes on a two-dimensional grid. A shift $(m,n)$ is represented by a point that is $m$ along the horizontal axis and $n$ along the vertical axis, and shifts belonging in the same equivalence class lie on the same dotted line.
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=4.5cm]{images/part-2/constructing-integers/integers_number-grid.png}
+    \caption{Integers as Equivalence Classes}
+\end{figure}
+
 % Define negation operation
 % Also state the absolute value definition
 
