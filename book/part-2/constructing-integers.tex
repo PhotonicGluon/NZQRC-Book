@@ -84,7 +84,7 @@ Notice that the shifts of $(5, 1)$, $(6, 2)$, $(7, 3)$, and $(8, 4)$ all represe
 What about the shifts $(1,4)$, $(2,5)$, $(3,6)$, $(4,7)$, and so on? These are not equivalent to any natural number, but are numbers found on the `left' of 0. In particular, these shifts all result in an overall leftward shift of 3, so they all belong in the equivalence class $[(0, 3)]$. We can define an integer to represent this equivalence class.
 
 \begin{definition}
-    Let $n$ be a non-zero natural number. The integer $-n$ is the equivalence class $[(0, n)]$.
+    Let $n$ be a non-zero natural number. The integer $-n$, read as ``negative $n$'', is the equivalence class $[(0, n)]$.
 \end{definition}
 
 We can visualize these equivalence classes on a two-dimensional grid. A shift $(m,n)$ is represented by a point that is $m$ along the horizontal axis and $n$ along the vertical axis, and shifts belonging in the same equivalence class lie on the same dotted line.
@@ -109,8 +109,57 @@ With these definitions out of the way, we are now ready to define the set of int
     \]
 \end{remark}
 
-% Define negation operation
-% Also state the absolute value definition
+Let us now define the negation of an integer.
+\begin{definition}[Negation]
+    The \term{negation operation}\index{negation} is a unary operation given by the function $f: \Z \to \Z$ such that
+    \[
+        f([(m, n)]) = [(n, m)].
+    \]
+    We denote the negation of an integer $x$ by $-x$. That is, for any integer $x = [(m, n)]$, where $m, n \in \N$, we have $-x = [(n, m)]$.
+\end{definition}
+
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item $1 = [(1, 0)]$ and $-1 = [(0, 1)]$.
+        \item $5 = [(5, 0)]$ and $-5 = [(0, 5)]$.
+        \item $0 = [(0, 0)]$ and $-0 = [(0, 0)]$, which is the same as 0.
+        \item $-3 = [(0, 3)]$ and $-(-3) = [(3, 0)]$, which is the same as 3.
+    \end{itemize}
+\end{example}
+
+The observation that $-(-3)$ is the same as 3 leads us to define a more general result.
+\begin{proposition}[Negation of Negative]
+    $-(-x) = x$ for all $x \in \Z$.
+\end{proposition}
+\begin{proof}
+    Suppose $x = [(m, n)]$ where $m, n \in \N$. Note that $-x = [(n, m)]$ by definition of negation, and so $-(-x) = [(m, n)] = x$.
+\end{proof}
+
+With negation defined, we can define the absolute value operation.
+\begin{definition}[Absolute Value]
+    The \term{absolute value operation}\index{absolute value} is a unary operation given by the function $f: \Z \to \Z$ such that
+    \[
+        f([(m, n)]) = \begin{cases}
+            [(m, n)] & \text{if } n \leq m\\
+            [(n, m)] & \text{if } m < n
+        \end{cases}
+    \]
+    We denote the absolute value of an integer $x$ by $|x|$. That is, for any integer $x$ we have
+    \[
+        |x| = \begin{cases}
+            x & \text{if } x \in \N\\
+            -x & \text{if } x \notin \N
+        \end{cases}
+    \]
+\end{definition}
+
+\begin{example}
+    \begin{itemize}[leftmargin=*]
+        \item $|1| = |[(1, 0)]| = [(1, 0)] = 1$.
+        \item $|0| = |[(0, 0)]| = [(0, 0)] = 0$.
+        \item $|-3| = |[(0, 3)]| = [(3, 0)] = 3$.
+    \end{itemize}
+\end{example}
 
 \section{Ordering of Integers}
 TODO: Add
