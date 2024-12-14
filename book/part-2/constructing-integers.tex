@@ -74,7 +74,7 @@ Again, there are other combinations of shifts that result in `$?$', and they are
 
 With the equivalence relation $\EqRel$, we are ready to define the integers.
 
-\section{Integers}
+\section{The Set of Integers}
 Notice that the shifts of $(5, 1)$, $(6, 2)$, $(7, 3)$, and $(8, 4)$ all represent the natural number 4. We can thus think of all these shifts as the same thing by considering their equivalence class under $\EqRel$. Since they are all related to each other, thus $[(5, 1)] = [(6, 2)] = [(7, 3)] = [(8, 4)] = \cdots$ (\myref{theorem:equivalence-class-equivalence}). One notices that $[(4, 0)] = [(5, 1)]$, and it is precisely the natural number 4 that the shifts in the equivalence class $[(4, 0)]$ represent. Thus, we can define the integer 4 to be $[(4, 0)]$. We can do this for the rest of the natural numbers.
 
 \begin{definition}
@@ -93,6 +93,21 @@ We can visualize these equivalence classes on a two-dimensional grid. A shift $(
     \includegraphics[height=4.5cm]{images/part-2/constructing-integers/integers_number-grid.png}
     \caption{Integers as Equivalence Classes}
 \end{figure}
+
+With these definitions out of the way, we are now ready to define the set of integers.
+\begin{definition}[The Set of Integers]
+    The \term{set of integers}\index{integer!set}, denoted $\Z$, is the set of equivalence classes under $\EqRel$. That is,
+    \[
+        \Z = \{[(m, n)] \vert m, n \in \N\}
+    \]
+    where $[(m,n)]$ is the equivalence class of $(m,n)$ under $\EqRel$.
+\end{definition}
+\begin{remark}[$\N$ as a Subset of $\Z$]
+    One notes that the equivalence classes are not exactly natural numbers. However, we will think of the natural numbers as being `embedded' in the integers. This means that when we write $\N \subseteq \Z$, we think of the representative equivalence classes of the natural numbers. More concretely, think about $\N$ within $\Z$ is that $\N$, in this context, is the range of the function $\EmbedFunc{\N}: \N \to \Z$ where
+    \[
+        \EmbedFunc{\N}(n) = [(n, 0)].
+    \]
+\end{remark}
 
 % Define negation operation
 % Also state the absolute value definition
