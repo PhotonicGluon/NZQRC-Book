@@ -111,9 +111,9 @@ With these definitions out of the way, we are now ready to define the set of int
 
 Let us now define the negation of an integer.
 \begin{definition}[Negation]
-    The \term{negation operation}\index{negation} is a unary operation given by the function $f: \Z \to \Z$ such that
+    The \term{negation operation}\index{negation} is a unary operation given by the function $\mathrm{neg}: \Z \to \Z$ such that
     \[
-        f([(m, n)]) = [(n, m)].
+        \mathrm{neg}([(m, n)]) = [(n, m)].
     \]
     We denote the negation of an integer $x$ by $-x$. That is, for any integer $x = [(m, n)]$, where $m, n \in \N$, we have $-x = [(n, m)]$.
 \end{definition}
@@ -137,9 +137,9 @@ The observation that $-(-3)$ is the same as 3 leads us to define a more general 
 
 With negation defined, we can define the absolute value operation.
 \begin{definition}[Absolute Value]
-    The \term{absolute value operation}\index{absolute value} is a unary operation given by the function $f: \Z \to \Z$ such that
+    The \term{absolute value operation}\index{absolute value} is a unary operation given by the function $\abs: \Z \to \Z$ such that
     \[
-        f([(m, n)]) = \begin{cases}
+        \abs([(m, n)]) = \begin{cases}
             [(m, n)] & \text{if } n \leq m\\
             [(n, m)] & \text{if } m < n
         \end{cases}
@@ -152,12 +152,15 @@ With negation defined, we can define the absolute value operation.
         \end{cases}
     \]
 \end{definition}
+\begin{remark}[$|\cdot|$ As Cardinality Versus $|\cdot|$ As Absolute Value]
+    Recall that $|A|$ denotes the cardinality of a set $A$, which can be confusing when $|n|$ denotes the absolute value of an integer $n$. If there is any chance of confusion, we will use $\abs(n)$ to denote the absolute value of an integer instead of $|n|$.
+\end{remark}
 
 \begin{example}
     \begin{itemize}[leftmargin=*]
-        \item $|1| = |[(1, 0)]| = [(1, 0)] = 1$.
-        \item $|0| = |[(0, 0)]| = [(0, 0)] = 0$.
-        \item $|-3| = |[(0, 3)]| = [(3, 0)] = 3$.
+        \item $|1| = \abs([(1, 0)]) = [(1, 0)] = 1$.
+        \item $|0| = \abs([(0, 0)]) = [(0, 0)] = 0$.
+        \item $|-3| = \abs([(0, 3)]) = [(3, 0)] = 3$.
     \end{itemize}
 \end{example}
 
