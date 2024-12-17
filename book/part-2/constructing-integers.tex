@@ -165,7 +165,20 @@ With negation defined, we can define the absolute value operation.
 \end{example}
 
 \section{Ordering of Integers}
-TODO: Add
+Earlier, we defined the ``less than or equal to'' relation ($\leq$) on the natural numbers, which is a total order on the naturals (\myref{prop:leq-is-total-order}) and thus gives us a way to order the natural numbers. We can do the same for the integers.
+
+\begin{definition}[Less Than or Equal To Relation (Integers)]
+    The \term{less than or equal to relation}\index{integer!less than or equal to} on the integers is the relation $\leq$ on $\Z$ where
+    \[
+        [(a,b)] \leq [(c,d)] \iff a + d \leq b + c
+    \]
+    for any $[(a,b)], [(c,d)] \in \Z$.
+\end{definition}
+Note that the ``$\leq$'' on the right-hand side of the definition is the ``less than or equal to'' partial order on the natural numbers.
+
+\begin{exercise}[Proving $\leq$ is a Partial Order]
+    Prove that $\leq$ on $\Z$ is indeed a partial order.
+\end{exercise}
 
 % Define >, <, >=, <= for the integers
 % Give an ordering of the integers
