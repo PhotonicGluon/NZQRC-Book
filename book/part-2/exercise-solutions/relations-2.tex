@@ -100,6 +100,31 @@
         Therefore $\divides$ is a partial order relation.
     \end{proof}
 
+    % Inverse of (Strict) Partial Order
+    \item \begin{partquestions}{\alph*}
+        \item \begin{proof}
+            We are to prove reflexivity, antisymmetry, and transitivity.
+            \begin{itemize}
+                \item \textbf{Reflexive}: Let $a \in A$. Since $a \poreq a$, thus $(a, a) \in \poreq$ (by definition of relation). So $(a, a) \in \poreq^{-1} = \poreqr$ (definition of inverse relation) which means $a \poreqr a$.
+                
+                \item \textbf{Antisymmetric}: Suppose $x, y \in A$ such that $x \poreqr y$ and $y \poreqr x$. So $y \poreq x$ and $x \poreq y$ (by definition of $\poreqr$), which hence means $x = y$ (by antisymmetry of $\poreq$).
+                
+                \item \textbf{Transitive}: Suppose $x,y,z \in A$ such that $x \poreqr y$ and $y \poreqr z$. This means $y \poreq x$ and $z \poreq y$, which therefore means $z \poreq x$ (transitivity of $\poreq$). Hence $x \poreqr z$.
+            \end{itemize}
+            Thus $\poreqr$ is also a partial order on $A$.
+        \end{proof}
+
+        \item \begin{proof}
+            We prove irreflexivity and transitivity since asymmetry will be implied by \myref{prop:asymmetric-iff-irreflexive-for-transitive}.
+            \begin{itemize}
+                \item \textbf{Irreflexive}: Suppose $a \in A$. Clearly $a \not\por a$ (since $\por$ is irreflexive) which means $(a,a) \notin \por$ (definition of relation). Thus $(a,a) \notin \por^{-1} = \porr$ (definition of inverse relation) which hence tells us $a \not\porr a$.
+                
+                \item \textbf{Transitive}: Similar argument as \textbf{(a)}, just replacing $\poreqr$ with $\porr$.
+            \end{itemize}
+            Thus $\porr$ is also a strict partial order on $A$.
+        \end{proof}
+    \end{partquestions}
+
     % Relation Recovery
     \item One sees that
     \begin{align*}

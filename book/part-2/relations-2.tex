@@ -487,6 +487,36 @@ Like how we defined the ``less than or equal to'' relation, we define the ``less
     Use \myref{example:strict-subset-strict-partial-order}.
 \end{proof}
 
+To end this section, we note one interesting property that a (strict) partial order's inverse has.
+
+\begin{proposition}[Inverse of (Strict) Partial Order]\label{prop:por-inverse-is-also-por}
+    Let $A$ be a set and $R$ be a relation on $A$. If $R$ is a (strict) partial order on $A$, then $R^{-1}$ is also a (strict) partial order on $A$.
+\end{proposition}
+\begin{remark}
+    For a partial order $\poreq$, we denote its inverse by $\poreqr$. Similarly, for a strict partial order $\por$, we denote its inverse by $\porr$.
+\end{remark}
+\begin{proof}
+    See \myref{exercise:por-inverse-is-also-por} (later).
+\end{proof}
+
+With \myref{prop:por-inverse-is-also-por} we can define the ``greater than or equal to'' partial order relation and ``greater than'' strict partial order relation on the natural numbers.
+
+\begin{definition}[Greater Than or Equal To Relation (Naturals)]
+    The \term{greater than or equal relation}\index{natural number!greater than} on the natural numbers is the relation $\geq$ on $\N$ where $\geq = \leq^{-1}$, i.e. $m \geq n$ if and only if $n \leq m$ for any $m, n \in \N$.
+\end{definition}
+
+\begin{definition}[Greater Than Relation (Naturals)]
+    The \term{greater than relation}\index{natural number!greater than} on the natural numbers is the relation $<$ on $\N$ where $< = >^{-1}$, i.e. $m > n$ if and only if $n < m$ for any $m, n \in \N$.
+\end{definition}
+
+\begin{exercise}[Inverse of (Strict) Partial Order]\label{exercise:por-inverse-is-also-por}
+    Let $A$ be a set.
+    \begin{partquestions}{\alph*}
+        \item If $\poreq$ is a partial order on $A$, prove that $\poreqr$ is also a partial order on $A$.
+        \item If $\por$ is a strict partial order on $A$, prove that $\porr$ is also a strict partial order on $A$.
+    \end{partquestions}
+\end{exercise}
+
 \section{Hasse Diagrams}
 To motivate Hasse diagrams, consider the divides relation on the set $A = \{1, 2, 3, 9, 18\}$ (call it $\poreq$). One sees that
 \begin{align*}
