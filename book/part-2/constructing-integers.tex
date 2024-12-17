@@ -176,13 +176,59 @@ Earlier, we defined the ``less than or equal to'' relation ($\leq$) on the natur
 \end{definition}
 Note that the ``$\leq$'' on the right-hand side of the definition is the ``less than or equal to'' partial order on the natural numbers.
 
-\begin{exercise}[Proving $\leq$ is a Partial Order]
-    Prove that $\leq$ on $\Z$ is indeed a partial order.
+We can similarly define the ``less than'' relation on the integers.
+
+\begin{definition}[Less Than Relation (Integers)]
+    The \term{less than relation}\index{integer!less than} on the integers is the relation $<$ on $\Z$ where
+    \[
+        [(a,b)] < [(c,d)] \iff a + d < b + c
+    \]
+    for any $[(a,b)], [(c,d)] \in \Z$.
+\end{definition}
+
+\begin{exercise}[Proving Partial Orders]
+    Prove that
+    \begin{partquestions}{\alph*}
+        \item $\leq$ on $\Z$ is a partial order; and
+        \item $<$ on $\Z$ is a strict partial order.
+    \end{partquestions}
 \end{exercise}
 
-% Define >, <, >=, <= for the integers
-% Give an ordering of the integers
-%   - Include a Hasse diagram?
+Using \myref{prop:por-inverse-is-also-por} we can also define the ``greater than or equal to'' partial order relation and ``greater than'' strict partial order relation on the integers.
+
+\begin{definition}[Greater Than or Equal To Relation (Integers)]
+    The \term{greater than or equal relation}\index{integer!greater than} on the integers is the relation $\geq$ on $\Z$ where $\geq = \leq^{-1}$, i.e. $m \geq n$ if and only if $n \leq m$ for any $m, n \in \Z$.
+\end{definition}
+
+\begin{definition}[Greater Than Relation (Integers)]
+    The \term{greater than relation}\index{integer!greater than} on the integers is the relation $<$ on $\Z$ where $< = >^{-1}$, i.e. $m > n$ if and only if $n < m$ for any $m, n \in \Z$.
+\end{definition}
+
+It should come as no surprise that, like with the natural numbers, the ``less than or equal to'' relation ($\leq$) on the integers is a total order.
+
+\begin{proposition}[$\leq$ is a Total Order on $\Z$]
+    $\leq$ on $\Z$ is a total order.
+\end{proposition}
+\begin{proof}
+    We are to show that, for any $m, n \in \Z$, either $m \leq n$ or $n \leq m$.
+
+    Let $m, n \in \Z$. Write
+    \begin{align*}
+        m &= [(a_m, b_m)]\\
+        n &= [(a_n, b_n)]
+    \end{align*}
+    where $a_m, b_m, a_n, b_n \in \N$. Note that $a_m + b_n \in \N$ and $b_m + a_n \in \N$. Since $\leq$ on $\N$ is a total order, thus we must have either $a_m + b_n \leq b_m + a_n$ or $b_m + a_n \leq a_m + b_n$. The first case leads to $[(a_m, b_m)] \leq [(a_n, b_n)]$ and the second leads to $[(a_n, b_n)] \leq [(a_m, b_m)]$, i.e. either $m \leq n$ or $n \leq m$. This proves that $\leq$ on $\Z$ is a total order.
+\end{proof}
+
+We can draw a Hasse diagram for $\leq$ on $\Z$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=4.5cm]{images/part-2/constructing-integers/integer-ordering.png}
+    \caption{$\leq$ is a Total Order on $\Z$}  
+\end{figure}
+
+One clearly sees that $\Z$ has no maximal, minimal, greatest, and least element.
 
 \section{Cardinality of the Integers}
 TODO: Add

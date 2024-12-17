@@ -23,28 +23,40 @@
     \end{itemize}
     Thus $\EqRel$ is an equivalence relation.
 
-    % Proving $\leq$ is a Partial Order
-    \item \begin{proof}
-        We are to prove that $\leq$ on $\Z$ is reflexive, antisymmetric, and transitive.
-        \begin{itemize}
-            \item \textbf{Reflexive}: Let $[(a,b)] \in \Z$. Clearly $a+b \leq a+b$ (since $\leq$ on $\N$ is a partial order and is thus reflexive), so $[(a,b)] \leq [(a,b)]$ by definition of $\leq$ on $\Z$.
-            
-            \item \textbf{Antisymmetric}: Suppose $[(a,b)], [(c,d)] \in \Z$ such that $[(a,b)] \leq [(c,d)]$ and $[(c,d)] \leq [(a,b)]$. This means that 
-            \[
-                a + d \leq b + c \;\text{ and }\; c + b \leq d + a
-            \]
-            by definition of $\leq$ on $\Z$. But clearly the second relation is the same as $b+c \leq a+d$ (commutativity of addition), which thus means $a+d = b+c$ (as $\leq$ on $\N$ is antisymmetric). Therefore $[(a,b)] = [(c,d)]$ by definition of $\EqRel$ on $\Z$.
-            
-            \item \textbf{Transitive}: Suppose $[(a,b)], [(c,d)], [(e,f)] \in \Z$ such that $[(a,b)] \leq [(c,d)]$ and $[(c,d)] \leq [(e,f)]$. Hence we have
-            \[
-                a + d \leq b + c \;\text{ and }\; c + f \leq d + e.
-            \]
-            Adding $f$ to both sides of the first relation we get $a + d + f \leq b + c + f$. Note $b + c + f \leq b + d + e$ by the second equation, which thus means
-            \[
-                a + d + f \leq b + d + e
-            \]
-            by transitivity of $\leq$ on $\N$. Therefore $a + f \leq b + e$, which means $[(a, b)] \leq [(e, f)]$.
-        \end{itemize}
-        Hence $\leq$ is indeed a partial order on $\Z$.
-    \end{proof}
+    % Proving Partial Orders
+    \item \begin{partquestions}{\alph*}
+        \item \begin{proof}
+            We are to prove that $\leq$ on $\Z$ is reflexive, antisymmetric, and transitive.
+            \begin{itemize}
+                \item \textbf{Reflexive}: Let $[(a,b)] \in \Z$. Clearly $a+b \leq a+b$ (since $\leq$ on $\N$ is a partial order and is thus reflexive), so $[(a,b)] \leq [(a,b)]$ by definition of $\leq$ on $\Z$.
+                
+                \item \textbf{Antisymmetric}: Suppose we have $[(a,b)], [(c,d)] \in \Z$ such that $[(a,b)] \leq [(c,d)]$ and $[(c,d)] \leq [(a,b)]$. This means
+                \[
+                    a + d \leq b + c \;\text{ and }\; c + b \leq d + a
+                \]
+                by definition of $\leq$ on $\Z$. But clearly the second relation is the same as $b+c \leq a+d$ (commutativity of addition), which thus means $a+d = b+c$ (as $\leq$ on $\N$ is antisymmetric). Therefore $[(a,b)] = [(c,d)]$ by definition of $\EqRel$ on $\Z$.
+                
+                \item \textbf{Transitive}: Suppose $[(a,b)], [(c,d)], [(e,f)] \in \Z$ are such that $[(a,b)] \leq [(c,d)]$ and $[(c,d)] \leq [(e,f)]$. Hence we have
+                \[
+                    a + d \leq b + c \;\text{ and }\; c + f \leq d + e.
+                \]
+                Adding $f$ to both sides of the first relation we get $a + d + f \leq b + c + f$. Note $b + c + f \leq b + d + e$ by the second equation, which thus means
+                \[
+                    a + d + f \leq b + d + e
+                \]
+                by transitivity of $\leq$ on $\N$. Therefore $a + f \leq b + e$, which means $[(a, b)] \leq [(e, f)]$.
+            \end{itemize}
+            Hence $\leq$ is indeed a partial order on $\Z$.
+        \end{proof}
+
+        \item \begin{proof}
+            We will prove that $<$ is irreflexive and transitive, since asymmetry is implied by \myref{prop:asymmetric-iff-irreflexive-for-transitive}.
+            \begin{itemize}
+                \item \textbf{Irreflexive}: Let $[(a,b)] \in \Z$. Clearly $a + b \not< a + b$ (since $<$ on $\N$ is a strict partial order and is thus irreflexive), so $[(a, b)] \not< [(a, b)]$ by definition of $<$ on $\Z$.
+                
+                \item \textbf{Transitive}: Similar argument as in \textbf{(a)}, replacing $\leq$ with $<$.
+            \end{itemize}
+            Thus $<$ is a strict partial order on $\Z$.
+        \end{proof}
+    \end{partquestions}
 \end{questions}
