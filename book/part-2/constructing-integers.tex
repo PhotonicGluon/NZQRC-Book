@@ -231,8 +231,28 @@ We can draw a Hasse diagram for $\leq$ on $\Z$.
 One clearly sees that $\Z$ has no maximal, minimal, greatest, and least element.
 
 \section{Cardinality of the Integers}
-TODO: Add
+To end this chapter, let us examine the size (that is, cardinality) of the set of integers. We know that the natural numbers is a subset of the integers, so we know that the set of integers is also an infinite set. This observation is generalizable by the following proposition.
 
-% Prove that the integers are equinumerous with the natural numbers
-%   - First prove that the naturals are partitioned into the odd and even numbers
-%   - Then use CSB to prove equinumerosity -- N to Z using identity, Z to N by using a mix of odd and even numbers
+\begin{proposition}[Set Containing Infinite Subset is Infinite]
+    Let $S$ be a set. If $T$ is an infinite subset of $S$, then $S$ is infinite.
+\end{proposition}
+\begin{proof}
+    We prove this by contrapositive. The proposition's statement is that ``if $S$ has an infinite subset $T$, then $S$ is an infinite set''. Thus the contrapositive is ``if $S$ is a finite set, then $S$ has a finite subset $T$''.
+    
+    So suppose $S$ is finite. Choose $T = S$. Clearly $T$ is a subset of $S$, and that it is finite. This proves the proposition.
+\end{proof}
+
+\begin{corollary}[$\Z$ is Infinite]
+    $\Z$ is an infinite set.
+\end{corollary}
+\begin{proof}
+    Since $\N$ is a subset of $\Z$ that is infinite, the above proposition tells us that $\Z$ is infinite.
+\end{proof}
+
+The more interesting question is whether the cardinality of the set $\Z$ is more than $\Z$. Clearly $-1 \in \Z$ but $-1 \notin \N$, so $\Z$ clearly has ``more elements'', but we've seen how cardinalities of infinite sets are not intuitive. In fact, we will prove that the cardinality of the integers is the same as the cardinality of the natural numbers.
+
+\subsection{Odd and Even Natural Numbers}
+% Prove that the naturals are partitioned into the odd and even numbers
+
+\subsection{Equinumerosity of the Integers and the Naturals}
+% Use CSB to prove equinumerosity -- N to Z using identity, Z to N by using a mix of odd and even numbers
