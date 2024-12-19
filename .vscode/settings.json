@@ -150,4 +150,15 @@
         "paragraph",
         "readingtime"
     ],
+    "todohighlight.keywords": [
+        {
+            "text": "TODO",
+            "color": "#ffffff",
+            "border": "1px solid green",
+            "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+            "backgroundColor": "rgba(0,200,0,0.2)",
+            "overviewRulerColor": "green",
+            "isWholeLine": true
+        },
+    ],
 }

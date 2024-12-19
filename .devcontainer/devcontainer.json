@@ -30,6 +30,7 @@
                 "njpwerner.autodocstring",
                 "streetsidesoftware.code-spell-checker",
                 "tamasfe.even-better-toml",
+                "wayou.vscode-todo-highlight",
                 "yzhang.markdown-all-in-one"
             ]
         }
