@@ -25,6 +25,8 @@ ALL_NOTEBOOKS = [
     "part-1/counting.ipynb",
     # Part 2
     "part-2/relations-2.ipynb",
+    "part-2/constructing-integers.ipynb",
+    "part-2/operations-on-integers.ipynb"
 ]
 
 app = typer.Typer(no_args_is_help=True)

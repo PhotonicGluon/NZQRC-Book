@@ -102,8 +102,8 @@ A less obvious property that addition has to satisfy is adding with successors. 
 
 With these two properties, we can create a definition for addition.
 
-\begin{definition}[Addition]
-    The \term{addition operation}\index{addition} is the function $+: \N^2 \to \N$ such that
+\begin{definition}[Addition (Natural Numbers)]
+    The \term{addition operation}\index{addition!natural numbers} is the function $+: \N^2 \to \N$ such that
     \begin{enumerate}[label=\textbf{A\arabic*.}]
         \item for all $n\in \N$ we have $n + 0 = n$; and
         \item for all $n, d \in \N$ we have $n + \Successor{d} = \Successor{n + d}$.
@@ -275,8 +275,8 @@ Like with addition, it is of no use to us to just say that multiplication is a b
 
 What happens when we multiply a number by zero? That is easy -- the answer is just zero. But what happens when we multiply a number by the successor of another number? Well, by \myref{prop:successor-of-n}, we know that $\Successor{n} = n + 1$, and we know by algebra that $x(y + 1) = xy + x$. So we can adopt this property into our definition for multiplication.
 
-\begin{definition}[Multiplication]
-    The \term{multiplication operation}\index{multiplication} is the function $\times: \N^2 \to \N$ such that
+\begin{definition}[Multiplication (Natural Numbers)]
+    The \term{multiplication operation}\index{multiplication!natural numbers} is the function $\times: \N^2 \to \N$ such that
     \begin{enumerate}[label=\textbf{M\arabic*.}]
         \item for all $n \in \N$ we have $n \times 0 = 0$; and
         \item for all $n, d \in \N$ we have $n \times \Successor{d} = (n \times d) + n$.
@@ -548,8 +548,8 @@ Now what about if we raise any number to a successor of another number? Well, if
 
 We can thus define exponentiation as follows.
 
-\begin{definition}[Exponentiation]
-    The \term{exponentiation operation}\index{exponentiation} is the function $\wedge: \N^2 \to \N$ such that
+\begin{definition}[Exponentiation (Natural Numbers)]
+    The \term{exponentiation operation}\index{exponentiation!natural numbers} is the function $\wedge: \N^2 \to \N$ such that
     \begin{enumerate}[label=\textbf{E\arabic*.}]
         \item for all $n \in \N$ we have $n \wedge 0 = 1$; and
         \item for all $n, d \in \N$ we have $n \wedge \Successor{d} = (n \wedge d) \times n$.
