@@ -251,6 +251,7 @@ To end this chapter, let us examine the size (that is, cardinality) of the set o
 
 The more interesting question is whether the cardinality of the set $\Z$ is more than $\Z$. Clearly $-1 \in \Z$ but $-1 \notin \N$, so $\Z$ clearly has ``more elements'', but we've seen how cardinalities of infinite sets are not intuitive. In fact, we will prove that the cardinality of the integers is the same as the cardinality of the natural numbers.
 
+\subsection{Odd and Even Numbers}
 To prove this fact, we will first introduce a categorization of the natural numbers -- the odd and even numbers.
 
 \begin{definition}[Odd and Even Numbers]
@@ -281,11 +282,44 @@ To prove this fact, we will first introduce a categorization of the natural numb
     But the first case is not possible since that simplifies to a form of $n = 2k$ where $k \in \N$, and the third, fourth, fifth etc. cases are not possible since we can just group additional ``$1+1$''s into another group of 2. The last remaining case is the second case which takes the form $n = 2k + 1$ for some $k \in \N$.
 \end{proof}
 
-We can now prove the equinumerosity of $\N$ and $\Z$.
+\subsection{Equinumerosity of the Integers and the Naturals}
+With odd and even numbers defined, let's state the theorem that we are to prove.
 
 \begin{theorem}[Integers Are Equinumerous With Naturals]
-    $|\Z| = |\N| = \beth_0$.
+    $|\Z| = |\N|$.
 \end{theorem}
+
+How do we approach this? Let us use Cantor-Schr\"oder-Bernstein (\myref{theorem:cantor-schroder-bernstein}) to make our lives easier. Recall that $\N$ is (thought of as) a subset of $\Z$, so all we need to find is an injection from $\Z$ to $\N$ and we are done (since the heavy lifting is given by \myref{corollary:injection-into-subset-means-equinumerous}).
+
+For this exploration step, let us ignore the fact that we haven't define operations on the integers. How can we create an injection from $\Z$ to $\N$? With the result of odd and even numbers, one might think of a way to map all the non-negative integers to the even numbers and the negative integers to all the odd numbers. That way, we will have a injective map from $\Z$ to $\N$.
+
+To map the non-negative integers to the even natural numbers is easy -- just double every non-negative integer. 0 becomes 0, 2 becomes 4, 4 becomes 8, 6 becomes 12, and so on. How about the negative integers? We need -1 to become 1, -2 to become 3, -3 to become 5, -4 to become 7, and so on. One might notice that, for any odd integer $n$, the resulting natural number is $-2n - 1$.
+
+In summary, the injection that we came up with is
+\[
+    f(n) = \begin{cases}
+        2n & \text{if } n \geq 0\\
+        -2n - 1 & \text{if } n < 0
+    \end{cases}
+\]
+for all $n \in \Z$. This function's effect can be visualized by the following diagram.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=3.5cm]{images/part-2/constructing-integers/equinumerosity-line.png}
+    \caption{Effect of the Injection $f: \Z \to \N$}  
+\end{figure}
+
+This is all well and good, but we haven't defined any operations on the integers yet! This means that, unfortunately, we have to appeal to the equivalence class definition of integers to define the injection $f$.
+
+Suppose $n = [(x, y)]$.
+\begin{itemize}
+    \item Doubling $n$ (i.e., $2n$) is the same as moving twice as far to the right as compared to the shift $(x,y)$, and moving twice as far to the left as compared to the shift $(x,y)$, i.e. $2n = [(2x, 2y)]$.
+    \item The expression $-2n - 1$ can be rewritten as $-(2n+1)$ using simple algebra. Adding 1 to $(x,y)$ simply means an additional shift of 1 unit to the left, so $2n + 1 = [(2x+1, 2y)]$. Since negation swaps the order of the elements in the representative of the equivalence class, thus $-(2n+1)= [(2y, 2x+1)]$.
+\end{itemize}
+So, in the proof, we will appeal to these equivalence classes to define the injection $f: \Z \to \N$. However, since we are now invoking equivalence classes, we have to worry about the function being well-defined. This will be proven later.
+
+With this set up, we can now formally prove the equinumerosity of $\N$ and $\Z$.
 \begin{proof}
     We will find an injection from $\Z$ to $\N$ and then use a corollary of the Cantor-Schr\"oder-Bernstein theorem (\myref{corollary:injection-into-subset-means-equinumerous}) to finish the proof.
 
