@@ -251,8 +251,123 @@ To end this chapter, let us examine the size (that is, cardinality) of the set o
 
 The more interesting question is whether the cardinality of the set $\Z$ is more than $\Z$. Clearly $-1 \in \Z$ but $-1 \notin \N$, so $\Z$ clearly has ``more elements'', but we've seen how cardinalities of infinite sets are not intuitive. In fact, we will prove that the cardinality of the integers is the same as the cardinality of the natural numbers.
 
-\subsection{Odd and Even Natural Numbers}
-% Prove that the naturals are partitioned into the odd and even numbers
+To prove this fact, we will first introduce a categorization of the natural numbers -- the odd and even numbers.
 
-\subsection{Equinumerosity of the Integers and the Naturals}
-% Use CSB to prove equinumerosity -- N to Z using identity, Z to N by using a mix of odd and even numbers
+\begin{definition}[Odd and Even Numbers]
+    The natural number $n$ is said to be \term{even}\index{even number} if and only if there exists a natural number $k$ such that $n = 2k$. A natural number that is not even is said to be \term{odd}\index{odd number}.
+\end{definition}
+
+\begin{proposition}[Formula For An Odd Number]\label{prop:odd-number-formula}
+    Any odd number takes the form $2k + 1$ where $k \in \N$.
+\end{proposition}
+\begin{proof}
+    Let $n$ be an odd natural number. We can write
+    \[
+        n = 0 \underbrace{+ 1 + 1 + 1 + 1 + 1 + \cdots + 1}_{n \text{ times}}
+    \]
+    by definition of the natural numbers. By associativity of addition on natural numbers, we can each pair of 1s as follows.
+    \[
+        n = 0 + (1 + 1) + (1 + 1) + (1 + 1) + \cdots
+    \]
+    Since $1 + 1 = 2$, we can replace all these groups of ``$1+1$'' with 2. So we must have
+    \begin{align*}
+        n &= 0 + 2 + 2 + \cdots + 2, \text{ or}\\
+        n &= 0 + 2 + 2 + \cdots + 2 + 1, \text{ or}\\
+        n &= 0 + 2 + 2 + \cdots + 2 + 1 + 1, \text{ or}\\
+        n &= 0 + 2 + 2 + \cdots + 2 + 1 + 1 + 1, \text{ or}\\
+        n &= 0 + 2 + 2 + \cdots + 2 + 1 + 1 + 1 + 1, \text{ or}\\
+        \vdots &\quad\hquad \vdots
+    \end{align*}
+    But the first case is not possible since that simplifies to a form of $n = 2k$ where $k \in \N$, and the third, fourth, fifth etc. cases are not possible since we can just group additional ``$1+1$''s into another group of 2. The last remaining case is the second case which takes the form $n = 2k + 1$ for some $k \in \N$.
+\end{proof}
+
+We can now prove the equinumerosity of $\N$ and $\Z$.
+
+\begin{theorem}[Integers Are Equinumerous With Naturals]
+    $|\Z| = |\N| = \beth_0$.
+\end{theorem}
+\begin{proof}
+    We will find an injection from $\Z$ to $\N$ and then use a corollary of the Cantor-Schr\"oder-Bernstein theorem (\myref{corollary:injection-into-subset-means-equinumerous}) to finish the proof.
+
+    Consider the function $f: \Z \to \N$ where
+    \[
+        f([(m,n)]) = \begin{cases}
+            [(2m,2n)] & \text{if } [(m,n)] \in \N\\
+            [(2n,2m+1)] & \text{if } [(m,n)] \notin \N
+        \end{cases}
+    \]
+    We need to prove two things: that $f$ is a well-defined function, and that $f$ is an injection.
+
+    First, to prove that $f$ is well-defined. This comprises two things -- that $f([m,n])$ is indeed in $\N$ for any $[(m,n)] \in \Z$, and that it is unique.
+    \begin{itemize}
+        \item \textbf{In $\N$} (i.e., \textbf{F1}): Suppose $[(m,n)] \in \Z$. There are two cases to consider
+        \begin{itemize}
+            \item If $[(m,n)] \in \N$, say $k = [(m,n)] \in \N$, then clearly $2k = [(2m,2n)] \in \N$.
+            
+            \item Otherwise, since $[(m,n)] \notin \N$, one sees that $n > m$. In particular, one notes that $n \geq m + 1$. Hence $2n \geq 2m + 2 > 2m + 1$, and thus $[(2n, 2m+1)] \in \N$.
+        \end{itemize}
+        Thus in either case, we have $f([(m,n)]) \in \N$.
+        
+        \item \textbf{Uniqueness} (i.e., \textbf{F2}): Suppose we have $[(m_1, n_1)], [(m_2, n_2)] \in \Z$ such that $[(m_1, n_1)] = [(m_2, n_2)]$. Note that, by \myref{theorem:equivalence-class-equivalence}, this means that $(m_1, n_1) \EqRel (m_2, n_2)$, i.e. $m_1 + n_2 = n_1 + m_2$. Again, there are two cases to consider.
+        \begin{itemize}
+            \item If $[(m_1, n_1)] = [(m_2, n_2)] \in \N$, then we have
+            \begin{align*}
+                f([(m_1, n_1)]) &= [(2m_1, 2n_1)] \text{ and}\\
+                f([(m_2, n_2)]) &= [(2m_2, 2n_2)].
+            \end{align*}
+            Since $m_1 + n_2 = n_1 + m_2$, thus $2m_1 + 2n_2 = 2n_1 + 2m_2$. By \myref{theorem:equivalence-class-equivalence} again, this means $(2m_1, 2n_1) \EqRel (2m_2, 2n_2)$, so $f([(m_1, n_1)]) = [(2m_1, 2n_1)] = [(2m_2, 2n_2)] = f([(m_2, n_2)])$.
+
+            \item Otherwise, we have $[(m_1, n_1)] = [(m_2, n_2)] \notin \N$. One sees that
+            \begin{align*}
+                f([(m_1, n_1)]) &= [(2n_1, 2m_1 + 1)] \text{ and}\\
+                f([(m_2, n_2)]) &= [(2n_2, 2m_2 + 1)].
+            \end{align*}
+            Now, using $m_1 + n_2 = n_1 + m_2$ again, and by using various properties of addition, one obtains
+            \[
+                2n_2 + (2m_1 + 1) = (2m_2 + 1) + 2n_1,
+            \]
+            and so we see that $[(2n_2, 2m_2 + 1)] = [(2n_1, 2m_1 + 1)]$. Hence one sees that $f([(m_1, n_1)]) = [(2n_1, 2m_1 + 1)] = [(2n_2, 2m_2 + 1)] = f([(m_2, n_2)])$.
+        \end{itemize}
+        Thus, in either case, we have $f([(m_1, n_1)]) = f([(m_2, n_2)])$, which proves uniqueness.
+    \end{itemize}
+
+    Now we need to prove that $f$ is injective. Let $[(m_1, n_1)], [(m_2, n_2)] \in \Z$ be such that $f([(m_1, n_1)]) = f([(m_2, n_2)])$. There are four cases to consider.
+    \begin{itemize}
+        \item $\boxed{[(m_1, n_1)] \in \N \text{ and } [(m_2, n_2)] \in \N}$ For this case we have
+        \[
+            [(2m_1, 2n_1)] = [(2m_2, 2n_2)]
+        \]
+        which means $2m_1 + 2n_2 = 2n_1 + 2m_2$. We can rewrite this slightly and turn it into
+        \[
+            2(m_1 + n_2) = 2(n_1 + m_2).
+        \]
+        By the cancellation property of multiplication for natural numbers (\myref{prop:multiplication-cancellation-property}), and since $2 \neq 0$, we obtain
+        \[
+            m_1 + n_2 = n_1 + m_2
+        \]
+        which hence must mean that $[(m_1, n_1)] = [(m_2, n_2)]$.
+        
+        \item $\boxed{[(m_1, n_1)] \notin \N \text{ and } [(m_2, n_2)] \in \N}$ For this case, one notes that we will obtain
+        \[
+            [(2n_1, 2m_1 + 1)] = [(2m_2, 2n_2)]
+        \]
+        which means that $2n_1 + 2n_2 = (2m_1 + 1) + 2m_2$. We can move some things around to obtain
+        \[
+            2(\underbrace{n_1 + n_2}_{\text{In } \N}) = 2(\underbrace{m_1 + m_2}_{\text{In } \N}) + 1.
+        \]
+        But this is an issue -- the left-hand side is an even natural number (by definition) while the right-hand side is an odd natural number (by \myref{prop:odd-number-formula}). This is impossible, since an even number cannot be an odd number by definition.
+        
+        \item $\boxed{[(m_1, n_1)] \in \N \text{ and } [(m_2, n_2)] \notin \N}$ Same as case 2.
+        
+        \item $\boxed{[(m_1, n_1)] \notin \N \text{ and } [(m_2, n_2)] \notin \N}$ For this last case we have
+        \[
+            [(2n_1, 2m_1 + 1)] = [(2n_2, 2m_2 + 1)]
+        \]
+        which means $2n_1 + (2m_2 + 1) = (2m_1 + 1) + 2n_2$. Rearranging some terms, we get
+        \[
+            2m_2 + 2n_1 + 1 = 2n_1 + 2m_2 + 1.
+        \]
+        By using the cancellation property of addition for natural numbers (\myref{prop:addition-cancellation-property}), we can turn that equation into the same equation in case 1, which thus means that $[(m_1, n_1)] = [(m_2, n_2)]$.
+    \end{itemize}
+    Therefore $f$ is an injection from $\Z$ to $\N$. By the aforementioned corollary, this means that $|\Z| = |\N|$.
+\end{proof}

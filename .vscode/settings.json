@@ -160,5 +160,14 @@
             "overviewRulerColor": "green",
             "isWholeLine": true
         },
+        {
+            "text": "\\sorry",
+            "color": "#ffffff",
+            "border": "1px solid red",
+            "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+            "backgroundColor": "rgba(200,0,0,0.2)",
+            "overviewRulerColor": "red",
+            "isWholeLine": true
+        },
     ],
 }
