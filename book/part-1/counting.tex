@@ -191,6 +191,8 @@ The symbols ``$\leq$'' and ``$\geq$'' used for comparing cardinalities hint at a
     Let $A$ and $B$ be sets. If there are injections $f: A \to B$ and $g: B \to A$, then there exists a bijection $h: A \to B$.
 \end{theorem}
 
+Cantor-Schr\"oder-Bernstein allows us to prove two important results.
+
 \begin{corollary}\label{corollary:cantor-schroder-bernstein-corollary}
     Let $A$ and $B$ be sets. If $|A| \leq |B|$ and $|B| \leq |A|$ then $|A| = |B|$.
 \end{corollary}
@@ -198,17 +200,16 @@ The symbols ``$\leq$'' and ``$\geq$'' used for comparing cardinalities hint at a
     By definition we know that $|A| \leq |B|$ means that there exists an injection from $A$ to $B$ and $|B| \leq |A|$ means that there exists an injection from $B$ to $A$. Thus \myref{theorem:cantor-schroder-bernstein} tells us that there is a bijection from $A$ to $B$, which hence means $|A| = |B|$.
 \end{proof}
 
-\begin{example}
-    \setlength{\parindent}{1.5em}
-    Let $A$ be a set and $B$ be a subset of $A$. We show that if there is an injection from $A$ to $B$ then $|A| = |B|$.
-    \begin{proof}
-        Our goal is to find injections from $A$ to $B$ and from $B$ to $A$ and then use Cantor-Schr\"oder-Bernstein (\myref{theorem:cantor-schroder-bernstein}) to finish the proof.
+\begin{corollary}[Injection Into Subset Means Equinumerous]\label{corollary:injection-into-subset-means-equinumerous}
+    Let $A$ be a set and $B$ be a subset of $A$. If there is an injection from $A$ to $B$, then $|A| = |B|$.
+\end{corollary}
+\begin{proof}
+    Our goal is to find injections from $A$ to $B$ and from $B$ to $A$ and then use Cantor-Schr\"oder-Bernstein (\myref{theorem:cantor-schroder-bernstein}) to finish the proof.
 
-        The injection $f: A \to B$ is assumed to exist by our antecedent. The injection $g: B \to A$ can be found simply by defining $f(x) = x$ for all $x \in B$. One clearly sees that if $g(x_1) = g(x_2)$ then $x_1 = x_2$ for all $x_1, x_2 \in B$.
+    The injection $f: A \to B$ is assumed to exist by our antecedent. The injection $g: B \to A$ can be found simply by defining $f(x) = x$ for all $x \in B$. One clearly sees that if $g(x_1) = g(x_2)$ then $x_1 = x_2$ for all $x_1, x_2 \in B$.
 
-        Thus Cantor-Schr\"oder-Bernstein tells us that there exists a bijection from $A$ to $B$, which means $|A| = |B|$.
-    \end{proof}
-\end{example}
+    Thus Cantor-Schr\"oder-Bernstein tells us that there exists a bijection from $A$ to $B$, which means $|A| = |B|$.
+\end{proof}
 
 There are more interesting examples of using the Cantor-Schr\"oder-Bernstein theorem, but we will cover them when the time comes.
 
