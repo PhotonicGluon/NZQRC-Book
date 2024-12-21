@@ -1,7 +1,10 @@
 \Chapter{Operations Involving the Integers}
 \Lettrine[loversize=0.1,nindent=0pt]{There} is not much difference between the natural numbers and the integers. The naturals and integers are numbers we can add, multiply, and exponentiate. The distinguishing characteristic that the integers have over the natural numbers is the operation of subtraction, which we will also look at in this chapter.
 
-\section{Addition}
+\section{Addition and Subtraction}
+Like with the natural numbers, addition is one of the simplest operations that we can define on the integers.
+
+\subsection{Basic Definitions}
 Integer addition is nothing special. Consider the numbers 4 and 3 represented by the shifts $(6,2)$ and $(5,2)$ respectively. What happens when we add them? Visually, this means that we can apply the shifts in the following order:
 \begin{enumerate}
     \item Shift rightward by 6.
@@ -30,13 +33,60 @@ This leads us to define integer addition as follows.
 \begin{definition}[Addition (Integers)]
     The \term{addition operation}\index{addition!integers} is the function $+: \Z^2 \to \Z$ such that
     \[
-        [(a, b)] + [(c, d)] = [(a + c, b + d)].
+        [(a, b)] + [(c, d)] = [(a + c, b + d)]
     \]
+    for all $[(a, b)], [(c, d)] \in \Z$.
 \end{definition}
 
-% TODO: Add properties of addition
+Notice that we use equivalence classes in the definition of integer addition. However, any equivalence class can have multiple representatives. For example, one sees that $[(0, 1)] = [(1, 2)]$, so $(0, 1)$ and $(1, 2)$ both represent the equivalence class $[(0, 1)]$. Thus, we need to ensure that the addition operation is, indeed, well-defined.
 
-\section{Subtraction}
+\begin{proposition}[Addition on Integers is Well-Defined]
+    The addition operation on the integers is well-defined.
+\end{proposition}
+\begin{proof}
+    Suppose we have $[(a_1, b_1)], [(a_2, b_2)], [(c_1, d_1)], [(c_2, d_2)] \in \Z$ such that $[(a_1, b_1)] = [(a_2, b_2)]$ and $[(c_1, d_1)] = [(c_2, d_2)]$. This means that $(a_1, b_1) \EqRel (a_2, b_2)$ and $(c_1, d_1) \EqRel (c_2, d_2)$ by \myref{theorem:equivalence-class-equivalence}, which thus means
+    \begin{align*}
+        a_1 + b_2 &= b_1 + a_2 \text{ and}\\
+        c_1 + d_2 &= d_1 + c_2
+    \end{align*}
+    by the definition of the equivalence relation $\EqRel$ on $\Z$. One thus sees that
+    \[
+        a_1 + b_2 + c_1 + d_2 = b_1 + a_2 + d_1 + c_2
+    \]
+    by adding the two equations together; a little more manipulation yields
+    \[
+        (a_1 + c_1) + (b_2 + d_2) = (b_1 + d_1) + (a_2 + c_2)
+    \]
+    which means $[(a_1 + c_1, b_1 + d_1)] = [(a_2 + c_2, b_2 + d_2)]$.
+
+    Note that
+    \begin{align*}
+        [(a_1, b_1)] + [(c_1, d_1)] &= [(a_1 + c_1, b_1 + d_1)] \text{ and}\\
+        [(a_2, b_2)] + [(c_2, d_2)] &= [(a_2 + c_2, b_2 + d_2)]
+    \end{align*}
+    by definition of integer addition. As $[(a_1 + c_1, b_1 + d_1)] = [(a_2 + c_2, b_2 + d_2)]$, thus we have
+    \begin{align*}
+        [(a_1, b_1)] + [(c_1, d_1)] &= [(a_1 + c_1, b_1 + d_1)]\\
+        &= [(a_2 + c_2, b_2 + d_2)]\\
+        &= [(a_2, b_2)] + [(c_2, d_2)]
+    \end{align*}
+    which shows that integer addition is well-defined.
+\end{proof}
+
+What about subtraction? Subtraction of the integer $x$ from the other integer $n$ is basically `undoing' the effect of $x$ from a shift resulting on $n$. This, then, is exactly the effect of adding $-x$ to $n$. Thus, we can define subtraction as follows.
+\begin{definition}[Subtraction (Integers)]
+    The \term{subtraction operation}\index{subtraction!integers} is the function $-: \Z^2 \to \Z$ such that
+    \[
+        x - y = x + (-y)
+    \]
+    for all $x, y \in \Z$, where ``$-y$'' denotes the negation of the integer $y$.
+\end{definition}
+Note that because we are not involving the equivalence classes in the definition of subtraction, we are not concerned about the well-definedness of integer subtraction.
+
+\subsection{Basic Properties}
+TODO: Add
+
+\subsection{Implications}
 TODO: Add
 
 \section{Multiplication}
