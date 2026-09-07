@@ -5,79 +5,25 @@
 \makeatother
 
 % Text for writing the edition
-\newcommand*{\editiontext}{
-    \editionnumber~Edition~\Ifstr{\buildnumber}{}{}{(Build \buildnumber)}\Ifstr{\postnumber}{}{}{(Post \postnumber)}
-}
+\newcommand*{\editiontext}{An Incomplete Manuscript}
 
 %============= Front Matter ==============
-% TODO: Update
-% \Ifstr{\isebook}{true}{
-\Ifstr{USING PAPERBACK TITLE PAGE UNTIL NEW COVER IS READY}{true}{
-    % % Title page
-    % \begin{titlepage}
-    %     \newgeometry{hmargin=2cm, vmargin=2.5cm}
 
-    %     % \AddToShipoutPictureBG*{%
-    %     %     \AtPageLowerLeft{%
-    %     %         \includegraphics[width=\paperwidth,height=\paperheight]{images/cover/front-only/cover-page-background.jpg}%
-    %     %     }%
-    %     % }
-
-    %     \vspace*{\fill}
-
-    %     \begin{center}
-    %         \color{white}
-
-    %         {\fontsize{16pt}{0pt}\selectfont \textbf{A Complete}\\\textbf{Introduction to}}\\
-
-    %         \vspace{0.3cm}
-    %         {\fontsize{40pt}{0pt}\selectfont \textbf{ABSTRACT}}\\
-    %         \vspace{0.15cm}
-    %         {\fontsize{40pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
-
-    %         \vspace{0.4cm}
-    %         {\fontsize{12pt}{0pt}\selectfont \editiontext}\\
-
-    %         \vspace{0.9cm}
-    %         {\fontsize{18pt}{0pt}\selectfont Kan Onn Kit}\\
-    %         \vspace{0.25cm}
-    %     \end{center}
-    %     \vspace*{\fill}
-    % \end{titlepage}
-}{
-    % Half title page
-    \thispagestyle{empty}
+% Title page
+\begin{titlepage}
     \null\vspace{4cm}
     \begin{raggedleft}
-        {\fontsize{24pt}{0pt}\selectfont \textbf{\textsc{Axiomatic Arithmetic}}}\\
-    \end{raggedleft}
+        {\fontsize{36pt}{0pt}\selectfont \textbf{\textsc{Axiomatic}}}\\
+        \vspace{0.1cm}
+        {\fontsize{36pt}{0pt}\selectfont \textbf{\textsc{Arithmetic}}}\\
+        \vspace{0.3cm}
+        {\fontsize{20pt}{0pt}\selectfont \textbf{The Structure of Numbers}}\\
 
-    % Title page
-    \begin{titlepage}
-        \null\vspace{4cm}
-        \begin{raggedleft}
-            % {\fontsize{20pt}{0pt}\selectfont \textbf{A Complete}\\\textbf{Introduction to}}\\
-
-            % \vspace{0.4cm}
-            % {\fontsize{48pt}{0pt}\selectfont \textbf{ABSTRACT}}\\
-            % \vspace{0.15cm}
-            % {\fontsize{48pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
-
-            {\fontsize{36pt}{0pt}\selectfont \textbf{\textsc{Axiomatic}}}\\
-            \vspace{0.1cm}
-            {\fontsize{36pt}{0pt}\selectfont \textbf{\textsc{Arithmetic}}}\\
-            \vspace{0.3cm}
-            {\fontsize{20pt}{0pt}\selectfont \textbf{The Structure of Numbers}}\\
-
-            \vspace{0.5cm}
+        \vspace{0.5cm}
             {\fontsize{16pt}{0pt}\selectfont \editiontext}\\
-
-            \vspace{1.25cm}
-            {\fontsize{20pt}{0pt}\selectfont Kan Onn Kit}\\
-        \end{raggedleft}
-        \vspace*{\fill}
-    \end{titlepage}
-}
+    \end{raggedleft}
+    \vspace*{\fill}
+\end{titlepage}
 
 \newpage{}
 
@@ -88,7 +34,7 @@
     \footnotesize\raggedright
     \setlength{\parskip}{0.5\baselineskip}
 
-    Published by Kan Onn Kit\\
+    Written by Kan Onn Kit\\
     Singapore
     \vspace{5cm}
 
@@ -117,78 +63,20 @@
 \vspace*{1cm}
 
 \begin{center}
-    {\fontsize{18pt}{0}\selectfont \textit{For my friends}}\\
+    {\fontsize{18pt}{0}\selectfont \textit{For those who we've yet to meet}}\\
 \end{center}
 
-% \vspace*{1.5cm}
-
-% \begin{center}
-%     \parbox{10cm}{
-%         \Large
-%         Symmetry is a vast subject, significant in art and nature. Mathematics lies at its root, and it would be hard to find a better one on which to demonstrate the working of the mathematical intellect.
-%         \vspace{0.3cm}
-
-%         \hfill
-%         --- Hermann Weyl, 1952\\
-%         \vspace{-0.7cm}
-
-%         \hfill
-%         \normalsize
-%         ({\cite[p.~145]{weyl_1952}})
-%     }
-% \end{center}
-
-% \vspace*{\fill}
-
-% % "Content for no one... where you hide something so deeply that you don't care if anyone finds it [because] you just like knowing that it's there"
-% \begin{center}
-%     \fontsize{8pt}{8pt}\selectfont
-%     \code{0901 1602 2901 0000 3202 2102 0802 0000 1106 0108 0000 0606 0201 1005\\0202 2910 0000 3410 0107 1803 1403 1104 0000 0901 1701 2204 1601 2905}
-% \end{center}
-
-% \vspace*{2\baselineskip}
 \cleardoublepage
 
 % Table of contents
 \createtoc
 
-% TODO: Reactivate
+% Author's Note
+\chapter{Author's Note}
+The genesis for this book began back in late September 2024. The idea was to write a book that explains looks at how we can define all the numbers that are used today from the simple axioms of Zermelo-Fraenkel Set Theory.
 
-% % Errata
-% \chapter{Errata}
-% TODO: ADD
+However, for multiple reasons, I did not go ahead and finish the book. I finished the first two parts on the foundations of axiomatic arithmetic and the natural numbers, but I struggled to continue the momentum with the other parts of the ladder. I could not properly motivate the integers, the rationals, the real numbers, and the complex numbers. As such, this project was put on hiatus since December 2024.
 
-% % Acknowledgements
-% \chapter{Acknowledgements}
-% TODO: ADD
+Now, as the 2-year anniversary of beginning this book approaches, I felt that it would be a waste to let whatever I've written be hidden away much longer. Therefore, I am finally releasing this book to the world, as incomplete as it is. I hope whatever I've written is useful to someone. As the old proverb goes: "\textit{One man's trash is another man's treasure}". I hope you'll enjoy, despite the lack of completeness.
 
-% % Preface
-% \chapter{Preface}
-% TODO: ADD
-
-% % Suggestions on the use of this book
-% \chapter{Suggestions on the Use of This Book}
-% \section*{General Information}
-% \begin{itemize}
-%     \item This book includes two types of questions for readers: exercises and problems. For most chapters, we include both.
-%     \begin{itemize}
-%         \item An exercise can be thought of as a ``self-review'' question. Exercises ensure that the content of a particular section is understood and relatively simple to answer.
-%         \item A problem is a more holistic version of an exercise. Generally, solutions to problems require a thorough understanding of the current chapter.
-%     \end{itemize}
-%     We include full solutions to both exercises and problems. Note that these are just suggested answers; other approaches may be valid.
-
-%     \item Results and questions have differing numbering systems.
-%     \begin{itemize}
-%         \item All definitions, axioms, examples, lemmas, theorems, propositions, and corollaries are consecutively numbered using the format
-%         \begin{quote}
-%             \code{[CHAPTER].[SECTION].[NUMBER]}
-%         \end{quote}
-%         For example, the fourth statement in chapter 2, section 3, is labelled \textbf{2.3.4}.
-%         \item Exercises and problems are also numbered consecutively using the format
-%         \begin{quote}
-%             \code{[CHAPTER].[NUMBER]}
-%         \end{quote}
-%         For example, the third exercise in chapter 2 is labelled \textbf{2.3}. Likewise, the fourth problem in chapter 3 is labelled \textbf{3.4}.
-%     \end{itemize}
-%     \item For more technical proofs, we include a sketch of the proof along with the full proof. The symbol ``$\qedsketch$'' marks the end of the sketch of a proof, while ``$\qedproof$'' marks the end of a proof.
-% \end{itemize}
+\hfill{\textit{7 September, 2026}}
